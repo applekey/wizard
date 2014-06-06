@@ -1,0 +1,3 @@
+## This is the regular config file
+height 30
+grate 25
