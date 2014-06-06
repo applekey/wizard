@@ -18,11 +18,13 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="pages.py" />
+    <Compile Include="config.py" />
     <Compile Include="PyQt4app.py" />
     <Compile Include="wiz.py" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="config.txt" />
+  </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
   </ItemGroup>

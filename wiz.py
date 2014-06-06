@@ -25,7 +25,8 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_WizardPage(QtGui.QWizardPage):
-    
+    def callme(self,double):
+        print double
     def calluser(self):
         self.videoPlayer.play()
         
@@ -53,7 +54,13 @@ class Ui_WizardPage(QtGui.QWizardPage):
         vp.load(media)
         vp.show()
         #vp.play()
-        
+
+        self.centralwidget = QtGui.QWidget(self)
+        self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+        self.doubleSpinBox = QtGui.QDoubleSpinBox(self.centralwidget)
+        self.doubleSpinBox.setGeometry(QtCore.QRect(170, 150, 361, 241))
+        self.doubleSpinBox.setObjectName(_fromUtf8("doubleSpinBox"))
+        self.doubleSpinBox.valueChanged.connect(self.callme)
 
         self.retranslateUi(WizardPage)
         QtCore.QMetaObject.connectSlotsByName(WizardPage)
