@@ -5,13 +5,14 @@ from wiz import Ui_WizardPage
 # create the main window class
 
 class ApplicationWindow(QtGui.QMainWindow):
-    wizard = None
-    a = None
-    b = None
+    
 
     def __init__( self, parent = None ):
         super(ApplicationWindow, self).__init__(parent)
         self.setWindowTitle('Main Window')
+        self.wizard = None
+        self.a = None
+        self.b = None
     def nextCalled(self,id):
         self.a.calluser()
     def exportMovies( self ):
