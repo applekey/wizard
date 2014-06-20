@@ -299,6 +299,38 @@
     <string>PushButton</string>
    </property>
   </widget>
+  <widget class="QSlider" name="horizontalSlider">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>120</y>
+     <width>160</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>5</number>
+   </property>
+   <property name="maximum">
+    <number>30</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>90</y>
+     <width>181</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>remesh value</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -414,6 +446,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>WizardPage</receiver>
+   <slot>remeshValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>559</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>586</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>import()</slot>
@@ -423,5 +471,6 @@
   <slot>deformsmooth()</slot>
   <slot>roughtselectionforsocket()</slot>
   <slot>editoffset()</slot>
+  <slot>remeshValueChanged()</slot>
  </slots>
 </ui>

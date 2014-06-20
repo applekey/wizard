@@ -2,17 +2,12 @@
 
 # Form implementation generated from reading ui file 'allFunctionality.ui'
 #
-# Created: Fri Jun 20 13:11:44 2014
+# Created: Fri Jun 20 14:24:41 2014
 #      by: PyQt4 UI code generator 4.11
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-
-#import hidden Api from meshmixer
-
-import mmapi
-from mmRemote import *;
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -28,7 +23,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_WizardPage(QtGui.QWizardPage):
+class Ui_WizardPage(object):
     def setupUi(self, WizardPage):
         WizardPage.setObjectName(_fromUtf8("WizardPage"))
         WizardPage.resize(920, 620)
@@ -101,7 +96,7 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.horizontalSlider = QtGui.QSlider(WizardPage)
         self.horizontalSlider.setGeometry(QtCore.QRect(550, 120, 160, 22))
         self.horizontalSlider.setMinimum(5)
-        self.horizontalSlider.setMaximum(100)
+        self.horizontalSlider.setMaximum(30)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName(_fromUtf8("horizontalSlider"))
         self.label_12 = QtGui.QLabel(WizardPage)
@@ -109,7 +104,7 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.label_12.setObjectName(_fromUtf8("label_12"))
 
         self.retranslateUi(WizardPage)
-        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.importFigure)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.import)
         QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.selectAll)
         QtCore.QObject.connect(self.pushButton_3, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.remesh)
         QtCore.QObject.connect(self.pushButton_4, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.wireframe)
@@ -143,86 +138,7 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.pushButton_9.setText(_translate("WizardPage", "PushButton", None))
         self.pushButton_10.setText(_translate("WizardPage", "PushButton", None))
         self.pushButton_11.setText(_translate("WizardPage", "PushButton", None))
-## do not touch the code down here
-
-    @staticmethod
-    def importFigure():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        cmd.AppendBeginToolCommand("planecutSO")
-        cmd.AppendCompleteToolCommand("accept")
-        remote.runCommand(cmd);
-        remote.shutdown();
-
-    @staticmethod
-    def selectAll():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        #select all command
-        cmd.AppendSelectCommand_All()
-
-        remote.runCommand(cmd);
-        remote.shutdown();
-
-    @staticmethod
-    def remesh():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        #turn on wireframe
-
-        #remesh command
-
-        cmd.AppendBeginToolCommand("remesh")
-        #cmd.AppendCompleteToolCommand('"smooth": 13.0')
-
-        remote.runCommand(cmd);
-        remote.shutdown();
-
-    @staticmethod
-    def remeshValueChanged(value):
-       remote = mmRemote()
-       remote.connect()
-       cmd = mmapi.StoredCommands()
-       cmd.AppendBeginToolCommand("remesh")
-       cmd.AppendToolParameterCommand("density",value)
-       #cmd.AppendCompleteToolCommand("accept")
-       remote.runCommand(cmd);
-       remote.shutdown();
-
-
-    @staticmethod
-    def deformsmooth():
-       remote = mmRemote()
-       remote.connect()
-       cmd = mmapi.StoredCommands()
-       cmd.AppendBeginToolCommand("smooth")
-       cmd.AppendToolParameterCommand("scale",1)
-       #cmd.AppendCompleteToolCommand("accept")
-       remote.runCommand(cmd);
-       remote.shutdown();
-
-    @staticmethod
-    def wireframe():
-        print 'here'
-
-    @staticmethod
-    def roughtselectionforsocket():
-        print 'here'
-
-    @staticmethod
-    def editoffset():
-        print 'here'
-
-
-    def __init__( self, parent ):
-        super(Ui_WizardPage, self).__init__(parent)
-        #intilize mesh mixer remote
-    
-
-        self.setupUi(self)
+        self.label_12.setText(_translate("WizardPage", "remesh value", None))
 
 
 if __name__ == "__main__":
