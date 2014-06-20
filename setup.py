@@ -1,36 +1,22 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
 
-# A simple setup script to create an executable using PyQt4. This also
-# demonstrates the method for creating a Windows executable that does not have
-# an associated console.
-#
-# PyQt4app.py is a very simple type of PyQt4 application
-#
-# Run the build process by running the command 'python setup.py build'
-#
-# If everything works well you should find a subdirectory in the build
-# subdirectory that contains the files needed to run the application
+"""
+setup.py file for mm api
+"""
 
-import sys
-from cx_Freeze import setup, Executable
+from distutils.core import setup, Extension
 
-base = None
-if sys.platform == 'win32':
-    base = 'Win32GUI'
 
-options = {
-    'build_exe': {
-        'includes': 'atexit'
-    }
-}
+mmapi_module = Extension('_mmapi',
+                           sources=['mmapi.cpp', '..\\StoredCommands.cpp'],
+						   include_dirs=['..\\'],
+						   define_macros=[('USING_MM_COMMAND_API','1')]
+                           )
 
-executables = [
-    Executable('PyQt4app.py', base=base)
-]
-
-setup(name='simple_PyQt4',
-      version='0.1',
-      description='Sample cx_Freeze PyQt4 script',
-      options=options,
-      executables=executables
-      )
+setup (name = 'mmapi',
+       version = '0.1',
+       author      = "rms",
+       description = """meshmixer API python wrapper""",
+       ext_modules = [mmapi_module],
+       py_modules = ["mmapi"],
+       )

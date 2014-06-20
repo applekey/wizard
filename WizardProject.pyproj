@@ -19,8 +19,10 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="allFunctionality.py" />
     <Compile Include="config.py" />
-    <Compile Include="ui files\allFunctionality.py" />
+    <Compile Include="mmapi.py" />
+    <Compile Include="mmRemote.py" />
     <Compile Include="Wizard.py" />
     <Compile Include="python_mmapi\mmapi.py" />
     <Compile Include="python_mmapi\mmRemote.py" />
@@ -33,14 +35,15 @@
     <Content Include="python_mmapi\mmRemote.pyc" />
     <Content Include="python_mmapi\StoredCommands.h" />
     <Content Include="python_mmapi\_mmapi.pyd" />
-    <Content Include="ui files\allFunctionality.ui" />
+    <Content Include="StoredCommands.h" />
+    <Content Include="ui_files\allFunctionality.ui" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="python_mmapi\" />
-    <Folder Include="ui files\" />
+    <Folder Include="ui_files\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
