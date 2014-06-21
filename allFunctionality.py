@@ -242,67 +242,45 @@ class Ui_WizardPage(QtGui.QWizardPage):
 ## do not touch the code down here
 
     @staticmethod
+    def SingleInstanceApiCommander(operation, modifier, modifierValue):
+        remote = mmRemote()
+        remote.connect()
+        cmd = mmapi.StoredCommands()
+        #some commands don't follow the scheme
+
+        if operation is "selectAll":
+             cmd.AppendSelectCommand_All()
+        else:
+            cmd.AppendBeginToolCommand(operation)
+        
+        if modifierValue is not None:
+            cmd.AppendToolParameterCommand(modifier,modifierValue)
+
+        #cmd.AppendCompleteToolCommand("accept")
+        remote.runCommand(cmd);
+        remote.shutdown();
+
+    @staticmethod
     def importFigure():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        cmd.AppendBeginToolCommand("planecutSO")
-        cmd.AppendCompleteToolCommand("accept")
-        remote.runCommand(cmd);
-        remote.shutdown();
+       pass
 
     @staticmethod
-    def selectAll():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        #select all command
-        cmd.AppendSelectCommand_All()
-
-        remote.runCommand(cmd);
-        remote.shutdown();
-
-    @staticmethod
-    def remesh():
-        remote = mmRemote()
-        remote.connect()
-        cmd = mmapi.StoredCommands()
-        #turn on wireframe
-
-        #remesh command
-
-        cmd.AppendBeginToolCommand("remesh")
-        #cmd.AppendCompleteToolCommand('"smooth": 13.0')
-
-        remote.runCommand(cmd);
-        remote.shutdown();
-
-    @staticmethod
-    def remeshValueChanged(value):
-       remote = mmRemote()
-       remote.connect()
-       cmd = mmapi.StoredCommands()
-       cmd.AppendBeginToolCommand("remesh")
-       cmd.AppendToolParameterCommand("density",value)
-       #cmd.AppendCompleteToolCommand("accept")
-       remote.runCommand(cmd);
-       remote.shutdown();
-
-
-    @staticmethod
-    def deformsmooth():
-       remote = mmRemote()
-       remote.connect()
-       cmd = mmapi.StoredCommands()
-       cmd.AppendBeginToolCommand("smooth")
-       cmd.AppendToolParameterCommand("scale",1)
-       #cmd.AppendCompleteToolCommand("accept")
-       remote.runCommand(cmd);
-       remote.shutdown();
+    def selectAll(): 
+      Ui_WizardPage.SingleInstanceApiCommander("selectAll",None,None)
 
     @staticmethod
     def wireframe():
         print 'here'
+
+    @staticmethod
+    def remesh():
+       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",13)
+
+    @staticmethod
+    def deformsmooth():
+       Ui_WizardPage.SingleInstanceApiCommander("smooth","scale",0.7)
+     
+   
 
     @staticmethod
     def roughtselectionforsocket():
@@ -329,6 +307,10 @@ class Ui_WizardPage(QtGui.QWizardPage):
         print 'here'
 
     ## value changed events
+
+    @staticmethod
+    def remeshValueChanged(value):
+       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",value)
 
     @staticmethod
     def deformSmooth_smoothValueChanged():
