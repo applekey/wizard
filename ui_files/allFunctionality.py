@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'allFunctionality.ui'
 #
-# Created: Fri Jun 20 19:34:32 2014
+# Created: Fri Jun 20 20:53:11 2014
 #      by: PyQt4 UI code generator 4.11
 #
 # WARNING! All changes made in this file will be lost!
@@ -101,9 +101,11 @@ class Ui_WizardPage(object):
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.RemeshSlider = QtGui.QSlider(self.groupBox)
         self.RemeshSlider.setGeometry(QtCore.QRect(30, 30, 211, 91))
-        self.RemeshSlider.setMinimum(5)
-        self.RemeshSlider.setMaximum(30)
+        self.RemeshSlider.setMinimum(0)
+        self.RemeshSlider.setMaximum(100)
+        self.RemeshSlider.setPageStep(10)
         self.RemeshSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.RemeshSlider.setInvertedAppearance(False)
         self.RemeshSlider.setObjectName(_fromUtf8("RemeshSlider"))
         self.groupBox_2 = QtGui.QGroupBox(WizardPage)
         self.groupBox_2.setGeometry(QtCore.QRect(500, 220, 311, 161))
@@ -120,9 +122,9 @@ class Ui_WizardPage(object):
         self.DeformSmooth_smoothValue = QtGui.QSlider(self.groupBox_2)
         self.DeformSmooth_smoothValue.setGeometry(QtCore.QRect(40, 50, 160, 22))
         self.DeformSmooth_smoothValue.setMinimum(0)
-        self.DeformSmooth_smoothValue.setMaximum(10)
-        self.DeformSmooth_smoothValue.setSingleStep(10)
-        self.DeformSmooth_smoothValue.setPageStep(1)
+        self.DeformSmooth_smoothValue.setMaximum(100)
+        self.DeformSmooth_smoothValue.setSingleStep(1)
+        self.DeformSmooth_smoothValue.setPageStep(10)
         self.DeformSmooth_smoothValue.setOrientation(QtCore.Qt.Horizontal)
         self.DeformSmooth_smoothValue.setObjectName(_fromUtf8("DeformSmooth_smoothValue"))
         self.label_14 = QtGui.QLabel(self.groupBox_2)
@@ -148,8 +150,8 @@ class Ui_WizardPage(object):
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
         self.SmoothBoundary_distance = QtGui.QSlider(self.groupBox_4)
         self.SmoothBoundary_distance.setGeometry(QtCore.QRect(20, 60, 160, 22))
-        self.SmoothBoundary_distance.setMinimum(5)
-        self.SmoothBoundary_distance.setMaximum(30)
+        self.SmoothBoundary_distance.setMinimum(0)
+        self.SmoothBoundary_distance.setMaximum(100)
         self.SmoothBoundary_distance.setOrientation(QtCore.Qt.Horizontal)
         self.SmoothBoundary_distance.setObjectName(_fromUtf8("SmoothBoundary_distance"))
         self.label_17 = QtGui.QLabel(self.groupBox_4)

@@ -106,9 +106,11 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.RemeshSlider = QtGui.QSlider(self.groupBox)
         self.RemeshSlider.setGeometry(QtCore.QRect(30, 30, 211, 91))
-        self.RemeshSlider.setMinimum(5)
-        self.RemeshSlider.setMaximum(30)
+        self.RemeshSlider.setMinimum(0)
+        self.RemeshSlider.setMaximum(100)
+        self.RemeshSlider.setPageStep(10)
         self.RemeshSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.RemeshSlider.setInvertedAppearance(False)
         self.RemeshSlider.setObjectName(_fromUtf8("RemeshSlider"))
         self.groupBox_2 = QtGui.QGroupBox(WizardPage)
         self.groupBox_2.setGeometry(QtCore.QRect(500, 220, 311, 161))
@@ -125,9 +127,9 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.DeformSmooth_smoothValue = QtGui.QSlider(self.groupBox_2)
         self.DeformSmooth_smoothValue.setGeometry(QtCore.QRect(40, 50, 160, 22))
         self.DeformSmooth_smoothValue.setMinimum(0)
-        self.DeformSmooth_smoothValue.setMaximum(10)
-        self.DeformSmooth_smoothValue.setSingleStep(10)
-        self.DeformSmooth_smoothValue.setPageStep(1)
+        self.DeformSmooth_smoothValue.setMaximum(100)
+        self.DeformSmooth_smoothValue.setSingleStep(1)
+        self.DeformSmooth_smoothValue.setPageStep(10)
         self.DeformSmooth_smoothValue.setOrientation(QtCore.Qt.Horizontal)
         self.DeformSmooth_smoothValue.setObjectName(_fromUtf8("DeformSmooth_smoothValue"))
         self.label_14 = QtGui.QLabel(self.groupBox_2)
@@ -153,8 +155,8 @@ class Ui_WizardPage(QtGui.QWizardPage):
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
         self.SmoothBoundary_distance = QtGui.QSlider(self.groupBox_4)
         self.SmoothBoundary_distance.setGeometry(QtCore.QRect(20, 60, 160, 22))
-        self.SmoothBoundary_distance.setMinimum(5)
-        self.SmoothBoundary_distance.setMaximum(30)
+        self.SmoothBoundary_distance.setMinimum(0)
+        self.SmoothBoundary_distance.setMaximum(100)
         self.SmoothBoundary_distance.setOrientation(QtCore.Qt.Horizontal)
         self.SmoothBoundary_distance.setObjectName(_fromUtf8("SmoothBoundary_distance"))
         self.label_17 = QtGui.QLabel(self.groupBox_4)
@@ -186,20 +188,25 @@ class Ui_WizardPage(QtGui.QWizardPage):
         QtCore.QObject.connect(self.EnableWireframeMode, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.wireframe)
         QtCore.QObject.connect(self.DeformSmoothEnable, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.deformsmooth)
         QtCore.QObject.connect(self.RoughtSelection, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.roughtselectionforsocket)
-        QtCore.QObject.connect(self.RemeshSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.remeshValueChanged)
+        
         QtCore.QObject.connect(self.SmoothBoundary, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.ModifySmoothBoundary)
         QtCore.QObject.connect(self.Discard, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editDiscard)
         QtCore.QObject.connect(self.SecondaryRemeshing, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.remeshsecondtime)
         QtCore.QObject.connect(self.SecondaryOffset, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editoffset)
         QtCore.QObject.connect(self.HideLeg, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.selectleghide)
+
+        QtCore.QObject.connect(self.RemeshSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.remeshValueChanged)
         QtCore.QObject.connect(self.DeformSmooth_smoothValue, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.deformSmooth_smoothValueChanged)
         QtCore.QObject.connect(self.offset_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.offset_distanceValueChanged)
         QtCore.QObject.connect(self.SmoothBoundary_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.smoothBoundary_distanceValueChanged)
         QtCore.QObject.connect(self.SecondaryOffset_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.offsetSecond_distanceValueChanged)
         QtCore.QObject.connect(self.DeformSmooth_scaleValue, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.deformSmooth_scaleValueChanged)
+
         QtCore.QObject.connect(self.InvertSelection, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.invertSelection)
         QtCore.QObject.connect(self.EditOffset, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editoffset)
         QtCore.QMetaObject.connectSlotsByName(WizardPage)
+
+        
 
     def retranslateUi(self, WizardPage):
         WizardPage.setWindowTitle(_translate("WizardPage", "WizardPage", None))
@@ -290,7 +297,7 @@ class Ui_WizardPage(QtGui.QWizardPage):
 
     @staticmethod
     def editoffset():
-        Ui_WizardPage.SingleInstanceApiCommander("smooth","scale",0.7)
+        Ui_WizardPage.SingleInstanceApiCommander("offset","distance",0.7)
 
     @staticmethod
     def ModifySmoothBoundary():
@@ -312,26 +319,26 @@ class Ui_WizardPage(QtGui.QWizardPage):
 
     @staticmethod
     def remeshValueChanged(value):
-       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",value)
+       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",value/float(100))
 
     @staticmethod
-    def deformSmooth_smoothValueChanged():
+    def deformSmooth_smoothValueChanged(value):
+        Ui_WizardPage.SingleInstanceApiCommander("smooth","scale",value/float(100))
+
+    @staticmethod
+    def offset_distanceValueChanged(value):
         print 'here'
 
     @staticmethod
-    def offset_distanceValueChanged():
+    def smoothBoundary_distanceValueChanged(value):
         print 'here'
 
     @staticmethod
-    def smoothBoundary_distanceValueChanged():
+    def offsetSecond_distanceValueChanged(value):
         print 'here'
 
     @staticmethod
-    def offsetSecond_distanceValueChanged():
-        print 'here'
-
-    @staticmethod
-    def deformSmooth_scaleValueChanged():
+    def deformSmooth_scaleValueChanged(value):
         print 'here'
     
 
