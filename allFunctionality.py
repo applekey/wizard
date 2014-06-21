@@ -274,33 +274,35 @@ class Ui_WizardPage(QtGui.QWizardPage):
 
     @staticmethod
     def remesh():
-       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",13)
+       Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",0.325)
 
     @staticmethod
     def deformsmooth():
        Ui_WizardPage.SingleInstanceApiCommander("smooth","scale",0.7)
      
-   
-
     @staticmethod
     def roughtselectionforsocket():
+        print 'here'
+    
+    @staticmethod
+    def invertSelection():
         print 'here'
 
     @staticmethod
     def editoffset():
-        print 'here'
+        Ui_WizardPage.SingleInstanceApiCommander("smooth","scale",0.7)
 
     @staticmethod
     def ModifySmoothBoundary():
-        pass
+        Ui_WizardPage.SingleInstanceApiCommander("smoothboundary","smoothness",25.0)
 
     @staticmethod
     def editDiscard():
-        print 'here'
+        Ui_WizardPage.SingleInstanceApiCommander("discard",None,None)
 
     @staticmethod
     def remeshsecondtime():
-        print 'here'
+        Ui_WizardPage.SingleInstanceApiCommander("remesh","smooth",13)
 
     @staticmethod
     def selectleghide():
@@ -332,12 +334,8 @@ class Ui_WizardPage(QtGui.QWizardPage):
     def deformSmooth_scaleValueChanged():
         print 'here'
     
-    @staticmethod
-    def invertSelection():
-        print 'here'
-    @staticmethod
-    def invertSelection():
-        print 'here'
+
+
 
 
 
