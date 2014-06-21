@@ -21,8 +21,18 @@ class ApplicationWindow(QtGui.QMainWindow):
 
     def exportMovies( self ):
         """ Launches the export movies wizard. """
-       
+        screen = QtGui.QDesktopWidget().screenGeometry()
+
         self.wizard = QtGui.QWizard(self)
+        width = screen.width()
+        height = screen.height()
+        self.wizard.setWizardStyle(QtGui.QWizard.ModernStyle)
+        #self.wizard.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.wizard.resize(width/2.0 ,height-200)
+        xPos = self.wizard.x()
+        yPos = self.wizard.y()
+        self.wizard.move(0,0)
+
         self.a = Ui_WizardPage(self.wizard)
         self.wizard.addPage(self.a)
         #self.wizard.currentIdChanged.connect(self.nextCalled)
