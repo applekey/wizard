@@ -26,15 +26,18 @@ except AttributeError:
 class Ui_MainWindow(object):
 
     def firstButtonClicked(self):
-        buttonSize = self.pushButton.size()
-        print buttonSize.height()
-        self.pushButton.resize(buttonSize.width()-500,buttonSize.height())
+       pass
         
-    
-
-    
     def secondButtonClicked(self):
-        pass
+        mainWindowSize = self.size
+        
+        buttonSize = self.pushButton_2.geometry()
+
+        newX = 0.13*mainWindowSize.width()
+        width = mainWindowSize.width() - newX;
+        resizeButton = QtCore.QRect(newX, buttonSize.y(), width, buttonSize.height())
+
+        self.pushButton_2.setGeometry(resizeButton)
     
 
     def thirdButtonClicked(self):
@@ -42,18 +45,33 @@ class Ui_MainWindow(object):
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(800, 600)
+        
+        height = 600
+        width = 800
+
+        MainWindow.resize(width, height)
+        self.size = QtCore.QRect(0, 0, width, height)
+
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(30, 190, 571, 161))
+        self.pushButton.setGeometry(QtCore.QRect(0, 190, 800, 161))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        
+        
+        button2Width = width*0.12
+        button2Position = width - button2Width
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(370, 190, 101, 161))
+        self.pushButton_2.setGeometry(QtCore.QRect(button2Position, 190, button2Width, 161))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(470, 190, 131, 161))
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
+        
+        
+        
+        
+        
+        #self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
+        #self.pushButton_3.setGeometry(QtCore.QRect(470, 190, 131, 161))
+        #self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -66,14 +84,14 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.firstButtonClicked)
         QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.secondButtonClicked)
-        QtCore.QObject.connect(self.pushButton_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.thirdButtonClicked)
+        #QtCore.QObject.connect(self.pushButton_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.thirdButtonClicked)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.pushButton.setText(_translate("MainWindow", "PushButton", None))
         self.pushButton_2.setText(_translate("MainWindow", "PushButton", None))
-        self.pushButton_3.setText(_translate("MainWindow", "PushButton", None))
+        #self.pushButton_3.setText(_translate("MainWindow", "PushButton", None))
 
 
 if __name__ == "__main__":
