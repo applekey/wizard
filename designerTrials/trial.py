@@ -89,7 +89,22 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.pushButton.setText(_translate("MainWindow", "PushButton", None))
+        self.pushButton.setText(_translate("MainWindow", "fdasfadsf", None))
+        self.pushButton.setStyleSheet("Text-align:left")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../../../Pixelapse/Wizard/Repository/Breadcrumbar/A_1b-06.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon)
+        self.pushButton.setIconSize(QtCore.QSize(300, 300))
+
+        childs = self.pushButton.children()
+        for child in childs:
+            print child
+            
+        children = self.pushButton.findChild(QtGui.QTextBlock)
+        for child in children:
+            print(child.name)
+
+
         self.pushButton_2.setText(_translate("MainWindow", "PushButton", None))
         #self.pushButton_3.setText(_translate("MainWindow", "PushButton", None))
 

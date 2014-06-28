@@ -18,39 +18,23 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>190</y>
+      <y>200</y>
       <width>571</width>
       <height>161</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>fdasfadsf</string>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>190</y>
-      <width>101</width>
-      <height>161</height>
-     </rect>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Pixelapse/Wizard/Repository/Breadcrumbar/A_1b-06.svg</normaloff>../../../Pixelapse/Wizard/Repository/Breadcrumbar/A_1b-06.svg</iconset>
     </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>190</y>
-      <width>131</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
     </property>
    </widget>
   </widget>
@@ -80,38 +64,6 @@
     </hint>
     <hint type="destinationlabel">
      <x>298</x>
-     <y>129</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>secondButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>427</x>
-     <y>301</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>446</x>
-     <y>174</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>thirdButtonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>544</x>
-     <y>275</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>557</x>
      <y>129</y>
     </hint>
    </hints>
