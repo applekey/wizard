@@ -105,7 +105,8 @@ class Ui_MainWindow(object):
         abc = self.pushButton.setFont(QtGui.QFont("Open Sans", 15))
         
         palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.Foreground,QtCore.Qt.red)
+
+        palette.setColor(QtGui.QPalette.ButtonText,QtCore.Qt.white)
         self.pushButton.setPalette(palette)
 
        
