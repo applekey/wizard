@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="640px" height="77px" viewBox="0 0 640 77" enable-background="new 0 0 640 77" xml:space="preserve">
+<rect fill="#1ABC9C" width="640" height="77"/>
+<g>
+	<g>
+		<path fill="#FFFFFF" d="M68.944,38.444c0-5.67-1.574-10.972-4.308-15.495l0.879,29.419C67.701,48.207,68.944,43.472,68.944,38.444
+			z"/>
+		<path fill="#FFFFFF" d="M35.337,37.874l-0.249,1.159l-0.224,0.77l-0.27,0.505l-0.312,0.386l-0.426,0.299l-1.054-0.06L28.546,41H28
+			v1.555l2.026,0.74l5.512,3.677L35,47.177v0.246l-0.596,3.164l0.275,0.805L34.774,52H18.323l-1.289-4.148l0.056-0.604l-0.172-0.182
+			L26,42.691V41h-2.43l-4.348-0.248l-0.694-0.125l-0.517-0.161l-0.448-0.305l-0.402-0.465l-0.133-0.862l-0.113-2.346l0.135-2.418
+			l0.111-1.521l0.2-0.851l0.228-0.628l0.423-0.512l0.696-0.159l1.143-0.224l2.757-0.134l5.132,0.112l3.25,0.111l1.683,0.134
+			l0.786,0.159l0.587,0.245l0.499,0.205l0.396,0.312l0.345,0.604l0.28,0.959l29.072-9.934C59.381,14.256,49.842,8.444,38.944,8.444
+			c-16.568,0-30,13.432-30,30c0,16.569,13.432,30,30,30c11.539,0,21.55-6.518,26.568-16.07L35.337,37.874z"/>
+	</g>
+	<g>
+		<polygon fill="#FFFFFF" points="45,32.489 45,40.664 53,44.069 53,35.5 		"/>
+		<polygon fill="#FFFFFF" points="45.543,31.055 53.861,34.174 62.214,31.055 53.861,28.796 		"/>
+		<polygon fill="#FFFFFF" points="54,35.5 54,44.104 62,40.699 62,32.489 		"/>
+	</g>
+</g>
+<rect x="80.582" y="-26.228" fill="none" width="230.833" height="81.297"/>
+<text transform="matrix(1 0 0 1 90.582 32.5728)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="30">SCANNING</text>
+<text transform="matrix(1 0 0 1 90.582 61.1162)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="21">ADJUSTING</text>
+<g id="Cursors">
+</g>
+</svg>

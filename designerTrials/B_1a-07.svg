@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="640px" height="77px" viewBox="0 0 640 77" enable-background="new 0 0 640 77" xml:space="preserve">
+<path fill="#F1C40F" d="M238,0H122v-0.238c0-0.002-0.082-0.012-0.25-0.012c-21.263,0-38.375,17.237-38.375,38.5
+	c0,21.262,17.3,38.766,38.562,38.766c1.55,0,3.138-0.016,4.64-0.016H238h402V0H238z"/>
+<path fill="#FFFFFF" d="M122.833,7.914c-16.568,0-30,13.431-30,30s13.432,30,30,30s30-13.431,30-30S139.402,7.914,122.833,7.914z
+	 M121,61.455l-7-3.712v-8.909l7,3.281V61.455z M122.458,50.518l-8.318-3.119l8.318-2.258l8.353,2.258L122.458,50.518z M132,57.574
+	l-9,3.625v-9.161l9-3.205V57.574z M122.477,39.83l-8.893-4.586l18-0.169L122.477,39.83z"/>
+<g>
+	<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="110.5,18.084 110.5,26.993 117.5,30.705 117.5,21.365 	"/>
+	<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="110.391,16.649 118.708,19.768 127.062,16.649 
+		118.708,14.392 	"/>
+	<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="119.5,21.289 119.5,30.449 128.5,26.824 128.5,18.084 	"/>
+</g>
+<rect x="152.833" y="-26.289" fill="none" width="230.833" height="81.297"/>
+<text transform="matrix(1 0 0 1 162.834 32.5107)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="30">MODELLING</text>
+<text transform="matrix(1 0 0 1 162.8335 61.0542)" fill="#FFFFFF" font-family="'OpenSans-Bold'" font-size="21">RECORDING</text>
+<g id="Cursors">
+</g>
+</svg>

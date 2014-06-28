@@ -46,11 +46,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         
-        height = 600
-        width = 800
+        self.height = 600
+        self.width = 800
 
-        MainWindow.resize(width, height)
-        self.size = QtCore.QRect(0, 0, width, height)
+        MainWindow.resize(self.width, self.height)
+        self.size = QtCore.QRect(0, 0, self.width, self.height)
 
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
@@ -59,14 +59,11 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         
         
-        button2Width = width*0.12
-        button2Position = width - button2Width
+        button2Width = self.width*0.12
+        button2Position = self.width - button2Width
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(button2Position, 190, button2Width, 161))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        
-        
-        
         
         
         #self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
@@ -89,20 +86,29 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.pushButton.setText(_translate("MainWindow", "fdasfadsf", None))
-        self.pushButton.setStyleSheet("Text-align:left")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../../../Pixelapse/Wizard/Repository/Breadcrumbar/A_1b-06.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(300, 300))
+        
+        fontDatabase = QtGui.QFontDatabase()
+        font = fontDatabase.addApplicationFont("OpenSans-Bold.ttf")
+  
+        self.pushButton.setText(_translate("MainWindow", "    Scanning \n    Adjusting ", None))
+        
+        #abc = fontDatabase.families()
+        #for a in abc:
+        #    print a
 
-        childs = self.pushButton.children()
-        for child in childs:
-            print child
-            
-        children = self.pushButton.findChild(QtGui.QTextBlock)
-        for child in children:
-            print(child.name)
+        
+        self.pushButton.setStyleSheet("Text-align:left;border: none;background:rgb(200,100,150);")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon)
+        self.pushButton.setIconSize(QtCore.QSize(900, self.width))
+        abc = self.pushButton.setFont(QtGui.QFont("Open Sans", 15))
+        
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Foreground,QtCore.Qt.red)
+        self.pushButton.setPalette(palette)
+
+       
 
 
         self.pushButton_2.setText(_translate("MainWindow", "PushButton", None))
