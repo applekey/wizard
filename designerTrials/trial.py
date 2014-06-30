@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from mywidget import mywidg
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -58,7 +59,14 @@ class Ui_MainWindow(object):
         self.pushButton.setGeometry(QtCore.QRect(0, 190, 800, 161))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         
+        self.centralwidget2 = QtGui.QWidget(MainWindow)
+        self.mytest = mywidg(self.centralwidget2)
+        self.mytest.setGeometry(QtCore.QRect(200, 190, 300, 161))
+        self.mytest.setupUi(self.centralwidget)
         
+        
+
+
         button2Width = self.width*0.12
         button2Position = self.width - button2Width
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
