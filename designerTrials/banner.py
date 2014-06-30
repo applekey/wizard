@@ -33,6 +33,13 @@ class banner(QtGui.QWidget):
         
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
+        self.tabNumber = 3
+        self.tabText = ['abc','edg','hgi']
+    
+    #configure the number of tabs, and also the text in each tab
+    def configure(numberOfTabs,tabTextArray):
+        self.tabNumber = numberOfTabs
+        self.tabText = tabTextArray
 
     def setGeometry(self, int1, int2, int3, int4):
         self.centralwidget.setGeometry(int1, int2, int3, int4)
@@ -40,27 +47,34 @@ class banner(QtGui.QWidget):
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
     
-    def __setupUi(self, Form):
-        
-        self.centralwidget.setGeometry(QtCore.QRect(300, 0, 500, 300))
-        
-        self.checkBox = QtGui.QCheckBox(Form)
-        self.checkBox.setGeometry(QtCore.QRect(110, 140, 70, 17))
-        self.checkBox.setObjectName(_fromUtf8("checkBox"))
-        self.pushButton = QtGui.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(80, 70, 291, 101))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.checkBox_2 = QtGui.QCheckBox(Form)
-        self.checkBox_2.setGeometry(QtCore.QRect(100, 110, 70, 17))
-        self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
-        self.checkBox_3 = QtGui.QCheckBox(Form)
-        self.checkBox_3.setGeometry(QtCore.QRect(250, 130, 70, 17))
-        self.checkBox_3.setObjectName(_fromUtf8("checkBox_3"))
+    def __setupUi(self, Form):   
+        # get the parent form's size
+        self.formWidth = parentForm.size().width
+        self.ribbonButtons[self.tabNumber]
+        for i in range(self.tabNumber):
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form):
+
+
+            self.centralwidget.setGeometry(QtCore.QRect(300, 0, 500, 300))
+        
+            self.checkBox = QtGui.QCheckBox(Form)
+            self.checkBox.setGeometry(QtCore.QRect(110, 140, 70, 17))
+            self.checkBox.setObjectName(_fromUtf8("checkBox"))
+            self.pushButton = QtGui.QPushButton(Form)
+            self.pushButton.setGeometry(QtCore.QRect(80, 70, 291, 101))
+            self.pushButton.setObjectName(_fromUtf8("pushButton"))
+            self.checkBox_2 = QtGui.QCheckBox(Form)
+            self.checkBox_2.setGeometry(QtCore.QRect(100, 110, 70, 17))
+            self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
+            self.checkBox_3 = QtGui.QCheckBox(Form)
+            self.checkBox_3.setGeometry(QtCore.QRect(250, 130, 70, 17))
+            self.checkBox_3.setObjectName(_fromUtf8("checkBox_3"))
+
+            self._retranslateUi(Form)
+            QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def _retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
         self.checkBox.setText(_translate("Form", "CheckBox", None))
         self.pushButton.setText(_translate("Form", "PushButton", None))

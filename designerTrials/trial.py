@@ -57,16 +57,18 @@ class Ui_MainWindow(object):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
 
-        
 
+        pushButton33 = QtGui.QPushButton(self.centralwidget)
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(0, 190, 800, 161))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         
         
-        self.mytest = banner(self.centralwidget)
-        self.mytest.setGeometry(QtCore.QRect(0, 0, 800, 161))
-        
+        #self.mytest = banner(self.centralwidget)
+        #self.mytest.setGeometry(QtCore.QRect(0, 0, 800, 161))
+
+
+
         button2Width = self.width*0.12
         button2Position = self.width - button2Width
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
@@ -90,7 +92,7 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.secondButtonClicked)
         #QtCore.QObject.connect(self.pushButton_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.thirdButtonClicked)
         
-        QtCore.QObject.connect(self.mytest.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.firstButtonClicked)
+       
         
         QtCore.QMetaObject.connectSlotsByName(self.centralwidget)
 
