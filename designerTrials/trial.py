@@ -8,7 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-from mywidget import mywidg
+from banner import banner
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,7 +27,7 @@ except AttributeError:
 class Ui_MainWindow(object):
 
     def firstButtonClicked(self):
-       pass
+       print 'here'
         
     def secondButtonClicked(self):
         mainWindowSize = self.size
@@ -50,29 +50,28 @@ class Ui_MainWindow(object):
         self.height = 600
         self.width = 800
 
+
         MainWindow.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
 
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+
+        
+
         self.pushButton = QtGui.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(0, 190, 800, 161))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         
-        self.centralwidget2 = QtGui.QWidget(MainWindow)
-        self.mytest = mywidg(self.centralwidget2)
-        self.mytest.setGeometry(QtCore.QRect(200, 190, 300, 161))
-        self.mytest.setupUi(self.centralwidget)
         
+        self.mytest = banner(self.centralwidget)
+        self.mytest.setGeometry(QtCore.QRect(0, 0, 800, 161))
         
-
-
         button2Width = self.width*0.12
         button2Position = self.width - button2Width
         self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(button2Position, 190, button2Width, 161))
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        
         
         #self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
         #self.pushButton_3.setGeometry(QtCore.QRect(470, 190, 131, 161))
@@ -90,7 +89,10 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.firstButtonClicked)
         QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.secondButtonClicked)
         #QtCore.QObject.connect(self.pushButton_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.thirdButtonClicked)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        QtCore.QObject.connect(self.mytest.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.firstButtonClicked)
+        
+        QtCore.QMetaObject.connectSlotsByName(self.centralwidget)
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
