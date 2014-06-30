@@ -37,6 +37,7 @@ class banner(QtGui.QWidget):
         self.tabText = ['abc','edg','hgi']
         self.colorArray = ['#2980b9','#e67e22','#95a5a6']
         self.__setupUi(self.centralwidget)
+        self.currentTabExpanded = 0
        
     #configure the number of tabs, and also the text in each tab
     def configure(self,numberOfTabs,tabTextArray,colorArray):
@@ -55,9 +56,23 @@ class banner(QtGui.QWidget):
         
         buttonNumber = int( button.objectName())
         # handle firstButton
-        if buttonNumber is 0:
+        if buttonNumber is self.currentTabExpanded:
             pass #ignore for now
-        # handle secondButton
+        else:
+            self.modifyTabGeometry(buttonNumber+1)
+        
+    def modifyTabGeometry(self,tabToExpand):
+        secondaryButtonWidths =  (self.formWidth - self.formWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
+        self.currentTabExpanded = tabToExpand-1
+        currentDrawPosition = 0
+        for i in range(self.tabNumber):
+            if i is tabToExpand-1:
+                currentButtonWidth = self.formWidth*firstButtonWidthPercentage
+            else:
+                currentButtonWidth = secondaryButtonWidths
+            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth,bannerHeightPixels)
+            
+            currentDrawPosition += currentButtonWidth
             
       
     def __setupUi(self, parentForm):   
@@ -66,18 +81,9 @@ class banner(QtGui.QWidget):
         self.centralwidget.setGeometry(0, 0, self.formWidth, bannerHeightPixels)
 
         self.ribbonButtons = []
-        
-        currentDrawPosition = 0
-        secondaryButtonWidths =  (self.formWidth - self.formWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
-        
+        # create the buttons
         for i in range(self.tabNumber):
-            if i is 0:
-                currentButtonWidth = self.formWidth*firstButtonWidthPercentage
-            else:
-                currentButtonWidth = secondaryButtonWidths
-            
             newButton = QtGui.QPushButton(self.centralwidget)
-            newButton.setGeometry(currentDrawPosition,0,currentButtonWidth,bannerHeightPixels)
             newButton.setObjectName(str(i))
             #style and look
             currentColor = self.colorArray[i]
@@ -97,11 +103,7 @@ class banner(QtGui.QWidget):
             QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
 
             self.ribbonButtons.append(newButton)
-            currentDrawPosition += currentButtonWidth
-
-
-           
-
+        self.modifyTabGeometry(1)
         
         QtCore.QMetaObject.connectSlotsByName(parentForm)
 
