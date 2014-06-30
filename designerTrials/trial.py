@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         
         
         self.mytest = banner(MainWindow)
-        #self.mytest.setGeometry(QtCore.QRect(0, 0, 800, 161))
+        self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
 
 
 

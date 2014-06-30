@@ -35,17 +35,14 @@ class banner(QtGui.QWidget):
         ## and become smaller than a certain number
         self.tabNumber = 3
         self.tabText = ['abc','edg','hgi']
-        
+        self.colorArray = ['#2980b9','#e67e22','#95a5a6']
         self.__setupUi(self.centralwidget)
        
-        
-        
-       
-    
     #configure the number of tabs, and also the text in each tab
-    def configure(numberOfTabs,tabTextArray):
+    def configure(self,numberOfTabs,tabTextArray,colorArray):
         self.tabNumber = numberOfTabs
         self.tabText = tabTextArray
+        self.colorArray = colorArray
 
     def setGeometry(self, int1, int2, int3, int4):
         self.centralwidget.setGeometry(int1, int2, int3, int4)
@@ -53,6 +50,16 @@ class banner(QtGui.QWidget):
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
     
+    def buttonClicked(self):
+        button = self.sender()
+        
+        buttonNumber = int( button.objectName())
+        # handle firstButton
+        if buttonNumber is 0:
+            pass #ignore for now
+        # handle secondButton
+            
+      
     def __setupUi(self, parentForm):   
         # get the parent form's size
       
@@ -71,17 +78,25 @@ class banner(QtGui.QWidget):
             
             newButton = QtGui.QPushButton(self.centralwidget)
             newButton.setGeometry(currentDrawPosition,0,currentButtonWidth,bannerHeightPixels)
-            
+            newButton.setObjectName(str(i))
             #style and look
-            newButton.setStyleSheet("Text-align:left;border: none;background:rgb(200,100,150);")
+            currentColor = self.colorArray[i]
+           
+            newButton.setStyleSheet("Text-align:left;border: none;background:"+currentColor+";")
+
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             #icon
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(iconWidth, bannerHeightPixels))
+            #text
+            paddedText = '   '+self.tabText[i]
+            newButton.setText(paddedText)
+
+            #link for click signal
+            QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
 
             self.ribbonButtons.append(newButton)
-
             currentDrawPosition += currentButtonWidth
 
 
