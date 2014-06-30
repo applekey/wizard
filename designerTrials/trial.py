@@ -115,16 +115,9 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon)
         self.pushButton.setIconSize(QtCore.QSize(self.width, self.width))
-        abc = self.pushButton.setFont(QtGui.QFont("Open Sans", 15))
-        
-        palette = QtGui.QPalette()
-
-        palette.setColor(QtGui.QPalette.ButtonText,QtCore.Qt.white)
-        self.pushButton.setPalette(palette)
-
        
-
-
+        
+   
         self.pushButton_2.setText(_translate("MainWindow", "PushButton", None))
         #self.pushButton_3.setText(_translate("MainWindow", "PushButton", None))
 

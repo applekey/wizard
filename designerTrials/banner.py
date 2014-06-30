@@ -70,15 +70,21 @@ class banner(QtGui.QWidget):
                 currentButtonWidth = self.formWidth*firstButtonWidthPercentage
             else:
                 currentButtonWidth = secondaryButtonWidths
-            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth,bannerHeightPixels)
+            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,bannerHeightPixels)
             
             currentDrawPosition += currentButtonWidth
-            
-      
+        
     def __setupUi(self, parentForm):   
         # get the parent form's size
       
         self.centralwidget.setGeometry(0, 0, self.formWidth, bannerHeightPixels)
+        #create the font
+        fontDatabase = QtGui.QFontDatabase()
+        font = fontDatabase.addApplicationFont(fontFile)
+        #text color
+        #palette = QtGui.QPalette()
+        #palette.setColor("#e74c3c")
+        #self.pushButton.setPalette(palette)
 
         self.ribbonButtons = []
         # create the buttons
@@ -87,9 +93,11 @@ class banner(QtGui.QWidget):
             newButton.setObjectName(str(i))
             #style and look
             currentColor = self.colorArray[i]
-           
-            newButton.setStyleSheet("Text-align:left;border: none;background:"+currentColor+";")
-
+            if i is 0:
+                styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
+            else:
+                 styleSheetText = "border-radius: 30px;"+"Text-align:left;border: none;background:"+currentColor+";"
+            newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             #icon
@@ -98,6 +106,7 @@ class banner(QtGui.QWidget):
             #text
             paddedText = '   '+self.tabText[i]
             newButton.setText(paddedText)
+            newButton.setFont(QtGui.QFont(fontName, fontSize))
 
             #link for click signal
             QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
