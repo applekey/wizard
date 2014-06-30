@@ -100,6 +100,7 @@ class banner(QtGui.QWidget):
             newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            
             #icon
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(iconWidth, bannerHeightPixels))
