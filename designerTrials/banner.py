@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from constants import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,14 +28,19 @@ except AttributeError:
 class banner(QtGui.QWidget):
     def __init__(self, parentForm):
         super( banner, self ).__init__()
-        self.centralwidget = QtGui.QWidget(parentForm)
-        self.__setupUi(self.centralwidget)
         ## create our own widget, the resizing and such will be done one this
-        
+        self.centralwidget = QtGui.QWidget(parentForm)
+        self.formWidth =  parentForm.size().width()
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
         self.tabText = ['abc','edg','hgi']
+        
+        self.__setupUi(self.centralwidget)
+       
+        
+        
+       
     
     #configure the number of tabs, and also the text in each tab
     def configure(numberOfTabs,tabTextArray):
@@ -47,39 +53,44 @@ class banner(QtGui.QWidget):
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
     
-    def __setupUi(self, Form):   
+    def __setupUi(self, parentForm):   
         # get the parent form's size
-        self.formWidth = parentForm.size().width
-        self.ribbonButtons[self.tabNumber]
-        for i in range(self.tabNumber):
+      
+        self.centralwidget.setGeometry(0, 0, self.formWidth, bannerHeightPixels)
 
-
-
-
-            self.centralwidget.setGeometry(QtCore.QRect(300, 0, 500, 300))
+        self.ribbonButtons = []
         
-            self.checkBox = QtGui.QCheckBox(Form)
-            self.checkBox.setGeometry(QtCore.QRect(110, 140, 70, 17))
-            self.checkBox.setObjectName(_fromUtf8("checkBox"))
-            self.pushButton = QtGui.QPushButton(Form)
-            self.pushButton.setGeometry(QtCore.QRect(80, 70, 291, 101))
-            self.pushButton.setObjectName(_fromUtf8("pushButton"))
-            self.checkBox_2 = QtGui.QCheckBox(Form)
-            self.checkBox_2.setGeometry(QtCore.QRect(100, 110, 70, 17))
-            self.checkBox_2.setObjectName(_fromUtf8("checkBox_2"))
-            self.checkBox_3 = QtGui.QCheckBox(Form)
-            self.checkBox_3.setGeometry(QtCore.QRect(250, 130, 70, 17))
-            self.checkBox_3.setObjectName(_fromUtf8("checkBox_3"))
+        currentDrawPosition = 0
+        secondaryButtonWidths =  (self.formWidth - self.formWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
+        
+        for i in range(self.tabNumber):
+            if i is 0:
+                currentButtonWidth = self.formWidth*firstButtonWidthPercentage
+            else:
+                currentButtonWidth = secondaryButtonWidths
+            
+            newButton = QtGui.QPushButton(self.centralwidget)
+            newButton.setGeometry(currentDrawPosition,0,currentButtonWidth,bannerHeightPixels)
+            
+            #style and look
+            newButton.setStyleSheet("Text-align:left;border: none;background:rgb(200,100,150);")
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            #icon
+            newButton.setIcon(icon)
+            newButton.setIconSize(QtCore.QSize(iconWidth, bannerHeightPixels))
 
-            self._retranslateUi(Form)
-            QtCore.QMetaObject.connectSlotsByName(Form)
+            self.ribbonButtons.append(newButton)
 
-    def _retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
-        self.checkBox.setText(_translate("Form", "CheckBox", None))
-        self.pushButton.setText(_translate("Form", "PushButton", None))
-        self.checkBox_2.setText(_translate("Form", "CheckBox", None))
-        self.checkBox_3.setText(_translate("Form", "CheckBox", None))
+            currentDrawPosition += currentButtonWidth
+
+
+           
+
+        
+        QtCore.QMetaObject.connectSlotsByName(parentForm)
+
+  
 
 
 

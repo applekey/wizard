@@ -18,6 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Compile Include="banner.py" />
+    <Compile Include="constants.py" />
     <Compile Include="trial.py" />
   </ItemGroup>
   <ItemGroup>

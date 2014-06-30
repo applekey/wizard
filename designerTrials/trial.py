@@ -10,6 +10,7 @@
 from PyQt4 import QtCore, QtGui
 from banner import banner
 
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -64,7 +65,7 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         
         
-        #self.mytest = banner(self.centralwidget)
+        self.mytest = banner(MainWindow)
         #self.mytest.setGeometry(QtCore.QRect(0, 0, 800, 161))
 
 
@@ -113,7 +114,7 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QtCore.QSize(900, self.width))
+        self.pushButton.setIconSize(QtCore.QSize(self.width, self.width))
         abc = self.pushButton.setFont(QtGui.QFont("Open Sans", 15))
         
         palette = QtGui.QPalette()
