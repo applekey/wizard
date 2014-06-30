@@ -9,6 +9,7 @@
 
 from PyQt4 import QtCore, QtGui
 from constants import *
+from kitkatButton import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -89,14 +90,14 @@ class banner(QtGui.QWidget):
         self.ribbonButtons = []
         # create the buttons
         for i in range(self.tabNumber):
-            newButton = QtGui.QPushButton(self.centralwidget)
+            newButton = kitKatButton(self.centralwidget)
             newButton.setObjectName(str(i))
             #style and look
             currentColor = self.colorArray[i]
             if i is 0:
                 styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
             else:
-                 styleSheetText = "border-radius: 30px;"+"Text-align:left;border: none;background:"+currentColor+";"
+                 styleSheetText = "border-radius: 50px;"+"Text-align:left;border: none;background:"+currentColor+";"
             newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -104,6 +105,7 @@ class banner(QtGui.QWidget):
             #icon
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(iconWidth, bannerHeightPixels))
+            newButton.setIconPosition(QtCore.QPoint(50,bannerHeightPixels/float(10)))
             #text
             paddedText = '   '+self.tabText[i]
             newButton.setText(paddedText)

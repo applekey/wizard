@@ -1,6 +1,6 @@
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QPainter
-from PyQt4.QtCore import QRectF
+from PyQt4.QtCore import QRectF,QPoint,QSize
 
 
 try:
@@ -18,20 +18,47 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class kitKatButton( QtGui.QPushButton):
-    def hello():
-        print 'hello'
+    def __init__(self, *args):
+        self.text = ""
+        self.textPosition = QPoint( 30, 10 );
+        self.icon = None
+        self.basicStyle = 'border: none'
+        self.addedStyle = self.basicStyle
+        self.iconPosition = QPoint( 0, 0 );
+        return super(kitKatButton, self).__init__(*args)
+    
+    def changeText(self,text):
+        self.text = text
+        self.repaint()
+    
+    def setText(self,text):
+        self.changeText(text)
+
+    def setTextPosition(self,point):
+        self.textPosition =point
+        self.repaint()
+   
+    def setIcon(self,icon):
+        self.icon = icon
+    
+    def setIconPosition(self,point):
+        self.iconPosition = point
+
+    def setStyleSheet(self, style):
+        self.addedStyle = style+self.basicStyle
+        self.repaint()
+
     def paintEvent(self,QPaintEvent):
         QtGui.QPushButton.paintEvent(self,QPaintEvent)
-        painter = QPainter(self)
-        startAngle = 90 * 16;
-        spanAngle = 180 * 16;
-        height = self.size().height()
-        painter.drawPie(QRectF(0.0, 0.0, 80.0, height),startAngle,spanAngle)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        # set the style sheet
+        super(kitKatButton, self).setStyleSheet( self.addedStyle)
         
-        painter.drawPixmap(100, 0.0, icon.pixmap(200, 200));
+        painter = QPainter(self)
+        if self.icon is not None:
+             painter.drawPixmap(self.iconPosition.x(), self.iconPosition.y(), self.icon.pixmap(self.iconSize().width(), self.iconSize().height()))
 
+        point = QPoint( 100, 20 );
+        painter.drawText( point, self.text );
 
 
 

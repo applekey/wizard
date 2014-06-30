@@ -43,13 +43,16 @@ class Ui_MainWindow(object):
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
 
-        self.custom = kitKatButton(MainWindow)
-        self.custom.setGeometry(0,0,400,100)
-      
+        #self.custom = kitKatButton(MainWindow)
+        #self.custom.setGeometry(200,0,400,100)
+        #self.custom.setText('abc')
+        #icon = QtGui.QIcon()
+        #icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        #self.custom.setIcon(icon)
         
         
-        #self.mytest = banner(MainWindow)
-        #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
+        self.mytest = banner(MainWindow)
+        self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
 
 
 
