@@ -10,6 +10,7 @@
 from PyQt4 import QtCore, QtGui
 from banner import banner
 from kitkatButton import kitKatButton
+from awsomePlayer import awsomePlayer
 
 
 try:
@@ -52,11 +53,11 @@ class Ui_MainWindow(object):
         
       
 
-        self.mytest = banner(MainWindow)
-        self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
+        #self.mytest = banner(MainWindow)
+        #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
        
-
-
+        self.player = awsomePlayer(MainWindow)
+        self.player.setSource("C:\\abc.mov")
 
    
 

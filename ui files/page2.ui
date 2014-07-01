@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WizardPage</class>
+ <widget class="QWizardPage" name="WizardPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>807</width>
+    <height>904</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>WizardPage</string>
+  </property>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>711</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="Phonon::VideoPlayer" name="videoPlayer"/>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>start/stop</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="Phonon::SeekSlider" name="seekSlider"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="Phonon::VolumeSlider" name="volumeSlider"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>fullscreeen?</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <zorder>gridLayoutWidget_4</zorder>
+  <zorder>gridLayoutWidget_2</zorder>
+  <zorder>verticalSpacer</zorder>
+  <zorder>verticalSpacer</zorder>
+  <zorder>gridLayoutWidget_5</zorder>
+  <zorder>verticalSpacer_2</zorder>
+  <zorder>verticalSpacer_3</zorder>
+  <zorder>gridLayoutWidget_6</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>horizontalSpacer</zorder>
+  <zorder>checkBox</zorder>
+  <zorder>checkBox_2</zorder>
+  <zorder>label</zorder>
+  <zorder>verticalSpacer_7</zorder>
+  <zorder>horizontalSpacer_2</zorder>
+  <zorder>horizontalSpacer_3</zorder>
+  <zorder>verticalSpacer_7</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>verticalSpacer_8</zorder>
+  <zorder>videoPlayer</zorder>
+  <zorder>seekSlider</zorder>
+  <zorder>volumeSlider</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>horizontalSpacer</zorder>
+  <zorder>horizontalSpacer_2</zorder>
+  <zorder>horizontalSpacer_3</zorder>
+  <zorder>verticalSpacer</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Phonon::VideoPlayer</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/videoplayer.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::SeekSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/seekslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VolumeSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/volumeslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

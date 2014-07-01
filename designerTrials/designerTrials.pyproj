@@ -17,6 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="awsomePlayer.py" />
     <Compile Include="banner.py" />
     <Compile Include="constants.py" />
     <Compile Include="kitkatButton.py" />
