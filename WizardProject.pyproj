@@ -23,6 +23,7 @@
     <Compile Include="config.py" />
     <Compile Include="mmapi.py" />
     <Compile Include="mmRemote.py" />
+    <Compile Include="pageOne.py" />
     <Compile Include="Wizard.py" />
     <Compile Include="python_mmapi\mmapi.py" />
     <Compile Include="python_mmapi\mmRemote.py" />

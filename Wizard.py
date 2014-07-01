@@ -2,7 +2,10 @@ from PyQt4 import QtCore,QtGui
 from PyQt4.phonon import Phonon
 # import ui pages
 # for now just import the main page with all the buttons
-from allFunctionality import Ui_WizardPage
+#from allFunctionality import Ui_WizardPage
+
+# import all pages
+from pageOne import pageOne
 
 # create the main window class
 
@@ -13,16 +16,13 @@ class ApplicationWindow(QtGui.QMainWindow):
         super(ApplicationWindow, self).__init__(parent)
         self.setWindowTitle('Main Window')
         self.wizard = None
-        self.a = None
-        self.b = None
 
     #def nextCalled(self,id):
     #    self.a.calluser()
 
-    def exportMovies( self ):
-        """ Launches the export movies wizard. """
+    def initilize( self ):
+        # set the screen size
         screen = QtGui.QDesktopWidget().screenGeometry()
-
         self.wizard = QtGui.QWizard(self)
         width = screen.width()
         height = screen.height()
@@ -32,12 +32,16 @@ class ApplicationWindow(QtGui.QMainWindow):
         xPos = self.wizard.x()
         yPos = self.wizard.y()
         self.wizard.move(0,0)
+        
+        self.setUpPages()
 
-        self.a = Ui_WizardPage(self.wizard)
+        self.a = pageOne(self.wizard)
         self.wizard.addPage(self.a)
         #self.wizard.currentIdChanged.connect(self.nextCalled)
         self.wizard.exec_()
         #wizard.setWindowFlags(QtCore.Qt.FramelessWindowHint )
+    def setUpPages(self):
+        self.wizard.addPage(pageOne(self.wizard))
 
 if ( __name__ == '__main__' ):
     # create the application if necessary
@@ -47,7 +51,7 @@ if ( __name__ == '__main__' ):
     
     window = ApplicationWindow()
     #window.show()
-    window.exportMovies()
+    window.initilize()
     
     # execute the application if we've created it
     if ( app ):
