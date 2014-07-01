@@ -92,6 +92,7 @@ class banner(QtGui.QWidget):
         for i in range(self.tabNumber):
             newButton = kitKatButton(self.centralwidget)
             newButton.setObjectName(str(i))
+
             #style and look
             currentColor = self.colorArray[i]
             if i is 0:
