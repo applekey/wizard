@@ -59,6 +59,7 @@ class layoutWidget(QtGui.QWidget):
         # this is the verticle layout that all the visual elementss on 
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setMargin(0)
+        self.verticalLayout.setContentsMargins(11, 0, 11, 0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
         # this is for the banner
