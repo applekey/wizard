@@ -11,6 +11,7 @@ from PyQt4 import QtCore, QtGui
 from banner import banner
 from kitkatButton import kitKatButton
 from awsomePlayer import awsomePlayer
+from layoutWidget import layoutWidget
 
 
 try:
@@ -28,17 +29,21 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_MainWindow(object):
-
-  
+    def onResize(self,event):
+        width= self.MainWindow.size().width()
+        height= self.MainWindow.size().height()
+        newSize = QtCore.QRect(0,0,width,height)
+        self.mytest.setGeometry(newSize)
     
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(_fromUtf8("MainWindow"))
+        self.MainWindow = MainWindow
+        self.MainWindow.setObjectName(_fromUtf8("MainWindow"))
         
-        self.height = 600
+        self.height = 800
         self.width = 800
 
 
-        MainWindow.resize(self.width, self.height)
+        self.MainWindow.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
 
         self.centralwidget = QtGui.QWidget(MainWindow)
@@ -53,15 +58,15 @@ class Ui_MainWindow(object):
         
       
 
-        #self.mytest = banner(MainWindow)
-        #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
+        self.mytest = banner(self.MainWindow)
+        self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
        
-        self.player = awsomePlayer(MainWindow)
-        self.player.setSource("C:\\abc.mov")
+        #self.player = awsomePlayer(MainWindow)
+        #self.player.setSource("C:\\abc.mov")
 
-   
-
-   
+        #self.widget = layoutWidget(MainWindow)
+        #self.widget.setGeometry(0,0,self.width,self.height)
+        self.MainWindow.resizeEvent  = self.onResize
 
 
 if __name__ == "__main__":

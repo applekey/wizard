@@ -21,6 +21,7 @@
     <Compile Include="banner.py" />
     <Compile Include="constants.py" />
     <Compile Include="kitkatButton.py" />
+    <Compile Include="layoutWidget.py" />
     <Compile Include="trial.py" />
   </ItemGroup>
   <ItemGroup>

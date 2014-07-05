@@ -27,11 +27,16 @@ except AttributeError:
 
 
 class banner(QtGui.QWidget):
+    def calculateBannerHeight(self,width):
+        return bannerHeightAbsolute
+        #return bannerHeightPixelsPercentage *self.bannerWidth
     def __init__(self, parentForm):
         super( banner, self ).__init__()
         ## create our own widget, the resizing and such will be done one this
         self.centralwidget = QtGui.QWidget(parentForm)
-        self.formWidth =  parentForm.size().width()
+        self.bannerWidth =  parentForm.size().width()
+        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
+        self.centralwidget.setGeometry(0, 0, self.bannerWidth, self.bannerHeight)
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
@@ -45,12 +50,23 @@ class banner(QtGui.QWidget):
         self.tabNumber = numberOfTabs
         self.tabText = tabTextArray
         self.colorArray = colorArray
+        # there is a bug here, the tabs will not change, fix later
 
     def setGeometry(self, int1, int2, int3, int4):
         self.centralwidget.setGeometry(int1, int2, int3, int4)
+        self.bannerWidth =  self.centralwidget.size().width()
+        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
+        self.__resizeGeometry()
     
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
+        self.bannerWidth =  self.centralwidget.size().width()
+        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
+        self.__resizeGeometry()
+    
+    def __resizeGeometry(self):
+        print self.currentTabExpanded
+        self.modifyTabGeometry(self.currentTabExpanded)
     
     def buttonClicked(self):
         button = self.sender()
@@ -60,25 +76,25 @@ class banner(QtGui.QWidget):
         if buttonNumber is self.currentTabExpanded:
             pass #ignore for now
         else:
-            self.modifyTabGeometry(buttonNumber+1)
+            self.modifyTabGeometry(buttonNumber)
         
     def modifyTabGeometry(self,tabToExpand):
-        secondaryButtonWidths =  (self.formWidth - self.formWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
-        self.currentTabExpanded = tabToExpand-1
+        secondaryButtonWidths =  (self.bannerWidth - self.bannerWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
+        self.currentTabExpanded = tabToExpand
+        print str(self.currentTabExpanded) + "blah"
         currentDrawPosition = 0
         for i in range(self.tabNumber):
-            if i is tabToExpand-1:
-                currentButtonWidth = self.formWidth*firstButtonWidthPercentage
+            if i is tabToExpand:
+                currentButtonWidth = self.bannerWidth*firstButtonWidthPercentage
             else:
                 currentButtonWidth = secondaryButtonWidths
-            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,bannerHeightPixels)
+            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.bannerHeight)
             
             currentDrawPosition += currentButtonWidth
         
     def __setupUi(self, parentForm):   
-        # get the parent form's size
-      
-        self.centralwidget.setGeometry(0, 0, self.formWidth, bannerHeightPixels)
+
+            
         #create the font
         fontDatabase = QtGui.QFontDatabase()
         font = fontDatabase.addApplicationFont(fontFile)
@@ -105,8 +121,8 @@ class banner(QtGui.QWidget):
             
             #icon
             newButton.setIcon(icon)
-            newButton.setIconSize(QtCore.QSize(iconWidth, bannerHeightPixels))
-            newButton.setIconPosition(QtCore.QPoint(50,bannerHeightPixels/float(10)))
+            newButton.setIconSize(QtCore.QSize(iconWidth, self.bannerHeight))
+            newButton.setIconPosition(QtCore.QPoint(50,self.bannerHeight/float(10)))
             #text
             paddedText = '   '+self.tabText[i]
             newButton.setText(paddedText)
