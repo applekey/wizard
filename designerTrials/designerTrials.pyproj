@@ -20,6 +20,7 @@
     <Compile Include="awsomePlayer.py" />
     <Compile Include="awsomeText.py" />
     <Compile Include="banner.py" />
+    <Compile Include="componentConfirguration.py" />
     <Compile Include="constants.py" />
     <Compile Include="kitkatButton.py" />
     <Compile Include="layoutWidget.py" />

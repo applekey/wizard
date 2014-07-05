@@ -6,7 +6,7 @@ bannerHeightAbsolute = 80
 bannerCurvaturePercentage = 0.5
 
 ## videoPlayer constants
-videoPlayerBackgroundColor = "#27ae60"
+videoPlayerBackgroundColor = "#ecf0f1"
 
 ## textFrame constantts
 textFrameBackgroundColor =  "#95a5a6"

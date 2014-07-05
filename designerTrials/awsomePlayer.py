@@ -1,5 +1,7 @@
 from PyQt4 import QtCore, QtGui
 from PyQt4 import phonon
+from componentConfirguration import *
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -83,25 +85,29 @@ class awsomePlayer( QtGui.QFrame):
         #below are the horizontal box that will contain the actual controls of the player
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.horizontalLayout.setContentsMargins(33, 0, 33, 5)
         self.playButton = QtGui.QPushButton(self)
         self.playButton.setObjectName(_fromUtf8("pushButton"))
+        self.playButton.setStyleSheet("border: none;");
         
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("play.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(configPlaySVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         
         self.playButton.setIcon(icon)
+        self.playButton.setIconSize(self.playButton.size())
         self.horizontalLayout.addWidget(self.playButton)
 
         # -----------horizontal space
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 
         self.seekSlider = phonon.Phonon.SeekSlider(self)
         self.seekSlider.setObjectName(_fromUtf8("seekSlider"))
+        self.seekSlider.setStyleSheet("QSlider::handle:horizontal {image: url(play.svg); background:white;border: 1px solid white;width: 6px;margin-top: -2px;margin-bottom: -2px;border-radius: 0px;}")
         
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.seekSlider)      
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(spacerItem2)
         self.volumeSlider = phonon.Phonon.VolumeSlider(self)
@@ -109,12 +115,19 @@ class awsomePlayer( QtGui.QFrame):
         self.volumeSlider.setAudioOutput( self.videoPlayer.audioOutput())
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.volumeSlider)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         
         self.horizontalLayout.addItem(spacerItem3)
         
         self.fullScreenButton = QtGui.QPushButton(self)
         self.fullScreenButton.setObjectName(_fromUtf8("pushButton_2"))
+        self.fullScreenButton.setStyleSheet("border: none;");
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(configFullScreenSVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        
+        self.fullScreenButton.setIcon(icon)
+        self.fullScreenButton.setIconSize(self.fullScreenButton.size())
+        
         self.horizontalLayout.addWidget(self.fullScreenButton)
         self.verticalLayout.addLayout(self.horizontalLayout) 
 
