@@ -99,7 +99,8 @@ class banner(QtGui.QWidget):
             if i is 0:
                 styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
             else:
-                 styleSheetText = "border-radius: 50px;"+"Text-align:left;border: none;background:"+currentColor+";"
+                 radiuxPx =  self.bannerHeight *bannerCurvaturePercentage
+                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
             newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -121,8 +122,6 @@ class banner(QtGui.QWidget):
         
         QtCore.QMetaObject.connectSlotsByName(parentForm)
 
-    def paintEvent(self,QPaintEvent):
-        pass
 
   
 

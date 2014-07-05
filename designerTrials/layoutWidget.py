@@ -60,12 +60,12 @@ class layoutWidget(QtGui.QWidget):
         # this is the verticle layout that all the visual elementss on 
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setMargin(0)
-        self.verticalLayout.setContentsMargins(11, 0, 11, 0)
+        #self.verticalLayout.setContentsMargins(11, 0, 11, 0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
         # this is for the banner
         self.banner = banner(self.centralwidget)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.banner.sizePolicy().hasHeightForWidth())
@@ -76,7 +76,7 @@ class layoutWidget(QtGui.QWidget):
         self.verticalLayout.addWidget(self.banner)
         
         #------------------------ this is the spacer item inbetween the banner and the video player
-        spacerItem = QtGui.QSpacerItem(20, 30, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        spacerItem = QtGui.QSpacerItem(20, 1, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         self.verticalLayout.addItem(spacerItem)
         
         # this is the video player layout

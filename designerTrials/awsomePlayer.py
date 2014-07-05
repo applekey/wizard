@@ -16,7 +16,7 @@ except AttributeError:
 
 
 
-class awsomePlayer( QtGui.QWidget):
+class awsomePlayer( QtGui.QFrame):
     def __init__(self, parentForm):
         super( awsomePlayer, self ).__init__()        
         self.videoSource = None
@@ -31,7 +31,6 @@ class awsomePlayer( QtGui.QWidget):
         self.shortcutFull.activated.connect(self.handleFullScreen)
 
         self.__setupUi(self)
-       # self.resizeEvent = self.onResize
 
     def  pauseStart(self):
         if self.videoSource is  None:
@@ -68,7 +67,8 @@ class awsomePlayer( QtGui.QWidget):
     #        self.play_pause.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
     def __setupUi(self, parentForm): 
-      
+       
+        self.setStyleSheet("background:#27ae60")
         # create the verticle layout, everthing lives in this verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
@@ -87,7 +87,13 @@ class awsomePlayer( QtGui.QWidget):
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.playButton = QtGui.QPushButton(self)
         self.playButton.setObjectName(_fromUtf8("pushButton"))
+        
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("play.svg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        
+        self.playButton.setIcon(icon)
         self.horizontalLayout.addWidget(self.playButton)
+
         # -----------horizontal space
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)

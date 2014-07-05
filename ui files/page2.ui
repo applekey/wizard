@@ -13,37 +13,37 @@
   <property name="windowTitle">
    <string>WizardPage</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>50</y>
-     <width>711</width>
-     <height>381</height>
+     <width>681</width>
+     <height>771</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="Phonon::VideoPlayer" name="videoPlayer"/>
-    </item>
-    <item>
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+     <widget class="Phonon::VideoPlayer" name="videoPlayer">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>30</number>
+      </property>
+      <property name="rightMargin">
+       <number>30</number>
+      </property>
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="text">
@@ -107,35 +107,6 @@
     </item>
    </layout>
   </widget>
-  <zorder>gridLayoutWidget_4</zorder>
-  <zorder>gridLayoutWidget_2</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>gridLayoutWidget_5</zorder>
-  <zorder>verticalSpacer_2</zorder>
-  <zorder>verticalSpacer_3</zorder>
-  <zorder>gridLayoutWidget_6</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>checkBox</zorder>
-  <zorder>checkBox_2</zorder>
-  <zorder>label</zorder>
-  <zorder>verticalSpacer_7</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>verticalSpacer_7</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_3</zorder>
-  <zorder>verticalSpacer_8</zorder>
-  <zorder>videoPlayer</zorder>
-  <zorder>seekSlider</zorder>
-  <zorder>volumeSlider</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>verticalSpacer</zorder>
  </widget>
  <customwidgets>
   <customwidget>
