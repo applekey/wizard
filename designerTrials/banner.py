@@ -26,24 +26,24 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-class banner(QtGui.QWidget):
+class banner(QtGui.QAbstractButton):
+
     def calculateBannerHeight(self,width):
         return bannerHeightAbsolute
         #return bannerHeightPixelsPercentage *self.bannerWidth
     def __init__(self, parentForm):
         super( banner, self ).__init__()
-        ## create our own widget, the resizing and such will be done one this
-        self.centralwidget = QtGui.QWidget(parentForm)
-        self.bannerWidth =  parentForm.size().width()
+
+        self.bannerWidth =  self.size().width()
         self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
-        self.centralwidget.setGeometry(0, 0, self.bannerWidth, self.bannerHeight)
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
         self.tabText = ['abc','edg','hgi']
         self.colorArray = ['#2980b9','#e67e22','#95a5a6']
-        self.__setupUi(self.centralwidget)
+        self.__setupUi(self)
         self.currentTabExpanded = 0
+        self.resizeEvent = self.__resizeGeometry
        
     #configure the number of tabs, and also the text in each tab
     def configure(self,numberOfTabs,tabTextArray,colorArray):
@@ -52,20 +52,10 @@ class banner(QtGui.QWidget):
         self.colorArray = colorArray
         # there is a bug here, the tabs will not change, fix later
 
-    def setGeometry(self, int1, int2, int3, int4):
-        self.centralwidget.setGeometry(int1, int2, int3, int4)
-        self.bannerWidth =  self.centralwidget.size().width()
-        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
-        self.__resizeGeometry()
-    
-    def setGeometry(self, qrect):
-        self.centralwidget.setGeometry(qrect)
-        self.bannerWidth =  self.centralwidget.size().width()
-        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
-        self.__resizeGeometry()
-    
-    def __resizeGeometry(self):
+    def __resizeGeometry(self,event):
         print self.currentTabExpanded
+        self.bannerWidth =  self.size().width()
+        print self.bannerWidth
         self.modifyTabGeometry(self.currentTabExpanded)
     
     def buttonClicked(self):
@@ -104,7 +94,7 @@ class banner(QtGui.QWidget):
         self.ribbonButtons = []
         # create the buttons
         for i in range(self.tabNumber):
-            newButton = kitKatButton(self.centralwidget)
+            newButton = kitKatButton(parentForm)
             newButton.setObjectName(str(i))
 
             #style and look
@@ -133,6 +123,9 @@ class banner(QtGui.QWidget):
         self.modifyTabGeometry(1)
         
         QtCore.QMetaObject.connectSlotsByName(parentForm)
+
+    def paintEvent(self,QPaintEvent):
+        pass
 
   
 
