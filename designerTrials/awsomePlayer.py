@@ -18,10 +18,15 @@ except AttributeError:
 
 class awsomePlayer( QtGui.QWidget):
     def __init__(self, parentForm):
-        super( awsomePlayer, self ).__init__()
-        self.__setupUi(parentForm)
+        super( awsomePlayer, self ).__init__()        
         self.videoSource = None
         self.state = 0 
+
+          #create central widget
+        self.centralwidget = QtGui.QWidget(parentForm)
+        self.centralwidget.setGeometry(QtCore.QRect(40, 50, 711, 381))
+        self.centralwidget.setObjectName(_fromUtf8("widget"))
+
         ## god dam python doesn't have enums, 
         #0 means stop, 1 means paused and 2 means playing
 
@@ -29,6 +34,8 @@ class awsomePlayer( QtGui.QWidget):
         self.shortcutFull.setKey(QtGui.QKeySequence('F11'))
         self.shortcutFull.setContext(QtCore.Qt.ApplicationShortcut)
         self.shortcutFull.activated.connect(self.handleFullScreen)
+
+        self.__setupUi(self.centralwidget)
 
     def  pauseStart(self):
         if self.videoSource is  None:
@@ -64,17 +71,27 @@ class awsomePlayer( QtGui.QWidget):
     #    else:
     #        self.play_pause.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
+
+    def setGeometry(self, int1, int2, int3, int4):
+        self.centralwidget.setGeometry(int1, int2, int3, int4)
+        self.__resizeGeometry()
+    
+    def setGeometry(self, qrect):
+        self.centralwidget.setGeometry(qrect)
+        self.__resizeGeometry()
+    
+    def __resizeGeometry(self):
+        pass
+
+
     def __setupUi(self, parentForm): 
-        #create central widget
-        self.widget = QtGui.QWidget(parentForm)
-        self.widget.setGeometry(QtCore.QRect(40, 50, 711, 381))
-        self.widget.setObjectName(_fromUtf8("widget"))
+      
         # create the verticle layout, everthing lives in this verticle layout
-        self.verticalLayout = QtGui.QVBoxLayout(self.widget)
+        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         # create the video player
-        self.videoPlayer = phonon.Phonon.VideoPlayer(self.widget)
+        self.videoPlayer = phonon.Phonon.VideoPlayer(self.centralwidget)
         self.videoPlayer.setObjectName(_fromUtf8("videoPlayer"))
         self.verticalLayout.addWidget(self.videoPlayer)
         # this is the space between the controls and the actual player
@@ -84,14 +101,14 @@ class awsomePlayer( QtGui.QWidget):
         #below are the horizontal box that will contain the actual controls of the player
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.playButton = QtGui.QPushButton(self.widget)
+        self.playButton = QtGui.QPushButton(self.centralwidget)
         self.playButton.setObjectName(_fromUtf8("pushButton"))
         self.horizontalLayout.addWidget(self.playButton)
         # -----------horizontal space
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 
-        self.seekSlider = phonon.Phonon.SeekSlider(self.widget)
+        self.seekSlider = phonon.Phonon.SeekSlider(self.centralwidget)
         self.seekSlider.setObjectName(_fromUtf8("seekSlider"))
         
         # -----------horizontal spacer
@@ -99,7 +116,7 @@ class awsomePlayer( QtGui.QWidget):
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(spacerItem2)
-        self.volumeSlider = phonon.Phonon.VolumeSlider(self.widget)
+        self.volumeSlider = phonon.Phonon.VolumeSlider(self.centralwidget)
         self.volumeSlider.setObjectName(_fromUtf8("volumeSlider"))
         self.volumeSlider.setAudioOutput( self.videoPlayer.audioOutput())
         # -----------horizontal spacer
@@ -108,7 +125,7 @@ class awsomePlayer( QtGui.QWidget):
         
         self.horizontalLayout.addItem(spacerItem3)
         
-        self.fullScreenButton = QtGui.QPushButton(self.widget)
+        self.fullScreenButton = QtGui.QPushButton(self.centralwidget)
         self.fullScreenButton.setObjectName(_fromUtf8("pushButton_2"))
         self.horizontalLayout.addWidget(self.fullScreenButton)
         self.verticalLayout.addLayout(self.horizontalLayout) 

@@ -93,8 +93,6 @@ class banner(QtGui.QWidget):
             currentDrawPosition += currentButtonWidth
         
     def __setupUi(self, parentForm):   
-
-            
         #create the font
         fontDatabase = QtGui.QFontDatabase()
         font = fontDatabase.addApplicationFont(fontFile)
