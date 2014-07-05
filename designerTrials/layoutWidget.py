@@ -41,9 +41,15 @@ class layoutWidget(QtGui.QWidget):
 
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
+        self.__resizeGeometry(qrect)
         
-    def setGeometry(self, int1, int2, int3, int4):
-        self.centralwidget.setGeometry(int1, int2, int3, int4)
+    #def setGeometry(self, int1, int2, int3, int4):
+    #    self.centralwidget.setGeometry(int1, int2, int3, int4)
+    #    newSize = QtCore.QRect(int1,int2,int3,int4)
+    #    self.__resizeGeometry(newSize)
+    
+    def __resizeGeometry(self,qsize):
+        self.verticalLayout.setGeometry(qsize)
 
     def sepecifySpecificLayout(layout):
         self.layout = layout

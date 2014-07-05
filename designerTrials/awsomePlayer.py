@@ -74,14 +74,15 @@ class awsomePlayer( QtGui.QWidget):
 
     def setGeometry(self, int1, int2, int3, int4):
         self.centralwidget.setGeometry(int1, int2, int3, int4)
-        self.__resizeGeometry()
+        newSize = QtCore.QRect(int1,int2,int3,int4)
+        self.__resizeGeometry(newSize)
     
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
-        self.__resizeGeometry()
+        self.__resizeGeometry(qrect)
     
-    def __resizeGeometry(self):
-        pass
+    def __resizeGeometry(self,qrect):
+        self.verticalLayout.setGeometry(qrect)
 
 
     def __setupUi(self, parentForm): 

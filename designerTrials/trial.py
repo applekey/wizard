@@ -33,7 +33,9 @@ class Ui_MainWindow(object):
         width= self.MainWindow.size().width()
         height= self.MainWindow.size().height()
         newSize = QtCore.QRect(0,0,width,height)
-        self.player.setGeometry(newSize)
+        self.widget.setGeometry(newSize)
+        
+        #self.player.setGeometry(newSize)
     
     def setupUi(self, MainWindow):
         self.MainWindow = MainWindow
@@ -61,11 +63,12 @@ class Ui_MainWindow(object):
         #self.mytest = banner(self.MainWindow)
         #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
        
-        self.player = awsomePlayer(MainWindow)
-        self.player.setSource("C:\\abc.mov")
+        #self.player = awsomePlayer(MainWindow)
+        #self.player.setSource("C:\\abc.mov")
 
-        #self.widget = layoutWidget(MainWindow)
-        #self.widget.setGeometry(0,0,self.width,self.height)
+        self.widget = layoutWidget(MainWindow)
+        newSize = QtCore.QRect(0,0,self.width,self.height)
+        self.widget.setGeometry(newSize)
         self.MainWindow.resizeEvent  = self.onResize
 
 
