@@ -67,20 +67,18 @@ class awsomePlayer( QtGui.QFrame):
     #        self.play_pause.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
     def __setupUi(self, parentForm): 
-       
-        self.setStyleSheet("background:#27ae60")
         # create the verticle layout, everthing lives in this verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.verticalLayout.setContentsMargins(33, 0, 33, 0)
+        # self.verticalLayout.setContentsMargins(33, 0, 33, 0)
         # create the video player
         self.videoPlayer = phonon.Phonon.VideoPlayer(self)
         self.videoPlayer.setObjectName(_fromUtf8("videoPlayer"))
         self.verticalLayout.addWidget(self.videoPlayer)
         # this is the space between the controls and the actual player
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem)
+        #spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        #self.verticalLayout.addItem(spacerItem)
         
         #below are the horizontal box that will contain the actual controls of the player
         self.horizontalLayout = QtGui.QHBoxLayout()

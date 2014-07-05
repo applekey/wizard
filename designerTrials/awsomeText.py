@@ -17,7 +17,7 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-class awsomeText(QtGui.QWidget):
+class awsomeText(QtGui.QFrame):
     def __init__(self, parentForm):
         super( awsomeText, self ).__init__()
         self.__setupUi(self)

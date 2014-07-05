@@ -10,6 +10,7 @@
 from PyQt4 import QtCore, QtGui
 
 #import in the custom banner and the custom player
+from constants import *
 from banner import banner
 from awsomePlayer import awsomePlayer
 from awsomeText import awsomeText
@@ -76,34 +77,39 @@ class layoutWidget(QtGui.QWidget):
         self.verticalLayout.addWidget(self.banner)
         
         #------------------------ this is the spacer item inbetween the banner and the video player
-        spacerItem = QtGui.QSpacerItem(20, 1, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem)
+        #spacerItem = QtGui.QSpacerItem(20, 1, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        #self.verticalLayout.addItem(spacerItem)
         
         # this is the video player layout
-        self.pushButton_2 = awsomePlayer(self.centralwidget)
+        self.videoPlayer = awsomePlayer(self.centralwidget)
+
+        self.videoPlayer.setStyleSheet("background:"+videoPlayerBackgroundColor)
+
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.videoPlayer.sizePolicy().hasHeightForWidth())
         
-        self.pushButton_2.setSizePolicy(sizePolicy)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.verticalLayout.addWidget(self.pushButton_2)
+        self.videoPlayer.setSizePolicy(sizePolicy)
+        self.videoPlayer.setObjectName(_fromUtf8("pushButton_2"))
+        self.verticalLayout.addWidget(self.videoPlayer)
         
         # ------------------------this is the second spacer
-        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem1)
+        #spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        #self.verticalLayout.addItem(spacerItem1)
         
 
         # this is the final dialog box
-        self.pushButton_3 = awsomeText(self.centralwidget)
+        self.textFrame = awsomeText(self.centralwidget)
+        self.textFrame.setStyleSheet("background:"+textFrameBackgroundColor)
+
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy)
-        self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.verticalLayout.addWidget(self.pushButton_3)
+        sizePolicy.setHeightForWidth(self.textFrame.sizePolicy().hasHeightForWidth())
+        self.textFrame.setSizePolicy(sizePolicy)
+        self.textFrame.setObjectName(_fromUtf8("pushButton_3"))
+        self.verticalLayout.addWidget(self.textFrame)
       
         self.retranslateUi()
 

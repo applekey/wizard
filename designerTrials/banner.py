@@ -26,14 +26,14 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-class banner(QtGui.QWidget):
+class banner(QtGui.QFrame):
 
     def calculateBannerHeight(self,width):
-        return bannerHeightAbsolute
+        #return bannerHeightAbsolute
         #return bannerHeightPixelsPercentage *self.bannerWidth
+        return self.size().height()
     def __init__(self, parentForm):
         super( banner, self ).__init__()
-
         self.bannerWidth =  self.size().width()
         self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
         ## specify some min, max boundaries, I am not allowing this to shrink in height
@@ -71,6 +71,15 @@ class banner(QtGui.QWidget):
         self.currentTabExpanded = tabToExpand
         currentDrawPosition = 0
         for i in range(self.tabNumber):
+            currentColor = self.colorArray[i]
+            if i is 0:
+                styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
+            else:
+                 print self.bannerHeight
+                 radiuxPx =  self.bannerHeight *bannerCurvaturePercentage
+                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
+            self.ribbonButtons[i].setStyleSheet(styleSheetText)
+
             if i is tabToExpand:
                 currentButtonWidth = self.bannerWidth*firstButtonWidthPercentage
             else:
@@ -107,8 +116,8 @@ class banner(QtGui.QWidget):
             
             #icon
             newButton.setIcon(icon)
-            newButton.setIconSize(QtCore.QSize(iconWidth, self.bannerHeight))
-            newButton.setIconPosition(QtCore.QPoint(50,self.bannerHeight/float(10)))
+            #newButton.setIconSize(QtCore.QSize(iconWidth, self.bannerHeight))
+            #newButton.setIconPosition(QtCore.QPoint(50,self.calculateBannerHeight(self.size().width())/float(10)))
             #text
             paddedText = '   '+self.tabText[i]
             newButton.setText(paddedText)
@@ -127,3 +136,4 @@ class banner(QtGui.QWidget):
 
 
 
+         
