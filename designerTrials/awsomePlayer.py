@@ -16,7 +16,7 @@ except AttributeError:
 
 
 
-class awsomePlayer( QtGui.QAbstractButton):
+class awsomePlayer( QtGui.QWidget):
     def __init__(self, parentForm):
         super( awsomePlayer, self ).__init__()        
         self.videoSource = None
@@ -67,14 +67,13 @@ class awsomePlayer( QtGui.QAbstractButton):
     #    else:
     #        self.play_pause.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
-    def paintEvent(self,QPaintEvent):
-        pass
     def __setupUi(self, parentForm): 
       
         # create the verticle layout, everthing lives in this verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.verticalLayout.setContentsMargins(33, 0, 33, 0)
         # create the video player
         self.videoPlayer = phonon.Phonon.VideoPlayer(self)
         self.videoPlayer.setObjectName(_fromUtf8("videoPlayer"))

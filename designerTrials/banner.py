@@ -26,7 +26,7 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 
-class banner(QtGui.QAbstractButton):
+class banner(QtGui.QWidget):
 
     def calculateBannerHeight(self,width):
         return bannerHeightAbsolute
@@ -53,9 +53,7 @@ class banner(QtGui.QAbstractButton):
         # there is a bug here, the tabs will not change, fix later
 
     def __resizeGeometry(self,event):
-        print self.currentTabExpanded
         self.bannerWidth =  self.size().width()
-        print self.bannerWidth
         self.modifyTabGeometry(self.currentTabExpanded)
     
     def buttonClicked(self):
@@ -71,7 +69,6 @@ class banner(QtGui.QAbstractButton):
     def modifyTabGeometry(self,tabToExpand):
         secondaryButtonWidths =  (self.bannerWidth - self.bannerWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
         self.currentTabExpanded = tabToExpand
-        print str(self.currentTabExpanded) + "blah"
         currentDrawPosition = 0
         for i in range(self.tabNumber):
             if i is tabToExpand:

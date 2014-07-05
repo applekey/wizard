@@ -12,6 +12,7 @@ from PyQt4 import QtCore, QtGui
 #import in the custom banner and the custom player
 from banner import banner
 from awsomePlayer import awsomePlayer
+from awsomeText import awsomeText
  
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -95,7 +96,7 @@ class layoutWidget(QtGui.QWidget):
         
 
         # this is the final dialog box
-        self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
+        self.pushButton_3 = awsomeText(self.centralwidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
