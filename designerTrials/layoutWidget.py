@@ -29,7 +29,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class layoutWidget(QtGui.QWidget):
+class layoutWidget(QtGui.QFrame):
     def __init__(self, parentForm):
         super( layoutWidget, self ).__init__()
         self.specifiedLayout = 0
@@ -44,12 +44,7 @@ class layoutWidget(QtGui.QWidget):
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
         self.__resizeGeometry(qrect)
-        
-    #def setGeometry(self, int1, int2, int3, int4):
-    #    self.centralwidget.setGeometry(int1, int2, int3, int4)
-    #    newSize = QtCore.QRect(int1,int2,int3,int4)
-    #    self.__resizeGeometry(newSize)
-    
+            
     def __resizeGeometry(self,qsize):
         self.verticalLayout.setGeometry(qsize)
 
@@ -63,9 +58,13 @@ class layoutWidget(QtGui.QWidget):
         self.verticalLayout.setMargin(0)
         #self.verticalLayout.setContentsMargins(11, 0, 11, 0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setMargin(0)
         # this is for the banner
         self.banner = banner(self.centralwidget)
+
+        self.banner.setStyleSheet("background:"+"#9b59b6")
+
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

@@ -27,15 +27,9 @@ except AttributeError:
 
 
 class banner(QtGui.QFrame):
-
-    def calculateBannerHeight(self,width):
-        #return bannerHeightAbsolute
-        #return bannerHeightPixelsPercentage *self.bannerWidth
-        return self.size().height()
     def __init__(self, parentForm):
         super( banner, self ).__init__()
-        self.bannerWidth =  self.size().width()
-        self.bannerHeight = self.calculateBannerHeight(self.bannerWidth)
+
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
@@ -53,7 +47,6 @@ class banner(QtGui.QFrame):
         # there is a bug here, the tabs will not change, fix later
 
     def __resizeGeometry(self,event):
-        self.bannerWidth =  self.size().width()
         self.modifyTabGeometry(self.currentTabExpanded)
     
     def buttonClicked(self):
@@ -67,7 +60,8 @@ class banner(QtGui.QFrame):
             self.modifyTabGeometry(buttonNumber)
         
     def modifyTabGeometry(self,tabToExpand):
-        secondaryButtonWidths =  (self.bannerWidth - self.bannerWidth*firstButtonWidthPercentage)/float(self.tabNumber-1)
+        width = self.size().width()
+        secondaryButtonWidths =  (width - width*firstButtonWidthPercentage)/float(self.tabNumber-1)
         self.currentTabExpanded = tabToExpand
         currentDrawPosition = 0
         for i in range(self.tabNumber):
@@ -75,16 +69,17 @@ class banner(QtGui.QFrame):
             if i is 0:
                 styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
             else:
-                 print self.bannerHeight
-                 radiuxPx =  self.bannerHeight *bannerCurvaturePercentage
+                 
+                 radiuxPx =  self.size().height() *bannerCurvaturePercentage
+         
                  styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
             self.ribbonButtons[i].setStyleSheet(styleSheetText)
 
             if i is tabToExpand:
-                currentButtonWidth = self.bannerWidth*firstButtonWidthPercentage
+                currentButtonWidth = self.size().width()*firstButtonWidthPercentage
             else:
                 currentButtonWidth = secondaryButtonWidths
-            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.bannerHeight)
+            self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.size().height())
             
             currentDrawPosition += currentButtonWidth
         
@@ -108,7 +103,7 @@ class banner(QtGui.QFrame):
             if i is 0:
                 styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
             else:
-                 radiuxPx =  self.bannerHeight *bannerCurvaturePercentage
+                 radiuxPx =  self.size().height() *bannerCurvaturePercentage
                  styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
             newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
