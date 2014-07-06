@@ -75,7 +75,7 @@ class awsomePlayer( QtGui.QFrame):
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         # self.verticalLayout.setContentsMargins(33, 0, 33, 0)
         # create the video player
-        self.videoPlayer = phonon.Phonon.VideoPlayer(self)
+        self.videoPlayer = videoPlayerOverride(self)
         self.videoPlayer.setObjectName(_fromUtf8("videoPlayer"))
         self.verticalLayout.addWidget(self.videoPlayer)
         # this is the space between the controls and the actual player
@@ -103,7 +103,7 @@ class awsomePlayer( QtGui.QFrame):
 
         self.seekSlider = phonon.Phonon.SeekSlider(self)
         self.seekSlider.setObjectName(_fromUtf8("seekSlider"))
-        self.seekSlider.setStyleSheet("QSlider::handle:horizontal {image: url(play.svg); background:white;border: 1px solid white;width: 6px;margin-top: -2px;margin-bottom: -2px;border-radius: 0px;}")
+        self.seekSlider.setStyleSheet(qSliderStyle)
         
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.seekSlider)      

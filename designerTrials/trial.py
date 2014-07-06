@@ -38,6 +38,7 @@ class Ui_MainWindow(object):
         #self.player.setGeometry(newSize)
     
     def setupUi(self, MainWindow):
+       
         self.MainWindow = MainWindow
         self.MainWindow.setObjectName(_fromUtf8("MainWindow"))
         
@@ -76,6 +77,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
+    
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()

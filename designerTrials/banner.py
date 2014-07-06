@@ -34,17 +34,19 @@ class banner(QtGui.QFrame):
         ## and become smaller than a certain number
         self.tabNumber = 3
         self.tabText = ['abc','edg','hgi']
-        self.colorArray = ['#2980b9','#e67e22','#95a5a6']
+        self.activecolorArray = ['#1ABC9C','#F1C40F','#E74C3B']
+        self.inactivecolorArray = ['#A8ACAF','#99A3A3','#879191']
         self.__setupUi(self)
         self.currentTabExpanded = 0
         self.resizeEvent = self.__resizeGeometry
        
     #configure the number of tabs, and also the text in each tab
     def configure(self,numberOfTabs,tabTextArray,colorArray):
-        self.tabNumber = numberOfTabs
-        self.tabText = tabTextArray
-        self.colorArray = colorArray
+        #self.tabNumber = numberOfTabs
+        #self.tabText = tabTextArray
+        #self.colorArray = colorArray
         # there is a bug here, the tabs will not change, fix later
+        pass
 
     def __resizeGeometry(self,event):
         self.modifyTabGeometry(self.currentTabExpanded)
@@ -65,22 +67,24 @@ class banner(QtGui.QFrame):
         self.currentTabExpanded = tabToExpand
         currentDrawPosition = 0
         for i in range(self.tabNumber):
-            currentColor = self.colorArray[i]
+    
             if i is 0:
-                styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
+                styleSheetText = "text-align:left;border: none;"
             else:
                  
                  radiuxPx =  self.size().height() *bannerCurvaturePercentage
          
-                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
-            self.ribbonButtons[i].setStyleSheet(styleSheetText)
+                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;"
+            
 
             if i is tabToExpand:
                 currentButtonWidth = self.size().width()*firstButtonWidthPercentage
+                styleSheetText = styleSheetText+ "background:"+self.activecolorArray[i]+";"
             else:
                 currentButtonWidth = secondaryButtonWidths
+                styleSheetText = styleSheetText+ "background:"+self.inactivecolorArray[i]+";"
             self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.size().height())
-            
+            self.ribbonButtons[i].setStyleSheet(styleSheetText)
             currentDrawPosition += currentButtonWidth
         
     def __setupUi(self, parentForm):   
@@ -99,12 +103,11 @@ class banner(QtGui.QFrame):
             newButton.setObjectName(str(i))
 
             #style and look
-            currentColor = self.colorArray[i]
             if i is 0:
-                styleSheetText = "Text-align:left;border: none;background:"+currentColor+";"
+                styleSheetText = "Text-align:left;border: none;background:"+self.activecolorArray[i]+";"
             else:
                  radiuxPx =  self.size().height() *bannerCurvaturePercentage
-                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+currentColor+";"
+                 styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+self.inactivecolorArray[i]+";"
             newButton.setStyleSheet(styleSheetText)
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
