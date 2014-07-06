@@ -46,12 +46,13 @@ class kitKatButton( QtGui.QPushButton):
 
     def setStyleSheet(self, style):
         self.addedStyle = style+self.basicStyle
+        super(kitKatButton, self).setStyleSheet( self.addedStyle)
         self.repaint()
 
     def paintEvent(self,QPaintEvent):
         QtGui.QPushButton.paintEvent(self,QPaintEvent)
         # set the style sheet
-        super(kitKatButton, self).setStyleSheet( self.addedStyle)
+        #super(kitKatButton, self).setStyleSheet( self.addedStyle)
         
         painter = QPainter(self)
         if self.icon is not None:

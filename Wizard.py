@@ -6,6 +6,7 @@ from PyQt4.phonon import Phonon
 
 # import all pages
 from pageOne import pageOne
+from allFunctionality import *
 
 # create the main window class
 
@@ -16,14 +17,16 @@ class ApplicationWindow(QtGui.QMainWindow):
         super(ApplicationWindow, self).__init__(parent)
         self.setWindowTitle('Main Window')
         self.wizard = None
+        self.initilize(parent)
+        
 
     #def nextCalled(self,id):
     #    self.a.calluser()
 
-    def initilize( self ):
+    def initilize( self,parent ):
         # set the screen size
         screen = QtGui.QDesktopWidget().screenGeometry()
-        self.wizard = QtGui.QWizard(self)
+        self.wizard = QtGui.QWizard(parent)
         width = screen.width()
         height = screen.height()
         self.wizard.setWizardStyle(QtGui.QWizard.ModernStyle)
@@ -35,25 +38,18 @@ class ApplicationWindow(QtGui.QMainWindow):
         
         self.setUpPages()
 
-        self.a = pageOne(self.wizard)
-        self.wizard.addPage(self.a)
+       
         #self.wizard.currentIdChanged.connect(self.nextCalled)
         self.wizard.exec_()
         #wizard.setWindowFlags(QtCore.Qt.FramelessWindowHint )
     def setUpPages(self):
-        self.wizard.addPage(pageOne(self.wizard))
+        self.wizard.addPage(Ui_WizardPage(self.wizard))
 
 if ( __name__ == '__main__' ):
-    # create the application if necessary
-    app = None
-    if ( not QtGui.QApplication.instance() ):
-        app = QtGui.QApplication([])
-    
-    window = ApplicationWindow()
-    #window.show()
-    window.initilize()
-    
-    # execute the application if we've created it
-    if ( app ):
-        app.exec_()
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWindow = QtGui.QMainWindow(flags=QtCore.Qt.FramelessWindowHint)
+    ui = ApplicationWindow(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 

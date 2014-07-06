@@ -109,7 +109,7 @@ class awsomePlayer( QtGui.QFrame):
         self.seekSlider = awsomeSeekSlider(self)
         self.seekSlider.setObjectName(_fromUtf8("seekSlider"))
         self.seekSlider.setStyleSheet(qSliderStyle)
-        self.seekSlider.setMinimumSize(QtCore.QSize(30, 50))
+        self.seekSlider.setMinimumSize(QtCore.QSize(30, 30))
         
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.seekSlider)      
