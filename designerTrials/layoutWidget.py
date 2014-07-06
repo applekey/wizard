@@ -71,7 +71,7 @@ class layoutWidget(QtGui.QFrame):
         sizePolicy.setHeightForWidth(self.banner.sizePolicy().hasHeightForWidth())
         
         self.banner.setSizePolicy(sizePolicy)
-        self.banner.setMinimumSize(QtCore.QSize(200, 100))
+        #self.banner.setMinimumSize(QtCore.QSize(200, 100))
         self.banner.setObjectName(_fromUtf8("pushButton"))
         self.verticalLayout.addWidget(self.banner)
         

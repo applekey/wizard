@@ -27,6 +27,10 @@ except AttributeError:
 
 
 class banner(QtGui.QFrame):
+
+    def sizeHint(self):
+        return QtCore.QSize(300,80)
+
     def __init__(self, parentForm):
         super( banner, self ).__init__()
 

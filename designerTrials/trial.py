@@ -58,9 +58,6 @@ class Ui_MainWindow(object):
         #icon = QtGui.QIcon()
         #icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         #self.custom.setIcon(icon)
-        
-      
-
         #self.mytest = banner(self.MainWindow)
         #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
        
