@@ -30,8 +30,10 @@ except AttributeError:
 
 class Ui_WizardPage(QtGui.QWizardPage):
     def setupUi(self, WizardPage):
+        self.setWindowFlags (QtCore.Qt.FramelessWindowHint)
         WizardPage.setObjectName(_fromUtf8("WizardPage"))
         WizardPage.resize(934, 869)
+        WizardPage.setWindowFlags (QtCore.Qt.FramelessWindowHint)
         self.label = QtGui.QLabel(WizardPage)
         self.label.setGeometry(QtCore.QRect(30, 50, 121, 31))
         self.label.setObjectName(_fromUtf8("label"))

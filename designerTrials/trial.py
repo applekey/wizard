@@ -67,13 +67,14 @@ class Ui_MainWindow(object):
         self.widget = layoutWidget(MainWindow)
         newSize = QtCore.QRect(0,0,self.width,self.height)
         self.widget.setGeometry(newSize)
+        #self.widget.hide()
         self.MainWindow.resizeEvent  = self.onResize
 
 
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    MainWindow = QtGui.QMainWindow()
+    MainWindow = QtGui.QMainWindow(flags=QtCore.Qt.FramelessWindowHint)
     
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)

@@ -40,7 +40,8 @@ class layoutWidget(QtGui.QFrame):
         self.centralwidget = QtGui.QWidget(parentForm)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.setupUi()
-
+    def hide(self):
+        self.centralwidget.hide()
     def setGeometry(self, qrect):
         self.centralwidget.setGeometry(qrect)
         self.__resizeGeometry(qrect)
