@@ -24,30 +24,34 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtGui.QMainWindow):
+    def mousePressEvent(self,mouseEvent):
+        self.oldPosition = mouseEvent.globalPos()
+
+    def mouseMoveEvent(self,mouseEvent):
+        delta = mouseEvent.globalPos()- self.oldPosition
+        self.move(self.pos().x()+delta.x(),self.pos().y()+delta.y())
+        self.oldPosition = mouseEvent.globalPos()
+
     def onResize(self,event):
-        width= self.MainWindow.size().width()
-        height= self.MainWindow.size().height()
+        width= event.size().width()
+        height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.layoutWidget.setGeometry(newSize)
         self.verticalLayout.setGeometry(newSize)
        
         #self.whateveruwant.setGeometry(newSize)
        
-    def setupUi(self, MainWindow):
-        self.MainWindow = MainWindow
-        self.MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        
+    def setupUi(self):
         self.height = 800
         self.width = 800
 
-        self.MainWindow.resize(self.width, self.height)
+        self.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
 
-        self.layoutWidget = QtGui.QWidget(self.MainWindow)
+        self.layoutWidget = QtGui.QWidget(self)
         self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width, self.height))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
-
         
         ## the main screen and the naviagation bar lives on the verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget)
@@ -68,25 +72,25 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         
-        self.pushButton = QtGui.QPushButton(self.layoutWidget)
+        self.backButton = QtGui.QPushButton(self.layoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.horizontalLayout.addWidget(self.pushButton)
+        sizePolicy.setHeightForWidth(self.backButton.sizePolicy().hasHeightForWidth())
+        self.backButton.setSizePolicy(sizePolicy)
+        self.backButton.setObjectName(_fromUtf8("backButton"))
+        self.horizontalLayout.addWidget(self.backButton)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
        
-        self.pushButton_2 = QtGui.QPushButton(self.layoutWidget)
+        self.fowardButton = QtGui.QPushButton(self.layoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy)
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        sizePolicy.setHeightForWidth(self.fowardButton.sizePolicy().hasHeightForWidth())
+        self.fowardButton.setSizePolicy(sizePolicy)
+        self.fowardButton.setObjectName(_fromUtf8("fowardButton"))
+        self.horizontalLayout.addWidget(self.fowardButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(MainWindow)
@@ -94,17 +98,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
-        #self.pushButton.setText(_translate("Form", "PushButton", None))
-        #self.pushButton_2.setText(_translate("Form", "PushButton", None))
+        self.backButton.setText(_translate("Form", "back", None))
+        self.fowardButton.setText(_translate("Form", "foward", None))
         Form.resizeEvent  = self.onResize
 
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    MainWindow = QtGui.QMainWindow()
-    
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
+    MainWindow = Ui_MainWindow()
+    MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    MainWindow.setupUi()
     MainWindow.show()
     sys.exit(app.exec_())
 
