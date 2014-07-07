@@ -31,20 +31,20 @@ except AttributeError:
 
 class layoutWidget(QtGui.QFrame):
     def __init__(self, parentForm):
-        super( layoutWidget, self ).__init__()
+        super( layoutWidget, self ).__init__(parentForm)
         self.specifiedLayout = 0
         ## the default layout 0 is the one with the banner, the video player and finally the text
         # layout 1 is the first selection screen with the text boxes
-        # layout 2 is ...  I will this out later
+        self.setupUi(parentForm)
 
-        self.centralwidget = QtGui.QWidget(parentForm)
-        self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.setupUi()
     def hide(self):
-        self.centralwidget.hide()
+        
+        #self.centralwidget.hide()
+        pass
     def setGeometry(self, qrect):
-        self.centralwidget.setGeometry(qrect)
+        #self.centralwidget.setGeometry(qrect)
         self.__resizeGeometry(qrect)
+        super(layoutWidget,self).setGeometry(qrect)
             
     def __resizeGeometry(self,qsize):
         self.verticalLayout.setGeometry(qsize)
@@ -52,17 +52,17 @@ class layoutWidget(QtGui.QFrame):
     def sepecifySpecificLayout(layout):
         self.layout = layout
 
-    def setupUi(self):
+    def setupUi(self,parentForm):
       
         # this is the verticle layout that all the visual elementss on 
-        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
+        self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
         #self.verticalLayout.setContentsMargins(11, 0, 11, 0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setMargin(0)
         # this is for the banner
-        self.banner = banner(self.centralwidget)
+        self.banner = banner(self)
 
         self.banner.setStyleSheet("background:"+"#9b59b6")
 
@@ -81,7 +81,7 @@ class layoutWidget(QtGui.QFrame):
         #self.verticalLayout.addItem(spacerItem)
         
         # this is the video player layout
-        self.videoPlayer = awsomePlayer(self.centralwidget)
+        self.videoPlayer = awsomePlayer(self)
 
         self.videoPlayer.setStyleSheet("background:"+videoPlayerBackgroundColor)
 
@@ -100,7 +100,7 @@ class layoutWidget(QtGui.QFrame):
         
 
         # this is the final dialog box
-        self.textFrame = awsomeText(self.centralwidget)
+        self.textFrame = awsomeText(self)
         self.textFrame.setStyleSheet("background:"+textFrameBackgroundColor)
 
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)

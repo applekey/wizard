@@ -33,8 +33,7 @@ class Ui_MainWindow(object):
         width= self.MainWindow.size().width()
         height= self.MainWindow.size().height()
         newSize = QtCore.QRect(0,0,width,height)
-        self.widget.setGeometry(newSize)
-        
+        self.centralwidget.setGeometry(newSize)
         #self.player.setGeometry(newSize)
     
     def setupUi(self, MainWindow):
@@ -49,8 +48,10 @@ class Ui_MainWindow(object):
         self.MainWindow.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
 
-        self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget = QtGui.QWidget(self.MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+        self.centralwidget.setGeometry(self.size)
+       
 
         #self.custom = kitKatButton(MainWindow)
         #self.custom.setGeometry(200,0,400,100)
@@ -58,15 +59,15 @@ class Ui_MainWindow(object):
         #icon = QtGui.QIcon()
         #icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         #self.custom.setIcon(icon)
-        #self.mytest = banner(self.MainWindow)
-        #self.mytest.configure(3,['abc','edg','fdfd'],['#2980b9','#e67e22','#95a5a6'])
+        #self.mytest = banner(self.centralwidget)
        
-        #self.player = awsomePlayer(MainWindow)
-        #self.player.setSource("C:\\abc.mov")
+        self.player = awsomePlayer(self.centralwidget)
+        self.player.setSource("C:\\abc.mov")
+        self.player.setGeometry(self.size)
 
-        self.widget = layoutWidget(MainWindow)
-        newSize = QtCore.QRect(0,0,self.width,self.height)
-        self.widget.setGeometry(newSize)
+        #self.widget = layoutWidget(self.centralwidget)
+        #newSize = QtCore.QRect(0,0,self.width,self.height)
+        #self.widget.setGeometry(newSize)
         #self.widget.hide()
         self.MainWindow.resizeEvent  = self.onResize
 
@@ -74,8 +75,7 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
-    MainWindow = QtGui.QMainWindow(flags=QtCore.Qt.FramelessWindowHint)
-    
+    MainWindow = QtGui.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()

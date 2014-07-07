@@ -22,7 +22,7 @@ except AttributeError:
 
 class awsomePlayer( QtGui.QFrame):
     def __init__(self, parentForm):
-        super( awsomePlayer, self ).__init__()        
+        super( awsomePlayer, self ).__init__(parentForm)        
         self.videoSource = None
         self.state = 0 
 
@@ -88,7 +88,7 @@ class awsomePlayer( QtGui.QFrame):
         #self.verticalLayout.addItem(spacerItem)
         
         #below are the horizontal box that will contain the actual controls of the player
-        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout = QtGui.QHBoxLayout(self)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.horizontalLayout.setContentsMargins(33, 0, 33, 5)
         self.playButton = QtGui.QPushButton(self)

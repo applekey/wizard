@@ -9,7 +9,7 @@
 
 from PyQt4 import QtCore, QtGui
 from layoutWidget import layoutWidget
-
+from banner import banner
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -29,8 +29,10 @@ class Ui_MainWindow(object):
         width= self.MainWindow.size().width()
         height= self.MainWindow.size().height()
         newSize = QtCore.QRect(0,0,width,height)
+        self.layoutWidget.setGeometry(newSize)
         self.verticalLayout.setGeometry(newSize)
-        self.whateveruwant.setGeometry(newSize)
+       
+        #self.whateveruwant.setGeometry(newSize)
        
     def setupUi(self, MainWindow):
         self.MainWindow = MainWindow
@@ -41,14 +43,19 @@ class Ui_MainWindow(object):
 
         self.MainWindow.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
+
+        self.layoutWidget = QtGui.QWidget(self.MainWindow)
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width, self.height))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+
         
         ## the main screen and the naviagation bar lives on the verticle layout
-        self.verticalLayout = QtGui.QVBoxLayout(self.MainWindow)
+        self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
         ## this is where the main screen will live
-        self.whateveruwant = layoutWidget(self.MainWindow)
+        self.whateveruwant = layoutWidget(self.layoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
