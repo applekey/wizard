@@ -12,6 +12,7 @@ from banner import banner
 from kitkatButton import kitKatButton
 from awsomePlayer import awsomePlayer
 from layoutWidget import layoutWidget
+from awsomeSlider import awsomeSlider
 
 
 try:
@@ -44,7 +45,6 @@ class Ui_MainWindow(object):
         self.height = 800
         self.width = 800
 
-
         self.MainWindow.resize(self.width, self.height)
         self.size = QtCore.QRect(0, 0, self.width, self.height)
 
@@ -61,9 +61,11 @@ class Ui_MainWindow(object):
         #self.custom.setIcon(icon)
         #self.mytest = banner(self.centralwidget)
        
-        self.player = awsomePlayer(self.centralwidget)
-        self.player.setSource("C:\\abc.mov")
-        self.player.setGeometry(self.size)
+        #self.player = awsomePlayer(self.centralwidget)
+        #self.player.setSource("C:\\abc.mov")
+        #self.player.setGeometry(self.size)
+
+        self.slider = awsomeSlider(self.centralwidget)
 
         #self.widget = layoutWidget(self.centralwidget)
         #newSize = QtCore.QRect(0,0,self.width,self.height)
