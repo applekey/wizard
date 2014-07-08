@@ -8,6 +8,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 from layoutWidget import layoutWidget
 from banner import banner
 try:
@@ -41,21 +43,30 @@ class awsomeNavigation(QtGui.QWidget):
         self.pages =pages
 
     def nextClicked(self):
-        if self.currentPage is len(self.pages):
+        if self.currentPage is len(self.pages)-1:
             return
         else:
             self.currentPage = self.currentPage+1
             self.changePage(self.currentPage)
+            print self.currentPage
+    def prevClicked(self):
+        if self.currentPage is 0:
+            return
+        else:
+            self.currentPage = self.currentPage-1
+            self.changePage(self.currentPage)
+            print self.currentPage
 
     def changePage(self,pageNumber):
         for pageIndex in range(len(self.pages)):
             if pageIndex is pageNumber:
                 self.pages[pageIndex].show()
                 self.verticalLayout.removeWidget(self.activePage)
+                self.verticalLayout.removeItem(self.horizontalLayout)
+                self.activePage.hide()
                 self.activePage = self.pages[pageIndex]
                 self.verticalLayout.addWidget(self.activePage)
-            else:
-                self.pages[pageIndex].hide()
+                self.verticalLayout.addLayout(self.horizontalLayout)
                 
     def renderPages(self):
         self.setupUi(self)
@@ -76,6 +87,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        
         
         ## hide all the active pages
         for pageIndex in range(len(self.pages)):
@@ -125,6 +137,7 @@ class awsomeNavigation(QtGui.QWidget):
 
         #link for click signal
         QtCore.QObject.connect(self.fowardButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.nextClicked)
+        QtCore.QObject.connect(self.backButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.prevClicked)
      
 
         
