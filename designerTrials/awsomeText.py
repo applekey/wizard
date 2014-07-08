@@ -21,7 +21,10 @@ class awsomeText(QtGui.QFrame):
     def __init__(self, parentForm):
         super( awsomeText, self ).__init__()
         self.__setupUi(self)
-
+    
+    def setText(self,bottom,Top):
+        self.OuterLabel.setText(Top)
+        self.innerLabel.setText(bottom)
 
     def __setupUi(self, parentForm):    
         # main verticle layout where everthing lives
@@ -47,17 +50,17 @@ class awsomeText(QtGui.QFrame):
         # i added a grid layout for the bottom, all controls will live in this grid
         self.gridLayout = QtGui.QGridLayout()
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.OuterLabel_2 = QtGui.QLabel(self)
+        self.innerLabel = QtGui.QLabel(self)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.OuterLabel_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.innerLabel.sizePolicy().hasHeightForWidth())
             
         # i added just some text for now
-        self.OuterLabel_2.setSizePolicy(sizePolicy)
-        self.OuterLabel_2.setObjectName(_fromUtf8("OuterLabel_2"))
-        self.gridLayout.addWidget(self.OuterLabel_2, 0, 0, 1, 1)
+        self.innerLabel.setSizePolicy(sizePolicy)
+        self.innerLabel.setObjectName(_fromUtf8("innerLabel"))
+        self.gridLayout.addWidget(self.innerLabel, 0, 0, 1, 1)
         self.verticalLayout.addLayout(self.gridLayout)
 
         self.OuterLabel.setText(_translate("Form", "OuterLabdel", None))
-        self.OuterLabel_2.setText(_translate("Form", "InnerText", None))
+        self.innerLabel.setText(_translate("Form", "InnerText", None))

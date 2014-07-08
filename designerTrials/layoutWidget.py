@@ -37,8 +37,6 @@ class layoutWidget(QtGui.QFrame):
         # layout 1 is the first selection screen with the text boxes
         self.setupUi(parentForm)
 
-    def hide(self):
-        super(layoutWidget,self).hide()
     def setGeometry(self, qrect):
         #self.centralwidget.setGeometry(qrect)
         self.__resizeGeometry(qrect)
@@ -49,6 +47,9 @@ class layoutWidget(QtGui.QFrame):
 
     def sepecifySpecificLayout(layout):
         self.layout = layout
+
+    def setText(self,text):
+        self.textFrame.setText(text,text)
 
     def setupUi(self,parentForm):
       

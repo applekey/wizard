@@ -27,6 +27,7 @@ except AttributeError:
 class awsomeNavigation(QtGui.QWidget):
     def __init__(self, parentForm):
         super( awsomeNavigation, self ).__init__(parentForm)
+        self.currentPage = 0
         self.parent = parentForm
         self.pages =[]
         self.resize(parentForm.size())
@@ -39,6 +40,23 @@ class awsomeNavigation(QtGui.QWidget):
     def addPages(self,pages):
         self.pages =pages
 
+    def nextClicked(self):
+        if self.currentPage is len(self.pages):
+            return
+        else:
+            self.currentPage = self.currentPage+1
+            self.changePage(self.currentPage)
+
+    def changePage(self,pageNumber):
+        for pageIndex in range(len(self.pages)):
+            if pageIndex is pageNumber:
+                self.pages[pageIndex].show()
+                self.verticalLayout.removeWidget(self.activePage)
+                self.activePage = self.pages[pageIndex]
+                self.verticalLayout.addWidget(self.activePage)
+            else:
+                self.pages[pageIndex].hide()
+                
     def renderPages(self):
         self.setupUi(self)
 
@@ -59,13 +77,19 @@ class awsomeNavigation(QtGui.QWidget):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
+        ## hide all the active pages
+        for pageIndex in range(len(self.pages)):
+            self.pages[pageIndex].hide()
+            self.activePagePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
+            self.activePagePolicy.setHorizontalStretch(0)
+            self.activePagePolicy.setVerticalStretch(0)
+            self.activePagePolicy.setHeightForWidth(self.pages[pageIndex].sizePolicy().hasHeightForWidth())
+            self.pages[pageIndex].setSizePolicy(self.activePagePolicy)
+
         ## this is where the main screen will live
         self.activePage = self.pages[0]
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.activePage.sizePolicy().hasHeightForWidth())
-        self.activePage.setSizePolicy(sizePolicy)
+        self.activePage.show()
+        
 
         self.verticalLayout.addWidget(self.activePage)
         
@@ -98,6 +122,9 @@ class awsomeNavigation(QtGui.QWidget):
         self.backButton.setText(_translate("Form", "back", None))
         self.fowardButton.setText(_translate("Form", "foward", None))
         self.resizeEvent  = self.onResize
+
+        #link for click signal
+        QtCore.QObject.connect(self.fowardButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.nextClicked)
      
 
         
