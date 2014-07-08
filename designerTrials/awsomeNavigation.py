@@ -27,7 +27,20 @@ except AttributeError:
 class awsomeNavigation(QtGui.QWidget):
     def __init__(self, parentForm):
         super( awsomeNavigation, self ).__init__(parentForm)
-        self.setupUi(parentForm)
+        self.parent = parentForm
+        self.pages =[]
+        self.resize(parentForm.size())
+        self.size = QtCore.QRect(0, 0, self.width(), self.height())
+
+        self.layoutWidget = QtGui.QWidget(self)
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+    
+    def addPages(self,pages):
+        self.pages =pages
+
+    def renderPages(self):
+        self.setupUi(self)
 
     def onResize(self,event):
         width= event.size().width()
@@ -35,30 +48,26 @@ class awsomeNavigation(QtGui.QWidget):
         newSize = QtCore.QRect(0,0,width,height)
         self.layoutWidget.setGeometry(newSize)
         self.verticalLayout.setGeometry(newSize)
+    
+    def returnParent(self):
+        return self.layoutWidget
 
     def setupUi(self,parent):
 
-        self.resize(parent.size())
-        self.size = QtCore.QRect(0, 0, self.width(), self.height())
-
-        self.layoutWidget = QtGui.QWidget(self)
-        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
-        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
-        
         ## the main screen and the naviagation bar lives on the verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         
         ## this is where the main screen will live
-        self.whateveruwant = layoutWidget(self.layoutWidget)
+        self.activePage = self.pages[0]
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.whateveruwant.sizePolicy().hasHeightForWidth())
-        self.whateveruwant.setSizePolicy(sizePolicy)
-        
-        self.verticalLayout.addWidget(self.whateveruwant)
+        sizePolicy.setHeightForWidth(self.activePage.sizePolicy().hasHeightForWidth())
+        self.activePage.setSizePolicy(sizePolicy)
+
+        self.verticalLayout.addWidget(self.activePage)
         
         ## this is where the naviagation bars will live
         self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)

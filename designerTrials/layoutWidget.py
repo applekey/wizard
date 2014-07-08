@@ -38,9 +38,7 @@ class layoutWidget(QtGui.QFrame):
         self.setupUi(parentForm)
 
     def hide(self):
-        
-        #self.centralwidget.hide()
-        pass
+        super(layoutWidget,self).hide()
     def setGeometry(self, qrect):
         #self.centralwidget.setGeometry(qrect)
         self.__resizeGeometry(qrect)
