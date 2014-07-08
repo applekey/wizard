@@ -24,14 +24,10 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(QtGui.QMainWindow):
-    def mousePressEvent(self,mouseEvent):
-        self.oldPosition = mouseEvent.globalPos()
-
-    def mouseMoveEvent(self,mouseEvent):
-        delta = mouseEvent.globalPos()- self.oldPosition
-        self.move(self.pos().x()+delta.x(),self.pos().y()+delta.y())
-        self.oldPosition = mouseEvent.globalPos()
+class awsomeNavigation(QtGui.QWidget):
+    def __init__(self, parentForm):
+        super( awsomeNavigation, self ).__init__(parentForm)
+        self.setupUi(parentForm)
 
     def onResize(self,event):
         width= event.size().width()
@@ -39,18 +35,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         newSize = QtCore.QRect(0,0,width,height)
         self.layoutWidget.setGeometry(newSize)
         self.verticalLayout.setGeometry(newSize)
-       
-        #self.whateveruwant.setGeometry(newSize)
-       
-    def setupUi(self):
-        self.height = 800
-        self.width = 800
 
-        self.resize(self.width, self.height)
-        self.size = QtCore.QRect(0, 0, self.width, self.height)
+    def setupUi(self,parent):
+
+        self.resize(parent.size())
+        self.size = QtCore.QRect(0, 0, self.width(), self.height())
 
         self.layoutWidget = QtGui.QWidget(self)
-        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width, self.height))
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
         
         ## the main screen and the naviagation bar lives on the verticle layout
@@ -93,23 +85,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.horizontalLayout.addWidget(self.fowardButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(_translate("Form", "Form", None))
+        
         self.backButton.setText(_translate("Form", "back", None))
         self.fowardButton.setText(_translate("Form", "foward", None))
-        Form.resizeEvent  = self.onResize
+        self.resizeEvent  = self.onResize
+     
 
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    MainWindow = Ui_MainWindow()
-    MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-    MainWindow.setupUi()
-    MainWindow.show()
-    sys.exit(app.exec_())
+        
 
    
 
