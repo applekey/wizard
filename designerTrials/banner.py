@@ -10,6 +10,7 @@
 from PyQt4 import QtCore, QtGui
 from constants import *
 from kitkatButton import *
+from componentConfirguration import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -37,23 +38,24 @@ class banner(QtGui.QFrame):
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
-        self.tabText = ['abc','edg','hgi']
-        self.activecolorArray = ['#1ABC9C','#F1C40F','#E74C3B']
-        self.inactivecolorArray = ['#A8ACAF','#99A3A3','#879191']
+        self.tabText = bannerText
+        self.activecolorArray = activeColors
+        self.inactivecolorArray = inactiveColors
         self.__setupUi(self)
         self.currentTabExpanded = 0
         self.resizeEvent = self.__resizeGeometry
        
     #configure the number of tabs, and also the text in each tab
-    def configure(self,numberOfTabs,tabTextArray,colorArray):
-        #self.tabNumber = numberOfTabs
-        #self.tabText = tabTextArray
-        #self.colorArray = colorArray
+    def configure(self,text,activeColorArray,inactiveColorArray,):
+        self.activecolorArray
         # there is a bug here, the tabs will not change, fix later
         pass
 
     def __resizeGeometry(self,event):
         self.modifyTabGeometry(self.currentTabExpanded)
+        for button in self.ribbonButtons:
+            button.setIconSize(QtCore.QSize(bannerIconWidth,self.size().height()))
+            button.setIconPosition(QtCore.QPoint(bannerIconWidth/2,9))
     
     def buttonClicked(self):
         button = self.sender()
@@ -80,13 +82,19 @@ class banner(QtGui.QFrame):
          
                  styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;"
             
-
             if i is tabToExpand:
                 currentButtonWidth = self.size().width()*firstButtonWidthPercentage
                 styleSheetText = styleSheetText+ "background:"+self.activecolorArray[i]+";"
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap(activeIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.ribbonButtons[i].setIcon(icon)
             else:
                 currentButtonWidth = secondaryButtonWidths
                 styleSheetText = styleSheetText+ "background:"+self.inactivecolorArray[i]+";"
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.ribbonButtons[i].setIcon(icon)
+
             self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.size().height())
             self.ribbonButtons[i].setStyleSheet(styleSheetText)
             currentDrawPosition += currentButtonWidth
@@ -113,12 +121,13 @@ class banner(QtGui.QFrame):
                  radiuxPx =  self.size().height() *bannerCurvaturePercentage
                  styleSheetText = "border-radius:"+ str(radiuxPx)+"px;"+"Text-align:left;border: none;background:"+self.inactivecolorArray[i]+";"
             newButton.setStyleSheet(styleSheetText)
-            icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(_fromUtf8("logo.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-            
             #icon
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             newButton.setIcon(icon)
-            #newButton.setIconSize(QtCore.QSize(iconWidth, self.bannerHeight))
+            newButton.setIconSize(QtCore.QSize(bannerIconWidth, self.size().height()))
+
+
             #newButton.setIconPosition(QtCore.QPoint(50,self.calculateBannerHeight(self.size().width())/float(10)))
             #text
             paddedText = '   '+self.tabText[i]
@@ -129,7 +138,7 @@ class banner(QtGui.QFrame):
             QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
 
             self.ribbonButtons.append(newButton)
-        self.modifyTabGeometry(1)
+        self.modifyTabGeometry(0)
         
       
 

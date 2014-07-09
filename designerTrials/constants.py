@@ -11,7 +11,4 @@ videoPlayerBackgroundColor = "#ecf0f1"
 ## textFrame constantts
 textFrameBackgroundColor =  "#95a5a6"
 
-#fonts
-fontFile = "OpenSans-Bold.ttf"
-fontName  = "Open Sans"
-fontSize = 15
+
