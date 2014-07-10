@@ -11,6 +11,7 @@ from PyQt4 import QtCore, QtGui
 from constants import *
 from kitkatButton import *
 from componentConfirguration import *
+from PyQt4.QtCore import QObject, pyqtSignal
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -28,13 +29,15 @@ except AttributeError:
 
 
 class banner(QtGui.QFrame):
+    ## define the signal
+    bannerTriggered = QtCore.pyqtSignal(int,name='bannerTriggered')
 
     def sizeHint(self):
         return QtCore.QSize(300,80)
 
     def __init__(self, parentForm):
         super( banner, self ).__init__(parentForm)
-
+       
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
@@ -61,6 +64,7 @@ class banner(QtGui.QFrame):
         button = self.sender()
         
         buttonNumber = int( button.objectName())
+        self.bannerTriggered.emit(buttonNumber)
         # handle firstButton
         if buttonNumber is self.currentTabExpanded:
             pass #ignore for now
@@ -104,8 +108,16 @@ class banner(QtGui.QFrame):
         fontDatabase = QtGui.QFontDatabase()
         font = fontDatabase.addApplicationFont(fontFile)
         #text color
-        #palette = QtGui.QPalette()
-        #palette.setColor("#e74c3c")
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
+        brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
         #self.pushButton.setPalette(palette)
 
         self.ribbonButtons = []
@@ -126,14 +138,14 @@ class banner(QtGui.QFrame):
             icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(bannerIconWidth, self.size().height()))
-
+            newButton.setPalette(palette)
 
             #newButton.setIconPosition(QtCore.QPoint(50,self.calculateBannerHeight(self.size().width())/float(10)))
             #text
             paddedText = '   '+self.tabText[i]
             newButton.setText(paddedText)
             newButton.setFont(QtGui.QFont(fontName, fontSize))
-
+            newButton.setTextPosition(QtCore.QPoint(100,50))
             #link for click signal
             QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
 

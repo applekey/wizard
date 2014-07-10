@@ -28,6 +28,7 @@ except AttributeError:
 class Ui_MainWindow(QtGui.QMainWindow):
 
     def __init__(self):
+        self.oldPosition = QtCore.QPoint(0,0)
         super( Ui_MainWindow, self ).__init__()
         self.setupUi()
 

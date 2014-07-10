@@ -67,6 +67,7 @@ class awsomeNavigation(QtGui.QWidget):
                 self.activePage = self.pages[pageIndex]
                 self.verticalLayout.addWidget(self.activePage)
                 self.verticalLayout.addLayout(self.horizontalLayout)
+                self.currentPage = pageNumber
                 
     def renderPages(self):
         self.setupUi(self)
@@ -80,6 +81,12 @@ class awsomeNavigation(QtGui.QWidget):
     
     def returnParent(self):
         return self.layoutWidget
+    
+    def bannerTriggered(self,number):
+        print number
+        if self.currentPage is number:
+            return
+        self.changePage(number)
 
     def setupUi(self,parent):
         ## the main screen and the naviagation bar lives on the verticle layout
@@ -151,6 +158,8 @@ class awsomeNavigation(QtGui.QWidget):
         #link for click signal
         QtCore.QObject.connect(self.fowardButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.nextClicked)
         QtCore.QObject.connect(self.backButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.prevClicked)
+        self.banner.bannerTriggered.connect(self.bannerTriggered)
+
      
 
         

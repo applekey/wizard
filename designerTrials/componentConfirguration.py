@@ -28,9 +28,9 @@ bannerText = ['ab\ncd','ab\ncd','ab\ncd']
 bannerIconWidth = 60
 
 #fonts
-fontFile = "OpenSans-Bold.ttf"
+fontFile = "resources/OpenSans-Bold.ttf"
 fontName  = "Open Sans"
-fontSize = 15
+fontSize = 20
 
 
 

@@ -58,8 +58,7 @@ class kitKatButton( QtGui.QPushButton):
         if self.icon is not None:
              painter.drawPixmap(self.iconPosition.x(), self.iconPosition.y(), self.icon.pixmap(self.iconSize().width(), self.iconSize().height()))
 
-        point = QPoint( 100, 20 );
-        painter.drawText( point, self.text );
+        painter.drawText( self.textPosition, self.text );
 
 
 
