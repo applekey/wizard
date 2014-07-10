@@ -6,6 +6,7 @@
 
 from PyQt4 import QtCore, QtGui
 from layoutWidget import layoutWidget
+from patientInfoPage import patientInfo
 
 
 try:
@@ -25,9 +26,11 @@ except AttributeError:
 class pageFactory():
     def __init__(self,parentWidget):
         self.parentWidget = parentWidget
+        self.pagesToAdd = []
 
     def createWidgets(self):
-        pagesToAdd = []
+        self.introPage =patientInfo(self.parentWidget) 
+
         ## create and modify the widgets here
         self.page1Widget = layoutWidget(self.parentWidget)
         self.page1Widget.setText("1")
@@ -38,8 +41,9 @@ class pageFactory():
         self.page4Widget = layoutWidget(self.parentWidget)
         self.page4Widget.setText("4")
         ## add all the widgets to pages to add
-        pagesToAdd.append( self.page1Widget);
-        pagesToAdd.append( self.page2Widget);
-        pagesToAdd.append( self.page3Widget);
-        pagesToAdd.append( self.page4Widget);
-        return pagesToAdd
+        self.pagesToAdd.append( self.introPage);
+        self.pagesToAdd.append( self.page1Widget);
+        self.pagesToAdd.append( self.page2Widget);
+        self.pagesToAdd.append( self.page3Widget);
+        self.pagesToAdd.append( self.page4Widget);
+        return self.pagesToAdd

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>WizardPage</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -23,12 +23,18 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="leftMargin">
+     <number>30</number>
+    </property>
+    <property name="rightMargin">
+     <number>30</number>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>TextLabel</string>
+         <string>New Patient</string>
         </property>
        </widget>
       </item>
@@ -51,7 +57,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>TextLabel</string>
+         <string>enter patient info</string>
         </property>
        </widget>
       </item>
@@ -398,7 +404,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Sex</string>
           </property>
          </widget>
         </item>
@@ -444,26 +450,6 @@
     </item>
    </layout>
   </widget>
-  <zorder>gridLayoutWidget_4</zorder>
-  <zorder>gridLayoutWidget_2</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder>gridLayoutWidget_5</zorder>
-  <zorder>verticalSpacer_2</zorder>
-  <zorder>verticalSpacer_3</zorder>
-  <zorder>gridLayoutWidget_6</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>checkBox</zorder>
-  <zorder>checkBox_2</zorder>
-  <zorder>label</zorder>
-  <zorder>verticalSpacer_7</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>verticalSpacer_7</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_3</zorder>
-  <zorder>verticalSpacer_8</zorder>
  </widget>
  <resources/>
  <connections/>

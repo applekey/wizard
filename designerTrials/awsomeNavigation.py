@@ -82,12 +82,24 @@ class awsomeNavigation(QtGui.QWidget):
         return self.layoutWidget
 
     def setupUi(self,parent):
-
         ## the main screen and the naviagation bar lives on the verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self.layoutWidget)
         self.verticalLayout.setMargin(0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        ## banner stuff
+        self.banner = banner(self)
+        self.banner.setStyleSheet("background:"+"#9b59b6")
+
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.banner.sizePolicy().hasHeightForWidth())
         
+        self.banner.setSizePolicy(sizePolicy)
+        #self.banner.setMinimumSize(QtCore.QSize(200, 100))
+        self.banner.setObjectName(_fromUtf8("pushButton"))
+        self.verticalLayout.addWidget(self.banner)
         
         ## hide all the active pages
         for pageIndex in range(len(self.pages)):
@@ -108,6 +120,7 @@ class awsomeNavigation(QtGui.QWidget):
         ## this is where the naviagation bars will live
         self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.horizontalLayout.setContentsMargins(30, 15, 30, 15)
         
         self.backButton = QtGui.QPushButton(self.layoutWidget)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)

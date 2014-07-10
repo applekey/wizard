@@ -61,19 +61,7 @@ class layoutWidget(QtGui.QFrame):
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setMargin(0)
         # this is for the banner
-        self.banner = banner(self)
-
-        self.banner.setStyleSheet("background:"+"#9b59b6")
-
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.banner.sizePolicy().hasHeightForWidth())
         
-        self.banner.setSizePolicy(sizePolicy)
-        #self.banner.setMinimumSize(QtCore.QSize(200, 100))
-        self.banner.setObjectName(_fromUtf8("pushButton"))
-        self.verticalLayout.addWidget(self.banner)
         
         #------------------------ this is the spacer item inbetween the banner and the video player
         #spacerItem = QtGui.QSpacerItem(20, 1, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
