@@ -27,6 +27,7 @@
     <Compile Include="constants.py" />
     <Compile Include="kitkatButton.py" />
     <Compile Include="layoutWidget.py" />
+    <Compile Include="awsomeDialog.py" />
     <Compile Include="pageFactory.py" />
     <Compile Include="patientInfoPage.py" />
     <Compile Include="trial.py" />
