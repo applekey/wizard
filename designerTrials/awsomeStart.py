@@ -68,7 +68,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = Ui_MainWindow()
-    #MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     MainWindow.show()
     sys.exit(app.exec_())
 
