@@ -8,12 +8,12 @@ videoScrollNubPrinting = ""
 
 qSliderStyle=" \
 QSlider::groove:horizontal {\
+border: 1.5px solid #A8ACAF;\
 background: white;\
-height: 30px;\
-border: 1px solid #bbb;\
+height: 18px;\
+border-radius: 10px;\
 }\
 QSlider::handle:horizontal {\
-width: 20px;\
 image: url(nub.svg);\
 }\
 "
@@ -33,10 +33,10 @@ fontName  = "Open Sans"
 fontSize = 20
 
 
+## configuration for navigation bar
+navigationBackStandard = "navigationImages/Text Box_BACKWARDBT_ABC.svg"
+navigationFowardStandard = "navigationImages/Text Box_FORWARDBT_ABC.svg"
+navBarBackgroundColor = '#A8ACAF'
 
-
-#QSlider::handle:horizontal {image: url(5.jpg);border: none;height: 50px;}\
-### configuration items for awsomeText
-
-#QSlider { height: 100px;}; QSlider::handle:horizontal \
-#{image:url(5.jpg);}
+## configuration for awsomeText
+awsomeTextBackGroundColor = '#A8ACAF'

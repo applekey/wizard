@@ -17,6 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="awsomeDialogueButton.py" />
     <Compile Include="awsomeNavigation.py" />
     <Compile Include="awsomePlayer.py" />
     <Compile Include="awsomeSlider.py" />

@@ -6,37 +6,41 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
+    <width>951</width>
     <height>696</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QSlider" name="horizontalSlider">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>270</y>
-     <width>501</width>
-     <height>171</height>
+     <x>180</x>
+     <y>240</y>
+     <width>621</width>
+     <height>201</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>191</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton</zorder>
+   <property name="styleSheet">
+    <string notr="true">QSlider::groove:horizontal {
+border: 1.5px solid #A8ACAF;
+background: white;
+height: 24px;
+border-radius: 12px;
+}
+
+
+
+QSlider::handle:horizontal {
+image: url(abc.svg);
+}
+
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
   </widget>
  </widget>
  <resources/>

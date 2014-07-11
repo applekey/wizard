@@ -12,6 +12,8 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from layoutWidget import layoutWidget
 from banner import banner
+from componentConfirguration import *
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -34,6 +36,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.pages =[]
         self.resize(parentForm.size())
         self.size = QtCore.QRect(0, 0, self.width(), self.height())
+        self.setStyleSheet("background:"+navBarBackgroundColor)
 
         self.layoutWidget = QtGui.QWidget(self)
         self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
@@ -83,7 +86,6 @@ class awsomeNavigation(QtGui.QWidget):
         return self.layoutWidget
     
     def bannerTriggered(self,number):
-        print number
         if self.currentPage is number:
             return
         self.changePage(number)
@@ -150,9 +152,17 @@ class awsomeNavigation(QtGui.QWidget):
         self.horizontalLayout.addWidget(self.fowardButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        
-        self.backButton.setText(_translate("Form", "back", None))
-        self.fowardButton.setText(_translate("Form", "foward", None))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationBackStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+        self.backButton.setIcon(icon)
+        self.backButton.setStyleSheet("background: transparent;")
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationFowardStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.fowardButton.setIcon(icon)
+        self.fowardButton.setStyleSheet("background: transparent;")
+
         self.resizeEvent  = self.onResize
 
         #link for click signal

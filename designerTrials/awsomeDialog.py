@@ -17,13 +17,13 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class awsomeDialog(QtGui.QDialog):
-    def __init__(self):
+    def __init__(self,position):
         
         super( awsomeDialog, self ).__init__()
         
         self.parent = self
         self.setupUi()
-        self.parent.setGeometry(QtCore.QRect(300, 500, 200, 200))
+        self.parent.setGeometry(QtCore.QRect(position.x(), position.y(), 200, 200))
         
         self.parent.setObjectName(_fromUtf8("widget"))
         

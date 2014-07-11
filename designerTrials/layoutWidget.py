@@ -88,8 +88,6 @@ class layoutWidget(QtGui.QFrame):
 
         # this is the final dialog box
         self.textFrame = awsomeText(self)
-        self.textFrame.setStyleSheet("background:"+textFrameBackgroundColor)
-
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

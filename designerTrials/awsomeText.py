@@ -1,5 +1,6 @@
 from PyQt4 import QtCore, QtGui
 from constants import *
+from componentConfirguration import *
 
 
 try:
@@ -21,6 +22,7 @@ class awsomeText(QtGui.QFrame):
     def __init__(self, parentForm):
         super( awsomeText, self ).__init__()
         self.__setupUi(self)
+        self.setStyleSheet("background:"+navBarBackgroundColor)
     
     def setText(self,bottom,Top):
         self.OuterLabel.setText(Top)
