@@ -115,7 +115,7 @@ class banner(QtGui.QFrame):
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(120, 120, 120))
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
         #self.pushButton.setPalette(palette)
@@ -138,7 +138,7 @@ class banner(QtGui.QFrame):
             icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(bannerIconWidth, self.size().height()))
-            newButton.setPalette(palette)
+         
 
             #newButton.setIconPosition(QtCore.QPoint(50,self.calculateBannerHeight(self.size().width())/float(10)))
             #text
@@ -146,6 +146,7 @@ class banner(QtGui.QFrame):
             newButton.setText(paddedText)
             newButton.setFont(QtGui.QFont(fontName, fontSize))
             newButton.setTextPosition(QtCore.QPoint(100,50))
+            newButton.setPalette(palette)
             #link for click signal
             QtCore.QObject.connect(newButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.buttonClicked)
 

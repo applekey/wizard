@@ -20,6 +20,7 @@
     <Compile Include="awsomeDialogueButton.py" />
     <Compile Include="awsomeNavigation.py" />
     <Compile Include="awsomePlayer.py" />
+    <Compile Include="awsomePushButton.py" />
     <Compile Include="awsomeSlider.py" />
     <Compile Include="awsomeStart.py" />
     <Compile Include="awsomeText.py" />

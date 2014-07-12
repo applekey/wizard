@@ -31,6 +31,12 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.oldPosition = QtCore.QPoint(0,0)
         super( Ui_MainWindow, self ).__init__()
         self.setupUi()
+        self.centerOnScreen()
+
+    def centerOnScreen (self):
+        resolution = QtGui.QDesktopWidget().screenGeometry()
+        self.setGeometry(10,30,resolution.width()/2.0, resolution.height()*0.9)
+
 
     def mousePressEvent(self,mouseEvent):
         self.oldPosition = mouseEvent.globalPos()
@@ -68,7 +74,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = Ui_MainWindow()
-    #MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     MainWindow.show()
     sys.exit(app.exec_())
 

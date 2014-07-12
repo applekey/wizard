@@ -13,6 +13,7 @@ from PyQt4.QtGui import *
 from layoutWidget import layoutWidget
 from banner import banner
 from componentConfirguration import *
+from awsomePushButton import awsomePushButton
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -131,7 +132,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.horizontalLayout.setContentsMargins(30, 15, 30, 15)
         
-        self.backButton = QtGui.QPushButton(self.layoutWidget)
+        self.backButton = awsomePushButton(self.layoutWidget,[navigationBackStandard,navigationBackHover])
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -142,7 +143,7 @@ class awsomeNavigation(QtGui.QWidget):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
        
-        self.fowardButton = QtGui.QPushButton(self.layoutWidget)
+        self.fowardButton = awsomePushButton(self.layoutWidget,[navigationFowardStandard,navigationFowardHover])
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -152,18 +153,6 @@ class awsomeNavigation(QtGui.QWidget):
         self.horizontalLayout.addWidget(self.fowardButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationBackStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.backButton.setIcon(icon)
-        self.backButton.setIconSize(self.backButton.size())
-        self.backButton.setStyleSheet("background: transparent;")
-
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationFowardStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.fowardButton.setIcon(icon)
-        self.fowardButton.setStyleSheet("background: transparent;")
-        self.fowardButton.setMinimumSize(QtCore.QSize(50, 50))
-        self.fowardButton.setIconSize(self.fowardButton.size())
 
         self.resizeEvent  = self.onResize
 
