@@ -68,7 +68,7 @@ class awsomeNavigation(QtGui.QWidget):
                 self.verticalLayout.removeWidget(self.activePage)
                 self.verticalLayout.removeWidget(self.sizeGrip)
                 self.verticalLayout.removeItem(self.horizontalLayout)
-                self.activePage.hide()z
+                self.activePage.hide()
                 self.activePage = self.pages[pageIndex]
                 self.verticalLayout.addWidget(self.activePage)
                 self.verticalLayout.addLayout(self.horizontalLayout)
