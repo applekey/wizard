@@ -94,4 +94,4 @@ class awsomeDialog(QtGui.QDialog):
     def retranslateUi(self):
       
         self.label.setText(_translate("Dialog", "TextLabel", None))
-        self.pushButton.setText(_translate("Dialog", "PushButton", None))
+        self.pushButton.setText("close")

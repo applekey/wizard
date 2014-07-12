@@ -7,6 +7,7 @@
 from PyQt4 import QtCore, QtGui
 from layoutWidget import layoutWidget
 from patientInfoPage import patientInfo
+from awsomeSlider import awsomeSlider
 
 
 try:
@@ -32,13 +33,18 @@ class pageFactory():
         self.introPage =patientInfo(self.parentWidget) 
 
         ## create and modify the widgets here
-        self.page1Widget = layoutWidget(self.parentWidget)
+        controlWidget = awsomeSlider
+        self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page1Widget.setText("1")
-        self.page2Widget = layoutWidget(self.parentWidget)
+
+
+
+
+        self.page2Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page2Widget.setText("2")
-        self.page3Widget = layoutWidget(self.parentWidget)
+        self.page3Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page3Widget.setText("3")
-        self.page4Widget = layoutWidget(self.parentWidget)
+        self.page4Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page4Widget.setText("4")
         ## add all the widgets to pages to add
         self.pagesToAdd.append( self.introPage);

@@ -24,7 +24,7 @@ activeColors = ['#1ABC9C','#F1C40F','#E74C3B']
 inactiveColors = ['#A8ACAF','#99A3A3','#879191']
 activeIcons =["bannerImages/0__A_1_ICON80.svg","bannerImages/0__B_1_ICON80.svg","bannerImages/0__C_1_ICON80.svg"]
 inactiveIcons =["bannerImages/0__A_2_ICON80.svg","bannerImages/0__B_2_ICON80.svg","bannerImages/0__C_2_ICON80.svg"]
-bannerText = ['ab\ncd','ab\ncd','ab\ncd']
+bannerText = ['Scanning','Modeling','Printing']
 bannerIconWidth = 60
 
 #fonts
@@ -51,6 +51,23 @@ border-width: 2px;\
  border-style: outset;\
 border-color: #7f8c8d;\
 }"
+
+
+## banner constants
+firstButtonWidthPercentage = 0.65
+bannerHeightPixelsPercentage = 0.05  # this is the relationship between the height of the width of the bar and the height, height = bannerHeightPixelsPercentage*width
+iconWidth = 100
+bannerHeightAbsolute = 80
+bannerCurvaturePercentage = 0.5
+
+## videoPlayer constants
+videoPlayerBackgroundColor = "#ecf0f1"
+
+## textFrame constantts
+textFrameBackgroundColor =  "#95a5a6"
+
+
+
 
 
 

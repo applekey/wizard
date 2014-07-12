@@ -24,26 +24,48 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class awsomeSlider(QtGui.QFrame):
-    def geometryChanged(self):
-        pass
+    def onResize(self,event):
+        width= event.size().width()
+        height= event.size().height()
+        newSize = QtCore.QRect(0,0,width,height)
+        self.verticalLayout.setGeometry(newSize)
+        #self.but.setGeometry(newSize)
+    
     def sizeHint(self):
-        return QtCore.QSize(400,800)
+        pass
+    
     def __init__(self,parent):
          super(awsomeSlider, self).__init__( parent)
+         self.parent = parent
+         self.resizeEvent  = self.onResize
          self.setupUi()
+         
+
     def setupUi(self):
         self.verticalLayout = QtGui.QVBoxLayout(self)
-        self.verticalLayout.setGeometry(self.geometry())
-        self.controlKnob = QtGui.QPushButton(self)
-        self.controlKnob.setGeometry(self.geometry())
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.label_3 = QtGui.QLabel(self)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
         
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        #sizePolicy.setHeightForWidth(self.awsomeSlider.sizePolicy().hasHeightForWidth())
-        self.controlKnob.setSizePolicy(sizePolicy)
-
-        self.verticalLayout.addWidget(self.controlKnob)
+        self.verticalLayout.addWidget(self.label_3)
+        
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        
+        self.horizontalSlider = QtGui.QSlider(self)
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName(_fromUtf8("horizontalSlider"))
+        
+        self.horizontalLayout.addWidget(self.horizontalSlider)
+        self.label = QtGui.QLabel(self.parent)
+        self.label.setText("abcd")
+        self.horizontalLayout.addWidget(self.label)
+        self.label_2 = QtGui.QLabel(self.parent)
+        self.label_2.setText("fdsaf")
+        self.horizontalLayout.addWidget(self.label_2)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+      
         
         
        

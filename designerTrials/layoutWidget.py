@@ -10,10 +10,11 @@
 from PyQt4 import QtCore, QtGui
 
 #import in the custom banner and the custom player
-from constants import *
+from componentConfirguration import *
 from banner import banner
 from awsomePlayer import awsomePlayer
 from awsomeText import awsomeText
+from awsomeSlider import awsomeSlider
  
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -30,9 +31,10 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class layoutWidget(QtGui.QFrame):
-    def __init__(self, parentForm):
+    def __init__(self, parentForm,controlWidget):
         super( layoutWidget, self ).__init__(parentForm)
         self.specifiedLayout = 0
+        self.controlWidget = controlWidget
         ## the default layout 0 is the one with the banner, the video player and finally the text
         # layout 1 is the first selection screen with the text boxes
         self.setupUi(parentForm)
@@ -49,7 +51,8 @@ class layoutWidget(QtGui.QFrame):
         self.layout = layout
 
     def setText(self,text):
-        self.textFrame.setText(text,text)
+        #self.textFrame.setText(text,text)
+        pass
 
     def setupUi(self,parentForm):
       
@@ -87,7 +90,7 @@ class layoutWidget(QtGui.QFrame):
         
 
         # this is the final dialog box
-        self.textFrame = awsomeText(self)
+        self.textFrame = self.controlWidget(self)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
