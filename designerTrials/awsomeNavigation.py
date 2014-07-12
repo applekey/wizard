@@ -154,14 +154,16 @@ class awsomeNavigation(QtGui.QWidget):
 
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationBackStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-
         self.backButton.setIcon(icon)
+        self.backButton.setIconSize(self.backButton.size())
         self.backButton.setStyleSheet("background: transparent;")
 
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(navigationFowardStandard)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.fowardButton.setIcon(icon)
         self.fowardButton.setStyleSheet("background: transparent;")
+        self.fowardButton.setMinimumSize(QtCore.QSize(50, 50))
+        self.fowardButton.setIconSize(self.fowardButton.size())
 
         self.resizeEvent  = self.onResize
 

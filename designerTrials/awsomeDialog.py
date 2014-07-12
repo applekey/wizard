@@ -1,5 +1,6 @@
 from PyQt4 import QtCore, QtGui
 from awsomeNavigation import awsomeNavigation
+from componentConfirguration import *
 
 
 try:
@@ -46,15 +47,20 @@ class awsomeDialog(QtGui.QDialog):
         height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.verticalLayout.setGeometry(newSize)
+        self.mainframe.setGeometry(newSize)
+    
 
     def setupUi(self):
-        self.verticalLayout = QtGui.QVBoxLayout(self.parent)
+        self.mainframe = QtGui.QFrame(self.parent)
+        self.mainframe.setStyleSheet(awsomeDialogStyle)
+
+        self.verticalLayout = QtGui.QVBoxLayout(self.mainframe)
         self.verticalLayout.setContentsMargins(10, -1, 10, 10)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.parent)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.mainframe)
         self.horizontalLayout_2.setContentsMargins(10, 5, 10, -1)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.label = QtGui.QLabel(self.parent)
+        self.label = QtGui.QLabel(self.mainframe)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -63,11 +69,11 @@ class awsomeDialog(QtGui.QDialog):
         self.label.setMinimumSize(QtCore.QSize(0, 50))
         self.label.setObjectName(_fromUtf8("label"))
         self.horizontalLayout_2.addWidget(self.label)
-        self.pushButton = QtGui.QPushButton(self.parent)
+        self.pushButton = QtGui.QPushButton(self.mainframe)
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.horizontalLayout_2.addWidget(self.pushButton)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.scrollArea = QtGui.QScrollArea(self.parent)
+        self.scrollArea = QtGui.QScrollArea(self.mainframe)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -82,6 +88,7 @@ class awsomeDialog(QtGui.QDialog):
         self.verticalLayout.addWidget(self.scrollArea)
 
         self.retranslateUi()
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.close)
     
 
     def retranslateUi(self):

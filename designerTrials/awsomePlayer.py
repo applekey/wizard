@@ -119,6 +119,11 @@ class awsomePlayer( QtGui.QFrame):
         self.volumeSlider = phonon.Phonon.VolumeSlider(self)
         self.volumeSlider.setObjectName(_fromUtf8("volumeSlider"))
         self.volumeSlider.setAudioOutput( self.videoPlayer.audioOutput())
+        self.volumeSlider.setStyleSheet(qSliderStyle)
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.volumeSlider.setMuteVisible(False)
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.volumeSlider)
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)

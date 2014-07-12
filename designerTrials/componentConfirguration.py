@@ -1,10 +1,10 @@
 ### configuration items for awsomePlayer
-configPlaySVGLocation= "play.svg"
-configFullScreenSVGLocation = "play.svg"
+configPlaySVGLocation= "volumeSliderImages\VideoBar_B_2_PLAY.svg"
+configFullScreenSVGLocation = "volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
+volumeSliderIcon = "volumeSliderImages\VideoBar_A_2_SOUND.svg"
 
 videoScrollNubScanning = "nub.svg"
-videoScrollNubModeling = ""
-videoScrollNubPrinting = ""
+
 
 qSliderStyle=" \
 QSlider::groove:horizontal {\
@@ -14,7 +14,7 @@ height: 18px;\
 border-radius: 10px;\
 }\
 QSlider::handle:horizontal {\
-image: url(nub.svg);\
+image: url("+ videoScrollNubScanning+");\
 }\
 "
 
@@ -40,3 +40,12 @@ navBarBackgroundColor = '#A8ACAF'
 
 ## configuration for awsomeText
 awsomeTextBackGroundColor = '#A8ACAF'
+
+## configuration for awsomedialogue
+awsomeDialogStyle = "\
+background: #2980b9;\
+ border-radius: 20px;\
+border-width: 2px;\
+ border-style: outset;\
+border-color: #7f8c8d;\
+}"
