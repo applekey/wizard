@@ -66,6 +66,15 @@ videoPlayerBackgroundColor = "#ecf0f1"
 ## textFrame constantts
 textFrameBackgroundColor =  "#95a5a6"
 
+##awsome Slider constatns
+awsomeSliderNumberDisplayStyle = "\
+background:#bdc3c7;\
+border-style: outset;\
+border-radius: 15px;\
+border-width: 2px;\
+border-color: #FFFFFF\
+"
+
 
 
 
