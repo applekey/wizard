@@ -66,11 +66,13 @@ class awsomeNavigation(QtGui.QWidget):
             if pageIndex is pageNumber:
                 self.pages[pageIndex].show()
                 self.verticalLayout.removeWidget(self.activePage)
+                self.verticalLayout.removeWidget(self.sizeGrip)
                 self.verticalLayout.removeItem(self.horizontalLayout)
-                self.activePage.hide()
+                self.activePage.hide()z
                 self.activePage = self.pages[pageIndex]
                 self.verticalLayout.addWidget(self.activePage)
                 self.verticalLayout.addLayout(self.horizontalLayout)
+                self.verticalLayout.addWidget(self.sizeGrip,0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
                 self.currentPage = pageNumber
                 
     def renderPages(self):
@@ -97,6 +99,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+
         ## banner stuff
         self.banner = banner(self)
         self.banner.setStyleSheet("background:"+"#9b59b6")
@@ -160,6 +163,9 @@ class awsomeNavigation(QtGui.QWidget):
         QtCore.QObject.connect(self.fowardButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.nextClicked)
         QtCore.QObject.connect(self.backButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.prevClicked)
         self.banner.bannerTriggered.connect(self.bannerTriggered)
+
+        self.sizeGrip = QtGui.QSizeGrip(self.layoutWidget)
+        self.verticalLayout.addWidget( self.sizeGrip, 0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight);
 
      
 
