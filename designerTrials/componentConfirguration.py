@@ -51,9 +51,9 @@ awsomeTextBackGroundColor = '#A8ACAF'
 ## configuration for awsomedialogue
 awsomeDialogStyle = "\
 background: #2980b9;\
- border-radius: 20px;\
+border-radius: 20px;\
 border-width: 2px;\
- border-style: outset;\
+border-style: outset;\
 border-color: #7f8c8d;\
 }"
 
@@ -73,11 +73,23 @@ textFrameBackgroundColor =  "#95a5a6"
 
 ##awsome Slider constatns
 awsomeSliderNumberDisplayStyle = "\
-background:#bdc3c7;\
+background:transparent;\
 border-style: outset;\
-border-radius: 5px;\
+border-radius: 10px;\
 border-width: 2px;\
 border-color: #FFFFFF\
+"
+
+awsomeSliderStyle=" \
+QSlider::groove:horizontal {\
+border: 1.3px solid #FFFFFF;\
+background: transparent;\
+height: 18px;\
+border-radius: 10px;\
+}\
+QSlider::handle:horizontal {\
+image: url("+ videoScrollNubScanning+");\
+}\
 "
 
 ## textedit scrollbar config

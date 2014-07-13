@@ -73,19 +73,26 @@ class awsomeDialog(QtGui.QDialog):
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.horizontalLayout_2.addWidget(self.pushButton)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.scrollArea = QtGui.QScrollArea(self.mainframe)
+        
+        self.scrollArea = QtGui.QPlainTextEdit(self.mainframe)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.MinimumExpanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
+        
+        
         self.scrollArea.setSizePolicy(sizePolicy)
-        self.scrollArea.setWidgetResizable(True)
+        #self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
         self.scrollAreaWidgetContents_3 = QtGui.QWidget()
         #self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 419, 386))
         self.scrollAreaWidgetContents_3.setObjectName(_fromUtf8("scrollAreaWidgetContents_3"))
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
+        #self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
         self.verticalLayout.addWidget(self.scrollArea)
+
+        self.scrollArea.setFrameShape(QtGui.QFrame.NoFrame)
+        self.sizeGrip = QtGui.QSizeGrip(self.mainframe)
+        self.verticalLayout.addWidget( self.sizeGrip, 0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight);
 
         self.retranslateUi()
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.close)

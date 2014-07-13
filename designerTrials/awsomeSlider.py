@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import QSizePolicy
 from componentConfirguration import *
 
 try:
@@ -52,27 +53,33 @@ class awsomeSlider(QtGui.QFrame):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.label_3 = QtGui.QLabel(self)
+
         self.label_3.setText("Degree")
-        
+        self.label_3.setFont(QtGui.QFont(fontName, fontSize*0.7))
+        self.label_3.setSizePolicy(QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed))
         self.verticalLayout.addWidget(self.label_3)
+       
         
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        
         self.horizontalSlider = QtGui.QSlider(self)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider.setObjectName(_fromUtf8("horizontalSlider"))
-        self.horizontalSlider.setStyleSheet(qSliderStyle)
+        self.horizontalSlider.setStyleSheet(awsomeSliderStyle)
         QtCore.QObject.connect(self.horizontalSlider, QtCore.SIGNAL('valueChanged(int)'), self.sliderValueChanged)
         
         self.horizontalLayout.addWidget(self.horizontalSlider)
         self.label = QtGui.QLabel(self.parent)
         self.label.setText(str(self.horizontalSlider.value()))
         self.label.setStyleSheet(awsomeSliderNumberDisplayStyle)
+        self.label.setMinimumSize(33,0)
+        self.label.setMaximumSize(99999,22)
 
         self.horizontalLayout.addWidget(self.label)
         self.label_2 = QtGui.QLabel(self.parent)
         self.label_2.setText("cm")
+        self.label_2.setFont(QtGui.QFont(fontName, fontSize*0.7))
+      
         self.horizontalLayout.addWidget(self.label_2)
         self.verticalLayout.addLayout(self.horizontalLayout)
       
