@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+<g id="Cursors">
+	<g>
+		<circle fill="#F1C40F" cx="40" cy="40" r="40"/>
+		<circle fill="#FFFFFF" cx="40" cy="40" r="35"/>
+		<g>
+			<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="28.5,13.504 28.5,25.383 39.5,30.333 39.5,17.88 			"/>
+			<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="29.243,11.592 40.333,15.75 51.471,11.592 40.333,8.581 
+							"/>
+			<polygon fill="none" stroke="#F1C40F" stroke-miterlimit="10" points="41.5,17.778 41.5,29.992 52.5,25.158 52.5,13.504 			"/>
+		</g>
+		<g>
+			<polygon fill="#F1C40F" points="28,54.504 28,66.383 39,71.333 39,58.88 			"/>
+			<polygon fill="#F1C40F" points="29.243,52.592 40.333,56.75 51.471,52.592 40.333,49.581 			"/>
+			<polygon fill="#F1C40F" points="41,58.778 41,70.992 52,66.158 52,54.504 			"/>
+		</g>
+		<polygon fill="#F1C40F" points="28.5,37.195 40.357,42.693 51.5,37.195 		"/>
+	</g>
+</g>
+</svg>
