@@ -4,6 +4,7 @@ configPlaySVGLocation= "volumeSliderImages\VideoBar_B_2_PLAY.svg"
 configureStopSVGLocation = "volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg"
 configFullScreenSVGLocation = "volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
 volumeSliderIcon = "volumeSliderImages\VideoBar_A_2_SOUND.svg"
+volumeSliderMuteIcon="volumeSliderImages\VideoBar_C_1_SOUND.svg"
 
 #videoScrollNubScanning = os.getcwd()+"\\volumeSliderImages\\nub.svg"
 videoScrollNubScanning = "nub.svg"
@@ -77,6 +78,21 @@ border-style: outset;\
 border-radius: 5px;\
 border-width: 2px;\
 border-color: #FFFFFF\
+"
+
+## textedit scrollbar config
+scrollBarStyle = "\
+QScrollBar:verticle  {\
+    border: 2px solid grey;\
+    background: transparent;\
+	border-radius: 30px;\
+}\
+QScrollBar::handle:verticle  {\
+    background: white;\
+    min-height: 80px;\
+    border: 1px solid grey;\
+	border-radius: 7px;\
+}\
 "
 
 

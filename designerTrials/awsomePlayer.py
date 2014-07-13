@@ -25,6 +25,7 @@ class awsomePlayer( QtGui.QFrame):
         super( awsomePlayer, self ).__init__(parentForm)        
         self.videoSource = None
         self.state = 0 
+        self.mute = False
 
         ## god dam python doesn't have enums, 
         #0 means stop, 1 means paused and 2 means playing
@@ -46,7 +47,20 @@ class awsomePlayer( QtGui.QFrame):
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(_fromUtf8(configPlaySVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.playButton.setIcon(icon)
-          
+    def handleMute(self):
+        if self.mute:
+            self.mute=False
+            self.volumeSlider.setMaximumVolume(1.0) 
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.muteButton.setIcon(icon)
+
+        else:
+            self.mute = True
+            self.volumeSlider.setMaximumVolume(0.0) 
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderMuteIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.muteButton.setIcon(icon)
 
     def  pauseStart(self):
         if self.videoSource is  None:
@@ -135,14 +149,20 @@ class awsomePlayer( QtGui.QFrame):
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         self.horizontalLayout.addItem(spacerItem2)
 
+        self.muteButton = QtGui.QPushButton(self)
+        self.muteButton.setStyleSheet("border: none;");
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.muteButton.setIcon(icon)
+        self.horizontalLayout.addWidget( self.muteButton)
+
         self.volumeSlider = phonon.Phonon.VolumeSlider(self)
         self.volumeSlider.setObjectName(_fromUtf8("volumeSlider"))
         self.volumeSlider.setAudioOutput( self.videoPlayer.audioOutput())
         self.volumeSlider.setStyleSheet(qSliderStyle)
         self.volumeSlider.setMaximumSize(QtCore.QSize(100,10000))
 
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+     
         self.volumeSlider.setMuteVisible(False)
         # -----------horizontal spacer
         self.horizontalLayout.addWidget(self.volumeSlider)
@@ -165,3 +185,4 @@ class awsomePlayer( QtGui.QFrame):
         # link together singlas
         QtCore.QObject.connect(self.playButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.pauseStart)
         QtCore.QObject.connect(self.fullScreenButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.handleFullScreen)
+        QtCore.QObject.connect(self.muteButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.handleMute)

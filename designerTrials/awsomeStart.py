@@ -35,7 +35,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def centerOnScreen (self):
         resolution = QtGui.QDesktopWidget().screenGeometry()
-        self.setGeometry(10,30,resolution.width()/2.0, resolution.height()*0.9)
+        self.setGeometry(10,30,resolution.width()/2.8, resolution.height()*0.9)
 
     #def mousePressEvent(self,mouseEvent):
     #    self.oldPosition = mouseEvent.globalPos()
