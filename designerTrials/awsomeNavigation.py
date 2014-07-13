@@ -42,6 +42,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.layoutWidget = QtGui.QWidget(self)
         self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+        
     
     def addPages(self,pages):
         self.pages =pages

@@ -49,6 +49,13 @@ class awsomeSlider(QtGui.QFrame):
         self.label.setText(str(intValue))
 
     def setupUi(self):
+
+        palette = QtGui.QPalette()
+        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        palette.setBrush(QtGui.QPalette.All, QtGui.QPalette.WindowText, brush)
+
+
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
@@ -57,6 +64,7 @@ class awsomeSlider(QtGui.QFrame):
         self.label_3.setText("Degree")
         self.label_3.setFont(QtGui.QFont(fontName, fontSize*0.7))
         self.label_3.setSizePolicy(QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed))
+        self.label_3.setPalette(palette)
         self.verticalLayout.addWidget(self.label_3)
        
         
@@ -71,14 +79,18 @@ class awsomeSlider(QtGui.QFrame):
         self.horizontalLayout.addWidget(self.horizontalSlider)
         self.label = QtGui.QLabel(self.parent)
         self.label.setText(str(self.horizontalSlider.value()))
+        self.label.setFont(QtGui.QFont(fontName, fontSize*0.7))
+        self.label.setPalette(palette)
         self.label.setStyleSheet(awsomeSliderNumberDisplayStyle)
         self.label.setMinimumSize(33,0)
         self.label.setMaximumSize(99999,22)
+        
 
         self.horizontalLayout.addWidget(self.label)
         self.label_2 = QtGui.QLabel(self.parent)
         self.label_2.setText("cm")
         self.label_2.setFont(QtGui.QFont(fontName, fontSize*0.7))
+        self.label_2.setPalette(palette)
       
         self.horizontalLayout.addWidget(self.label_2)
         self.verticalLayout.addLayout(self.horizontalLayout)

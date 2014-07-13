@@ -41,14 +41,6 @@ class layoutWidget(QtGui.QFrame):
         # layout 1 is the first selection screen with the text boxes
         self.setupUi(parentForm)
 
-    def setGeometry(self, qrect):
-        #self.centralwidget.setGeometry(qrect)
-        self.__resizeGeometry(qrect)
-        super(layoutWidget,self).setGeometry(qrect)
-            
-    def __resizeGeometry(self,qsize):
-        self.verticalLayout.setGeometry(qsize)
-
     def sepecifySpecificLayout(layout):
         self.layout = layout
 

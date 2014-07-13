@@ -50,11 +50,9 @@ awsomeTextBackGroundColor = '#A8ACAF'
 
 ## configuration for awsomedialogue
 awsomeDialogStyle = "\
-background: #2980b9;\
-border-radius: 20px;\
+background: #ecf0f1;\
 border-width: 2px;\
-border-style: outset;\
-border-color: #7f8c8d;\
+border-color: #1ABC9C;\
 }"
 
 

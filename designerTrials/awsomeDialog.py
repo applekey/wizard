@@ -24,7 +24,7 @@ class awsomeDialog(QtGui.QDialog):
         
         self.parent = self
         self.setupUi()
-        self.parent.setGeometry(QtCore.QRect(position.x(), position.y(), 200, 200))
+        self.parent.setGeometry(QtCore.QRect(position.x()-80, position.y()-80, 200, 200))
         
         self.parent.setObjectName(_fromUtf8("widget"))
         
@@ -32,6 +32,7 @@ class awsomeDialog(QtGui.QDialog):
        
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, True)
+        self.setMinimumSize(500,300)
 
     def mousePressEvent(self,mouseEvent):
         self.oldPosition = mouseEvent.globalPos()
@@ -82,12 +83,8 @@ class awsomeDialog(QtGui.QDialog):
         
         
         self.scrollArea.setSizePolicy(sizePolicy)
-        #self.scrollArea.setWidgetResizable(True)
-        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
-        self.scrollAreaWidgetContents_3 = QtGui.QWidget()
-        #self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 419, 386))
-        self.scrollAreaWidgetContents_3.setObjectName(_fromUtf8("scrollAreaWidgetContents_3"))
-        #self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
+
+
         self.verticalLayout.addWidget(self.scrollArea)
 
         self.scrollArea.setFrameShape(QtGui.QFrame.NoFrame)
@@ -100,5 +97,7 @@ class awsomeDialog(QtGui.QDialog):
 
     def retranslateUi(self):
       
-        self.label.setText(_translate("Dialog", "TextLabel", None))
+        self.label.setText(_translate("Dialog", "HELP", None))
+        self.label.setFont(QtGui.QFont(fontName, fontSize))
         self.pushButton.setText("close")
+        self.scrollArea.setPlainText("This is a help tip ....")
