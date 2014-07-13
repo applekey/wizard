@@ -31,7 +31,9 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class layoutWidget(QtGui.QFrame):
+
     def __init__(self, parentForm,controlWidget):
+
         super( layoutWidget, self ).__init__(parentForm)
         self.specifiedLayout = 0
         self.controlWidget = controlWidget

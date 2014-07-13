@@ -37,14 +37,14 @@ class Ui_MainWindow(QtGui.QMainWindow):
         resolution = QtGui.QDesktopWidget().screenGeometry()
         self.setGeometry(10,30,resolution.width()/2.0, resolution.height()*0.9)
 
+    #def mousePressEvent(self,mouseEvent):
+    #    self.oldPosition = mouseEvent.globalPos()
+    #    print mouseEvent.pos()
 
-    def mousePressEvent(self,mouseEvent):
-        self.oldPosition = mouseEvent.globalPos()
-
-    def mouseMoveEvent(self,mouseEvent):
-        delta = mouseEvent.globalPos()- self.oldPosition
-        self.move(self.pos().x()+delta.x(),self.pos().y()+delta.y())
-        self.oldPosition = mouseEvent.globalPos()
+    #def mouseMoveEvent(self,mouseEvent):
+    #    delta = mouseEvent.globalPos()- self.oldPosition
+    #    self.move(self.pos().x()+delta.x(),self.pos().y()+delta.y())
+    #    self.oldPosition = mouseEvent.globalPos()
 
     def onResize(self,event):
         width= event.size().width()

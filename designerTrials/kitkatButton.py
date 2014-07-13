@@ -18,7 +18,18 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class kitKatButton( QtGui.QPushButton):
+    def mousePressEvent(self,mouseEvent):
+        self.oldPosition = mouseEvent.globalPos()
+        super(kitKatButton,self).mousePressEvent(mouseEvent)
+
+    def mouseMoveEvent(self,mouseEvent):
+        delta = mouseEvent.globalPos()- self.oldPosition
+        self.window().move(self.window().pos().x()+delta.x(),self.window().pos().y()+delta.y())
+        self.oldPosition = mouseEvent.globalPos()
+
+
     def __init__(self, *args):
+        self.oldPosition = QtCore.QPoint(0,0)
         self.text = ""
         self.textPosition = QPoint( 30, 10 );
         self.icon = None

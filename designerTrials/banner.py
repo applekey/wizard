@@ -36,7 +36,10 @@ class banner(QtGui.QFrame):
         return QtCore.QSize(300,80)
 
     def __init__(self, parentForm):
+        
+       
         super( banner, self ).__init__(parentForm)
+      
        
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
