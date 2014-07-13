@@ -1,6 +1,7 @@
 import os
 ### configuration items for awsomePlayer
 configPlaySVGLocation= "volumeSliderImages\VideoBar_B_2_PLAY.svg"
+configureStopSVGLocation = "volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg"
 configFullScreenSVGLocation = "volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
 volumeSliderIcon = "volumeSliderImages\VideoBar_A_2_SOUND.svg"
 
@@ -73,7 +74,7 @@ textFrameBackgroundColor =  "#95a5a6"
 awsomeSliderNumberDisplayStyle = "\
 background:#bdc3c7;\
 border-style: outset;\
-border-radius: 15px;\
+border-radius: 5px;\
 border-width: 2px;\
 border-color: #FFFFFF\
 "

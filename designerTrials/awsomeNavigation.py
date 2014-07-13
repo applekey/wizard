@@ -52,14 +52,14 @@ class awsomeNavigation(QtGui.QWidget):
         else:
             self.currentPage = self.currentPage+1
             self.changePage(self.currentPage)
-            print self.currentPage
+
     def prevClicked(self):
         if self.currentPage is 0:
             return
         else:
             self.currentPage = self.currentPage-1
             self.changePage(self.currentPage)
-            print self.currentPage
+
 
     def changePage(self,pageNumber):
         for pageIndex in range(len(self.pages)):
@@ -74,6 +74,15 @@ class awsomeNavigation(QtGui.QWidget):
                 self.verticalLayout.addLayout(self.horizontalLayout)
                 self.verticalLayout.addWidget(self.sizeGrip,0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
                 self.currentPage = pageNumber
+                ## check banner state
+                if pageIndex is 0:
+                    self.banner.modifyTabGeometry(0)
+                elif pageIndex is 1:
+                    self.banner.modifyTabGeometry(1)
+                else:
+                    pass
+
+                
                 
     def renderPages(self):
         self.setupUi(self)
@@ -133,7 +142,7 @@ class awsomeNavigation(QtGui.QWidget):
         ## this is where the naviagation bars will live
         self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.horizontalLayout.setContentsMargins(30, 15, 30, 15)
+        #self.horizontalLayout.setContentsMargins(30, 15, 30, 15)
         
         self.backButton = awsomePushButton(self.layoutWidget,[navigationBackStandard,navigationBackHover])
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
@@ -143,6 +152,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.backButton.setSizePolicy(sizePolicy)
         self.backButton.setObjectName(_fromUtf8("backButton"))
         self.horizontalLayout.addWidget(self.backButton)
+        
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
        

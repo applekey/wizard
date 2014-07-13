@@ -16,6 +16,12 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class awsomePushButton( QtGui.QPushButton):
+    def onResize(self,event):
+        width= event.size().width()
+        height= event.size().height()
+        newSize = QtCore.QRect(0,0,width,height)
+        self.setIconSize(QtCore.QSize(30,25))   
+    
     def __init__(self, parentForm,iconStatePics):
         super( awsomePushButton, self ).__init__(parentForm)
         self.iconStatePics = iconStatePics
@@ -25,7 +31,7 @@ class awsomePushButton( QtGui.QPushButton):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.iconStatePics[0])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setIcon(icon)
-       
+        self.resizeEvent  = self.onResize
         self.setMouseTracking(True)
        
 

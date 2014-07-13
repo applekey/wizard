@@ -30,11 +30,23 @@ class awsomePlayer( QtGui.QFrame):
         #0 means stop, 1 means paused and 2 means playing
 
         self.shortcutFull = QtGui.QShortcut(self)
-        self.shortcutFull.setKey(QtGui.QKeySequence('F11'))
+        self.shortcutFull.setKey(QtGui.QKeySequence('ESC'))
         self.shortcutFull.setContext(QtCore.Qt.ApplicationShortcut)
         self.shortcutFull.activated.connect(self.handleFullScreen)
 
         self.__setupUi(self)
+    
+    def startStopChangeIcon(self,playing):
+        if playing:
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(_fromUtf8(configureStopSVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.playButton.setIcon(icon)
+
+        else:
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(_fromUtf8(configPlaySVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.playButton.setIcon(icon)
+          
 
     def  pauseStart(self):
         if self.videoSource is  None:
@@ -43,9 +55,16 @@ class awsomePlayer( QtGui.QFrame):
             self.videoPlayer.play()
             self.videoPlayer.show()
             self.state = 2
+            self.startStopChangeIcon(True)
         else:
              self.videoPlayer.pause()
+             self.startStopChangeIcon(False)
+             
              self.state = 1
+    def pause(self):
+        self.videoPlayer.pause()
+        self.state = 1
+        self.startStopChangeIcon(False)
 
     def setSource(self,source):
         self.videoSource = source
@@ -57,10 +76,10 @@ class awsomePlayer( QtGui.QFrame):
     
     def handleFullScreen(self):
         videoWidget = self.videoPlayer.videoWidget()
-        #if videoWidget.isFullScreen():
-        #    videoWidget.exitFullScreen()
-        #else: 
-        #    videoWidget.enterFullScreen()
+        if videoWidget.isFullScreen():
+            videoWidget.exitFullScreen()
+        else: 
+            videoWidget.enterFullScreen()
   
 
        # self.player.mediaObject().stateChanged.connect(self.stateChanged)
@@ -90,7 +109,7 @@ class awsomePlayer( QtGui.QFrame):
         #below are the horizontal box that will contain the actual controls of the player
         self.horizontalLayout = QtGui.QHBoxLayout(self)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.horizontalLayout.setContentsMargins(33, 0, 33, 5)
+        self.horizontalLayout.setContentsMargins(11, 0, 11, 5)
         self.playButton = QtGui.QPushButton(self)
         self.playButton.setObjectName(_fromUtf8("pushButton"))
         self.playButton.setStyleSheet("border: none;");
@@ -102,24 +121,25 @@ class awsomePlayer( QtGui.QFrame):
         self.playButton.setIconSize(self.playButton.size())
         self.horizontalLayout.addWidget(self.playButton)
 
-        # -----------horizontal space
-        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
-        self.horizontalLayout.addItem(spacerItem1)
+        ## -----------horizontal space
+        #spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
+        #self.horizontalLayout.addItem(spacerItem1)
 
         self.seekSlider = awsomeSeekSlider(self)
         self.seekSlider.setObjectName(_fromUtf8("seekSlider"))
         self.seekSlider.setStyleSheet(qSliderStyle)
         self.seekSlider.setMinimumSize(QtCore.QSize(30, 24))
-        
-        # -----------horizontal spacer
-        self.horizontalLayout.addWidget(self.seekSlider)      
+        self.horizontalLayout.addWidget(self.seekSlider)     
+        ## -----------horizontal spacer
+         
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
-
         self.horizontalLayout.addItem(spacerItem2)
+
         self.volumeSlider = phonon.Phonon.VolumeSlider(self)
         self.volumeSlider.setObjectName(_fromUtf8("volumeSlider"))
         self.volumeSlider.setAudioOutput( self.videoPlayer.audioOutput())
         self.volumeSlider.setStyleSheet(qSliderStyle)
+        self.volumeSlider.setMaximumSize(QtCore.QSize(100,10000))
 
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)

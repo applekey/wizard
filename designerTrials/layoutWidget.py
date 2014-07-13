@@ -53,6 +53,12 @@ class layoutWidget(QtGui.QFrame):
     def setText(self,text):
         #self.textFrame.setText(text,text)
         pass
+    def setVideoSource(self,source):
+        self.videoPlayer.setSource(source)
+    def hide(self):
+        super(layoutWidget,self).hide()
+        self.videoPlayer.pause()
+        
 
     def setupUi(self,parentForm):
       
@@ -75,13 +81,14 @@ class layoutWidget(QtGui.QFrame):
 
         self.videoPlayer.setStyleSheet("background:"+videoPlayerBackgroundColor)
 
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.videoPlayer.sizePolicy().hasHeightForWidth())
         
         self.videoPlayer.setSizePolicy(sizePolicy)
         self.videoPlayer.setObjectName(_fromUtf8("pushButton_2"))
+        self.videoPlayer.setMaximumSize(QtCore.QSize(100000,400))
         self.verticalLayout.addWidget(self.videoPlayer)
         
         # ------------------------this is the second spacer
@@ -91,7 +98,7 @@ class layoutWidget(QtGui.QFrame):
 
         # this is the final dialog box
         self.textFrame = self.controlWidget(self)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.textFrame.sizePolicy().hasHeightForWidth())

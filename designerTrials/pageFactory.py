@@ -40,20 +40,13 @@ class pageFactory():
         controlWidget = demoPage
         self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page1Widget.setText("1")
+        self.page1Widget.setVideoSource("abc.mov")
 
 
 
 
-        self.page2Widget = layoutWidget(self.parentWidget,controlWidget)
-        self.page2Widget.setText("2")
-        self.page3Widget = layoutWidget(self.parentWidget,controlWidget)
-        self.page3Widget.setText("3")
-        self.page4Widget = layoutWidget(self.parentWidget,controlWidget)
-        self.page4Widget.setText("4")
         ## add all the widgets to pages to add
         self.pagesToAdd.append( self.introPage);
         self.pagesToAdd.append( self.page1Widget);
-        self.pagesToAdd.append( self.page2Widget);
-        self.pagesToAdd.append( self.page3Widget);
-        self.pagesToAdd.append( self.page4Widget);
+   
         return self.pagesToAdd
