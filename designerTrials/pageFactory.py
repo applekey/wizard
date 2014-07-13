@@ -12,6 +12,7 @@ from layoutWidget import layoutWidget
 from patientInfoPage import patientInfo
 from awsomeSlider import awsomeSlider
 from demoPage import demoPage
+from demoEndPage import demoEndPage
 
 
 try:
@@ -43,10 +44,11 @@ class pageFactory():
         self.page1Widget.setVideoSource("abc.mov")
 
 
-
+        self.endPage = demoEndPage(self.parentWidget)
 
         ## add all the widgets to pages to add
         self.pagesToAdd.append( self.introPage);
         self.pagesToAdd.append( self.page1Widget);
+        self.pagesToAdd.append( self.endPage);
    
         return self.pagesToAdd

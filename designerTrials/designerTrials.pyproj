@@ -26,6 +26,7 @@
     <Compile Include="awsomeText.py" />
     <Compile Include="banner.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
     <Compile Include="kitkatButton.py" />
     <Compile Include="layoutWidget.py" />

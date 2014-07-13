@@ -80,6 +80,8 @@ class awsomeNavigation(QtGui.QWidget):
                     self.banner.modifyTabGeometry(0)
                 elif pageIndex is 1:
                     self.banner.modifyTabGeometry(1)
+                elif pageIndex is 2:
+                    self.banner.modifyTabGeometry(2)
                 else:
                     pass
 
