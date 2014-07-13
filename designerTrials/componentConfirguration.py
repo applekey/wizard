@@ -1,8 +1,10 @@
+import os
 ### configuration items for awsomePlayer
 configPlaySVGLocation= "volumeSliderImages\VideoBar_B_2_PLAY.svg"
 configFullScreenSVGLocation = "volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
 volumeSliderIcon = "volumeSliderImages\VideoBar_A_2_SOUND.svg"
 
+#videoScrollNubScanning = os.getcwd()+"\\volumeSliderImages\\nub.svg"
 videoScrollNubScanning = "nub.svg"
 
 
@@ -17,6 +19,7 @@ QSlider::handle:horizontal {\
 image: url("+ videoScrollNubScanning+");\
 }\
 "
+print qSliderStyle
 
 ### configuration items for banner
 

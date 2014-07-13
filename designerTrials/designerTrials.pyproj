@@ -26,6 +26,7 @@
     <Compile Include="awsomeText.py" />
     <Compile Include="banner.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="contentPage\demoPage.py" />
     <Compile Include="kitkatButton.py" />
     <Compile Include="layoutWidget.py" />
     <Compile Include="awsomeDialog.py" />
@@ -36,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="contentPage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

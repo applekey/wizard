@@ -3,11 +3,15 @@
 #      by: PyQt4 UI code generator 4.11
 #
 # WARNING! All changes made in this file will be lost!
+import sys
+sys.path.append( 'contentPage' )
+
 
 from PyQt4 import QtCore, QtGui
 from layoutWidget import layoutWidget
 from patientInfoPage import patientInfo
 from awsomeSlider import awsomeSlider
+from demoPage import demoPage
 
 
 try:
@@ -33,7 +37,7 @@ class pageFactory():
         self.introPage =patientInfo(self.parentWidget) 
 
         ## create and modify the widgets here
-        controlWidget = awsomeSlider
+        controlWidget = demoPage
         self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page1Widget.setText("1")
 
