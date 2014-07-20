@@ -12,7 +12,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from layoutWidget import layoutWidget
 from banner import banner
-from componentConfirguration import *
+from navigationConfiguration import *
 from awsomePushButton import awsomePushButton
 
 try:
@@ -77,10 +77,16 @@ class awsomeNavigation(QtGui.QWidget):
                 self.currentPage = pageNumber
                 ## check banner state
                 if pageIndex is 0:
+                    self.backButton.setIconsPack([navigationBackStandardTheme1,navigationBackHoverTheme1]);
+                    self.fowardButton.setIconsPack([navigationFowardStandardTheme1,navigationFowardHoverTheme1]);
                     self.banner.modifyTabGeometry(0)
                 elif pageIndex is 1:
+                    self.backButton.setIconsPack([navigationBackStandardTheme2,navigationBackHoverTheme2]);
+                    self.fowardButton.setIconsPack([navigationFowardStandardTheme2,navigationFowardHoverTheme2]);
                     self.banner.modifyTabGeometry(1)
                 elif pageIndex is 2:
+                    self.backButton.setIconsPack([navigationBackStandardTheme3,navigationBackHoverTheme3]);
+                    self.fowardButton.setIconsPack([navigationFowardStandardTheme3,navigationFowardHoverTheme3]);
                     self.banner.modifyTabGeometry(2)
                 else:
                     pass
@@ -147,7 +153,7 @@ class awsomeNavigation(QtGui.QWidget):
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         #self.horizontalLayout.setContentsMargins(30, 15, 30, 15)
         
-        self.backButton = awsomePushButton(self.layoutWidget,[navigationBackStandard,navigationBackHover])
+        self.backButton = awsomePushButton(self.layoutWidget,[navigationBackStandardTheme1,navigationBackHoverTheme1])
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -159,7 +165,7 @@ class awsomeNavigation(QtGui.QWidget):
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
        
-        self.fowardButton = awsomePushButton(self.layoutWidget,[navigationFowardStandard,navigationFowardHover])
+        self.fowardButton = awsomePushButton(self.layoutWidget,[navigationFowardStandardTheme1,navigationFowardHoverTheme1])
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

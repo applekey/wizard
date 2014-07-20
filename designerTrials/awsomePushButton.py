@@ -33,7 +33,8 @@ class awsomePushButton( QtGui.QPushButton):
         self.setIcon(icon)
         self.resizeEvent  = self.onResize
         self.setMouseTracking(True)
-       
+    def setIconsPack(self,iconStatePics):
+        self.iconStatePics = iconStatePics
 
     def mouseMoveEvent(self, event):
         icon = QtGui.QIcon()

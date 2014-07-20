@@ -25,6 +25,7 @@
     <Compile Include="awsomeStart.py" />
     <Compile Include="awsomeText.py" />
     <Compile Include="banner.py" />
+    <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
@@ -41,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="contentPage\" />
+    <Folder Include="componentConfiguration\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

@@ -3,8 +3,6 @@
 #      by: PyQt4 UI code generator 4.11
 #
 # WARNING! All changes made in this file will be lost!
-import sys
-sys.path.append( 'contentPage' )
 
 
 from PyQt4 import QtCore, QtGui

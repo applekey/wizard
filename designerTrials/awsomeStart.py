@@ -7,6 +7,12 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import sys
+## append all project paths
+sys.path.append( 'componentConfiguration' )
+sys.path.append( 'contentPage' )
+
+
 from PyQt4 import QtCore, QtGui
 from awsomeNavigation import awsomeNavigation
 from pageFactory import pageFactory
@@ -74,7 +80,7 @@ if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
     MainWindow = Ui_MainWindow()
-    MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    #MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     MainWindow.show()
     sys.exit(app.exec_())
 

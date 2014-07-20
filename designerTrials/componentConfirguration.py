@@ -38,12 +38,7 @@ fontName  = "Open Sans"
 fontSize = 20
 
 
-## configuration for navigation bar
-navigationBackStandard = "navigationImages/Text Box_BACKWARDBT_ABC.svg"
-navigationBackHover = "navigationImages/Text Box_BACKWARDBT_A_CURSORSTAND.svg"
-navigationFowardStandard = "navigationImages/Text Box_FORWARDBT_ABC.svg"
-navigationFowardHover = "navigationImages/Text Box_FORWARDBT_A_CURSORSTAND.svg"
-navBarBackgroundColor = '#A8ACAF'
+
 
 ## configuration for awsomeText
 awsomeTextBackGroundColor = '#A8ACAF'
