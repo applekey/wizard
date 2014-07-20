@@ -1,10 +1,13 @@
 import os
+
+imageFileFolder = "imageFiles\\"
+
 ### configuration items for awsomePlayer
-configPlaySVGLocation= "volumeSliderImages\VideoBar_B_2_PLAY.svg"
-configureStopSVGLocation = "volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg"
-configFullScreenSVGLocation = "volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
-volumeSliderIcon = "volumeSliderImages\VideoBar_A_2_SOUND.svg"
-volumeSliderMuteIcon="volumeSliderImages\VideoBar_C_1_SOUND.svg"
+configPlaySVGLocation= imageFileFolder+"volumeSliderImages\VideoBar_B_2_PLAY.svg"
+configureStopSVGLocation = imageFileFolder+"volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg"
+configFullScreenSVGLocation = imageFileFolder+"volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
+volumeSliderIcon = imageFileFolder+"volumeSliderImages\VideoBar_A_2_SOUND.svg"
+volumeSliderMuteIcon=imageFileFolder+"volumeSliderImages\VideoBar_C_1_SOUND.svg"
 
 #videoScrollNubScanning = os.getcwd()+"\\volumeSliderImages\\nub.svg"
 videoScrollNubScanning = "nub.svg"
@@ -27,8 +30,8 @@ print qSliderStyle
 
 activeColors = ['#1ABC9C','#F1C40F','#E74C3B']
 inactiveColors = ['#A8ACAF','#99A3A3','#879191']
-activeIcons =["bannerImages/0__A_1_ICON80.svg","bannerImages/0__B_1_ICON80.svg","bannerImages/0__C_1_ICON80.svg"]
-inactiveIcons =["bannerImages/0__A_2_ICON80.svg","bannerImages/0__B_2_ICON80.svg","bannerImages/0__C_2_ICON80.svg"]
+activeIcons =[imageFileFolder+"bannerImages/0__A_1_ICON80.svg",imageFileFolder+"bannerImages/0__B_1_ICON80.svg",imageFileFolder+"bannerImages/0__C_1_ICON80.svg"]
+inactiveIcons =[imageFileFolder+"bannerImages/0__A_2_ICON80.svg",imageFileFolder+"bannerImages/0__B_2_ICON80.svg",imageFileFolder+"bannerImages/0__C_2_ICON80.svg"]
 bannerText = ['Scanning','Modeling','Printing']
 bannerIconWidth = 60
 

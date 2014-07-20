@@ -12,6 +12,7 @@ import sys
 sys.path.append( 'componentConfiguration' )
 sys.path.append( 'contentPage' )
 sys.path.append( 'uiLib' )
+sys.path.append( 'imageFiles' )
 
 
 from PyQt4 import QtCore, QtGui
@@ -20,7 +21,7 @@ from pageFactory import pageFactory
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
+except AttributeError:  
     def _fromUtf8(s):
         return s
 
