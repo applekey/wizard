@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
+import atexit
 ## append all project paths
 sys.path.append( 'componentConfiguration' )
 sys.path.append( 'contentPage' )

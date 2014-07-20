@@ -1,0 +1,1 @@
+pyinstaller awsomeStart.py --paths=uiLib;componentConfiguration;contentPage;imageFiles
