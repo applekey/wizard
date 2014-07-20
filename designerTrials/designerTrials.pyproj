@@ -23,6 +23,7 @@
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
     <Compile Include="pageFactory.py" />
+    <Compile Include="settingSaver\saverEngine.py" />
     <Compile Include="uiLib\awsomeDialog.py" />
     <Compile Include="uiLib\awsomeDialogueButton.py" />
     <Compile Include="uiLib\awsomeNavigation.py" />
@@ -43,6 +44,7 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
+    <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
