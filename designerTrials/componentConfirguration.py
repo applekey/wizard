@@ -1,16 +1,22 @@
-import os
+import os,sys
+
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
+
 
 imageFileFolder = "imageFiles\\"
 
 ### configuration items for awsomePlayer
-configPlaySVGLocation= imageFileFolder+"volumeSliderImages\VideoBar_B_2_PLAY.svg"
-configureStopSVGLocation = imageFileFolder+"volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg"
-configFullScreenSVGLocation = imageFileFolder+"volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg"
-volumeSliderIcon = imageFileFolder+"volumeSliderImages\VideoBar_A_2_SOUND.svg"
-volumeSliderMuteIcon=imageFileFolder+"volumeSliderImages\VideoBar_C_1_SOUND.svg"
+configPlaySVGLocation= resource_path(imageFileFolder+"volumeSliderImages\VideoBar_B_2_PLAY.svg")
+configureStopSVGLocation = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg")
+configFullScreenSVGLocation = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg")
+volumeSliderIcon = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_A_2_SOUND.svg")
+volumeSliderMuteIcon=resource_path(imageFileFolder+"volumeSliderImages\VideoBar_C_1_SOUND.svg")
 
 #videoScrollNubScanning = os.getcwd()+"\\volumeSliderImages\\nub.svg"
-videoScrollNubScanning = "nub.svg"
+videoScrollNubScanning = ":general/nub.svg"
 
 
 qSliderStyle=" \
@@ -30,13 +36,13 @@ print qSliderStyle
 
 activeColors = ['#1ABC9C','#F1C40F','#E74C3B']
 inactiveColors = ['#A8ACAF','#99A3A3','#879191']
-activeIcons =[imageFileFolder+"bannerImages/0__A_1_ICON80.svg",imageFileFolder+"bannerImages/0__B_1_ICON80.svg",imageFileFolder+"bannerImages/0__C_1_ICON80.svg"]
-inactiveIcons =[imageFileFolder+"bannerImages/0__A_2_ICON80.svg",imageFileFolder+"bannerImages/0__B_2_ICON80.svg",imageFileFolder+"bannerImages/0__C_2_ICON80.svg"]
+activeIcons =[resource_path(imageFileFolder+"bannerImages/0__A_1_ICON80.svg"),resource_path(imageFileFolder+"bannerImages/0__B_1_ICON80.svg"),resource_path(imageFileFolder+"bannerImages/0__C_1_ICON80.svg")]
+inactiveIcons =[resource_path(imageFileFolder+"bannerImages/0__A_2_ICON80.svg"),resource_path(imageFileFolder+"bannerImages/0__B_2_ICON80.svg"),resource_path(imageFileFolder+"bannerImages/0__C_2_ICON80.svg")]
 bannerText = ['Scanning','Modeling','Printing']
 bannerIconWidth = 60
 
 #fonts
-fontFile = "resources/OpenSans-Bold.ttf"
+fontFile = resource_path("resources/OpenSans-Bold.ttf")
 fontName  = "Open Sans"
 fontSize = 20
 

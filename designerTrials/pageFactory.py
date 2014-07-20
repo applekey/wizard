@@ -4,6 +4,7 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import sys,os
 
 from PyQt4 import QtCore, QtGui
 from layoutWidget import layoutWidget
@@ -27,6 +28,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(relative)
+
 class pageFactory():
     def __init__(self,parentWidget):
         self.parentWidget = parentWidget
@@ -39,7 +45,7 @@ class pageFactory():
         controlWidget = demoPage
         self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
         self.page1Widget.setText("1")
-        self.page1Widget.setVideoSource("abc.mov")
+        self.page1Widget.setVideoSource(resource_path("imageFiles\\video\\abc.mov"))
 
 
         self.endPage = demoEndPage(self.parentWidget)

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/general">
+    <file alias='nub.svg'>imageFiles/general/nub.svg</file>
+  </qresource>
+</RCC>

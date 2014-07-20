@@ -1,9 +1,9 @@
-('C:\\Users\\applekey\\Desktop\\designerTrials\\dist\\awsomeStart.exe',
- True,
+('F:\\github\\wizard\\designerTrials\\dist\\awsomeStart.exe',
+ False,
  False,
  None,
  None,
  [],
  None,
  False,
- 1405829055L)
+ 1405872334L)

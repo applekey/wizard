@@ -23,6 +23,7 @@
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
     <Compile Include="pageFactory.py" />
+    <Compile Include="resourceFile.py" />
     <Compile Include="settingSaver\saverEngine.py" />
     <Compile Include="uiLib\awsomeDialog.py" />
     <Compile Include="uiLib\awsomeDialogueButton.py" />

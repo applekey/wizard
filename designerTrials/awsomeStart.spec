@@ -11,8 +11,8 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='awsomeStart.exe',
+          name='MeshWiz.exe',
           debug=False,
           strip=None,
           upx=True,
-          console=True )
+          console=False )
