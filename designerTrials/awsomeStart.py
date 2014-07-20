@@ -11,6 +11,7 @@ import sys
 ## append all project paths
 sys.path.append( 'componentConfiguration' )
 sys.path.append( 'contentPage' )
+sys.path.append( 'uiLib' )
 
 
 from PyQt4 import QtCore, QtGui

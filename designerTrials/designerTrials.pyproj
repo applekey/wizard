@@ -17,25 +17,25 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
-    <Compile Include="awsomeDialogueButton.py" />
-    <Compile Include="awsomeNavigation.py" />
-    <Compile Include="awsomePlayer.py" />
-    <Compile Include="awsomePushButton.py" />
-    <Compile Include="awsomeSlider.py" />
     <Compile Include="awsomeStart.py" />
-    <Compile Include="awsomeText.py" />
-    <Compile Include="banner.py" />
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
-    <Compile Include="kitkatButton.py" />
-    <Compile Include="layoutWidget.py" />
-    <Compile Include="awsomeDialog.py" />
     <Compile Include="pageFactory.py" />
-    <Compile Include="patientInfoPage.py" />
-    <Compile Include="trial.py" />
-    <Compile Include="awsomeSeekSlider.py" />
+    <Compile Include="uiLib\awsomeDialog.py" />
+    <Compile Include="uiLib\awsomeDialogueButton.py" />
+    <Compile Include="uiLib\awsomeNavigation.py" />
+    <Compile Include="uiLib\awsomePlayer.py" />
+    <Compile Include="uiLib\awsomePushButton.py" />
+    <Compile Include="uiLib\awsomeSeekSlider.py" />
+    <Compile Include="uiLib\awsomeSlider.py" />
+    <Compile Include="uiLib\awsomeText.py" />
+    <Compile Include="uiLib\banner.py" />
+    <Compile Include="uiLib\kitkatButton.py" />
+    <Compile Include="uiLib\layoutWidget.py" />
+    <Compile Include="uiLib\mywidget.py" />
+    <Compile Include="uiLib\patientInfoPage.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />
@@ -43,6 +43,7 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
+    <Folder Include="uiLib\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
