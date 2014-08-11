@@ -40,26 +40,26 @@ class awsomePlayer( QtGui.QFrame):
     def startStopChangeIcon(self,playing):
         if playing:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(_fromUtf8(configureStopSVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap( (configureStopSVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.playButton.setIcon(icon)
 
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(_fromUtf8(configPlaySVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap( (configPlaySVGLocation)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.playButton.setIcon(icon)
     def handleMute(self):
         if self.mute:
             self.mute=False
             self.volumeSlider.setMaximumVolume(1.0) 
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap( (volumeSliderIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.muteButton.setIcon(icon)
 
         else:
             self.mute = True
             self.volumeSlider.setMaximumVolume(0.0) 
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(_fromUtf8(volumeSliderMuteIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap( (volumeSliderMuteIcon)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.muteButton.setIcon(icon)
 
     def  pauseStart(self):
@@ -107,11 +107,11 @@ class awsomePlayer( QtGui.QFrame):
         # create the verticle layout, everthing lives in this verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.verticalLayout.setObjectName( ("verticalLayout"))
         # self.verticalLayout.setContentsMargins(33, 0, 33, 0)
         # create the video player
         self.videoPlayer = phonon.Phonon.VideoPlayer(self)
-        self.videoPlayer.setObjectName(_fromUtf8("videoPlayer"))
+        self.videoPlayer.setObjectName( ("videoPlayer"))
         policy = QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.MinimumExpanding)
         self.videoPlayer.setSizePolicy(policy)
 
@@ -122,7 +122,7 @@ class awsomePlayer( QtGui.QFrame):
         
         #below are the horizontal box that will contain the actual controls of the player
         self.horizontalLayout = QtGui.QHBoxLayout(self)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.horizontalLayout.setObjectName( ("horizontalLayout"))
         self.horizontalLayout.setContentsMargins(11, 0, 11, 5)
         self.playButton = QtGui.QPushButton(self)
         self.playButton.setObjectName(_fromUtf8("pushButton"))

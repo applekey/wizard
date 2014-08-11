@@ -4,9 +4,12 @@ a = Analysis(['awsomeStart.py'],
              hiddenimports=[],
              hookspath=None,
              runtime_hooks=None)
+
+a.datas += [('QtXml4.dll', 'QtXml4.dll', 'DATA')]
+
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
-		  Tree('imageFiles',prefix='imageFiles'),
+          Tree('imageFiles',prefix='imageFiles'),
           a.scripts,
           a.binaries,
           a.zipfiles,
@@ -15,4 +18,4 @@ exe = EXE(pyz,
           debug=False,
           strip=None,
           upx=True,
-          console=False )
+          console=True )

@@ -8,12 +8,17 @@ def resource_path(relative):
 
 imageFileFolder = "imageFiles\\"
 
+
 ### configuration items for awsomePlayer
 configPlaySVGLocation= resource_path(imageFileFolder+"volumeSliderImages\VideoBar_B_2_PLAY.svg")
 configureStopSVGLocation = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_C_1_SLIDEBUTTON.svg")
 configFullScreenSVGLocation = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_B_2_FULLSCREEN.svg")
 volumeSliderIcon = resource_path(imageFileFolder+"volumeSliderImages\VideoBar_A_2_SOUND.svg")
 volumeSliderMuteIcon=resource_path(imageFileFolder+"volumeSliderImages\VideoBar_C_1_SOUND.svg")
+
+print configPlaySVGLocation
+print configureStopSVGLocation
+print configFullScreenSVGLocation
 
 #videoScrollNubScanning = os.getcwd()+"\\volumeSliderImages\\nub.svg"
 videoScrollNubScanning = ":general/nub.svg"

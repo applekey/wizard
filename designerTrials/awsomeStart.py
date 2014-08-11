@@ -21,6 +21,7 @@ from PyQt4 import QtCore, QtGui
 from awsomeNavigation import awsomeNavigation
 from pageFactory import pageFactory
 from resourceFile import *
+from PyQt4 import QtSvg,QtXml
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -86,6 +87,8 @@ if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     MainWindow = Ui_MainWindow()
     #MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+
+    br = QtSvg.QGraphicsSvgItem("C:\your_interactive_svg.svg")
     MainWindow.show()
     sys.exit(app.exec_())
 

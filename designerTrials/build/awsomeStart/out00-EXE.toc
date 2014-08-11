@@ -1,9 +1,9 @@
-('F:\\github\\wizard\\designerTrials\\dist\\awsomeStart.exe',
- False,
+('F:\\github\\wizard\\designerTrials\\dist\\MeshWiz.exe',
+ True,
  False,
  None,
  None,
  [],
  None,
  False,
- 1405872334L)
+ 1405917756L)
