@@ -1,75 +1,70 @@
-import sys
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-
-__data__ = [
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    ]
-
-def get_html_box(text):
-    return '''<table border="0" width="100%"><tr width="100%" valign="top">
-        <td width="1%"><img src="softwarecenter.png"/></td>
-        <td><table border="0" width="100%" height="100%">
-        <tr><td><b><a href="http://www.google.com">titolo</a></b></td></tr>
-        <tr><td>{0}</td></tr><tr><td align="right">88/88/8888, 88:88</td></tr>
-        </table></td></tr></table>'''.format(text)
-
-class HTMLDelegate(QStyledItemDelegate):
-
-    def paint(self, painter, option, index):
-        model = index.model()
-        record = model.listdata[index.row()]
-        doc = QTextDocument(self)
-        doc.setHtml(get_html_box(record))
-        doc.setTextWidth(option.rect.width())
-        ctx = QAbstractTextDocumentLayout.PaintContext()
-
-        painter.save()
-        painter.translate(option.rect.topLeft());
-        painter.setClipRect(option.rect.translated(-option.rect.topLeft()))
-        dl = doc.documentLayout()
-        dl.draw(painter, ctx)
-        painter.restore()
-
-    def sizeHint(self, option, index):
-        model = index.model()
-        record = model.listdata[index.row()]
-        doc = QTextDocument(self)
-        doc.setHtml(get_html_box(record))
-        doc.setTextWidth(option.rect.width())
-        return QSize(doc.idealWidth(), doc.size().height())
-
-class MyListModel(QAbstractListModel):
-
-    def __init__(self, parent=None, *args):
-        super(MyListModel, self).__init__(parent, *args)
-        self.listdata = __data__
-
-    def rowCount(self, parent=QModelIndex()):
-        return len(self.listdata)
-
-    def data(self, index, role=Qt.DisplayRole):
-        return index.isValid() and QVariant(self.listdata[index.row()]) or QVariant()
-
-class MyWindow(QWidget):
-
-    def __init__(self, *args):
-        super(MyWindow, self).__init__(*args)
-        # listview
-        self.lv = QListView()
-        self.lv.setModel(MyListModel(self))
-        self.lv.setItemDelegate(HTMLDelegate(self))
-        self.lv.setResizeMode(QListView.Adjust)
-        # layout
-        layout = QVBoxLayout()
-        layout.addWidget(self.lv)
-        self.setLayout(layout)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    w = MyWindow()
-    w.show()
-    sys.exit(app.exec_())
+# Create an application
+app = QApplication([])
+ 
+# And a window
+win = QWidget()
+win.setWindowTitle('QWebView Interactive Demo')
+ 
+# And give it a layout
+layout = QVBoxLayout()
+win.setLayout(layout)
+ 
+# Create and fill a QWebView
+view = QWebView()
+view.setHtml('''
+  <html>
+    <head>
+      <title>A Demo Page</title>
+ 
+      <script language="javascript">
+        // Completes the full-name control and
+        // shows the submit button
+        function completeAndReturnName() {
+          var fname = document.getElementById('fname').value;
+          var lname = document.getElementById('lname').value;
+          var full = fname + ' ' + lname;
+ 
+          document.getElementById('fullname').value = full;
+          document.getElementById('submit-btn').style.display = 'block';
+ 
+          return full;
+        }
+      </script>
+    </head>
+ 
+    <body>
+      <form>
+        <label for="fname">First name:</label>
+        <input type="text" name="fname" id="fname"></input>
+        <br />
+        <label for="lname">Last name:</label>
+        <input type="text" name="lname" id="lname"></input>
+        <br />
+        <label for="fullname">Full name:</label>
+        <input disabled type="text" name="fullname" id="fullname"></input>
+        <br />
+        <input style="display: none;" type="submit" id="submit-btn"></input>
+      </form>
+    </body>
+  </html>
+''')
+ 
+# A button to call our JavaScript
+button = QPushButton('Set Full Name')
+ 
+# Interact with the HTML page by calling the completeAndReturnName
+# function; print its return value to the console
+def complete_name():
+    frame = view.page().mainFrame()
+    print frame.evaluateJavaScript('completeAndReturnName();')
+ 
+# Connect 'complete_name' to the button's 'clicked' signal
+button.clicked.connect(complete_name)
+ 
+# Add the QWebView and button to the layout
+layout.addWidget(view)
+layout.addWidget(button)
+ 
+# Show the window and run the app
+win.show()
+app.exec_()

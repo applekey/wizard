@@ -20,12 +20,8 @@ sys.path.append( 'settingSaver' )
 from PyQt4 import QtCore, QtGui
 from awsomeNavigation import awsomeNavigation
 from pageFactory import pageFactory
-
 from resourceFile import *
 from PyQt4 import QtSvg,QtXml
-
-#from resourceFile import *
-
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
