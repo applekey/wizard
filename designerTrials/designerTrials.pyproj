@@ -30,6 +30,7 @@
     <Compile Include="uiLib\awsomeNavigation.py" />
     <Compile Include="uiLib\awsomePlayer.py" />
     <Compile Include="uiLib\awsomePushButton.py" />
+    <Compile Include="uiLib\awsomeSeekSlider.py" />
     <Compile Include="uiLib\awsomeSlider.py" />
     <Compile Include="uiLib\awsomeText.py" />
     <Compile Include="uiLib\banner.py" />

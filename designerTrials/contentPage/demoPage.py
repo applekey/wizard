@@ -79,9 +79,44 @@ class demoPage(QtGui.QWidget):
         self.webview = QWebView(self)
         self.webview.settings().setUserStyleSheetUrl(QtCore.QUrl(''))
         self.webview.setHtml('''
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  
+  <style>
+  body {
+   background:#A8ACAF !important;
+}
+
+.circle
+{
+width:50px;
+height:50px;
+border-radius:25px;
+font-size:50px;
+color:#A8ACAF;
+line-height:50px;
+text-align:center;
+background:#ffffff
+}
+
+#headerContainer
+{
+  margin-top:10px;
+  margin-left:5px;
+}
+
+#headerFont
+{
+  font-size:30px;
+}
+
+#paragraphSection
+{
+  margin-top:40px;
+  margin-left:20px;
+  font-size:22px;
+  font-family:times;
+}
+  </style>
   <head>
     <meta charset="utf-8">
     <title>
@@ -89,42 +124,33 @@ class demoPage(QtGui.QWidget):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/bootstrap.min.css"
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
     rel="stylesheet">
-    <link href="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/bootstrap-glyphicons.css"
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
     rel="stylesheet">
   </head>
   
-  <body>
-    <script>
-        var path = document.location.pathname;
-       
+  <body id="body">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
-    >
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
     </script>
-    <script src="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/js/bootstrap.min.js"
-    >
-    </script>
-    <div class="page-header">
-      <div class="col-md-4">
-        <h1>
-          Adjusting
-        </h1>
+    <div id="headerContainer" class="row">
+      <div class="col-md-1">
+        <div class="circle">
+          1
+        </div>
       </div>
-      <div class="col-md-4">
-        <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
-         <div class="jumbotron">
-             <h1>
-            Hello, World!
-          </h1>
-         </div>
+      <div id="headerFont" class="col-md-7">
+        Adjusting
       </div>
     </div>
-    <p id="text" class="pull-left">
-      Turn on the computer, connect the Scanner to the USB and Power (if needed)
-      and make sure everything is working. Use any Skanect-compatible 3D scanner.
-    </p>
+    <div id="paragraphSection" class="row">
+      <p>
+        Turn on the computer, connect the Scanner to the USB and Power (if needed)
+        and make sure everything is working. Use any Skanect-compatible 3D scanner.
+      </p>
+    </div>
   </body>
 
 </html>
