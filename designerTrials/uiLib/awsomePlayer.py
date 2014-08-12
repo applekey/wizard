@@ -38,7 +38,7 @@ class awsomePlayer( QtGui.QFrame):
         self.__setupUi(self)
         
     def sizeHint(self):
-        return QtCore.QSize(0,240)
+        return QtCore.QSize(0,300)
     def startStopChangeIcon(self,playing):
         if playing:
             icon = QtGui.QIcon()
