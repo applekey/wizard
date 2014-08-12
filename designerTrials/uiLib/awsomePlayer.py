@@ -36,7 +36,9 @@ class awsomePlayer( QtGui.QFrame):
         self.shortcutFull.activated.connect(self.handleFullScreen)
 
         self.__setupUi(self)
-    
+        
+    def sizeHint(self):
+        return QtCore.QSize(0,300)
     def startStopChangeIcon(self,playing):
         if playing:
             icon = QtGui.QIcon()
@@ -182,6 +184,8 @@ class awsomePlayer( QtGui.QFrame):
         self.horizontalLayout.addWidget(self.fullScreenButton)
         self.verticalLayout.addLayout(self.horizontalLayout) 
 
+        minsize = QtCore.QSize(0,400)
+        abc = self.verticalLayout.minimumSize()
         # link together singlas
         QtCore.QObject.connect(self.playButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.pauseStart)
         QtCore.QObject.connect(self.fullScreenButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.handleFullScreen)
