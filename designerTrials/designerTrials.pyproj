@@ -47,5 +47,8 @@
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
