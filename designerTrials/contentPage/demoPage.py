@@ -79,41 +79,55 @@ class demoPage(QtGui.QWidget):
         self.webview = QWebView(self)
         self.webview.settings().setUserStyleSheetUrl(QtCore.QUrl(''))
         self.webview.setHtml('''
-        <html>
-    <head>
-      <title>A Demo Page</title>
- 
-      <script language="javascript">
-        // Completes the full-name control and
-        // shows the submit button
-        function completeAndReturnName() {
-          var fname = document.getElementById('fname').value;
-          var lname = document.getElementById('lname').value;
-          var full = fname + ' ' + lname;
- 
-          document.getElementById('fullname').value = full;
-          document.getElementById('submit-btn').style.display = 'block';
- 
-          return full;
-        }
-      </script>
-    </head>
- 
-    <body>
-      <form>
-        <label for="fname">First name:</label>
-        <input type="text" name="fname" id="fname"></input>
-        <br />
-        <label for="lname">Last name:</label>
-        <input type="text" name="lname" id="lname"></input>
-        <br />
-        <label for="fullname">Full name:</label>
-        <input disabled type="text" name="fullname" id="fullname"></input>
-        <br />
-        <input style="display: none;" type="submit" id="submit-btn"></input>
-      </form>
-    </body>
-  </html>
+ <!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/bootstrap-glyphicons.css"
+    rel="stylesheet">
+  </head>
+  
+  <body>
+    <script>
+        var path = document.location.pathname;
+       
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    >
+    </script>
+    <script src="F:/github/wizard/designerTrials/bootstrap/3.2.0/css/js/bootstrap.min.js"
+    >
+    </script>
+    <div class="page-header">
+      <div class="col-md-4">
+        <h1>
+          Adjusting
+        </h1>
+      </div>
+      <div class="col-md-4">
+        <img src="https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png">
+         <div class="jumbotron">
+             <h1>
+            Hello, World!
+          </h1>
+         </div>
+      </div>
+    </div>
+    <p id="text" class="pull-left">
+      Turn on the computer, connect the Scanner to the USB and Power (if needed)
+      and make sure everything is working. Use any Skanect-compatible 3D scanner.
+    </p>
+  </body>
+
+</html>
 ''')
         self.verticalLayout.addWidget(self.webview)
     
