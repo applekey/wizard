@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+    </title>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet">
+   
+    <link rel="stylesheet" type="text/css" href="rangeslider.js-0.3.2/rangeslider.css">
+
+  </head>
+  
+  <body>
+    <div class="container">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+    >
+    </script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    >
+    </script>
+
+
+
+
+  
+
+    <input type="range" min="10" max="1000" step="10" value="300">
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script src="rangeslider.js-0.3.2/rangeslider.js"></script>
+
+    <script>
+     var valueBubble = '<output class="rangeslider__value-bubble" />',
+      tempPosition, position;
+
+    $('input[type="range"]').rangeslider({
+    polyfill: false,
+    onInit: function() {
+        this.$range.append($(valueBubble));
+        this.update();
+    },
+    onSlide: function(pos, value) {
+      var $valueBubble = $('.rangeslider__value-bubble', this.$range);
+      tempPosition = pos + this.grabX;
+      position = (tempPosition <= this.handleWidth) ? this.handleWidth : (tempPosition >= this.maxHandleX) ? this.maxHandleX : tempPosition;
+      
+      if ($valueBubble.length) {
+        $valueBubble[0].style.left = Math.ceil(position) + 'px';
+        $valueBubble[0].innerHTML = value;
+      }
+    }
+    });
+
+
+
+      
+  </script>
+
+    
+  
+    
+  </body>
+
+</html>

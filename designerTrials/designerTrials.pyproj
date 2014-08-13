@@ -45,6 +45,8 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Repository\Scanning\" />
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
