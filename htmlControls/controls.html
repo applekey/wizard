@@ -12,6 +12,8 @@
     rel="stylesheet">
    
     <link rel="stylesheet" type="text/css" href="rangeslider.js-0.3.2/rangeslider.css">
+    <link rel="stylesheet" type="text/css" href="controls.css">
+
 
   </head>
   
@@ -25,44 +27,46 @@
     >
     </script>
 
-
-
-
-  
-
-    <input type="range" min="10" max="1000" step="10" value="300">
-    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
-    <script src="rangeslider.js-0.3.2/rangeslider.js"></script>
-
-    <script>
-     var valueBubble = '<output class="rangeslider__value-bubble" />',
-      tempPosition, position;
-
-    $('input[type="range"]').rangeslider({
-    polyfill: false,
-    onInit: function() {
-        this.$range.append($(valueBubble));
-        this.update();
-    },
-    onSlide: function(pos, value) {
-      var $valueBubble = $('.rangeslider__value-bubble', this.$range);
-      tempPosition = pos + this.grabX;
-      position = (tempPosition <= this.handleWidth) ? this.handleWidth : (tempPosition >= this.maxHandleX) ? this.maxHandleX : tempPosition;
-      
-      if ($valueBubble.length) {
-        $valueBubble[0].style.left = Math.ceil(position) + 'px';
-        $valueBubble[0].innerHTML = value;
-      }
-    }
-    });
-
-
-
-      
-  </script>
-
+<div id="slider">
+    <span id="value">50</span>
+    <input type="range" id="range" value="50"/>
+</div> 
     
-  
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div>
+            <h1>abc </h1>
+            <input type="range" min="10" max="1000" step="10" value="300">
+            <output class="output"></output>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>abc </h1>
+            <input type="range" min="10" max="1000" step="10" value="300">
+            <output class="output"></output>
+        </div>      
+    </li>        
+    <li class="list-group-item">
+        <div>
+            <h1>abc </h1>
+            <input type="range" min="10" max="1000" step="10" value="300">
+            <output class="output"></output>
+        </div>      
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>abc </h1>
+            <input type="range" min="10" max="1000" step="10" value="300">
+            <output class="output"></output>
+        </div>      
+    </li>
+</ul>
+
+
+
+
     
   </body>
 
