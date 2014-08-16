@@ -33,9 +33,13 @@
     <Compile Include="meshController\implementation\tool.py" />
     <Compile Include="meshController\implementation\util.py" />
     <Compile Include="meshController\implementation\__init__.py" />
-    <Compile Include="meshController\meshControllerWrapper.py">
+    <Compile Include="meshController\MeshWrapper.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="meshController\pythonApi\mmapi.py" />
+    <Compile Include="meshController\pythonApi\mmRemote.py" />
+    <Compile Include="meshController\pythonApi\setup.py" />
+    <Compile Include="meshController\pythonApi\test.py" />
     <Compile Include="pageFactory.py" />
     <Compile Include="resourceFile.py" />
     <Compile Include="settingSaver\saverEngine.py" />
@@ -62,12 +66,17 @@
     <Folder Include="allControls\" />
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
+    <Folder Include="meshController\pythonApi\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\Scanning\" />
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="meshController\pythonApi\mmapi.pyc" />
+    <Content Include="meshController\pythonApi\mmRemote.pyc" />
+    <Content Include="meshController\pythonApi\StoredCommands.h" />
+    <Content Include="meshController\pythonApi\_mmapi.pyd" />
     <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

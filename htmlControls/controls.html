@@ -27,39 +27,72 @@
     >
     </script>
 
-<div id="slider">
-    <span id="value">50</span>
-    <input type="range" id="range" value="50"/>
-</div> 
+
     
 
 <ul class="list-group">
     <li class="list-group-item">
         <div>
-            <h1>abc </h1>
-            <input type="range" min="10" max="1000" step="10" value="300">
-            <output class="output"></output>
+            <h1>Import Scan </h1>
+             <button  class="btn btn-default">Import</button>
         </div>
     </li>
     <li class="list-group-item">
         <div>
-            <h1>abc </h1>
-            <input type="range" min="10" max="1000" step="10" value="300">
-            <output class="output"></output>
+            <h1>Select All </h1>
+            <button  class="btn btn-default">Select All</button>
         </div>      
     </li>        
     <li class="list-group-item">
         <div>
-            <h1>abc </h1>
-            <input type="range" min="10" max="1000" step="10" value="300">
-            <output class="output"></output>
+            <h1>Remesh </h1>
+            <form  oninput="level.value = aslider.valueAsNumber">
+            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output for="aslider" name="level">0</output>
+            </form>
         </div>      
     </li>
     <li class="list-group-item">
         <div>
-            <h1>abc </h1>
-            <input type="range" min="10" max="1000" step="10" value="300">
-            <output class="output"></output>
+            <h1>Deform Smooth </h1>
+            <br>
+            <h3> Smooth Value</h3>
+            <form  oninput="level.value = aslider.valueAsNumber">
+            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output for="aslider" name="level">0</output>
+            </form>
+
+            <h3> Scale Value</h3>
+            <form  oninput="level.value = aslider.valueAsNumber">
+            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output for="aslider" name="level">0</output>
+            </form>
+        </div>      
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <h1>Offset</h1>
+           
+            <form  oninput="level.value = aslider.valueAsNumber">
+            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output for="aslider" name="level">0</output>
+            </form>
+        </div>      
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>Discard</h1>
+           <button  class="btn btn-default">Discard</button>
+        </div>      
+    </li>
+     <li class="list-group-item">
+        <div>
+            <h1>Final Remesh</h1>
+            <form  oninput="level.value = aslider.valueAsNumber">
+            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output for="aslider" name="level">0</output>
+            </form>
         </div>      
     </li>
 </ul>
