@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{22e5fe4b-fbd4-4f56-91c2-f14b2b48d57c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>awsomeStart.py</StartupFile>
+    <StartupFile>allControls\allControl.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -20,8 +20,22 @@
     <Compile Include="awsomeStart.py" />
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="allControls\allControl.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
+    <Compile Include="meshController\implementation\convert.py" />
+    <Compile Include="meshController\implementation\frame.py" />
+    <Compile Include="meshController\implementation\mm_math.py" />
+    <Compile Include="meshController\implementation\scene.py" />
+    <Compile Include="meshController\implementation\selection.py" />
+    <Compile Include="meshController\implementation\tool.py" />
+    <Compile Include="meshController\implementation\util.py" />
+    <Compile Include="meshController\implementation\__init__.py" />
+    <Compile Include="meshController\meshControllerWrapper.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pageFactory.py" />
     <Compile Include="resourceFile.py" />
     <Compile Include="settingSaver\saverEngine.py" />
@@ -45,6 +59,9 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
+    <Folder Include="allControls\" />
+    <Folder Include="meshController\" />
+    <Folder Include="meshController\implementation\" />
     <Folder Include="Repository\" />
     <Folder Include="Repository\Scanning\" />
     <Folder Include="settingSaver\" />

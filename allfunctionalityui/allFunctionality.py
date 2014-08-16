@@ -177,26 +177,7 @@ class Ui_WizardPage(object):
         self.label_18.setObjectName(_fromUtf8("label_18"))
 
         self.retranslateUi(WizardPage)
-        QtCore.QObject.connect(self.ImportScan, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.importFigure)
-        QtCore.QObject.connect(self.SelectAll, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.selectAll)
-        QtCore.QObject.connect(self.RemeshModel, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.remesh)
-        QtCore.QObject.connect(self.EnableWireframeMode, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.wireframe)
-        QtCore.QObject.connect(self.DeformSmoothEnable, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.deformsmooth)
-        QtCore.QObject.connect(self.RoughtSelection, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.roughtselectionforsocket)
-        QtCore.QObject.connect(self.RemeshSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.remeshValueChanged)
-        QtCore.QObject.connect(self.SmoothBoundary, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.ModifySmoothBoundary)
-        QtCore.QObject.connect(self.Discard, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editDiscard)
-        QtCore.QObject.connect(self.SecondaryRemeshing, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.remeshsecondtime)
-        QtCore.QObject.connect(self.SecondaryOffset, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editoffset)
-        QtCore.QObject.connect(self.HideLeg, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.selectleghide)
-        QtCore.QObject.connect(self.DeformSmooth_smoothValue, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.deformSmooth_smoothValueChanged)
-        QtCore.QObject.connect(self.offset_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.offset_distanceValueChanged)
-        QtCore.QObject.connect(self.SmoothBoundary_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.smoothBoundary_distanceValueChanged)
-        QtCore.QObject.connect(self.SecondaryOffset_distance, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.offsetSecond_distanceValueChanged)
-        QtCore.QObject.connect(self.DeformSmooth_scaleValue, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), WizardPage.deformSmooth_scaleValueChanged)
-        QtCore.QObject.connect(self.InvertSelection, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.invertSelection)
-        QtCore.QObject.connect(self.EditOffset, QtCore.SIGNAL(_fromUtf8("clicked()")), WizardPage.editoffset)
-        QtCore.QMetaObject.connectSlotsByName(WizardPage)
+      
 
     def retranslateUi(self, WizardPage):
         WizardPage.setWindowTitle(_translate("WizardPage", "WizardPage", None))
