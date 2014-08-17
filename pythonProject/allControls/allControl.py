@@ -22,7 +22,6 @@ class HTMLHelper(QtGui.QWidget):
         self.verticalLayout.setGeometry(newSize)
     def __init__(self, parent=None):
         super(HTMLHelper, self).__init__(parent)
-    
     def getText(self,location):
         isFile = os.path.isfile(location)
         if(isFile):
@@ -32,13 +31,15 @@ class HTMLHelper(QtGui.QWidget):
             return webpage
         else:
             return ""
-
-    def setHtml(self,htmlPage):
+    def setHtml(self,htmlPage):  
         htmlText = self.getText(htmlPage)
+        baseUrl = QtCore.QUrl.fromLocalFile(htmlPage)
+        
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
-        self.webView.setHtml(htmlText)
+        self.webView.setHtml(htmlText,baseUrl)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
+       
         self.setupUi()
 
     def setupUi(self):
