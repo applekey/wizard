@@ -16,9 +16,6 @@ from allControl import *
 
 import json
 
-jsonFile = "C:\\Users\\applekey2\\Documents\\wizard\\pythonProject\\pageConfiguration.json"
-
-
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -41,50 +38,42 @@ def resource_path(relative):
 class pageFactory():
     def __init__(self,parentWidget):
         self.parentWidget = parentWidget
-        self.pagesToAdd = []
+        
         self.__mainKey = "pageSetup"
         self.__sectionKey = "section"
         self.__pageRootKey = "pageRoot"
-
-    def createWidgets(self):
-        json_data=open(jsonFile).read()
+    def getPageData(self,dataLocation):
+        json_data=open(dataLocation).read()
         pageConfiguration = json.loads(json_data)
 
-        pageRoot = pageConfiguration[self.__pageRootKey]
+        self.pageRoot = pageConfiguration[self.__pageRootKey]
+        return pageConfiguration[self.__mainKey]
 
-        for x in range(0,len(pageConfiguration[self.__mainKey])):
-            sections = pageConfiguration[self.__mainKey][x][self.__sectionKey]
-            for y in range(0,len(sections)):
-                entry= dict(sections[y])
-                for keys,values in entry.items():
-                    if str(keys) == "page":
-                        page = HTMLHelper(self.parentWidget)
-                        page.setHtml(pageRoot+"\\"+values)
-                        self.pagesToAdd.append(page)
-
-
-
-
-
-
-        fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
+    def createPages(self,sections):
       
-        self.introPage =HTMLHelper(self.parentWidget)
-        self.introPage.setHtml(fileLocation)
+        self.pagesToAdd = []
+        pageSections = sections[self.__sectionKey]
+        for y in range(0,len(pageSections)):
+            entry= dict(pageSections[y])
+            for keys,values in entry.items():
+                if str(keys) == "page":
+                    page = HTMLHelper(self.parentWidget)
+                    page.setHtml(self.pageRoot+"\\"+values)
+                    self.pagesToAdd.append(page)
 
-        ## create and modify the widgets here
-        controlWidget = demoPage
-        self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
-        self.page1Widget.setText("1")
-        self.page1Widget.setVideoSource(resource_path("imageFiles\\video\\abc.mov"))
+
+        ### create and modify the widgets here
+        #controlWidget = demoPage
+        #self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
+        #self.page1Widget.setText("1")
+        #self.page1Widget.setVideoSource(resource_path("imageFiles\\video\\abc.mov"))
 
 
-        self.endPage = demoEndPage(self.parentWidget)
+        #self.endPage = demoEndPage(self.parentWidget)
 
-        ## add all the widgets to pages to add
-        self.pagesToAdd.append( self.introPage);
-        self.pagesToAdd.append( self.page1Widget);
-        self.pagesToAdd.append( self.endPage);
+        ### add all the widgets to pages to add
+        #self.pagesToAdd.append( self.page1Widget);
+        #self.pagesToAdd.append( self.endPage);
          
 
 

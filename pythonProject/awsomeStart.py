@@ -68,12 +68,28 @@ class Ui_MainWindow(QtGui.QMainWindow):
         height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.awsomeNavigation.setGeometry(newSize)
- 
+    
+    def appendPageTupple(self,pages,sectionIndex):
+        newPageList = []
+        for x in range(0,len(pages)): 
+            newPageList.append((sectionIndex,pages[x]))
+        return newPageList
+
     def setupUi(self):
         self.awsomeNavigation = awsomeNavigation(self)
         self.pageFactory = pageFactory(self.awsomeNavigation.returnParent())
-        pages= self.pageFactory.createWidgets()
-        self.awsomeNavigation.addPages(pages)
+        
+        jsonFile = "C:\\Users\\applekey2\\Documents\\wizard\\pythonProject\\pageConfiguration.json"
+        sections= self.pageFactory.getPageData(jsonFile)
+        for x in range(0,len(sections)):
+              self.awsomeNavigation.addSection("abc")
+              pagesData = sections[x]
+              pages = self.pageFactory.createPages(pagesData)
+              pages = self.appendPageTupple(pages,x)
+              self.awsomeNavigation.addPages(pages)
+             
+       
+     
         self.awsomeNavigation.renderPages()
         
         

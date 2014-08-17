@@ -32,9 +32,11 @@ except AttributeError:
 class awsomeNavigation(QtGui.QWidget):
     def __init__(self, parentForm):
         super( awsomeNavigation, self ).__init__(parentForm)
+        self.currentPages = 0
         self.currentPage = 0
         self.parent = parentForm
         self.pages =[]
+        self.sections =[]
         self.resize(parentForm.size())
         self.size = QtCore.QRect(0, 0, self.width(), self.height())
         self.setStyleSheet("background:"+navBarBackgroundColor)
@@ -43,9 +45,12 @@ class awsomeNavigation(QtGui.QWidget):
         self.layoutWidget.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
         
+    def addSection(self,name):
+        self.sections.append(self.currentPages)
     
     def addPages(self,pages):
-        self.pages =pages
+        self.pages =self.pages+pages 
+        self.currentPages = self.currentPages + len(pages)
 
     def nextClicked(self):
         if self.currentPage is len(self.pages)-1:
@@ -53,7 +58,7 @@ class awsomeNavigation(QtGui.QWidget):
         else:
             self.currentPage = self.currentPage+1
             self.changePage(self.currentPage)
-
+          
     def prevClicked(self):
         if self.currentPage is 0:
             return
@@ -62,34 +67,39 @@ class awsomeNavigation(QtGui.QWidget):
             self.changePage(self.currentPage)
 
 
+
     def changePage(self,pageNumber):
         for pageIndex in range(len(self.pages)):
             if pageIndex is pageNumber:
-                self.pages[pageIndex].show()
+                self.pages[pageIndex][1].show()
                 self.verticalLayout.removeWidget(self.activePage)
                 self.verticalLayout.removeWidget(self.sizeGrip)
                 self.verticalLayout.removeItem(self.horizontalLayout)
                 self.activePage.hide()
-                self.activePage = self.pages[pageIndex]
+                self.activePage = self.pages[pageIndex][1]
                 self.verticalLayout.addWidget(self.activePage)
                 self.verticalLayout.addLayout(self.horizontalLayout)
                 self.verticalLayout.addWidget(self.sizeGrip,0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
                 self.currentPage = pageNumber
+
+
+                self.banner.modifyTabGeometry(self.pages[pageIndex][0])
+
                 ## check banner state
-                if pageIndex is 0:
-                    self.backButton.setIconsPack([navigationBackStandardTheme1,navigationBackHoverTheme1]);
-                    self.fowardButton.setIconsPack([navigationFowardStandardTheme1,navigationFowardHoverTheme1]);
-                    self.banner.modifyTabGeometry(0)
-                elif pageIndex is 1:
-                    self.backButton.setIconsPack([navigationBackStandardTheme2,navigationBackHoverTheme2]);
-                    self.fowardButton.setIconsPack([navigationFowardStandardTheme2,navigationFowardHoverTheme2]);
-                    self.banner.modifyTabGeometry(1)
-                elif pageIndex is 2:
-                    self.backButton.setIconsPack([navigationBackStandardTheme3,navigationBackHoverTheme3]);
-                    self.fowardButton.setIconsPack([navigationFowardStandardTheme3,navigationFowardHoverTheme3]);
-                    self.banner.modifyTabGeometry(2)
-                else:
-                    pass
+                #if pageIndex is 0:
+                #    self.backButton.setIconsPack([navigationBackStandardTheme1,navigationBackHoverTheme1]);
+                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme1,navigationFowardHoverTheme1]);
+                #    self.banner.modifyTabGeometry(0)
+                #elif pageIndex is 1:
+                #    self.backButton.setIconsPack([navigationBackStandardTheme2,navigationBackHoverTheme2]);
+                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme2,navigationFowardHoverTheme2]);
+                #    self.banner.modifyTabGeometry(1)
+                #elif pageIndex is 2:
+                #    self.backButton.setIconsPack([navigationBackStandardTheme3,navigationBackHoverTheme3]);
+                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme3,navigationFowardHoverTheme3]);
+                #    self.banner.modifyTabGeometry(2)
+                #else:
+                #    pass
 
                 
                 
@@ -134,15 +144,15 @@ class awsomeNavigation(QtGui.QWidget):
         
         ## hide all the active pages
         for pageIndex in range(len(self.pages)):
-            self.pages[pageIndex].hide()
+            self.pages[pageIndex][1].hide()
             self.activePagePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.MinimumExpanding)
             self.activePagePolicy.setHorizontalStretch(0)
             self.activePagePolicy.setVerticalStretch(0)
-            self.activePagePolicy.setHeightForWidth(self.pages[pageIndex].sizePolicy().hasHeightForWidth())
-            self.pages[pageIndex].setSizePolicy(self.activePagePolicy)
+            self.activePagePolicy.setHeightForWidth(self.pages[pageIndex][1].sizePolicy().hasHeightForWidth())
+            self.pages[pageIndex][1].setSizePolicy(self.activePagePolicy)
 
         ## this is where the main screen will live
-        self.activePage = self.pages[0]
+        self.activePage = self.pages[0][1]
         self.activePage.show()
         
 

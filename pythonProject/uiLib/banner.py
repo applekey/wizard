@@ -46,8 +46,9 @@ class banner(QtGui.QFrame):
         self.tabText = bannerText
         self.activecolorArray = activeColors
         self.inactivecolorArray = inactiveColors
-        self.__setupUi(self)
         self.currentTabExpanded = 0
+        self.__setupUi(self)
+        
         self.resizeEvent = self.__resizeGeometry
        
     #configure the number of tabs, and also the text in each tab
@@ -74,6 +75,9 @@ class banner(QtGui.QFrame):
             self.modifyTabGeometry(buttonNumber)
         
     def modifyTabGeometry(self,tabToExpand):
+        if tabToExpand is self.currentTabExpanded:
+            pass
+
         width = self.size().width()
         secondaryButtonWidths =  (width - width*firstButtonWidthPercentage)/float(self.tabNumber-1)
         self.currentTabExpanded = tabToExpand

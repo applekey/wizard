@@ -1,30 +1,28 @@
 {
   "pageRoot":"C:\\Users\\applekey2\\Documents\\wizard\\contentPages",
   "pageSetup":[
-    {
+   {
       "section": [
         {"sectionName":"Scanning"},
-		  {"page":"controls.html"},
-    	  {"page":"page1.html"},
-    	  {"page":"page2.html"},
-  		  {"page":"page3.html"},
-  		  {"page":"page4.html"},
-  		  {"page":"page5.html"},
-  		  {"page":"page6.html"}
+    	  {"page":"controls.html"},
+		  {"page":"page1.html"}
 	    ]
     },
     {
       "section": [
         {"sectionName":"Modeling"},
-    	  {"page":"cd"},
-    	  {"page":"cd"}
+    	 
+    	  {"page":"page2.html"},
+  		  {"page":"page3.html"}
+  		 
 	    ]
     },
-    {
+	 {
       "section": [
         {"sectionName":"Printing"},
-    	  {"page":"cd"},
-    	  {"page":"cd"}
+    	  {"page":"page4.html"},
+  		  {"page":"page5.html"},
+  		  {"page":"page6.html"}
 	    ]
     }
   ]
