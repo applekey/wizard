@@ -32,7 +32,6 @@ class HTMLHelper(QtGui.QWidget):
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setMargin(0)
-        
         self.verticalLayout.addWidget(self.webView)
     @pyqtSlot()
     def importClick(self):   
