@@ -36,11 +36,24 @@
     <li class="list-group-item">
         <div>
             <h1>Remesh </h1>
-            <form  oninput="level.value = remeshSlider.valueAsNumber">
-            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output class="btn btn-info" for="remeshSlider" name="level">0</output>
+          
+            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+
             <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
-            </form>
+            
+            <input id = "fineRemeshFine" type="number" min="0" max="1.0" step="0.01">
+            <script> 
+            $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+
+            $( "#remeshSlider" ).change(function() {
+              $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+            });
+
+             $( "#fineRemeshFine" ).change(function() {
+              $( "#remeshSlider" ).val($( "#fineRemeshFine" ).val());
+            });
+
+            </script>
 
         </div>      
     </li>
@@ -49,18 +62,45 @@
             <h1>Deform Smooth </h1>
             <br>
             <h3> Smooth Value</h3>
-            <form  oninput="level.value = smoothDeformSmoothSlider.valueAsNumber">
-            <input id = "smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output class="btn btn-info" for="smoothDeformSmoothSlider" name="level">0</output>
+           
+            <input id = "smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "smoothFine"  type="number" min="0" max="1.0" step="0.01">
             <button id="smoothAcceptButton" class="btn btn-primary">Apply</button>
-            </form>
+           
+
+        
+            <script> 
+            $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
+
+            $( "#smoothDeformSmoothSlider" ).change(function() {
+              $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
+            });
+
+             $( "#smoothFine" ).change(function() {
+              $( "#smoothDeformSmoothSlider" ).val($( "#smoothFine" ).val());
+            });
+
+            </script>
 
             <h3> Scale Value</h3>
-            <form  oninput="level.value = scaleDeformSmoothSlider.valueAsNumber">
-            <input id = "scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output class="btn btn-info" for="scaleDeformSmoothSlider" name="level">0</output>
+           
+            <input id = "scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "scaleFine"  type="number" min="0" max="1.0" step="0.01">
             <button id="scaleAcceptButton" class="btn btn-primary">Apply</button>
-            </form>
+            
+          
+            <script> 
+            $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
+
+            $( "#scaleDeformSmoothSlider" ).change(function() {
+              $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
+            });
+
+             $( "#scaleFine" ).change(function() {
+              $( "#scaleDeformSmoothSlider" ).val($( "#scaleFine" ).val());
+            });
+
+            </script>
         </div>      
     </li>
 
@@ -68,11 +108,23 @@
         <div>
             <h1>Offset</h1>
            
-            <form  oninput="level.value = offsetSlider.valueAsNumber">
-            <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output class="btn btn-info" for="offsetSlider" name="level">0</output>
+            <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "offsetFine"  type="number" min="0" max="1.0" step="0.01">
             <button id="offsetAcceptButton" class="btn btn-primary">Apply</button>
-            </form>
+            
+            <script> 
+            $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+
+            $( "#offsetSlider" ).change(function() {
+              $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+            });
+
+             $( "#offsetFine" ).change(function() {
+              $( "#offsetSlider" ).val($( "#offsetFine" ).val());
+            });
+
+            </script>
+            
         </div>      
     </li>
     <li class="list-group-item">
@@ -84,19 +136,32 @@
      <li class="list-group-item">
         <div>
             <h1>Final Remesh</h1>
-            <form  oninput="level.value = finalRemeshSlider.valueAsNumber">
-            <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output class="btn btn-info" for="finalRemeshSlider" name="level">0</output>
+            
+            <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+             <input id = "fineFinalRemeshFine"  type="number" min="0" max="1.0" step="0.01">
             <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
 
+           
+            <script> 
+            $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
 
-            </form>
+            $( "#finalRemeshSlider" ).change(function() {
+              $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
+            });
+
+             $( "#fineFinalRemeshFine" ).change(function() {
+              $( "#finalRemeshSlider" ).val($( "#fineFinalRemeshFine" ).val());
+            });
+
+            </script>
+
         </div>      
     </li>
 </ul>
 <!--This is where we connect the funcationaity of the things-->
 <script>
 
+<!--connect buttons-->
 $( "#importScanBt" ).click(function() {
   alert( "Handler for .click() called." );
 });
@@ -108,6 +173,24 @@ $( "#selectAllBt" ).click(function() {
 $( "#discardBt" ).click(function() {
   alert( "Handler for .click() called." );
 });
+
+<!--connect sliders-->
+$( "#remeshAcceptButton" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+$( "#smoothAcceptButton" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+$( "#scaleAcceptButton" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+$( "#finalAcceptButton" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+
 
 
 
