@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "designerTrials", "designerTrials.pyproj", "{22E5FE4B-FBD4-4F56-91C2-F14B2B48D57C}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "meshWizard", "meshWizard.pyproj", "{22E5FE4B-FBD4-4F56-91C2-F14B2B48D57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
