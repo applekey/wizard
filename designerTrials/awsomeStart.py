@@ -15,6 +15,7 @@ sys.path.append( 'contentPage' )
 sys.path.append( 'uiLib' )
 sys.path.append( 'imageFiles' )
 sys.path.append( 'settingSaver' )
+sys.path.append( 'allControls' )
 
 
 from PyQt4 import QtCore, QtGui

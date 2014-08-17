@@ -12,6 +12,7 @@ from patientInfoPage import patientInfo
 from awsomeSlider import awsomeSlider
 from demoPage import demoPage
 from demoEndPage import demoEndPage
+from allControl import *
 
 
 try:
@@ -39,7 +40,11 @@ class pageFactory():
         self.pagesToAdd = []
 
     def createWidgets(self):
-        self.introPage =patientInfo(self.parentWidget) 
+        fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
+        with open(fileLocation, 'r') as f:
+            webpage = f.read().decode('utf-8')
+        self.introPage =HTMLHelper()
+        self.introPage.setHtml(webpage)
 
         ## create and modify the widgets here
         controlWidget = demoPage

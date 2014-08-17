@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{22e5fe4b-fbd4-4f56-91c2-f14b2b48d57c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>allControls\allControl.py</StartupFile>
+    <StartupFile>awsomeStart.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
