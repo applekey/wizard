@@ -18,6 +18,12 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Compile Include="awsomeStart.py" />
+    <Compile Include="commonFunctions.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="componentConfiguration\htmlConfiguration.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
     <Compile Include="allControls\allControl.py">
@@ -67,8 +73,6 @@
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
-    <Folder Include="Repository\" />
-    <Folder Include="Repository\Scanning\" />
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>

@@ -41,10 +41,9 @@ class pageFactory():
 
     def createWidgets(self):
         fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
-        with open(fileLocation, 'r') as f:
-            webpage = f.read().decode('utf-8')
+      
         self.introPage =HTMLHelper()
-        self.introPage.setHtml(webpage)
+        self.introPage.setHtml(fileLocation)
 
         ## create and modify the widgets here
         controlWidget = demoPage
