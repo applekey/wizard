@@ -8,48 +8,40 @@
     <meta name="author" content="">
     <title>
     </title>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"> </script>
+  
+
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
     rel="stylesheet">
    
-    <link rel="stylesheet" type="text/css" href="rangeslider.js-0.3.2/rangeslider.css">
+   
     <link rel="stylesheet" type="text/css" href="controls.css">
-
-
   </head>
   
   <body>
-    <div class="container">
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-    >
-    </script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
-    >
-    </script>
-
-
-    
-
 <ul class="list-group">
     <li class="list-group-item">
         <div>
             <h1>Import Scan </h1>
-             <button  class="btn btn-default">Import</button>
+             <button  id = "importScanBt" class="btn btn-primary">Import</button>
         </div>
     </li>
     <li class="list-group-item">
         <div>
             <h1>Select All </h1>
-            <button  class="btn btn-default">Select All</button>
+            <button  id = "selectAllBt" class="btn btn-primary">Select All</button>
         </div>      
     </li>        
     <li class="list-group-item">
         <div>
             <h1>Remesh </h1>
-            <form  oninput="level.value = aslider.valueAsNumber">
-            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output for="aslider" name="level">0</output>
+            <form  oninput="level.value = remeshSlider.valueAsNumber">
+            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output class="btn btn-info" for="remeshSlider" name="level">0</output>
+            <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
             </form>
+
         </div>      
     </li>
     <li class="list-group-item">
@@ -57,15 +49,17 @@
             <h1>Deform Smooth </h1>
             <br>
             <h3> Smooth Value</h3>
-            <form  oninput="level.value = aslider.valueAsNumber">
-            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output for="aslider" name="level">0</output>
+            <form  oninput="level.value = smoothDeformSmoothSlider.valueAsNumber">
+            <input id = "smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output class="btn btn-info" for="smoothDeformSmoothSlider" name="level">0</output>
+            <button id="smoothAcceptButton" class="btn btn-primary">Apply</button>
             </form>
 
             <h3> Scale Value</h3>
-            <form  oninput="level.value = aslider.valueAsNumber">
-            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output for="aslider" name="level">0</output>
+            <form  oninput="level.value = scaleDeformSmoothSlider.valueAsNumber">
+            <input id = "scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output class="btn btn-info" for="scaleDeformSmoothSlider" name="level">0</output>
+            <button id="scaleAcceptButton" class="btn btn-primary">Apply</button>
             </form>
         </div>      
     </li>
@@ -74,33 +68,54 @@
         <div>
             <h1>Offset</h1>
            
-            <form  oninput="level.value = aslider.valueAsNumber">
-            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output for="aslider" name="level">0</output>
+            <form  oninput="level.value = offsetSlider.valueAsNumber">
+            <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output class="btn btn-info" for="offsetSlider" name="level">0</output>
+            <button id="offsetAcceptButton" class="btn btn-primary">Apply</button>
             </form>
         </div>      
     </li>
     <li class="list-group-item">
         <div>
             <h1>Discard</h1>
-           <button  class="btn btn-default">Discard</button>
+           <button id="discardBt" class="btn btn-primary">Discard</button>
         </div>      
     </li>
      <li class="list-group-item">
         <div>
             <h1>Final Remesh</h1>
-            <form  oninput="level.value = aslider.valueAsNumber">
-            <input id = "aslider" type="range" min="0" max="1.0" step="0.05" value="0.5">
-            <output for="aslider" name="level">0</output>
+            <form  oninput="level.value = finalRemeshSlider.valueAsNumber">
+            <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.05" value="0.5">
+            <output class="btn btn-info" for="finalRemeshSlider" name="level">0</output>
+            <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
+
+
             </form>
         </div>      
     </li>
 </ul>
+<!--This is where we connect the funcationaity of the things-->
+<script>
+
+$( "#importScanBt" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+$( "#selectAllBt" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+$( "#discardBt" ).click(function() {
+  alert( "Handler for .click() called." );
+});
 
 
 
 
-    
+
+</script>
+
+
   </body>
 
 </html>

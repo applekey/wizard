@@ -1,26 +1,12 @@
 body {
   padding: 30px;
 }
-
-.rangeslider {
-  display: inline-block;
-  width: 70%;
+.btn
+{
+   min-width: 70px;
 }
 
-.output {
-  display: inline-block;
-  font-size: 1.8em;
-  line-height: 1;
-  padding-left: 10px;
-}
 
-#slider {
-  background: rgba(0,0,0,0.5);
-  width: 300px;
-  border-radius: 10px;
-  margin: auto;
-  margin-top: 250px;
-}
 
 input[type="range"] {
   -webkit-appearance: none;
