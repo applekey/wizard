@@ -2,6 +2,7 @@ import sys,os
 from PyQt4.QtCore import QObject, pyqtSlot
 from PyQt4.QtGui import QApplication
 from PyQt4.QtWebKit import QWebView
+from PyQt4.QtWebKit import *
 
 from PyQt4 import QtCore, QtGui
 
@@ -37,6 +38,7 @@ class HTMLHelper(QtGui.QWidget):
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
         self.webView.setHtml(htmlText,baseUrl)
+        self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
        
         self.setupUi()
