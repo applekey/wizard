@@ -10,7 +10,6 @@ import tkFileDialog
 from urllib import urlopen
 
 import htmlConfiguration
-
 sys.path.append( 'meshController' )
 from MeshWrapper import *
 

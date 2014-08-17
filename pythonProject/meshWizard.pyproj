@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{22e5fe4b-fbd4-4f56-91c2-f14b2b48d57c}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>awsomeStart.py</StartupFile>
+    <StartupFile>pageConfigurationController.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -47,6 +47,9 @@
     <Compile Include="meshController\pythonApi\mmRemote.py" />
     <Compile Include="meshController\pythonApi\setup.py" />
     <Compile Include="meshController\pythonApi\test.py" />
+    <Compile Include="pageConfigurationController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="pageFactory.py" />
     <Compile Include="resourceFile.py" />
     <Compile Include="settingSaver\saverEngine.py" />
@@ -82,6 +85,7 @@
     <Content Include="meshController\pythonApi\mmRemote.pyc" />
     <Content Include="meshController\pythonApi\StoredCommands.h" />
     <Content Include="meshController\pythonApi\_mmapi.pyd" />
+    <Content Include="pageConfiguration.json" />
     <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
