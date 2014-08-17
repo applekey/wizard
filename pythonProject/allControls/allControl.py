@@ -19,7 +19,7 @@ class HTMLHelper(QtGui.QWidget):
         height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.verticalLayout.setGeometry(newSize)
-    def __init__(self, parent=None):
+    def __init__(self, parent):
         super(HTMLHelper, self).__init__(parent)
     def getText(self,location):
         isFile = os.path.isfile(location)
@@ -57,16 +57,3 @@ class HTMLHelper(QtGui.QWidget):
     def remesh(self):   
         MeshWrapper.remesh()
  
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
-
-    with open(fileLocation, 'r') as f:
-        webpage = f.read().decode('utf-8')
-  
-    helper = HTMLHelper()
-    helper.setHtml(webpage)
-    
-   
-    
-    app.exec_()

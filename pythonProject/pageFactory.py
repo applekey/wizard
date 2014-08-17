@@ -58,7 +58,7 @@ class pageFactory():
                 entry= dict(sections[y])
                 for keys,values in entry.items():
                     if str(keys) == "page":
-                        page = HTMLHelper()
+                        page = HTMLHelper(self.parentWidget)
                         page.setHtml(pageRoot+"\\"+values)
                         self.pagesToAdd.append(page)
 
@@ -69,7 +69,7 @@ class pageFactory():
 
         fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
       
-        self.introPage =HTMLHelper()
+        self.introPage =HTMLHelper(self.parentWidget)
         self.introPage.setHtml(fileLocation)
 
         ## create and modify the widgets here
