@@ -14,6 +14,10 @@ from demoPage import demoPage
 from demoEndPage import demoEndPage
 from allControl import *
 
+import json
+
+jsonFile = "C:\\Users\\applekey2\\Documents\\wizard\\pythonProject\\pageConfiguration.json"
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -38,8 +42,31 @@ class pageFactory():
     def __init__(self,parentWidget):
         self.parentWidget = parentWidget
         self.pagesToAdd = []
+        self.__mainKey = "pageSetup"
+        self.__sectionKey = "section"
+        self.__pageRootKey = "pageRoot"
 
     def createWidgets(self):
+        json_data=open(jsonFile).read()
+        pageConfiguration = json.loads(json_data)
+
+        pageRoot = pageConfiguration[self.__pageRootKey]
+
+        for x in range(0,len(pageConfiguration[self.__mainKey])):
+            sections = pageConfiguration[self.__mainKey][x][self.__sectionKey]
+            for y in range(0,len(sections)):
+                entry= dict(sections[y])
+                for keys,values in entry.items():
+                    if str(keys) == "page":
+                        page = HTMLHelper()
+                        page.setHtml(pageRoot+"\\"+values)
+                        self.pagesToAdd.append(page)
+
+
+
+
+
+
         fileLocation = "C:\\Users\\applekey2\\Documents\\wizard\\htmlControls\\controls.html"
       
         self.introPage =HTMLHelper()
@@ -58,5 +85,7 @@ class pageFactory():
         self.pagesToAdd.append( self.introPage);
         self.pagesToAdd.append( self.page1Widget);
         self.pagesToAdd.append( self.endPage);
-   
+         
+
+
         return self.pagesToAdd
