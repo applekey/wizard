@@ -27,11 +27,14 @@
     </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
-    <Compile Include="allControls\allControl.py">
+    <Compile Include="uiLib\htmllHelper.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="contentPage\demoEndPage.py" />
     <Compile Include="contentPage\demoPage.py" />
+    <Compile Include="extensionController\extensionController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="meshController\implementation\convert.py" />
     <Compile Include="meshController\implementation\frame.py" />
     <Compile Include="meshController\implementation\mm_math.py" />
@@ -73,10 +76,10 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
-    <Folder Include="allControls\" />
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
+    <Folder Include="extensionController\" />
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>

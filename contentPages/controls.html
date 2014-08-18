@@ -9,11 +9,9 @@
     <title></title>
 
    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"> </script>
-  
-
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
+    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css"
     rel="stylesheet">
    
    
@@ -21,7 +19,8 @@
   </head>
   
   <body>
-<ul class="list-group">
+<button  id = "shell" class="btn btn-primary">open python interactive shell</button>
+<ul id ="allControlList" class="list-group">
     <li class="list-group-item">
         <div>
             <h1>Import Scan </h1>
@@ -37,12 +36,16 @@
     <li class="list-group-item">
         <div>
             <h1>Remesh </h1>
-          
-            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-
-            <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
             
+           
+            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
             <input id = "fineRemeshFine" type="number" min="0" max="1.0" step="0.01">
+            <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
+
+
+              
+
+            
             <script> 
             $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
 
@@ -139,9 +142,9 @@
             <h1>Final Remesh</h1>
             
             <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-        
-            <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
             <input id = "fineFinalRemeshFine"  type="number" min="0" max="1.0" step="0.01">
+            <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
+            
 
            
             <script> 
@@ -163,34 +166,45 @@
 <!--This is where we connect the funcationaity of the things-->
 <script>
 
+$( "#shell" ).click(function() {
+  htmlHelper.interact();
+});
+
+
 <!--connect buttons-->
 $( "#importScanBt" ).click(function() {
-  alert( "Handler for .click() called." );
+  htmlHelper.importScan();
 });
 
 $( "#selectAllBt" ).click(function() {
-  alert( "Handler for .click() called." );
+  htmlHelper.selectAll();
 });
 
 $( "#discardBt" ).click(function() {
-  alert( "Handler for .click() called." );
+  htmlHelper.discard();
 });
 
 <!--connect sliders-->
 $( "#remeshAcceptButton" ).click(function() {
-  alert( "Handler for .click() called." );
+  htmlHelper.remesh($("#remeshSlider" ).val());
 });
 $( "#smoothAcceptButton" ).click(function() {
-  alert( "Handler for .click() called." );
+   htmlHelper.smoothDeform($("#smoothDeformSmoothSlider" ).val());
 });
 
 $( "#scaleAcceptButton" ).click(function() {
-  alert( "Handler for .click() called." );
+   htmlHelper.scaleDeform($("#scaleDeformSmoothSlider" ).val());
 });
 
 $( "#finalAcceptButton" ).click(function() {
-  alert( "Handler for .click() called." );
+   htmlHelper.remesh($("#finalRemeshSlider" ).val());
 });
+
+$( "#offsetAcceptButton" ).click(function() {
+   htmlHelper.offsetA($("#offsetSlider" ).val());
+});
+
+
 
 </script>
 

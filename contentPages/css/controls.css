@@ -2,6 +2,10 @@ body {
   padding: 30px;
 }
 
+#allControlList
+{
+  max-width: 500px;
+}
 
 input[type="range"] {
   -webkit-appearance: none;

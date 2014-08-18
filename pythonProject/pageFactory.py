@@ -12,7 +12,7 @@ from patientInfoPage import patientInfo
 from awsomeSlider import awsomeSlider
 from demoPage import demoPage
 from demoEndPage import demoEndPage
-from allControl import *
+from htmllHelper import *
 
 import json
 
@@ -57,7 +57,7 @@ class pageFactory():
             entry= dict(pageSections[y])
             for keys,values in entry.items():
                 if str(keys) == "page":
-                    page = HTMLHelper(self.parentWidget)
+                    page = htmlHelper(self.parentWidget)
                     page.setHtml(self.pageRoot+"\\"+values)
                     self.pagesToAdd.append(page)
 
