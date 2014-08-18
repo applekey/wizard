@@ -56,19 +56,19 @@ class awsomeNavigation(QtGui.QWidget):
         if self.currentPage is len(self.pages)-1:
             return
         else:
-            self.currentPage = self.currentPage+1
-            self.changePage(self.currentPage)
+            self.changePage(self.currentPage+1)
           
     def prevClicked(self):
         if self.currentPage is 0:
             return
         else:
-            self.currentPage = self.currentPage-1
-            self.changePage(self.currentPage)
+            self.changePage(self.currentPage-1)
 
 
 
     def changePage(self,pageNumber):
+        if self.currentPage == pageNumber:
+            return;
         for pageIndex in range(len(self.pages)):
             if pageIndex is pageNumber:
                 self.pages[pageIndex][1].show()
@@ -116,10 +116,9 @@ class awsomeNavigation(QtGui.QWidget):
     def returnParent(self):
         return self.layoutWidget
     
-    def bannerTriggered(self,number):
-        if self.currentPage is number:
-            return
-        self.changePage(number)
+    def bannerTriggered(self,number):    
+        self.changePage(self.sections[number])
+        
 
     def setupUi(self,parent):
         ## the main screen and the naviagation bar lives on the verticle layout
