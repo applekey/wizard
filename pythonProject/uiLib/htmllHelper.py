@@ -11,6 +11,7 @@ from PyQt4 import QtCore, QtGui
 from Tkinter import *
 import tkFileDialog
 from urllib import urlopen
+from basePage import *
 
 import htmlConfiguration
 sys.path.append( 'meshController' )
@@ -22,7 +23,11 @@ class cd:
         MeshWrapper.deformsmooth(value)
         QApplication.restoreOverrideCursor()
 
-class htmlHelper(QtGui.QWidget):
+class htmlHelper(QtGui.QWidget,basePage):
+
+    def pageChangeEvent(self):
+        a =3
+
     def onResize(self,event):
         width= event.size().width()
         height= event.size().height()

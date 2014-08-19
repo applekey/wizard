@@ -27,6 +27,7 @@
     </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="uiLib\basePage.py" />
     <Compile Include="uiLib\htmllHelper.py">
       <SubType>Code</SubType>
     </Compile>

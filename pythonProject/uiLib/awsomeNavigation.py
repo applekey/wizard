@@ -64,44 +64,41 @@ class awsomeNavigation(QtGui.QWidget):
         else:
             self.changePage(self.currentPage-1)
 
-
+    def modifyTabGeometry(self,tabNumber):
+        self.banner.modifyTabGeometry(tabNumber)        
+        # check banner state
+        if tabNumber is 0:
+            self.backButton.setIconsPack([navigationBackStandardTheme1,navigationBackHoverTheme1]);
+            self.fowardButton.setIconsPack([navigationFowardStandardTheme1,navigationFowardHoverTheme1]);
+            
+        elif tabNumber is 1:
+            self.backButton.setIconsPack([navigationBackStandardTheme2,navigationBackHoverTheme2]);
+            self.fowardButton.setIconsPack([navigationFowardStandardTheme2,navigationFowardHoverTheme2]);
+            
+        elif tabNumber is 2:
+            self.backButton.setIconsPack([navigationBackStandardTheme3,navigationBackHoverTheme3]);
+            self.fowardButton.setIconsPack([navigationFowardStandardTheme3,navigationFowardHoverTheme3]);
+            
+        else:
+            pass
 
     def changePage(self,pageNumber):
         if self.currentPage == pageNumber:
             return;
-        for pageIndex in range(len(self.pages)):
-            if pageIndex is pageNumber:
-                self.pages[pageIndex][1].show()
-                self.verticalLayout.removeWidget(self.activePage)
-                self.verticalLayout.removeWidget(self.sizeGrip)
-                self.verticalLayout.removeItem(self.horizontalLayout)
-                self.activePage.hide()
-                self.activePage = self.pages[pageIndex][1]
-                self.verticalLayout.addWidget(self.activePage)
-                self.verticalLayout.addLayout(self.horizontalLayout)
-                self.verticalLayout.addWidget(self.sizeGrip,0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
-                self.currentPage = pageNumber
+        self.pages[pageNumber][1].show()
+        self.verticalLayout.removeWidget(self.activePage)
+        self.verticalLayout.removeWidget(self.sizeGrip)
+        self.verticalLayout.removeItem(self.horizontalLayout)
+        self.activePage.hide()
+        self.activePage.pageChangeEvent()
+        self.activePage = self.pages[pageNumber][1]
+        self.verticalLayout.addWidget(self.activePage)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.verticalLayout.addWidget(self.sizeGrip,0, QtCore.Qt.AlignBottom | QtCore.Qt.AlignRight)
+        self.currentPage = pageNumber
 
-
-                self.banner.modifyTabGeometry(self.pages[pageIndex][0])
-
-                ## check banner state
-                #if pageIndex is 0:
-                #    self.backButton.setIconsPack([navigationBackStandardTheme1,navigationBackHoverTheme1]);
-                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme1,navigationFowardHoverTheme1]);
-                #    self.banner.modifyTabGeometry(0)
-                #elif pageIndex is 1:
-                #    self.backButton.setIconsPack([navigationBackStandardTheme2,navigationBackHoverTheme2]);
-                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme2,navigationFowardHoverTheme2]);
-                #    self.banner.modifyTabGeometry(1)
-                #elif pageIndex is 2:
-                #    self.backButton.setIconsPack([navigationBackStandardTheme3,navigationBackHoverTheme3]);
-                #    self.fowardButton.setIconsPack([navigationFowardStandardTheme3,navigationFowardHoverTheme3]);
-                #    self.banner.modifyTabGeometry(2)
-                #else:
-                #    pass
-
-                
+        self.modifyTabGeometry(self.pages[pageNumber][0])
+     
                 
     def renderPages(self):
         self.setupUi(self)

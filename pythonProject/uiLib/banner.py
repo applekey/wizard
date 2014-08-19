@@ -39,7 +39,6 @@ class banner(QtGui.QFrame):
        
         super( banner, self ).__init__(parentForm)
       
-       
         ## specify some min, max boundaries, I am not allowing this to shrink in height
         ## and become smaller than a certain number
         self.tabNumber = 3
