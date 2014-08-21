@@ -77,6 +77,12 @@
   <ItemGroup>
     <Folder Include="contentPage\" />
     <Folder Include="componentConfiguration\" />
+    <Folder Include="htmlPages\" />
+    <Folder Include="htmlPages\bootstrap-3.2.0-dist\" />
+    <Folder Include="htmlPages\bootstrap-3.2.0-dist\css\" />
+    <Folder Include="htmlPages\bootstrap-3.2.0-dist\fonts\" />
+    <Folder Include="htmlPages\bootstrap-3.2.0-dist\js\" />
+    <Folder Include="htmlPages\css\" />
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
@@ -85,6 +91,36 @@
     <Folder Include="uiLib\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.min.css" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap.css" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap.css.map" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap.min.css" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\js\bootstrap.js" />
+    <Content Include="htmlPages\bootstrap-3.2.0-dist\js\bootstrap.min.js" />
+    <Content Include="htmlPages\commonFunctions.js" />
+    <Content Include="htmlPages\controls.html" />
+    <Content Include="htmlPages\css\controls.css" />
+    <Content Include="htmlPages\css\screen-0f4b86e032.css" />
+    <Content Include="htmlPages\css\screen-1454e5eb9c.css" />
+    <Content Include="htmlPages\css\screen-62e0787fc0.css" />
+    <Content Include="htmlPages\css\screen-71dfa987c6.css" />
+    <Content Include="htmlPages\css\screen-7f397e5d8c.css" />
+    <Content Include="htmlPages\css\screen-e39062ba41.css" />
+    <Content Include="htmlPages\css\screen-e9e7d130d5.css" />
+    <Content Include="htmlPages\jquery-2.1.1.min.js" />
+    <Content Include="htmlPages\page1.html" />
+    <Content Include="htmlPages\page2.html" />
+    <Content Include="htmlPages\page3.html" />
+    <Content Include="htmlPages\page4.html" />
+    <Content Include="htmlPages\page5.html" />
+    <Content Include="htmlPages\page6.html" />
+    <Content Include="htmlPages\pageConfiguration.json" />
     <Content Include="meshController\pythonApi\mmapi.pyc" />
     <Content Include="meshController\pythonApi\mmRemote.pyc" />
     <Content Include="meshController\pythonApi\StoredCommands.h" />
