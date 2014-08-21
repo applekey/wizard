@@ -43,7 +43,6 @@ a.datas += extra_datas('uiLib/')
 
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
-          
           a.scripts,
           a.binaries,
           a.zipfiles,
