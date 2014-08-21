@@ -5,6 +5,7 @@ from PyQt4.QtWebKit import QWebView
 from PyQt4.QtWebKit import *
 from extensionController import *
 import threading
+from commonFunctions import *
 
 from PyQt4 import QtCore, QtGui
 
@@ -14,7 +15,6 @@ from urllib import urlopen
 from basePage import *
 
 import htmlConfiguration
-sys.path.append( 'meshController' )
 from MeshWrapper import *
 
 class cd:
@@ -26,7 +26,15 @@ class cd:
 class htmlHelper(QtGui.QWidget,basePage):
 
     def pageChangeEvent(self):
-        a =3
+         self.frame.evaluateJavaScript('''
+    try {
+        onPageSwitch()
+    }
+    catch(err) {
+        
+    }
+
+''')
 
     def onResize(self,event):
         width= event.size().width()
@@ -43,16 +51,21 @@ class htmlHelper(QtGui.QWidget,basePage):
 
             return webpage
         else:
+            print 'cant find page'
+            print location
             return ""
     def setHtml(self,htmlPage):  
-        htmlText = self.getText(htmlPage)
+        print 'abs path is' + htmlPage
+        htmlPage = resource_path(htmlPage)
         baseUrl = QtCore.QUrl.fromLocalFile(htmlPage)
-        
+        htmlText = self.getText(htmlPage)
+
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
         self.webView.setHtml(htmlText,baseUrl)
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
+       
        
         self.setupUi()
 

@@ -16,11 +16,14 @@ sys.path.append( 'uiLib' )
 sys.path.append( 'imageFiles' )
 sys.path.append( 'settingSaver' )
 sys.path.append( 'extensionController' )
+sys.path.append( 'meshController' )
+sys.path.append( 'meshController/implementation' )
+sys.path.append( 'meshController/pythonApi' )
 
 
 from PyQt4 import QtCore, QtGui
-from awsomeNavigation import awsomeNavigation
 from pageFactory import pageFactory
+from awsomeNavigation import awsomeNavigation
 
 from resourceFile import *
 from PyQt4 import QtSvg,QtXml
@@ -109,7 +112,6 @@ if __name__ == "__main__":
     MainWindow = Ui_MainWindow()
     #MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
-    br = QtSvg.QGraphicsSvgItem("C:\your_interactive_svg.svg")
     MainWindow.show()
     sys.exit(app.exec_())
 

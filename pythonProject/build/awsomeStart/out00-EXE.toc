@@ -1,4 +1,4 @@
-('C:\\Users\\applekey2\\Documents\\wizard\\pythonProject\\dist\\MeshWiz.exe',
+('f:\\laptop\\wizard\\pythonProject\\dist\\wiz.exe',
  True,
  False,
  None,
@@ -6,4 +6,4 @@
  [],
  None,
  False,
- 1408405917L)
+ 1408587606L)

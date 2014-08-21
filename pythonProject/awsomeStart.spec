@@ -15,23 +15,32 @@ def extra_datas(mydir):
     extra_datas = []
     for f in files:
         extra_datas.append((f, f, 'DATA'))
-
+   
+    print '\n'
     return extra_datas
 ###########################################
-
 # -*- mode: python -*-
 a = Analysis(['awsomeStart.py'],
-             pathex=[],
+             pathex=['componentConfiguration',
+             'contentPage',
+             'meshController',
+             'extensionController',
+             'uiLib',
+             'meshController/implementation',
+             'meshController/pythonApi',
+             'htmlPages'
+             ],
              hiddenimports=[],
              hookspath=None,
              runtime_hooks=None)
 
-a.datas += [('pageConfiguration.json',"C:\\Users\\applekey2\\Documents\\wizard\\pythonProject\\pageConfiguration.json", 'DATA')]
-a.datas += extra_datas('C:/Users/applekey2/Documents/wizard/pythonProject/componentConfiguration/')
-a.datas += extra_datas('C:/Users/applekey2/Documents/wizard/pythonProject/contentPage/')
-a.datas += extra_datas('C:/Users/applekey2/Documents/wizard/pythonProject/extensionController/')
-a.datas += extra_datas('C:/Users/applekey2/Documents/wizard/pythonProject/meshController/')
-a.datas += extra_datas('C:/Users/applekey2/Documents/wizard/pythonProject/uiLib/')
+a.datas += [('pageConfiguration.json',"pageConfiguration.json", 'DATA')]
+a.datas += extra_datas('componentConfiguration/')
+a.datas += extra_datas('contentPage/')
+a.datas += extra_datas('extensionController/')
+a.datas += extra_datas('meshController/')
+a.datas += extra_datas('uiLib/')
+a.datas += extra_datas('htmlPages/')
 
 
 pyz = PYZ(a.pure)
@@ -41,7 +50,7 @@ exe = EXE(pyz,
           a.binaries,
           a.zipfiles,
           a.datas,
-          name='MeshWiz.exe',
+          name='wiz.exe',
           debug=False,
           strip=None,
           upx=True,

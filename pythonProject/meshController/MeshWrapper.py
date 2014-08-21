@@ -1,8 +1,6 @@
 import os,sys
-sys.path.append( 'meshController/implementation' )
-sys.path.append( 'meshController/pythonApi' )
 
-import mmapi
+from mmapi import  *
 from mmRemote import *
 
 class MeshWrapper(object):  

@@ -13,6 +13,7 @@ from awsomeSlider import awsomeSlider
 from demoPage import demoPage
 from demoEndPage import demoEndPage
 from htmllHelper import *
+from commonFunctions  import *
 
 import json
 
@@ -43,7 +44,12 @@ class pageFactory():
         self.__sectionKey = "section"
         self.__pageRootKey = "pageRoot"
     def getPageData(self,dataLocation):
-        json_data=open(dataLocation).read()
+
+        if not os.path.isfile(resource_path(dataLocation)):
+            print dataLocation + "missing json file"
+         
+        print dataLocation
+        json_data=open(resource_path(dataLocation)).read()
         pageConfiguration = json.loads(json_data)
 
         self.pageRoot = pageConfiguration[self.__pageRootKey]

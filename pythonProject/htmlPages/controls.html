@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
+    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css"
+    rel="stylesheet">
+   
+   
+    <link rel="stylesheet" type="text/css" href="css/controls.css">
+  </head>
+  
+  <body>
+<button  id = "shell" class="btn btn-primary">open python interactive shell</button>
+<ul id ="allControlList" class="list-group">
+    <li class="list-group-item">
+        <div>
+            <h1>Import Scan </h1>
+             <button  id = "importScanBt" class="btn btn-primary">Import</button>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>Select All </h1>
+            <button  id = "selectAllBt" class="btn btn-primary">Select All</button>
+        </div>      
+    </li>        
+    <li class="list-group-item">
+        <div>
+            <h1>Remesh </h1>
+            
+           
+            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "fineRemeshFine" type="number" min="0" max="1.0" step="0.01">
+            <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
+
+            <script> 
+            $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+
+            $( "#remeshSlider" ).change(function() {
+              $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+            });
+
+             $( "#fineRemeshFine" ).change(function() {
+              $( "#remeshSlider" ).val($( "#fineRemeshFine" ).val());
+            });
+
+            </script>
+
+        </div>      
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>Deform Smooth </h1>
+            <br>
+            <h3> Smooth Value</h3>
+           
+            <input id = "smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "smoothFine"  type="number" min="0" max="1.0" step="0.01">
+            <button id="smoothAcceptButton" class="btn btn-primary">Apply</button>
+           
+
+        
+            <script> 
+            $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
+
+            $( "#smoothDeformSmoothSlider" ).change(function() {
+              $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
+            });
+
+             $( "#smoothFine" ).change(function() {
+              $( "#smoothDeformSmoothSlider" ).val($( "#smoothFine" ).val());
+            });
+
+            </script>
+
+            <h3> Scale Value</h3>
+           
+            <input id = "scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "scaleFine"  type="number" min="0" max="1.0" step="0.01">
+            <button id="scaleAcceptButton" class="btn btn-primary">Apply</button>
+            
+          
+            <script> 
+            $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
+
+            $( "#scaleDeformSmoothSlider" ).change(function() {
+              $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
+            });
+
+             $( "#scaleFine" ).change(function() {
+              $( "#scaleDeformSmoothSlider" ).val($( "#scaleFine" ).val());
+            });
+
+            </script>
+        </div>      
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <h1>Offset</h1>
+           
+            <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "offsetFine"  type="number" min="0" max="1.0" step="0.01">
+            <button id="offsetAcceptButton" class="btn btn-primary">Apply</button>
+            
+            <script> 
+            $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+
+            $( "#offsetSlider" ).change(function() {
+              $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+            });
+
+             $( "#offsetFine" ).change(function() {
+              $( "#offsetSlider" ).val($( "#offsetFine" ).val());
+            });
+
+            </script>
+            
+        </div>      
+    </li>
+    <li class="list-group-item">
+        <div>
+            <h1>Discard</h1>
+           <button id="discardBt" class="btn btn-primary">Discard</button>
+        </div>      
+    </li>
+     <li class="list-group-item">
+        <div>
+            <h1>Final Remesh</h1>
+            
+            <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+            <input id = "fineFinalRemeshFine"  type="number" min="0" max="1.0" step="0.01">
+            <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
+            
+
+           
+            <script> 
+            $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
+
+            $( "#finalRemeshSlider" ).change(function() {
+              $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
+            });
+
+             $( "#fineFinalRemeshFine" ).change(function() {
+              $( "#finalRemeshSlider" ).val($( "#fineFinalRemeshFine" ).val());
+            });
+
+            </script>
+
+        </div>      
+    </li>
+</ul>
+<!--This is where we connect the funcationaity of the things-->
+<script>
+
+$( "#shell" ).click(function() {
+  htmlHelper.interact();
+});
+
+
+<!--connect buttons-->
+$( "#importScanBt" ).click(function() {
+  htmlHelper.importScan();
+});
+
+$( "#selectAllBt" ).click(function() {
+  htmlHelper.selectAll();
+});
+
+$( "#discardBt" ).click(function() {
+  htmlHelper.discard();
+});
+
+<!--connect sliders-->
+$( "#remeshAcceptButton" ).click(function() {
+  htmlHelper.remesh($("#remeshSlider" ).val());
+});
+$( "#smoothAcceptButton" ).click(function() {
+   htmlHelper.smoothDeform($("#smoothDeformSmoothSlider" ).val());
+});
+
+$( "#scaleAcceptButton" ).click(function() {
+   htmlHelper.scaleDeform($("#scaleDeformSmoothSlider" ).val());
+});
+
+$( "#finalAcceptButton" ).click(function() {
+   htmlHelper.remesh($("#finalRemeshSlider" ).val());
+});
+
+$( "#offsetAcceptButton" ).click(function() {
+   htmlHelper.offsetA($("#offsetSlider" ).val());
+});
+
+
+
+</script>
+
+
+
+  </body>
+
+</html>
