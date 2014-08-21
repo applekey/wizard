@@ -1,0 +1,31 @@
+{
+  "pageRoot":"htmlPages",
+  "pageSetup":[
+   {
+      "section": [
+        {"sectionName":"Scanning"},
+    	  {"page":"controls.html"},
+		  {"page":"page1.html"}
+	    ]
+    },
+    {
+      "section": [
+        {"sectionName":"Modeling"},
+    	 
+    	  {"page":"page2.html"},
+  		  {"page":"page3.html"}
+  		 
+	    ]
+    },
+	 {
+      "section": [
+        {"sectionName":"Printing"},
+    	  {"page":"page4.html"},
+  		  {"page":"page5.html"},
+  		  {"page":"page6.html"}
+	    ]
+    }
+  ]
+
+}
+

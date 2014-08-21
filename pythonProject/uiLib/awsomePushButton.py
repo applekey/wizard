@@ -29,7 +29,7 @@ class awsomePushButton( QtGui.QPushButton):
         self.setMinimumSize(QtCore.QSize(50, 50))
         self.setIconSize(self.size())
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.iconStatePics[0])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(resource_path(self.iconStatePics[0]))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setIcon(icon)
         self.resizeEvent  = self.onResize
         self.setMouseTracking(True)
@@ -38,11 +38,11 @@ class awsomePushButton( QtGui.QPushButton):
 
     def mouseMoveEvent(self, event):
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.iconStatePics[1])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(resource_path(self.iconStatePics[1]))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setIcon(icon)
     def leaveEvent(self, event):
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.iconStatePics[0])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(resource_path(self.iconStatePics[0]))), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.setIcon(icon)
 
 

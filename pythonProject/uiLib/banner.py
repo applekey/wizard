@@ -95,13 +95,17 @@ class banner(QtGui.QFrame):
                 currentButtonWidth = self.size().width()*firstButtonWidthPercentage
                 styleSheetText = styleSheetText+ "background:"+self.activecolorArray[i]+";"
                 icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap(activeIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+
+                print resource_path(activeIcons[i])
+                print 'blahbadfasdf'
+                print 'bfdasfd'
+                icon.addPixmap(QtGui.QPixmap(resource_path(activeIcons[i])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 self.ribbonButtons[i].setIcon(icon)
             else:
                 currentButtonWidth = secondaryButtonWidths
                 styleSheetText = styleSheetText+ "background:"+self.inactivecolorArray[i]+";"
                 icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                icon.addPixmap(QtGui.QPixmap(resource_path(inactiveIcons[i])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 self.ribbonButtons[i].setIcon(icon)
 
             self.ribbonButtons[i].setGeometry(currentDrawPosition,0,currentButtonWidth+200,self.size().height())
@@ -137,7 +141,7 @@ class banner(QtGui.QFrame):
             newButton.setStyleSheet(styleSheetText)
             #icon
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap(inactiveIcons[i]), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            icon.addPixmap(QtGui.QPixmap(resource_path(inactiveIcons[i])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             newButton.setIcon(icon)
             newButton.setIconSize(QtCore.QSize(bannerIconWidth, self.size().height()))
          

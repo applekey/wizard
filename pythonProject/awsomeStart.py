@@ -82,7 +82,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.awsomeNavigation = awsomeNavigation(self)
         self.pageFactory = pageFactory(self.awsomeNavigation.returnParent())
         
-        jsonFile = "pageConfiguration.json"
+        jsonFile = "htmlPages//pageConfiguration.json"
         sections= self.pageFactory.getPageData(jsonFile)
         for x in range(0,len(sections)):
               self.awsomeNavigation.addSection("abc")

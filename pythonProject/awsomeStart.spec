@@ -34,18 +34,16 @@ a = Analysis(['awsomeStart.py'],
              hookspath=None,
              runtime_hooks=None)
 
-a.datas += [('pageConfiguration.json',"pageConfiguration.json", 'DATA')]
 a.datas += extra_datas('componentConfiguration/')
 a.datas += extra_datas('contentPage/')
 a.datas += extra_datas('extensionController/')
 a.datas += extra_datas('meshController/')
 a.datas += extra_datas('uiLib/')
-a.datas += extra_datas('htmlPages/')
 
 
 pyz = PYZ(a.pure)
 exe = EXE(pyz,
-          Tree('imageFiles',prefix='imageFiles'),
+          
           a.scripts,
           a.binaries,
           a.zipfiles,
@@ -55,3 +53,14 @@ exe = EXE(pyz,
           strip=None,
           upx=True,
           console=True )
+
+coll = COLLECT(exe,
+               Tree('imageFiles',prefix='imageFiles'),
+               Tree('htmlPages',prefix='htmlPages'),              
+               strip=None,
+               upx=True,
+               name='awsomeStart')
+
+
+
+
