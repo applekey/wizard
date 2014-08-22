@@ -2,3 +2,5 @@
 build/
 dist/
 *.toc
+applekey
+applekey.pub

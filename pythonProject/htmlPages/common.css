@@ -1,7 +1,41 @@
-.navbar  > .active > a {
-    color: red;
+/*customize breadcrumb*/
+body {
+    overflow-x:hidden;
 }
 
-a:active {
-    color:red
+#headerFont {
+    margin-left: 50px;
+}
+
+#videoPlayer {
+    min-height:500px;
+    min-width: 600px;
+}
+
+.breadcrumb {
+     background-color: #FAFAFA;
+     border-radius: 0;
+     -moz-border-radius: 0;
+     -webkit-border-radius: 0;
+     -o-border-radius: 0;
+}
+
+/*change breadcrumb links color*/
+.breadcrumb a {
+     color: #666;
+}
+
+.breadcrumb a:hover {
+     text-decoration: none;
+}
+
+/*change active color*/
+.breadcrumb > .active {
+     color: #c0392b;
+}
+
+/*change breadcrumb separator to raquo symbol*/
+.breadcrumb > li + li:before {
+     content: "\00BB";
+     color: #aaa;
 }

@@ -27,6 +27,7 @@
     </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="extensions\extensionModuleTest.py" />
     <Compile Include="uiLib\basePage.py" />
     <Compile Include="uiLib\htmllHelper.py">
       <SubType>Code</SubType>
@@ -87,10 +88,12 @@
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
     <Folder Include="extensionController\" />
+    <Folder Include="extensions\" />
     <Folder Include="settingSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="extensions\extensionModuleTest.pyc" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.min.css" />

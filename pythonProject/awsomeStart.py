@@ -24,9 +24,12 @@ sys.path.append( 'meshController/pythonApi' )
 from PyQt4 import QtCore, QtGui
 from pageFactory import pageFactory
 from awsomeNavigation import awsomeNavigation
+from extensionController import *
 
 from resourceFile import *
 from PyQt4 import QtSvg,QtXml
+
+import inspect
 
 #from resourceFile import *
 
@@ -79,6 +82,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
         return newPageList
 
     def setupUi(self):
+        ### get all extensions
+        extensions = extensionController.getExtensions('extensions')
+        for extension in extensions:
+            all_functions = inspect.getmembers(extension, inspect.isfunction)
+            print all_functions
         self.awsomeNavigation = awsomeNavigation(self)
         self.pageFactory = pageFactory(self.awsomeNavigation.returnParent())
         

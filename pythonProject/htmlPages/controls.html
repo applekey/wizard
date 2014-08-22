@@ -8,6 +8,13 @@
     <meta name="author" content="">
     <title></title>
 
+      <link href="video-js\video-js.css" rel="stylesheet" type="text/css">
+  <!-- video.js must be in the <head> for older IEs to work. -->
+    <script src="video-js\video.js"></script>
+      <script>
+          videojs.options.flash.swf = "video-js\video-js.swf";
+      </script>
+
     <script src="jquery-2.1.1.min.js"></script>
     <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css"
@@ -15,11 +22,23 @@
    
    
     <link rel="stylesheet" type="text/css" href="css/controls.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+  
+
   </head>
   
   <body>
-<button  id = "shell" class="btn btn-primary">open python interactive shell</button>
+      <!--<button  id = "shell" class="btn btn-primary">open python interactive shell</button>-->
+
+
+
 <ul id ="allControlList" class="list-group">
+
+   
+    <li class="list-group-item">
+        <button id="extensionBt" class="btn btn-primary">extension</button>
+
+    </li>
     <li class="list-group-item">
         <div>
             <h1>Import Scan </h1>
@@ -172,6 +191,10 @@ $( "#importScanBt" ).click(function() {
 
 $( "#selectAllBt" ).click(function() {
   htmlHelper.selectAll();
+});
+
+$( "#extensionBt" ).click(function() {
+    htmlHelper.extensionFunction('testingextension');
 });
 
 $( "#discardBt" ).click(function() {

@@ -64,6 +64,8 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
         self.webView.setHtml(htmlText,baseUrl)
+      
+
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
        
@@ -75,6 +77,15 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setMargin(0)
         self.verticalLayout.addWidget(self.webView)
+   
+    def callcDynamic(self,string):
+        pass
+
+    @pyqtSlot('QString')
+    def extensionFunction(self,value):
+        print value
+        self.callcDynamic(value)
+
     @pyqtSlot()
     def interact(self): 
         pass

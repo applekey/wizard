@@ -1,39 +1,27 @@
-import sys
-from code import InteractiveConsole
+import imp,os
+from os import listdir
 
-class FileCacher:
-    "Cache the stdout text so we can analyze it before returning it"
-    def __init__(self): self.reset()
-    def reset(self): self.out = []
-    def write(self,line): self.out.append(line)
-    def flush(self):
-        output = '\n'.join(self.out)
-        self.reset()
-        return output
 
-class Shell(InteractiveConsole):
-    "Wrapper around Python that can filter input/output to the shell"
-    def __init__(self,locals=None):
-        self.stdout = sys.stdout
-        self.cache = FileCacher()
-        InteractiveConsole.__init__(self,locals)
-        return
+class extensionController ():
+    @staticmethod
+    def getAllModuleNames(folder):
+        results = []
+        sub = [each for each in os.listdir(folder) if each.endswith('.pyc')]
+        for file in sub:
+            abc = folder+'/'+file 
+            results.append(abc)
+        return results
+    @staticmethod
+    def getModule(pycFile):
+        module = imp.load_compiled(os.path.splitext(pycFile)[0], pycFile)
+        return module
+    @staticmethod
+    def getExtensions(directory):
+        modules = []
+        results = extensionController.getAllModuleNames(directory)
+        for file in results:
+            modules.append(extensionController.getModule(file))
 
-    def get_output(self): sys.stdout = self.cache
-    def return_output(self): sys.stdout = self.stdout
+        return modules
 
-    def push(self,line):
-        self.get_output()
-        # you can filter input here by doing something like
-        # line = filter(line)
-        InteractiveConsole.push(self,line)
-        self.return_output()
-        output = self.cache.flush()
-        # you can filter the output here by doing something like
-        # output = filter(output)
-        print output # or do something else with it
-        return 
-
-if __name__ == '__main__':
-     sh = Shell()
-     sh.interact(local=locals())
+    
