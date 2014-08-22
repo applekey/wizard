@@ -87,7 +87,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         for x in range(0,len(sections)):
               self.awsomeNavigation.addSection("abc")
               pagesData = sections[x]
-              pages = self.pageFactory.createPages(pagesData)
+              pages = self.pageFactory.createPages(pagesData,self.awsomeNavigation)
               pages = self.appendPageTupple(pages,x)
               self.awsomeNavigation.addPages(pages)
              

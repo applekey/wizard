@@ -1,0 +1,7 @@
+.navbar  > .active > a {
+    color: red;
+}
+
+a:active {
+    color:red
+}

@@ -50,7 +50,7 @@ class pageFactory():
         self.pageRoot = pageConfiguration[self.__pageRootKey]
         return pageConfiguration[self.__mainKey]
 
-    def createPages(self,sections):
+    def createPages(self,sections,navigationController):
       
         self.pagesToAdd = []
         pageSections = sections[self.__sectionKey]
@@ -58,7 +58,7 @@ class pageFactory():
             entry= dict(pageSections[y])
             for keys,values in entry.items():
                 if str(keys) == "page":
-                    page = htmlHelper(self.parentWidget)
+                    page = htmlHelper(self.parentWidget,navigationController)
                     page.setHtml(self.pageRoot+"\\"+values)
                     self.pagesToAdd.append(page)
 

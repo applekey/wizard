@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   
   <head>
@@ -140,7 +140,6 @@
             <input id = "fineFinalRemeshFine"  type="number" min="0" max="1.0" step="0.01">
             <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
             
-
            
             <script> 
             $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
@@ -196,7 +195,7 @@ $( "#finalAcceptButton" ).click(function() {
 });
 
 $( "#offsetAcceptButton" ).click(function() {
-   htmlHelper.offsetA($("#offsetSlider" ).val());
+   htmlHelper.offset($("#offsetSlider" ).val());
 });
 
 

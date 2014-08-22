@@ -41,8 +41,9 @@ class htmlHelper(QtGui.QWidget,basePage):
         height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.verticalLayout.setGeometry(newSize)
-    def __init__(self, parent):
+    def __init__(self, parent,navigationController):
         super(htmlHelper, self).__init__(parent)
+        self.navigationController = navigationController
     def getText(self,location):
         isFile = os.path.isfile(location)
         if(isFile):
@@ -76,9 +77,14 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.verticalLayout.addWidget(self.webView)
     @pyqtSlot()
     def interact(self): 
+        pass
         local=locals()  
         sh = Shell(local)
         sh.interact( )
+    
+    @pyqtSlot(int)
+    def switchPage(self,value): 
+        self.navigationController.changePage(value)
     
     @pyqtSlot()
     def selectAll(self): 
@@ -97,6 +103,10 @@ class htmlHelper(QtGui.QWidget,basePage):
     def remesh(self,value):  
         MeshWrapper.remesh(value)
     
+    @pyqtSlot()
+    def discard(self):  
+        MeshWrapper.editDiscard()
+    
     @pyqtSlot(float)
     def smoothDeform(self,value):   
         
@@ -112,8 +122,7 @@ class htmlHelper(QtGui.QWidget,basePage):
         MeshWrapper.deformsmooth(value)
 
     @pyqtSlot(float)
-    def offsetA(self,value):   
-        
+    def offset(self,value):      
         MeshWrapper.editoffset(value)
  
  
