@@ -50,7 +50,7 @@ class pageFactory():
         self.pageRoot = pageConfiguration[self.__pageRootKey]
         return pageConfiguration[self.__mainKey]
 
-    def createPages(self,sections,navigationController):
+    def createPages(self,sections,navigationController,extensionMethods):
       
         self.pagesToAdd = []
         pageSections = sections[self.__sectionKey]
@@ -58,24 +58,7 @@ class pageFactory():
             entry= dict(pageSections[y])
             for keys,values in entry.items():
                 if str(keys) == "page":
-                    page = htmlHelper(self.parentWidget,navigationController)
+                    page = htmlHelper(self.parentWidget,navigationController,extensionMethods)
                     page.setHtml(self.pageRoot+"\\"+values)
                     self.pagesToAdd.append(page)
-
-
-        ### create and modify the widgets here
-        #controlWidget = demoPage
-        #self.page1Widget = layoutWidget(self.parentWidget,controlWidget)
-        #self.page1Widget.setText("1")
-        #self.page1Widget.setVideoSource(resource_path("imageFiles\\video\\abc.mov"))
-
-
-        #self.endPage = demoEndPage(self.parentWidget)
-
-        ### add all the widgets to pages to add
-        #self.pagesToAdd.append( self.page1Widget);
-        #self.pagesToAdd.append( self.endPage);
-         
-
-
         return self.pagesToAdd

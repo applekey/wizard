@@ -52,9 +52,6 @@
     <Compile Include="meshController\pythonApi\mmRemote.py" />
     <Compile Include="meshController\pythonApi\setup.py" />
     <Compile Include="meshController\pythonApi\test.py" />
-    <Compile Include="pageConfigurationController.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="pageFactory.py" />
     <Compile Include="resourceFile.py" />
     <Compile Include="settingSaver\saverEngine.py" />
@@ -93,6 +90,9 @@
     <Folder Include="uiLib\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="extensions\abc.py">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="extensions\extensionModuleTest.pyc" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
@@ -131,7 +131,6 @@
     <Content Include="meshController\pythonApi\mmRemote.pyc" />
     <Content Include="meshController\pythonApi\StoredCommands.h" />
     <Content Include="meshController\pythonApi\_mmapi.pyd" />
-    <Content Include="pageConfiguration.json" />
     <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

@@ -41,9 +41,10 @@ class htmlHelper(QtGui.QWidget,basePage):
         height= event.size().height()
         newSize = QtCore.QRect(0,0,width,height)
         self.verticalLayout.setGeometry(newSize)
-    def __init__(self, parent,navigationController):
+    def __init__(self, parent,navigationController,extensionMethods):
         super(htmlHelper, self).__init__(parent)
         self.navigationController = navigationController
+        self.extensionMethods = extensionMethods
     def getText(self,location):
         isFile = os.path.isfile(location)
         if(isFile):
@@ -78,13 +79,19 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.verticalLayout.setMargin(0)
         self.verticalLayout.addWidget(self.webView)
    
-    def callcDynamic(self,string):
-        pass
+    def callDynamic(self,functionCall):
+       index = functionCall.index('(')
+       functionName = functionCall[0:index]
+       for method in self.extensionMethods:
+           if hasattr(method, functionName):
+               eval('method.'+functionCall)
+
+       
 
     @pyqtSlot('QString')
     def extensionFunction(self,value):
         print value
-        self.callcDynamic(value)
+        self.callDynamic(str(value))
 
     @pyqtSlot()
     def interact(self): 

@@ -83,10 +83,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def setupUi(self):
         ### get all extensions
+       
         extensions = extensionController.getExtensions('extensions')
-        for extension in extensions:
-            all_functions = inspect.getmembers(extension, inspect.isfunction)
-            print all_functions
+     
+         
         self.awsomeNavigation = awsomeNavigation(self)
         self.pageFactory = pageFactory(self.awsomeNavigation.returnParent())
         
@@ -95,7 +95,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         for x in range(0,len(sections)):
               self.awsomeNavigation.addSection("abc")
               pagesData = sections[x]
-              pages = self.pageFactory.createPages(pagesData,self.awsomeNavigation)
+              pages = self.pageFactory.createPages(pagesData,self.awsomeNavigation,extensions)
               pages = self.appendPageTupple(pages,x)
               self.awsomeNavigation.addPages(pages)
              
