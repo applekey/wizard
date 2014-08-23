@@ -25,6 +25,7 @@ from PyQt4 import QtCore, QtGui
 from pageFactory import pageFactory
 from awsomeNavigation import awsomeNavigation
 from extensionController import *
+from MeshWrapper import *
 
 from resourceFile import *
 from PyQt4 import QtSvg,QtXml
@@ -83,6 +84,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
     def setupUi(self):
         ### get all extensions
+       
        
         extensions = extensionController.getExtensions('extensions')
      

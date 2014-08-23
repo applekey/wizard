@@ -1,4 +1,4 @@
-('c:\\Users\\applekey2\\Desktop\\wizard\\pythonProject\\dist\\wiz.exe',
+('C:\\Users\\applekey2\\Desktop\\wizard\\pythonProject\\dist\\wiz.exe',
  True,
  False,
  None,
@@ -6,4 +6,4 @@
  [],
  None,
  False,
- 1408667623L)
+ 1408802500L)

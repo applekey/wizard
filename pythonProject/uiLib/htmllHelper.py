@@ -91,6 +91,7 @@ class htmlHelper(QtGui.QWidget,basePage):
     @pyqtSlot('QString')
     def extensionFunction(self,value):
         print value
+        eval('import MeshWrapper')
         self.callDynamic(str(value))
 
     @pyqtSlot()

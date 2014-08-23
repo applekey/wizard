@@ -28,7 +28,8 @@ a = Analysis(['awsomeStart.py'],
              'uiLib',
              'meshController/implementation',
              'meshController/pythonApi',
-             'htmlPages'
+             'htmlPages',
+             'extensions'
              ],
              hiddenimports=[],
              hookspath=None,
@@ -55,7 +56,8 @@ exe = EXE(pyz,
 
 coll = COLLECT(exe,
                Tree('imageFiles',prefix='imageFiles'),
-               Tree('htmlPages',prefix='htmlPages'),              
+               Tree('htmlPages',prefix='htmlPages'),
+               Tree('extensions',prefix='extensions'),              
                strip=None,
                upx=True,
                name='awsomeStart')
