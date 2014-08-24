@@ -20,7 +20,7 @@ except AttributeError:
 
 
 
-class awsomePlayer( QtGui.QFrame):
+class awsomePlayer( QtGui.QWidget):
     def __init__(self, parentForm):
         super( awsomePlayer, self ).__init__(parentForm)        
         self.videoSource = None
@@ -105,7 +105,8 @@ class awsomePlayer( QtGui.QFrame):
     #    else:
     #        self.play_pause.setIcon(QtGui.QIcon(':/icons/player_play.svg'))
 
-    def __setupUi(self, parentForm): 
+    def __setupUi(self, parentForm):
+        self.setStyleSheet("background: white;")
         # create the verticle layout, everthing lives in this verticle layout
         self.verticalLayout = QtGui.QVBoxLayout(self)
         self.verticalLayout.setMargin(0)

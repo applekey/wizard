@@ -7,11 +7,6 @@ body {
     margin-left: 50px;
 }
 
-#videoPlayer {
-    min-height:500px;
-    min-width: 600px;
-}
-
 .breadcrumb {
      background-color: #FAFAFA;
      border-radius: 0;

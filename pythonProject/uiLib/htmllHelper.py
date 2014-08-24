@@ -13,6 +13,7 @@ from Tkinter import *
 import tkFileDialog
 from urllib import urlopen
 from basePage import *
+from WebPluginFactory import *
 
 import htmlConfiguration
 from MeshWrapper import *
@@ -35,6 +36,16 @@ class htmlHelper(QtGui.QWidget,basePage):
     }
 
 ''')
+    def warnEvent(self):
+        self.frame.evaluateJavaScript('''
+        try {
+            onWarnEvent()
+        }
+        catch(err) {
+        
+        }
+        ''')
+   
 
     def onResize(self,event):
         width= event.size().width()
@@ -57,6 +68,12 @@ class htmlHelper(QtGui.QWidget,basePage):
             print location
             return ""
     def setHtml(self,htmlPage):  
+
+        QWebSettings.globalSettings().setAttribute(QWebSettings.PluginsEnabled, True)
+        factory = WebPluginFactory(self)
+        
+       
+
         print 'abs path is' + htmlPage
         htmlPage = resource_path(htmlPage)
         baseUrl = QtCore.QUrl.fromLocalFile(htmlPage)
@@ -64,10 +81,10 @@ class htmlHelper(QtGui.QWidget,basePage):
 
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
-        self.webView.setHtml(htmlText,baseUrl)
-      
 
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
+        self.webView.page().setPluginFactory(factory)
+        self.webView.setHtml(htmlText,baseUrl)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
        
        
@@ -87,11 +104,10 @@ class htmlHelper(QtGui.QWidget,basePage):
                eval('method.'+functionCall)
 
        
-
+#---------------------------------------------------------------------------------------------------------------------
     @pyqtSlot('QString')
     def extensionFunction(self,value):
         print value
-        eval('import MeshWrapper')
         self.callDynamic(str(value))
 
     @pyqtSlot()
@@ -107,7 +123,9 @@ class htmlHelper(QtGui.QWidget,basePage):
     
     @pyqtSlot()
     def selectAll(self): 
-       MeshWrapper.selectAll()
+        if MeshWrapper.selectAll() is not True:
+            self.warnEvent()
+       
     
     @pyqtSlot()
     def importScan(self):   
@@ -120,28 +138,37 @@ class htmlHelper(QtGui.QWidget,basePage):
     ##sliders
     @pyqtSlot(float)
     def remesh(self,value):  
-        MeshWrapper.remesh(value)
+        if MeshWrapper.remesh(value) is not True:
+            self.warnEvent()
     
     @pyqtSlot()
     def discard(self):  
-        MeshWrapper.editDiscard()
-    
+        if MeshWrapper.editDiscard() is not True:
+             self.warnEvent()
+
     @pyqtSlot(float)
     def smoothDeform(self,value):   
-        
-        ef = cd()
-        tasks = [ef.dosmth]
-        for task in tasks:
-            t = threading.Thread(target=task, args=())
-            t.start()
+        #self.warnEvent()
+        if MeshWrapper.deformsmooth(value) is not True:
+            self.warnEvent()
+   
+       
+        #task = {lambda x: MeshWrapper.deformsmooth(x)}
+       
+        #t = threading.Thread(target=task, args=([value]))
+        #t.start()
+        #t.join()
+        #self.warnEventEnd()
   
     @pyqtSlot(float)
     def scaleDeform(self,value):  
 
-        MeshWrapper.deformsmooth(value)
+        if MeshWrapper.deformsmooth(value) is not True:
+             self.warnEvent()
 
     @pyqtSlot(float)
     def offset(self,value):      
-        MeshWrapper.editoffset(value)
+        if MeshWrapper.editoffset(value) is not True:
+            self.warnEvent()
  
  

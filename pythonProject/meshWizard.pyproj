@@ -28,6 +28,7 @@
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
     <Compile Include="extensions\extensionModuleTest.py" />
+    <Compile Include="meshController\MeshException.py" />
     <Compile Include="uiLib\basePage.py" />
     <Compile Include="uiLib\htmllHelper.py">
       <SubType>Code</SubType>
@@ -68,6 +69,9 @@
     <Compile Include="uiLib\layoutWidget.py" />
     <Compile Include="uiLib\mywidget.py" />
     <Compile Include="uiLib\patientInfoPage.py" />
+    <Compile Include="uiLib\WebPluginFactory.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\2.7" />

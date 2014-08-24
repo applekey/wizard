@@ -3,10 +3,12 @@ import os,sys
 from mmapi import  *
 from mmRemote import *
 
+
 class MeshWrapper(object):  
     @staticmethod
     def SingleInstanceApiCommander(operation, modifier, modifierValue):
         try:
+
             remote = mmRemote()
             remote.connect()
             cmd = mmapi.StoredCommands()
@@ -26,18 +28,20 @@ class MeshWrapper(object):
         
             remote.runCommand(cmd);
             remote.shutdown();
-        except:
-            pass
+            return True
+        except :
+            abc =1
             #to do log this
+            return False
         finally:
             remote.shutdown();
     @staticmethod
     def importFigure(fileLocation):
-        MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)
+        return MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)
 
     @staticmethod
     def selectAll(): 
-      MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)
+      return MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)
 
     @staticmethod
     def wireframe():
@@ -45,11 +49,11 @@ class MeshWrapper(object):
 
     @staticmethod
     def remesh(value):
-       MeshWrapper.SingleInstanceApiCommander("remesh","smooth",value)
+       return MeshWrapper.SingleInstanceApiCommander("remesh","smooth",value)
 
     @staticmethod
     def deformsmooth(value):
-       MeshWrapper.SingleInstanceApiCommander("smooth","scale",value)
+       return MeshWrapper.SingleInstanceApiCommander("smooth","scale",value)
      
     @staticmethod
     def roughtselectionforsocket():
@@ -61,15 +65,15 @@ class MeshWrapper(object):
 
     @staticmethod
     def editoffset(value):
-        MeshWrapper.SingleInstanceApiCommander("offset","distance",value)
+        return MeshWrapper.SingleInstanceApiCommander("offset","distance",value)
 
     @staticmethod
     def ModifySmoothBoundary(value):
-        MeshWrapper.SingleInstanceApiCommander("smoothboundary","smoothness",value)
+        return MeshWrapper.SingleInstanceApiCommander("smoothboundary","smoothness",value)
 
     @staticmethod
     def editDiscard():
-        MeshWrapper.SingleInstanceApiCommander("discard",None,None)
+        return MeshWrapper.SingleInstanceApiCommander("discard",None,None)
 
 
     @staticmethod
