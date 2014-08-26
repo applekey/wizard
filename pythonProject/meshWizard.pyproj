@@ -22,12 +22,8 @@
     <Compile Include="commonFunctions.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="componentConfiguration\htmlConfiguration.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
-    <Compile Include="extensions\extensionModuleTest.py" />
     <Compile Include="meshController\MeshException.py" />
     <Compile Include="uiLib\basePage.py" />
     <Compile Include="uiLib\htmllHelper.py">
@@ -97,7 +93,6 @@
     <Content Include="extensions\abc.py">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="extensions\extensionModuleTest.pyc" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
     <Content Include="htmlPages\bootstrap-3.2.0-dist\css\bootstrap-theme.min.css" />
