@@ -2,6 +2,7 @@ import os,sys
 
 from mmapi import  *
 from mmRemote import *
+import implementation
 
 
 class MeshWrapper(object):  
@@ -15,7 +16,7 @@ class MeshWrapper(object):
             #some commands don't follow the scheme
 
             if operation is "open":
-                cmd.AppendSceneCommand_OpenMixFile(modifier)
+                cmd.AppendSceneCommand_AppendMeshFile(modifier);
             elif operation is "selectAll":
                  cmd.AppendSelectCommand_All()
             elif operation is "complete":
