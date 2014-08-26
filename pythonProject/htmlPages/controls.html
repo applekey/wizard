@@ -8,13 +8,6 @@
     <meta name="author" content="">
     <title></title>
 
-      <link href="video-js\video-js.css" rel="stylesheet" type="text/css">
-  <!-- video.js must be in the <head> for older IEs to work. -->
-    <script src="video-js\video.js"></script>
-      <script>
-          videojs.options.flash.swf = "video-js\video-js.swf";
-      </script>
-
     <script src="jquery-2.1.1.min.js"></script>
     <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css"
@@ -29,207 +22,251 @@
   
   <body>
       <!--<button  id = "shell" class="btn btn-primary">open python interactive shell</button>-->
+      <div class="row">
+          <div class="span4">
+              <object id="videoPlayer" type="x-pyqt/widget" width="900" height="500" src="htmlPages/small.mp4"></object>
+              <style>
+                  #videoPlayer {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                  }
+              </style>
+          </div>
+          <div class="span8">
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+
+              <ul id="allControlList" class="list-group">
+
+
+                  <li class="list-group-item">
+                      <button id="extensionBt" class="btn btn-primary">extension</button>
+
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Import Scan </h1>
+                          <button id="importScanBt" class="btn btn-primary">Import</button>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Select All </h1>
+                          <button id="selectAllBt" class="btn btn-primary">Select All</button>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Remesh </h1>
+
+
+                          <input id="remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+                          <input id="fineRemeshFine" type="number" min="0" max="1.0" step="0.01">
+                          <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
+
+                          <script>
+
+                              $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+
+                              $( "#remeshSlider" ).change(function() {
+                                  $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+                              });
+
+                              $( "#fineRemeshFine" ).change(function() {
+                                  $( "#remeshSlider" ).val($( "#fineRemeshFine" ).val());
+                              });
+
+                          </script>
+
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Deform Smooth </h1>
+                          <br>
+                          <h3> Smooth Value</h3>
+
+                          <input id="smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+                          <input id="smoothFine" type="number" min="0" max="1.0" step="0.01">
+                          <button id="smoothAcceptButton" class="btn btn-primary">Apply</button>
 
 
 
-<ul id ="allControlList" class="list-group">
-    
-    <li id ="videoPlayer" class="list-group-item">
-        <object type="x-pyqt/widget" width="900" height="500" src="htmlPages/small.mp4"></object>
+                          <script>
 
-    </li>
-    <li class="list-group-item">
-        <button id="extensionBt" class="btn btn-primary">extension</button>
-        
-    </li>
-    <li class="list-group-item">
-        <div>
-            <h1>Import Scan </h1>
-             <button  id = "importScanBt" class="btn btn-primary">Import</button>
-        </div>
-    </li>
-    <li class="list-group-item">
-        <div>
-            <h1>Select All </h1>
-            <button  id = "selectAllBt" class="btn btn-primary">Select All</button>
-        </div>      
-    </li>        
-    <li class="list-group-item">
-        <div>
-            <h1>Remesh </h1>
-            
-           
-            <input id = "remeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <input id = "fineRemeshFine" type="number" min="0" max="1.0" step="0.01">
-            <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
+                              $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
 
-            <script> 
-            $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
+                              $( "#smoothDeformSmoothSlider" ).change(function() {
+                                  $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
+                              });
 
-            $( "#remeshSlider" ).change(function() {
-              $( "#fineRemeshFine" ).val($( "#remeshSlider" ).val());
-            });
+                              $( "#smoothFine" ).change(function() {
+                                  $( "#smoothDeformSmoothSlider" ).val($( "#smoothFine" ).val());
+                              });
 
-             $( "#fineRemeshFine" ).change(function() {
-              $( "#remeshSlider" ).val($( "#fineRemeshFine" ).val());
-            });
+                          </script>
 
-            </script>
+                          <h3> Scale Value</h3>
 
-        </div>      
-    </li>
-    <li class="list-group-item">
-        <div>
-            <h1>Deform Smooth </h1>
-            <br>
-            <h3> Smooth Value</h3>
-           
-            <input id = "smoothDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <input id = "smoothFine"  type="number" min="0" max="1.0" step="0.01">
-            <button id="smoothAcceptButton" class="btn btn-primary">Apply</button>
-           
-
-        
-            <script> 
-            $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
-
-            $( "#smoothDeformSmoothSlider" ).change(function() {
-              $( "#smoothFine" ).val($( "#smoothDeformSmoothSlider" ).val());
-            });
-
-             $( "#smoothFine" ).change(function() {
-              $( "#smoothDeformSmoothSlider" ).val($( "#smoothFine" ).val());
-            });
-
-            </script>
-
-            <h3> Scale Value</h3>
-           
-            <input id = "scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <input id = "scaleFine"  type="number" min="0" max="1.0" step="0.01">
-            <button id="scaleAcceptButton" class="btn btn-primary">Apply</button>
-            
-          
-            <script> 
-            $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
-
-            $( "#scaleDeformSmoothSlider" ).change(function() {
-              $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
-            });
-
-             $( "#scaleFine" ).change(function() {
-              $( "#scaleDeformSmoothSlider" ).val($( "#scaleFine" ).val());
-            });
-
-            </script>
-        </div>      
-    </li>
-
-    <li class="list-group-item">
-        <div>
-            <h1>Offset</h1>
-           
-            <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <input id = "offsetFine"  type="number" min="0" max="1.0" step="0.01">
-            <button id="offsetAcceptButton" class="btn btn-primary">Apply</button>
-            
-            <script> 
-            $( "#offsetFine" ).val($( "#offsetSlider" ).val());
-
-            $( "#offsetSlider" ).change(function() {
-              $( "#offsetFine" ).val($( "#offsetSlider" ).val());
-            });
-
-             $( "#offsetFine" ).change(function() {
-              $( "#offsetSlider" ).val($( "#offsetFine" ).val());
-            });
-
-            </script>
-            
-        </div>      
-    </li>
-    <li class="list-group-item">
-        <div>
-            <h1>Discard</h1>
-           <button id="discardBt" class="btn btn-primary">Discard</button>
-        </div>      
-    </li>
-     <li class="list-group-item">
-        <div>
-            <h1>Final Remesh</h1>
-            
-            <input id = "finalRemeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <input id = "fineFinalRemeshFine"  type="number" min="0" max="1.0" step="0.01">
-            <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
-            
-           
-            <script> 
-            $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
-
-            $( "#finalRemeshSlider" ).change(function() {
-              $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
-            });
-
-             $( "#fineFinalRemeshFine" ).change(function() {
-              $( "#finalRemeshSlider" ).val($( "#fineFinalRemeshFine" ).val());
-            });
-
-            </script>
-
-        </div>      
-    </li>
-</ul>
-<!--This is where we connect the funcationaity of the things-->
-<script>
-
-$( "#shell" ).click(function() {
-  htmlHelper.interact();
-});
+                          <input id="scaleDeformSmoothSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+                          <input id="scaleFine" type="number" min="0" max="1.0" step="0.01">
+                          <button id="scaleAcceptButton" class="btn btn-primary">Apply</button>
 
 
-<!--connect buttons-->
-$( "#importScanBt" ).click(function() {
-  htmlHelper.importScan();
-});
+                          <script>
 
-$( "#selectAllBt" ).click(function() {
-  htmlHelper.selectAll();
-});
+                              $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
 
-$( "#extensionBt" ).click(function() {
-    htmlHelper.extensionFunction('ok22(n=1)');
-});
+                              $( "#scaleDeformSmoothSlider" ).change(function() {
+                                  $( "#scaleFine" ).val($( "#scaleDeformSmoothSlider" ).val());
+                              });
 
-$( "#discardBt" ).click(function() {
-  htmlHelper.discard();
-});
+                              $( "#scaleFine" ).change(function() {
+                                  $( "#scaleDeformSmoothSlider" ).val($( "#scaleFine" ).val());
+                              });
 
-<!--connect sliders-->
-$( "#remeshAcceptButton" ).click(function() {
-  htmlHelper.remesh($("#remeshSlider" ).val());
-});
-$( "#smoothAcceptButton" ).click(function() {
-   htmlHelper.smoothDeform($("#smoothDeformSmoothSlider" ).val());
-});
+                          </script>
+                      </div>
+                  </li>
 
-$( "#scaleAcceptButton" ).click(function() {
-   htmlHelper.scaleDeform($("#scaleDeformSmoothSlider" ).val());
-});
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Offset</h1>
 
-$( "#finalAcceptButton" ).click(function() {
-   htmlHelper.remesh($("#finalRemeshSlider" ).val());
-});
+                          <input id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+                          <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
+                          <button id="offsetAcceptButton" class="btn btn-primary">Apply</button>
 
-$( "#offsetAcceptButton" ).click(function() {
-   htmlHelper.offset($("#offsetSlider" ).val());
-});
+                          <script>
+
+                              $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+
+                              $( "#offsetSlider" ).change(function() {
+                                  $( "#offsetFine" ).val($( "#offsetSlider" ).val());
+                              });
+
+                              $( "#offsetFine" ).change(function() {
+                                  $( "#offsetSlider" ).val($( "#offsetFine" ).val());
+                              });
+
+                          </script>
+
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Discard</h1>
+                          <button id="discardBt" class="btn btn-primary">Discard</button>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Final Remesh</h1>
+
+                          <input id="finalRemeshSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+                          <input id="fineFinalRemeshFine" type="number" min="0" max="1.0" step="0.01">
+                          <button id="finalAcceptButton" class="btn btn-primary">Apply</button>
+
+
+                          <script>
+
+                              $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
+
+                              $( "#finalRemeshSlider" ).change(function() {
+                                  $( "#fineFinalRemeshFine" ).val($( "#finalRemeshSlider" ).val());
+                              });
+
+                              $( "#fineFinalRemeshFine" ).change(function() {
+                                  $( "#finalRemeshSlider" ).val($( "#fineFinalRemeshFine" ).val());
+                              });
+
+                          </script>
+
+                      </div>
+                  </li>
+              </ul>
+             
+          </div>
+      </div>
+
+         
+         
+
+
+          <!--This is where we connect the funcationaity of the things-->
+          <script>
+
+
+              $( "#shell" ).click(function() {
+                  htmlHelper.interact();
+              });
+
+
+              <!--connect buttons-->
+              $( "#importScanBt" ).click(function() {
+                  htmlHelper.importScan();
+              });
+
+              $( "#selectAllBt" ).click(function() {
+                  htmlHelper.selectAll();
+              });
+
+              $( "#extensionBt" ).click(function() {
+                  htmlHelper.extensionFunction('ok22(n=1)');
+              });
+
+              $( "#discardBt" ).click(function() {
+                  htmlHelper.discard();
+              });
+
+              <!--connect sliders-->
+              $( "#remeshAcceptButton" ).click(function() {
+                  htmlHelper.remesh($("#remeshSlider" ).val());
+              });
+              $( "#smoothAcceptButton" ).click(function() {
+                  htmlHelper.smoothDeform($("#smoothDeformSmoothSlider" ).val());
+              });
+
+              $( "#scaleAcceptButton" ).click(function() {
+                  htmlHelper.scaleDeform($("#scaleDeformSmoothSlider" ).val());
+              });
+
+              $( "#finalAcceptButton" ).click(function() {
+                  htmlHelper.remesh($("#finalRemeshSlider" ).val());
+              });
+
+              $( "#offsetAcceptButton" ).click(function() {
+                  htmlHelper.offset($("#offsetSlider" ).val());
+              });
+
+              $(window).resize(function() {
+                  $( "#videoPlayer" ).width($(window).width())
+                  $( "#videoPlayer" ).height($(window).height()/2.0)
+
+
+              });
+
+          </script>
 
 
 
-</script>
-
-
-
-  </body>
+</body>
 
 </html>

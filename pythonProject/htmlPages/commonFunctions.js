@@ -6,3 +6,7 @@ function switchPage( pageNumber)
     }
     
 }
+
+function onWarnEvent() {
+    alert('meshmixer is not open')
+}
