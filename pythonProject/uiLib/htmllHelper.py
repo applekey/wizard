@@ -105,6 +105,14 @@ class htmlHelper(QtGui.QWidget,basePage):
 
        
 #---------------------------------------------------------------------------------------------------------------------
+    @pyqtSlot()
+    def cancel(self):
+        if MeshWrapper.cancel() is not True:
+            self.warnEvent()
+    @pyqtSlot()
+    def complete(self):
+        if MeshWrapper.complete() is not True:
+            self.warnEvent()
     @pyqtSlot('QString')
     def extensionFunction(self,value):
         print value

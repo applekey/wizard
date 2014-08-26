@@ -18,6 +18,10 @@ class MeshWrapper(object):
                 cmd.AppendSceneCommand_OpenMixFile(modifier)
             elif operation is "selectAll":
                  cmd.AppendSelectCommand_All()
+            elif operation is "complete":
+                cmd.AppendCompleteToolCommand("accept")
+            elif operation is "cancel":
+                cmd.AppendCompleteToolCommand("cancel")
             else:
                 cmd.AppendBeginToolCommand(operation)
         
@@ -35,6 +39,13 @@ class MeshWrapper(object):
             return False
         finally:
             remote.shutdown();
+
+    @staticmethod 
+    def cancel():
+        return MeshWrapper.SingleInstanceApiCommander("cancel",None,None) 
+    @staticmethod 
+    def complete():
+        return MeshWrapper.SingleInstanceApiCommander("complete",None,None) 
     @staticmethod
     def importFigure(fileLocation):
         return MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)

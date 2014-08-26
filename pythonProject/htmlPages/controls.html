@@ -18,7 +18,7 @@
 
   </head>
   
-  <body>
+  <body >
       <!--<button  id = "shell" class="btn btn-primary">open python interactive shell</button>-->
       <div class="row">
           <div class="span4">
@@ -50,12 +50,19 @@
               <br>
               <br>
               <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
 
               <ul id="allControlList" class="list-group">
 
 
                   <li class="list-group-item">
                       <button id="extensionBt" class="btn btn-primary">extension</button>
+                      <button id="completeBt" class="btn btn-primary">complete</button>
+                      <button id="cancelBt" class="btn btn-primary">cancel</button>
 
                   </li>
                   <li class="list-group-item">
@@ -208,6 +215,13 @@
 
               $( "#shell" ).click(function() {
                   htmlHelper.interact();
+              });
+              
+              $( "#completeBt" ).click(function() {
+                  htmlHelper.complete();
+              });
+              $( "#cancelBt" ).click(function() {
+                  htmlHelper.cancel();
               });
 
 
