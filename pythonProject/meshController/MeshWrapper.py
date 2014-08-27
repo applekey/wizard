@@ -9,7 +9,6 @@ class MeshWrapper(object):
     @staticmethod
     def SingleInstanceApiCommander(operation, modifier, modifierValue):
         try:
-
             remote = mmRemote()
             remote.connect()
             cmd = mmapi.StoredCommands()
@@ -18,6 +17,8 @@ class MeshWrapper(object):
             if operation is "open":
                 cmd.AppendSceneCommand_AppendMeshFile(modifier);
             elif operation is "selectAll":
+                 cmd.AppendSelectCommand_All()
+            elif operation is "autoRepair":
                  cmd.AppendSelectCommand_All()
             elif operation is "complete":
                 cmd.AppendCompleteToolCommand("accept")
@@ -41,6 +42,16 @@ class MeshWrapper(object):
         finally:
             remote.shutdown();
 
+            
+    @staticmethod
+    def createFaceGroup():
+        return MeshWrapper.SingleInstanceApiCommander("createFaceGroup",None,None) 
+    @staticmethod
+    def align():
+        return MeshWrapper.SingleInstanceApiCommander("align",None,None) 
+    @staticmethod
+    def inspector():
+        return MeshWrapper.SingleInstanceApiCommander("inspector","contactTolerance",0.3) 
     @staticmethod 
     def cancel():
         return MeshWrapper.SingleInstanceApiCommander("cancel",None,None) 
@@ -50,7 +61,10 @@ class MeshWrapper(object):
     @staticmethod
     def importFigure(fileLocation):
         return MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)
-
+    
+    @staticmethod
+    def smoothBoundary(): 
+      return MeshWrapper.SingleInstanceApiCommander("smoothboundary","smoothness",40)
     @staticmethod
     def selectAll(): 
       return MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)

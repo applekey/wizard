@@ -79,6 +79,14 @@
                   </li>
                   <li class="list-group-item">
                       <div>
+                          <h1>Inspector </h1>
+                          <a href="#" id="inspectorBt" class="btn btn-primary"
+                             data-toggle="modal"
+                             data-target="#basicModal">Inspector</a>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
                           <h1>Remesh </h1>
 
 
@@ -100,6 +108,24 @@
 
                           </script>
 
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>Align </h1>
+                          <button id="alignBt" class="btn btn-primary">Align</button>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>CreateFaceGroup </h1>
+                          <button id="createFaceGroupBt" class="btn btn-primary">CreateFaceGroup</button>
+                      </div>
+                  </li>
+                  <li class="list-group-item">
+                      <div>
+                          <h1>SmoothBoundary </h1>
+                          <button id="smoothBoundaryBt" class="btn btn-primary">SmoothBoundary</button>
                       </div>
                   </li>
                   <li class="list-group-item">
@@ -211,7 +237,7 @@
 
           <!--This is where we connect the funcationaity of the things-->
           <script>
-
+             
 
               $( "#shell" ).click(function() {
                   htmlHelper.interact();
@@ -223,11 +249,27 @@
               $( "#cancelBt" ).click(function() {
                   htmlHelper.cancel();
               });
-
+              
 
               <!--connect buttons-->
+             $( "#smoothBoundaryBt" ).click(function() {
+                 htmlHelper.smoothBoundary();
+             });
+              
+              $( "#createFaceGroupBt" ).click(function() {
+                  htmlHelper.createFaceGroup();
+              });
+              
+              $( "#alignBt" ).click(function() {
+                  htmlHelper.align();
+              });
+
               $( "#importScanBt" ).click(function() {
                   htmlHelper.importScan();
+              });
+
+              $( "#inspectorBt" ).click(function() {
+                  htmlHelper.inspector();
               });
 
               $( "#selectAllBt" ).click(function() {
@@ -271,7 +313,29 @@
 
           </script>
 
-
+      <!-- Modal -->
+      <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Inspector</h4>
+                  </div>
+                  <div class="modal-body">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Auto Repair All </button>
+                      <select class="selectpicker">
+                          <option>Mustard</option>
+                          <option>Ketchup</option>
+                          <option>Relish</option>
+                      </select>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
 
 </body>
 

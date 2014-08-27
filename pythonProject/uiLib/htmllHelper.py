@@ -119,6 +119,26 @@ class htmlHelper(QtGui.QWidget,basePage):
     def extensionFunction(self,value):
         print value
         self.callDynamic(str(value))
+     
+    @pyqtSlot()
+    def smoothBoundary(self):
+        if MeshWrapper.smoothBoundary() is not True:
+            self.warnEvent()  
+
+    @pyqtSlot()
+    def createFaceGroup(self):
+        if MeshWrapper.createFaceGroup() is not True:
+            self.warnEvent()  
+    
+    @pyqtSlot()
+    def align(self):
+        if MeshWrapper.align() is not True:
+            self.warnEvent()  
+
+    @pyqtSlot()
+    def inspector(self):
+        if MeshWrapper.inspector() is not True:
+            self.warnEvent()  
 
     @pyqtSlot()
     def interact(self): 
