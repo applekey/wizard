@@ -95,7 +95,6 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.setupUi()
     
     def setHtml(self,htmlPage):  
-        print 'abs path is' + htmlPage
         self.htmlPage = resource_path(htmlPage)
         self.baseUrl = QtCore.QUrl.fromLocalFile(self.htmlPage)
         htmlText = self.getText(self.htmlPage)

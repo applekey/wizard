@@ -95,10 +95,6 @@ class banner(QtGui.QFrame):
                 currentButtonWidth = self.size().width()*firstButtonWidthPercentage
                 styleSheetText = styleSheetText+ "background:"+self.activecolorArray[i]+";"
                 icon = QtGui.QIcon()
-
-                print resource_path(activeIcons[i])
-                print 'blahbadfasdf'
-                print 'bfdasfd'
                 icon.addPixmap(QtGui.QPixmap(resource_path(activeIcons[i])), QtGui.QIcon.Normal, QtGui.QIcon.Off)
                 self.ribbonButtons[i].setIcon(icon)
             else:
