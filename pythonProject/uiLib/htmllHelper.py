@@ -56,6 +56,7 @@ class htmlHelper(QtGui.QWidget,basePage):
         super(htmlHelper, self).__init__(parent)
         self.navigationController = navigationController
         self.extensionMethods = extensionMethods
+        self.isInitialized=False
     def getText(self,location):
         isFile = os.path.isfile(location)
         if(isFile):
@@ -67,28 +68,39 @@ class htmlHelper(QtGui.QWidget,basePage):
             print 'cant find page'
             print location
             return ""
-    def setHtml(self,htmlPage):  
+    def show(self):
+         
+         if not self.isInitialized:
+             self.lazyLoad()
+             self.isInitialized=True
+         super(htmlHelper, self).show()
 
+    def lazyLoad(self):
+
+        
+      
+        
         QWebSettings.globalSettings().setAttribute(QWebSettings.PluginsEnabled, True)
         factory = WebPluginFactory(self)
-        
-       
-
-        print 'abs path is' + htmlPage
-        htmlPage = resource_path(htmlPage)
-        baseUrl = QtCore.QUrl.fromLocalFile(htmlPage)
-        htmlText = self.getText(htmlPage)
 
         self.webView = QWebView()
         self.frame = self.webView.page().mainFrame()
 
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         self.webView.page().setPluginFactory(factory)
-        self.webView.setHtml(htmlText,baseUrl)
+        self.webView.setHtml(self.htmlText,self.baseUrl)
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
        
        
         self.setupUi()
+    
+    def setHtml(self,htmlPage):  
+        print 'abs path is' + htmlPage
+        self.htmlPage = resource_path(htmlPage)
+        self.baseUrl = QtCore.QUrl.fromLocalFile(self.htmlPage)
+        htmlText = self.getText(self.htmlPage)
+        self.htmlText =htmlText
+       
 
     def setupUi(self):
         self.verticalLayout = QtGui.QVBoxLayout(self)

@@ -23,39 +23,9 @@
       <div class="row">
           <div class="span4">
               <object id="videoPlayer" type="x-pyqt/widget" width="900" height="500" src="htmlPages/small.mp4"></object>
-              <style>
-                  #videoPlayer {
-                      position: absolute;
-                      top: 0;
-                      left: 0;
-                      right: 0;
-                      bottom: 0;
-                  }
-              </style>
           </div>
           <div class="span8">
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-
+           
               <ul id="allControlList" class="list-group">
 
 
@@ -303,7 +273,8 @@
               $( "#offsetAcceptButton" ).click(function() {
                   htmlHelper.offset($("#offsetSlider" ).val());
               });
-
+              $( "#videoPlayer" ).width($(window).width())
+              $( "#videoPlayer" ).height($(window).height()/2.0)
               $(window).resize(function() {
                   $( "#videoPlayer" ).width($(window).width())
                   $( "#videoPlayer" ).height($(window).height()/2.0)
