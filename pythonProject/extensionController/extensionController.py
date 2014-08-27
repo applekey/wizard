@@ -17,6 +17,8 @@ class extensionController ():
         return module
     @staticmethod
     def getExtensions(directory):
+        if not os.path.isdir(directory):
+            return
         modules = []
         results = extensionController.getAllModuleNames(directory)
         for file in results:

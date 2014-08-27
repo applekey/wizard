@@ -1,9 +1,0 @@
-('I:\\wizard\\pythonProject\\dist\\wiz.exe',
- True,
- False,
- None,
- None,
- [],
- None,
- False,
- 1408906976L)

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="resources/jquery-2.1.1.min.js"></script>
+    <script src="resources/bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
+    <link href="resources/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/screen-71dfa987c6.css" rel="stylesheet">
+    <link href="resources/common.css" rel="stylesheet">
+	 
+</head>
+  
+  <body id="body">
+    <ol class="breadcrumb">
+        <li><a href="#pg1">Adjusting</a></li>
+        <li><a href="#pg2">Marking</a></li>
+        <li><a href="#pg3">Preparing</a></li>
+        <li><a href="#pg4">Recording</a></li>
+        <li><a href="#pg5">Processing</a></li>
+        <li class="active">Exporting</li>
+    </ol>
+  <div >
+    <object id="videoPlayer"  type="x-pyqt/widget" width="900" height="500" src="htmlPages/small.mp4"></object>
+  </div>
+  
+
+    <div id="headerContainer" class="row">
+      <div class="col-xs-1">
+        <div class="circle">
+          7
+        </div>
+      </div>
+
+      <div id="headerFont" class="col-xs-4">
+        STAGE NAME ## MODIFY ME
+      </div>
+
+    </div>
+    
+      <div id="paragraphSection" class="row">
+          PUT YOUR TEXT HERE ## MODIFY ME
+      </div>
+    
+    <div  class="row">
+      <div class="col-xs-auto">
+        <input id = "offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+      </div>
+      <div  class="col-middle">
+        <input id = "offsetFine" type="number" min="0" max="1.0" step="0.01">
+      </div>
+      <div  class="col-xs-auto-right">
+       <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </body>
+<script src="resources/commonFunctions.js"> </script>
+
+</html>

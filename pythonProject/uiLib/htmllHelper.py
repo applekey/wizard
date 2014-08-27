@@ -97,13 +97,15 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.verticalLayout.addWidget(self.webView)
    
     def callDynamic(self,functionCall):
-       index = functionCall.index('(')
-       functionName = functionCall[0:index]
-       for method in self.extensionMethods:
-           if hasattr(method, functionName):
-               eval('method.'+functionCall)
+        try:
+           index = functionCall.index('(')
+           functionName = functionCall[0:index]
+           for method in self.extensionMethods:
+               if hasattr(method, functionName):
+                   eval('method.'+functionCall)
+        except:
+            warnEvent()
 
-       
 #---------------------------------------------------------------------------------------------------------------------
     @pyqtSlot()
     def cancel(self):
