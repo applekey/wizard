@@ -81,6 +81,7 @@
     <Folder Include="htmlPages\bootstrap-3.2.0-dist\fonts\" />
     <Folder Include="htmlPages\bootstrap-3.2.0-dist\js\" />
     <Folder Include="htmlPages\css\" />
+    <Folder Include="htmlPages\controls\" />
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
@@ -110,6 +111,7 @@
     </Content>
     <Content Include="htmlPages\commonFunctions.js" />
     <Content Include="htmlPages\controls.html" />
+    <Content Include="htmlPages\controls\inspector.html" />
     <Content Include="htmlPages\css\controls.css" />
     <Content Include="htmlPages\css\screen-0f4b86e032.css" />
     <Content Include="htmlPages\css\screen-1454e5eb9c.css" />

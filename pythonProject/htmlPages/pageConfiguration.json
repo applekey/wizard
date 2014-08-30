@@ -4,8 +4,8 @@
    {
       "section": [
         {"sectionName":"Scanning"},
-    	  {"page":"controls.html"},
-		  {"page":"page1.html"}
+		  {"page":"page1.html"},
+		  {"page":"controls.html"}
 	    ]
     },
     {
