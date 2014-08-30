@@ -1,16 +1,87 @@
 <!--control from inspector-->
+
+<!--control from import scan-->
 <div class="jumbotron">
-    <h3> CONTROL NAME</h3>
-    <input class ="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-    <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
-    <button id="remeshAcceptButton" class="btn btn-primary">Apply</button>
- 
+    <h3 id="controlHeaderText"> Import Scan</h3>
+    <button id="ifdas" class="btn btn-warning">Import</button>
 </div>
+
+<!--control from select all-->
+<div class="jumbotron">
+    <h3 id="controlHeaderText"> Select All</h3>
+    <button id="ifdas" class="btn btn-warning">Select All</button>
+</div>
+
+<!--control from remesh-->
+<div class="jumbotron">
+    <h3 id="controlHeaderText"> Remesh</h3>
+
+    <div class="row" style="margin-left:3px;">
+        <div class="col-xs-right">
+            <h5 id="controlName"> Remesh</h5>
+        </div>
+        <div class="col-xs-left">
+            <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
+        </div>
+    </div>
+    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+
+    <div class="row" style="margin-left:3px;">
+        <div class="col-xs-right">
+            <h5 id="controlName"> Smooth</h5>
+        </div>
+        <div class="col-xs-left">
+            <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
+        </div>
+    </div>
+    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+    <button id="remeshAcceptButton" class="btn btn-primary">Accept</button>
+</div>  
 
 <!--control from inspector-->
 <div class="jumbotron">
     <h3> Inspector</h3>
     <button id="autoRepairAllButton" class="btn btn-warning">Auto Repair All</button>
+
+</div>
+
+<!--control from smooth Boundary-->
+<div class="jumbotron">
+    <h3 id="controlHeaderText"> Smooth Boundary</h3>
+
+    <div class="row" style="margin-left:3px;">
+        <div class="col-xs-right">
+            <h5 id="controlName"> Smoothness</h5>
+        </div>
+        <div class="col-xs-left">
+            <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
+        </div>
+    </div>
+    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+
+    <div class="row" style="margin-left:3px;">
+        <div class="col-xs-right">
+            <h5 id="controlName"> Iterations</h5>
+        </div>
+        <div class="col-xs-left">
+            <input id="offsetFine" type="number" min="0" max="1.0" step="0.01">
+        </div>
+    </div>
+    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+    <button id="remeshAcceptButton" class="btn btn-primary">Accept</button>
+</div>  
+
+<!--control from align-->
+<div class="jumbotron">
+    <h3> Align</h3>
+    <button id="autoRepairAllButton" class="btn btn-warning">Align</button>
+
+</div>
+
+<!--control from Discard-->
+<div class="jumbotron">
+    <h3> Discard</h3>
+    <button id="autoRepairAllButton" class="btn btn-warning">Discard</button>
 
 </div>
 
