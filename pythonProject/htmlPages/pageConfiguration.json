@@ -4,26 +4,30 @@
    {
       "section": [
         {"sectionName":"Scanning"},
-		  {"page":"page1.html"},
-		  {"page":"controls.html"}
+		  {"page":"scanning/page1.html"},
+		 
+		  {"page":"scanning/page2.html"},
+  		  {"page":"scanning/page3.html"},
+		  {"page":"scanning/page4.html"},
+  		  {"page":"scanning/page5.html"},
+  		  {"page":"scanning/page6.html"}
 	    ]
     },
     {
       "section": [
         {"sectionName":"Modeling"},
-    	 
-    	  {"page":"page2.html"},
-  		  {"page":"page3.html"}
-  		 
+		{"page":"modeling/m_s1.html"},
+		{"page":"modeling/m_s2.html"},
+		{"page":"modeling/m_s3.html"},
+		{"page":"modeling/m_s4.html"},
+		{"page":"modeling/m_s5.html"}
 	    ]
     },
 	 {
       "section": [
         {"sectionName":"Printing"},
-    	  {"page":"page4.html"},
-  		  {"page":"page5.html"},
-  		  {"page":"page6.html"},
-		  {"page":"page7.html"}
+    	 {"page":"controls.html"},
+		 {"page":"modalControlDemo.html"}
 
 	    ]
     }

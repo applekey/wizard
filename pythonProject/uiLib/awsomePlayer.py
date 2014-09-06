@@ -89,6 +89,9 @@ class awsomePlayer( QtGui.QWidget):
 
         self.videoPlayer.load(media)
         self.videoPlayer.show()
+        self.videoPlayer.play()
+        
+       
     
     def handleFullScreen(self):
         videoWidget = self.videoPlayer.videoWidget()
@@ -114,6 +117,9 @@ class awsomePlayer( QtGui.QWidget):
         # self.verticalLayout.setContentsMargins(33, 0, 33, 0)
         # create the video player
         self.videoPlayer = phonon.Phonon.VideoPlayer(self)
+
+
+
         self.videoPlayer.setObjectName( ("videoPlayer"))
         policy = QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.MinimumExpanding)
         self.videoPlayer.setSizePolicy(policy)

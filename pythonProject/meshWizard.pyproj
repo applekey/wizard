@@ -24,9 +24,12 @@
     </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
+    <Compile Include="htmlPages\controls\modal.html">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="meshController\MeshException.py" />
     <Compile Include="uiLib\basePage.py" />
-    <Compile Include="uiLib\htmllHelper.py">
+    <Compile Include="meshController\htmllHelper.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="contentPage\demoEndPage.py" />
@@ -82,6 +85,10 @@
     <Folder Include="htmlPages\bootstrap-3.2.0-dist\js\" />
     <Folder Include="htmlPages\css\" />
     <Folder Include="htmlPages\controls\" />
+    <Folder Include="htmlPages\modeling\" />
+    <Folder Include="htmlPages\modals\" />
+    <Folder Include="htmlPages\printing\" />
+    <Folder Include="htmlPages\scanning\" />
     <Folder Include="meshController\" />
     <Folder Include="meshController\implementation\" />
     <Folder Include="meshController\pythonApi\" />
@@ -121,12 +128,19 @@
     <Content Include="htmlPages\css\screen-e39062ba41.css" />
     <Content Include="htmlPages\css\screen-e9e7d130d5.css" />
     <Content Include="htmlPages\jquery-2.1.1.min.js" />
-    <Content Include="htmlPages\page1.html" />
-    <Content Include="htmlPages\page2.html" />
-    <Content Include="htmlPages\page3.html" />
-    <Content Include="htmlPages\page4.html" />
-    <Content Include="htmlPages\page5.html" />
-    <Content Include="htmlPages\page6.html" />
+    <Content Include="htmlPages\modalControlDemo.html" />
+    <Content Include="htmlPages\modals\cleanupModal.html" />
+    <Content Include="htmlPages\modeling\m_s5.html" />
+    <Content Include="htmlPages\modeling\m_s4.html" />
+    <Content Include="htmlPages\modeling\m_s3.html" />
+    <Content Include="htmlPages\modeling\m_s2.html" />
+    <Content Include="htmlPages\modeling\m_s1.html" />
+    <Content Include="htmlPages\scanning\page1.html" />
+    <Content Include="htmlPages\scanning\page2.html" />
+    <Content Include="htmlPages\scanning\page3.html" />
+    <Content Include="htmlPages\scanning\page4.html" />
+    <Content Include="htmlPages\scanning\page5.html" />
+    <Content Include="htmlPages\scanning\page6.html" />
     <Content Include="htmlPages\pageConfiguration.json" />
     <Content Include="meshController\pythonApi\mmapi.pyc" />
     <Content Include="meshController\pythonApi\mmRemote.pyc" />

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="../jquery-2.1.1.min.js"></script>
+    <script src="../bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
+    <link href="../bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../commonFunctions.js"></script>
+    <link href="../css/screen-7f397e5d8c.css" rel="stylesheet">
+    <link href="../common.css" rel="stylesheet">
+
+</head>
+  
+  <body id="body">
+<ol class="breadcrumb">
+    <li><a href="#pg1">Adjusting</a></li>
+    <li><a href="#pg2">Marking</a></li>
+    <li class="active">Preparing</li>
+    <li><a href="#pg4">Recording</a></li>
+    <li><a href="#pg5">Processing</a></li>
+    <li><a href="#pg6">Exporting</a></li>
+</ol>
+
+    <div id="headerContainer" class="row">
+      <div class="col-xs-1">
+        <div class="circle">
+          3
+        </div>
+      </div>
+      <div id="headerFont" class="col-xs-11">
+        PREPARING
+      </div>
+    </div>
+    <div id="paragraphSection" class="row">
+      <p>
+        Open the Skanect. You will see the main board on
+        <u><b>Prepare &gt; New.</b></u>
+        Make sure the 3D Scan- ner is turned on and working properly, if so you
+        should be able to see the Sensor in green colour. Make sure as well the
+        GPU is available and selected, if so the icon should be in green olour.
+        <button id="question" type="submit" class="btn btn-default">
+          ?
+        </button>
+        <br>
+        <br>
+        Now, select the specific configurations for Skanect:
+        <br>
+        <br>
+      </p>
+      <div id="roundBox">
+        <b>
+          <center>
+            Scene: Object
+          </center>
+          <center>
+            Bounding Box: 0.6 x 0.6 x 0.6m
+          </center>
+          <center>
+            Aspect Ratio: Normal
+          </center>
+        </b>
+      </div>
+      <br>
+      It is also necessary to select the path where the scanning will be saved.
+      For this, press the
+      <u><b>Blue Box beside the Path</b></u>
+      . For example, for scanning Maria we will add this path:
+      <br>
+      <br>
+      <div id="roundBox">
+        <b>
+          <center>
+           3D Scanning &gt; 2014.06.11 Maria &gt; 1st Scan
+          </center>
+        </b>
+      </div>
+      <br>
+      Once you have completed and rechecked all information, press
+      <u><b>Start</b></u>
+      to Start Scanning.
+    </div>
+  </body>
+<script type="text/javascript">
+
+    $('a[href="#pg1"]').click(function () {
+        htmlHelper.switchPage(1)
+    });
+    $('a[href="#pg2"]').click(function () {
+        htmlHelper.switchPage(2)
+    });
+    $('a[href="#pg3"]').click(function () {
+        htmlHelper.switchPage(3)
+    });
+    $('a[href="#pg4"]').click(function () {
+        htmlHelper.switchPage(4)
+    });
+    $('a[href="#pg5"]').click(function () {
+        htmlHelper.switchPage(5)
+    });
+    $('a[href="#pg6"]').click(function () {
+        htmlHelper.switchPage(6)
+    });
+</script>
+
+</html>

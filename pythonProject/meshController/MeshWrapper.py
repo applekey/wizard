@@ -36,12 +36,13 @@ class MeshWrapper(object):
             remote.shutdown();
             return True
         except :
-            abc =1
             #to do log this
             return False
         finally:
             remote.shutdown();
-
+    @staticmethod
+    def planecut():
+        return MeshWrapper.SingleInstanceApiCommander("planeCut",None,None) 
             
     @staticmethod
     def createFaceGroup():
