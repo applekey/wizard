@@ -76,9 +76,6 @@ class htmlHelper(QtGui.QWidget,basePage):
 
     def lazyLoad(self):
 
-        
-      
-        
         QWebSettings.globalSettings().setAttribute(QWebSettings.PluginsEnabled, True)
         factory = WebPluginFactory(self)
 
@@ -118,6 +115,23 @@ class htmlHelper(QtGui.QWidget,basePage):
 
 #---------------------------------------------------------------------------------------------------------------------
     @pyqtSlot()
+    def seperate(self):
+        if MeshWrapper.seperate() is not True:
+            self.warnEvent()
+
+
+    @pyqtSlot()
+    def expandToConnected(self):
+        if MeshWrapper.expandToConnected() is not True:
+            self.warnEvent()
+
+    @pyqtSlot()
+    def invert(self):
+        if MeshWrapper.invertSelection() is not True:
+            self.warnEvent()
+
+
+    @pyqtSlot()
     def planecut(self):
         if MeshWrapper.planecut() is not True:
             self.warnEvent()
@@ -135,9 +149,9 @@ class htmlHelper(QtGui.QWidget,basePage):
         print value
         self.callDynamic(str(value))
      
-    @pyqtSlot()
-    def smoothBoundary(self):
-        if MeshWrapper.smoothBoundary() is not True:
+    @pyqtSlot(float)
+    def smoothBoundary(self,value):
+        if MeshWrapper.smoothBoundary(value) is not True:
             self.warnEvent()  
 
     @pyqtSlot()
@@ -195,17 +209,8 @@ class htmlHelper(QtGui.QWidget,basePage):
 
     @pyqtSlot(float)
     def smoothDeform(self,value):   
-        #self.warnEvent()
         if MeshWrapper.deformsmooth(value) is not True:
             self.warnEvent()
-   
-       
-        #task = {lambda x: MeshWrapper.deformsmooth(x)}
-       
-        #t = threading.Thread(target=task, args=([value]))
-        #t.start()
-        #t.join()
-        #self.warnEventEnd()
   
     @pyqtSlot(float)
     def scaleDeform(self,value):  

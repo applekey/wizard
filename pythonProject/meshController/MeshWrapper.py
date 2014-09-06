@@ -16,14 +16,17 @@ class MeshWrapper(object):
 
             if operation is "open":
                 cmd.AppendSceneCommand_AppendMeshFile(modifier);
+            elif operation is "invert" or operation is "expandToConnected" :
+                cmd.AppendSelectUtilityCommand(operation);
             elif operation is "selectAll":
-                 cmd.AppendSelectCommand_All()
-            elif operation is "autoRepair":
                  cmd.AppendSelectCommand_All()
             elif operation is "complete":
                 cmd.AppendCompleteToolCommand("accept")
             elif operation is "cancel":
                 cmd.AppendCompleteToolCommand("cancel")
+            elif operation is "repairAll":
+                cmd.AppendToolUtilityCommand("repairAll")
+         
             else:
                 cmd.AppendBeginToolCommand(operation)
         
@@ -40,6 +43,14 @@ class MeshWrapper(object):
             return False
         finally:
             remote.shutdown();
+
+    @staticmethod
+    def seperate():
+        return MeshWrapper.SingleInstanceApiCommander("seperate",None,None) 
+    @staticmethod
+    def expandToConnected():
+        return MeshWrapper.SingleInstanceApiCommander("expandToConnected",None,None) 
+
     @staticmethod
     def planecut():
         return MeshWrapper.SingleInstanceApiCommander("planeCut",None,None) 
@@ -52,7 +63,10 @@ class MeshWrapper(object):
         return MeshWrapper.SingleInstanceApiCommander("align",None,None) 
     @staticmethod
     def inspector():
-        return MeshWrapper.SingleInstanceApiCommander("inspector","contactTolerance",0.3) 
+         if MeshWrapper.SingleInstanceApiCommander("inspector",None,None) :
+            return MeshWrapper.SingleInstanceApiCommander("repairAll",None,None) 
+         return False
+
     @staticmethod 
     def cancel():
         return MeshWrapper.SingleInstanceApiCommander("cancel",None,None) 
@@ -64,8 +78,8 @@ class MeshWrapper(object):
         return MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)
     
     @staticmethod
-    def smoothBoundary(): 
-      return MeshWrapper.SingleInstanceApiCommander("smoothboundary","smoothness",40)
+    def smoothBoundary(value): 
+      return MeshWrapper.SingleInstanceApiCommander("smoothboundary",None,None)
     @staticmethod
     def selectAll(): 
       return MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)
@@ -88,7 +102,7 @@ class MeshWrapper(object):
     
     @staticmethod
     def invertSelection():
-        print 'here'
+        return MeshWrapper.SingleInstanceApiCommander("invert",None,None)
 
     @staticmethod
     def editoffset(value):

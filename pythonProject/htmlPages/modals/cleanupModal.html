@@ -6,36 +6,16 @@
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="mySmallModalLabel">Step 4</h4>
         </div>
-        <div class="modal-body">
+             <div class="modal-body">
+                 
+         
+                 <button id="runCleanUp"  class="btn btn-primary">Accept</button>
+                 <script>
+                     $("#runCleanUp").click(function () {
+                         htmlHelper.switchPage(6)
+                     });
 
-             <p> Awsome you got here, there are several things we can put in here, a small list of instructions. click apply or out of the 
-            dialog to close this dialog
-            </p>
-
-          
-                <h3 id="controlHeaderText"> Smooth Boundary</h3>
-
-                <div class="row" style="margin-left:3px;">
-                    <div class="col-xs-right">
-                        <h5 id="controlName"> Smoothness</h5>
-                    </div>
-                    <div class="col-xs-left">
-                        <input id="offsetFine" value="0.5" type="number" min="0" max="1.0" step="0.01">
-                    </div>
-                </div>
-                <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-
-                <div class="row" style="margin-left:3px;">
-                    <div class="col-xs-right">
-                        <h5 id="controlName"> Iterations</h5>
-                    </div>
-                    <div class="col-xs-left">
-                        <input id="offsetFine" value ="0.5" type="number" min="0" max="1.0" step="0.01">
-                    </div>
-                </div>
-                <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
-            <button id="remeshAcceptButton" data-dismiss="modal"  class="btn btn-primary">Accept</button>
-            
+                 </script>
 
       
              </div>
@@ -44,5 +24,10 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+    <style>
+
+
+    </style>
 
 </html>
