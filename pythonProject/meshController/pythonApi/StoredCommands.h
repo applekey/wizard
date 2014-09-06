@@ -91,6 +91,12 @@ public:
 	Key CameraControl_QueryEyeRayAtPixel(int x, int y);
 	bool CameraControl_QueryEyeRayAtPixelResult(Key k, vec3f & ray_origin, vec3f & ray_direction);
 
+	// nMode  0=SmoothNormals, 1=FaceNormals, 2=GroupNormals
+	void ViewControl_SetSurfaceNormalMode(int nMode);
+
+	// nMode  0=VertexColors, 1=GroupColors
+	void ViewControl_SetTriangleColorMode(int nMode);
+
 	// [TODO] view controls (normals, colors, wireframe, etc)
 
 
@@ -291,9 +297,15 @@ public:
 			"generateSupport"
 			"removeSupport"
 			"convertToSolid" :   NewObject=0, ReplaceExisting=1
+	 *   [volumeBrush]
+			"setPrimary":    "drag","draw","draw2","flatten","inflate","pinch","move","spikes","paintVertex","attract",
+						     "bubbleSmooth","shrinkSmooth","robustSmooth",
+						     "refine","reduce","adaptiveReduce","zipperEdge"
+			"setSecondary":  "bubbleSmooth","shrinkSmooth","robustSmooth"
 	 */
 	void AppendToolUtilityCommand( std::string commandName );
 	void AppendToolUtilityCommand( std::string commandName, int nValue );
+	void AppendToolUtilityCommand( std::string commandName, std::string sValue );
 
 
 
@@ -308,6 +320,9 @@ public:
 	 */
 	// generic "return true/false" check for scene commands that return a Key
 	bool GetSceneCommandResult_IsOK(Key k);
+
+	// write out screenshot at pFilename
+	void AppendSceneCommand_SaveScreenShot(const char * pFilename);
 
 	// open a .mix file (replaces existing file)
 	Key AppendSceneCommand_OpenMixFile( const char * pFilename );
@@ -385,6 +400,19 @@ public:
 
 	void AppendSelectCommand_All( );
 
+	// commands:
+	//  "selectVisible"    nArgument 0=Replace 1=Append 2=Remove
+	//  "expandToConnected"
+	//  "expandToGroups"
+	//  "expandByOneRing"
+	//  "contractByOneRing"
+	//  "invert"
+	//  "invertConnected"
+	//  "optimizeBoundary"
+	void AppendSelectUtilityCommand( std::string commandName );
+	void AppendSelectUtilityCommand( std::string commandName, int nArgument );
+
+
 	// parameter is 3D point
 	Key AppendSelectCommand_NearestComponent( float cx, float cy, float cz );
 	Key AppendSelectCommand_ContainingComponent( float cx, float cy, float cz );
@@ -402,6 +430,9 @@ public:
 
 	Key AppendSelectCommand_ListSelectedFaceGroups();
 		bool GetSelectCommandResult_ListSelectedFaceGroups( Key k, std::vector<int> & vGroupIDs );
+
+
+	
 
 	// [RMS] TODO: selection-modify commands (invert, etc)
 
@@ -515,7 +546,8 @@ private:
 
 
 	enum CameraCmdType {
-		CamManip, CamToggleSnap, CamOrbit, CamTurntable, CamPan, CamDolly, CamRecenter, CamSet, CamQuery, CamGetRay
+		CamManip, CamToggleSnap, CamOrbit, CamTurntable, CamPan, CamDolly, CamRecenter, CamSet, CamQuery, CamGetRay, 
+		SetViewNormalMode, SetViewColorMode
 	};
 	struct CameraCmd {
 		CameraCmdType eType;
@@ -543,6 +575,7 @@ private:
 		ToolParam_Bool = 2,
 		ToolParam_Vec3 = 3,
 		ToolParam_Mat3 = 4,
+		ToolParam_String = 5,
 
 		ToolParam_Get = 9,
 		ToolParam_Get_Float = 10,
@@ -556,6 +589,9 @@ private:
 		ToolParam_Utility_Float = 21,
 		ToolParam_Utility_Int = 22,
 		ToolParam_Utility_Bool = 23,
+		ToolParam_Utility_Vec3 = 23,
+		ToolParam_Utility_Mat3 = 25,
+		ToolParam_Utility_String = 26,
 	};
 	struct ToolParamValueCmd {
 		char name[32];
@@ -565,6 +601,7 @@ private:
 			int i;
 			vec3f vec;
 			mat3f mat3;
+			fstring str;
 		} v;
 	};
 	struct ToolParamValueCmdResult {
@@ -593,7 +630,8 @@ private:
 		DeleteSelected,
 		GetObjectName,
 		SetObjectName,
-		FindObjectByName
+		FindObjectByName,
+		SaveScreenShot
 	};
 	struct SceneCmd {
 		SceneCmdType eType;
@@ -610,7 +648,7 @@ private:
 
 	enum SelectCmdType {
 		SelectAll,
-		
+
 		SelectNearestComponent,
 		SelectContainingComponent,
 		SelectFirstComponentIntersectingRay,
@@ -619,13 +657,17 @@ private:
 		SelectInsideSphere,
 		SelectFaceGroups,
 
-		ListSelectedFaceGroups
+		ListSelectedFaceGroups,
+
+		SelectUtility
 	};
 	struct SelectCmd {
 		SelectCmdType eType;
 		vec3f p;
 		vec3f d;
 		float r;
+		int n;
+		char str[32];
 		vector_int vGroups;
 	};
 	struct SelectCmdResult {

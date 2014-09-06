@@ -176,7 +176,7 @@ class htmlHelper(QtGui.QWidget,basePage):
     def importScan(self):   
         root = Tk()
         root.withdraw()
-        fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("Image Files","*.jpg;*.gif")]))
+        fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
             state =  MeshWrapper.importFigure(fileName) 
             if state is not True:

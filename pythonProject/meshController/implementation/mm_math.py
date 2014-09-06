@@ -40,6 +40,14 @@ def make_rotX_matrix(angle):
     c0 = math.cos(angle)
     s0 = math.sin(angle)
     return ( 1, 0, 0, 0, c0, -s0, 0, s0, c0 )
+def make_rotY_matrix(angle):
+    c0 = math.cos(angle)
+    s0 = math.sin(angle)
+    return ( c0, 0, s0, 0, 1, 0, -s0, 0, c0 )
+def make_rotZ_matrix(angle):
+    c0 = math.cos(angle)
+    s0 = math.sin(angle)
+    return ( c0, -s0, 0, s0, c0, 0, 0, 0, 1 )
 
 def make_matrix_from_axes(x,y,z):
     return ( x[0], y[0], z[0],
