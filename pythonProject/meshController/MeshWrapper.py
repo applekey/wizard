@@ -4,6 +4,23 @@ from mmapi import  *
 from mmRemote import *
 import implementation
 
+def meshWrapper(func):
+    def inner(*args, **kwargs): #1
+        try:
+                
+            remote = mmRemote()
+            remote.connect()
+            cmd = func(*args, **kwargs) 
+            remote.runCommand(cmd);
+            return True
+        except :
+            #to do log this
+            return False
+
+        finally:
+            remote.shutdown();
+            
+    return inner
 
 class MeshWrapper(object):  
     @staticmethod
@@ -47,22 +64,7 @@ class MeshWrapper(object):
         self.cmd  = mmapi.StoredCommands()
 
 
-    def meshWrapper(func):
-        def inner(*args, **kwargs): #1
-            try:
-                remote = mmRemote()
-                remote.connect()
-                cmd = func(*args, **kwargs) 
-                remote.runCommand(cmd);
-                return True
-            except :
-                #to do log this
-                return False
-
-            finally:
-                remote.shutdown();
-            
-        return inner
+  
 
     
     @meshWrapper
