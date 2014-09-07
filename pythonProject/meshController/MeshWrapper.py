@@ -43,6 +43,36 @@ class MeshWrapper(object):
             return False
         finally:
             remote.shutdown();
+    def __init__(self):
+        self.cmd  = mmapi.StoredCommands()
+
+
+    def meshWrapper(func):
+        def inner(*args, **kwargs): #1
+            try:
+                remote = mmRemote()
+                remote.connect()
+                cmd = func(*args, **kwargs) 
+                remote.runCommand(cmd);
+                return True
+            except :
+                #to do log this
+                return False
+
+            finally:
+                remote.shutdown();
+            
+        return inner
+
+    
+    @meshWrapper
+    def trial(self):
+          cmd  = mmapi.StoredCommands()
+          cmd.AppendSelectCommand_All()
+          return cmd
+
+  
+    
 
     @staticmethod
     def seperate():

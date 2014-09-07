@@ -56,6 +56,8 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.navigationController = navigationController
         self.extensionMethods = extensionMethods
         self.isInitialized=False
+        self.meshWrapper = MeshWrapper()
+
     def getText(self,location):
         isFile = os.path.isfile(location)
         if(isFile):
@@ -116,7 +118,7 @@ class htmlHelper(QtGui.QWidget,basePage):
 #---------------------------------------------------------------------------------------------------------------------
     @pyqtSlot()
     def seperate(self):
-        if MeshWrapper.seperate() is not True:
+        if self.meshWrapper.trial() is not True:
             self.warnEvent()
 
 
