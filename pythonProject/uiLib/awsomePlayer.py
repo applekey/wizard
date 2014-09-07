@@ -3,6 +3,7 @@ from PyQt4 import phonon
 from PyQt4.QtGui import QSizePolicy
 from componentConfirguration import *
 from awsomeSeekSlider import awsomeSeekSlider
+import time
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -90,6 +91,8 @@ class awsomePlayer( QtGui.QWidget):
         self.videoPlayer.load(media)
         self.videoPlayer.show()
         self.videoPlayer.play()
+        time.sleep(0.0001)
+        self.videoPlayer.pause()
         
        
     
