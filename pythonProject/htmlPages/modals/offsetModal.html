@@ -1,11 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
 
-    <title></title>
-</head>
 
-<body>
     <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -50,28 +45,51 @@
                             <div class="block" id="block1" style="left: 0%;">
                                 <div class="wrap">
                                     <h2>Smooth Boundary</h2><br />
-                                    <a onclick="step_process(1, 2); htmlHelper.expandToConnected();" class="butt">Next</a>
+                                    <a onclick="step_process(1, 2); htmlHelper.smoothBoundary();" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block2">
                                 <div class="wrap">
                                     <h2>Smooth Boundary Accept</h2><br />
-                                    <a onclick="step_process(2, 3); htmlHelper.invert();" class="butt">Next</a>
+                                    <a onclick="step_process(2, 3); htmlHelper.confirm();" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block3">
                                 <div class="wrap">
                                     <h2>Offset</h2><br />
-                                    <a onclick="step_process(3, 4); htmlHelper.discard();" class="butt">Next</a>
+
+                                    <h3 id="controlHeaderText"> Smooth Boundary</h3>
+
+                                    <div class="row" style="margin-left:3px;">
+                                        <div class="col-xs-right">
+                                            <h5 id="controlName"> Smoothness</h5>
+                                        </div>
+                                        <div class="col-xs-left">
+                                            <input id="offsetFine" value="0.5" type="number" min="0" max="1.0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+
+                                    <div class="row" style="margin-left:3px;">
+                                        <div class="col-xs-right">
+                                            <h5 id="controlName"> Iterations</h5>
+                                        </div>
+                                        <div class="col-xs-left">
+                                            <input id="offsetFine" value="0.5" type="number" min="0" max="1.0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <input class="mySlider" id="offsetSlider" type="range" min="0" max="1.0" step="0.01" value="0.5">
+
+                                    <a onclick="step_process(3, 4); htmlHelper.offset(0.3);" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block4">
                                 <div class="wrap">
                                     <h2>Offset Accept</h2><br />
-                                    <a onclick="step_process(4, 5); htmlHelper.selectAll();" class="butt">Next</a>
+                                    <a onclick="step_process(4, 5); htmlHelper.confirm();" class="butt">Next</a>
                                 </div>
                             </div>
 
@@ -79,7 +97,7 @@
                             <div class="block" id="block5">
                                 <div class="wrap">
                                     <h2>Finish</h2><br />
-                                    <a data-dismiss="modal" class="butt">Next</a>
+                                    <a data-dismiss="modal" class="butt">Finish</a>
                                 </div>
                             </div>
                         </div>
@@ -88,5 +106,9 @@
             </div>
         </div>
     </div>
-</body>
+
+
+
+
+
 </html>
