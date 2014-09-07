@@ -1,33 +1,94 @@
+<!DOCTYPE html>
 <html>
-  <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="mySmallModalLabel">Step 4</h4>
+<body>
+    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="mySmallModalLabel">Step 4</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="progress_bar">
+                            <hr class="all_steps">
+                            <hr class="current_steps">
+                            <div class="step current" id="step1" data-step="1">
+                                Step 1
+                            </div>
+                            <div class="step" id="step2" data-step="2">
+                                Step 2
+                            </div>
+                            <div class="step" id="step3" data-step="3">
+                                Step 3
+                            </div>
+                            <div class="step" id="step4" data-step="4">
+                                Step 4
+                            </div>
+                            <div class="step" id="step5" data-step="5">
+                                Step 5
+                            </div>
+                        </div>
+
+                        <div id="blocks">
+                            <div class="block" id="block1" style="left: 0%;">
+                                <div class="wrap">
+                                    <h2>Block 1</h2>
+                                    <p>abcd</p>
+                                    <br />
+                                    <a onclick="step_process(1, 2)" class="butt">Next</a>
+                                </div>
+                            </div>
+                            <div class="block" id="block2">
+                                <div class="wrap">
+                                    <h2>Block 2</h2>
+                                    <p>abcde</p>
+                                    <br />
+                                    <a onclick="step_process(2, 3)" class="butt">Next</a>
+                                </div>
+                            </div>
+                            <div class="block" id="block3">
+                                <div class="wrap">
+                                    <h2>Block 3</h2>
+                                    <p>3</p>
+                                    <br />
+                                    <a onclick="step_process(3, 2, 'desc')" class="butt">Prev</a><a onclick="step_process(3, 4)" class="butt">Next</a>
+                                </div>
+                            </div>
+                            <div class="block" id="block4">
+                                <div class="wrap">
+                                    <h2>Block 4</h2>
+                                    <p>gula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <br />
+                                    <a onclick="step_process(4, 5)" class="butt">Next</a>
+                                </div>
+                            </div>
+                            <div class="block" id="block5">
+                                <div class="wrap">
+                                    <h2>Block 5</h2>
+                                    <p>Integeng elit.</p>
+                                    <br />
+                                    Use the progress bar at the top as a navigation back.
+                                </div>
+                            </div>
+                        </div>
+                        <br class="clear" />
+                    </div>
+
+
+
+
+                </div>
+            </div>
         </div>
-             <div class="modal-body">
-                 
-         
-                 <button id="runCleanUp"  class="btn btn-primary">Accept</button>
-                 <script>
-                     $("#runCleanUp").click(function () {
-                         htmlHelper.switchPage(6)
-                     });
+    </div>
 
-                 </script>
+    
 
-      
-             </div>
-        </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-    <style>
+</body>
 
 
-    </style>
+
 
 </html>

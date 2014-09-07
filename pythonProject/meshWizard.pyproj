@@ -129,6 +129,7 @@
     <Content Include="htmlPages\css\screen-e9e7d130d5.css" />
     <Content Include="htmlPages\jquery-2.1.1.min.js" />
     <Content Include="htmlPages\modalControlDemo.html" />
+    <Content Include="htmlPages\modals\modal.css" />
     <Content Include="htmlPages\modals\cleanupModal.html" />
     <Content Include="htmlPages\modeling\m_s5.html" />
     <Content Include="htmlPages\modeling\m_s4.html" />

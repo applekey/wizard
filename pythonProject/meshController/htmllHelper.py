@@ -111,7 +111,8 @@ class htmlHelper(QtGui.QWidget,basePage):
            functionName = functionCall[0:index]
            for method in self.extensionMethods:
                if hasattr(method, functionName):
-                   eval('method.'+functionCall)
+                   if eval('method.'+functionCall) is not True:
+                       self.warnEvent()
         except:
             warnEvent()
 
