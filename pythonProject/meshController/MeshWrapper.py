@@ -95,9 +95,12 @@ class MeshWrapper(object):
         return MeshWrapper.SingleInstanceApiCommander("align",None,None) 
     @staticmethod
     def inspector():
-         if MeshWrapper.SingleInstanceApiCommander("inspector",None,None) :
-            return MeshWrapper.SingleInstanceApiCommander("repairAll",None,None) 
-         return False
+         return MeshWrapper.SingleInstanceApiCommander("inspector",None,None) 
+           
+    @staticmethod
+    def repairAll():
+         return MeshWrapper.SingleInstanceApiCommander("repairAll",None,None)  
+  
 
     @staticmethod 
     def cancel():

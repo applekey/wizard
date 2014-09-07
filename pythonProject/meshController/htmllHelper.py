@@ -171,6 +171,10 @@ class htmlHelper(QtGui.QWidget,basePage):
     def inspector(self):
         if MeshWrapper.inspector() is not True:
             self.warnEvent()  
+    @pyqtSlot()
+    def inspectorAutoRepair(self):
+        if MeshWrapper.repairAll() is not True:
+            self.warnEvent()  
 
     @pyqtSlot()
     def interact(self): 

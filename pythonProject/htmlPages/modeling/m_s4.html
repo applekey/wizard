@@ -13,8 +13,9 @@
     <script src="../bootstrap-3.2.0-dist/js/bootstrap.min.js"> </script>
     <link href="../bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="../commonFunctions.js"></script>
-    <link href="../css/screen-7f397e5d8c.css" rel="stylesheet">
     <link href="../common.css" rel="stylesheet">
+    <script src="../modals/modal.js"></script>
+    <link rel="stylesheet" href="../modals/modal.css" media="screen" type="text/css" />
 
 </head>
 
@@ -48,6 +49,14 @@
             You can control the height and the shape of the material you add using the ‘height’ slider, and 
             ‘falloff’ slider. To make it easier to see what you are adding, rotate the camera so that 
             you are viewing the material you are adding in profile. When ready, press ‘accept’ and repeat the process for other areas to build up.
+
+            <button class="btn btn-warning" data-toggle="modal" data-target="#mySmallModal">
+                remesh
+            </button>
+            <div class="row" id="myModal"></div>
+            <script>
+                $("#myModal").load("../modals/offsetModal.html");
+            </script>
 
         </p>
     </div>
