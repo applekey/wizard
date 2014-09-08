@@ -33,7 +33,7 @@
     <div id="headerContainer" class="row">
         <div class="col-xs-1">
             <div class="circle">
-                4
+                6
             </div>
         </div>
         <div id="headerFont" class="col-xs-11">
@@ -42,22 +42,37 @@
     </div>
     <div id="paragraphSection" class="row">
         <p>
-            In step 4 you will begin the process of rectifying the positive residual limb model, 
-            building up areas on it that correspond to areas marked during the scanning process. 
-            You can control the size of the select tool using the ‘tool slider’.
+            In Step 6 you will generate the socket from the now rectified positive model.
 
-            Start by selecting the first region to add material and when ready, press ‘build up’ button. 
-            You can control the height and the shape of the material you add using the ‘height’ slider, and 
-            ‘falloff’ slider. To make it easier to see what you are adding, rotate the camera so that 
-            you are viewing the material you are adding in profile. When ready, press ‘accept’ and repeat the process for other areas to build up.
-
-            <button class="btn btn-warning" data-toggle="modal" data-target="#mySmallModal">
-                remesh
+            Start by using the selection tool to trace the trim line for the socket as marked during the sca
+            nning process, Make sure to trace above the line rather than directly on the line and verify that t
+            he line is continuous and that there are no gaps. When ready to proceed, press 
+            <button id ="generateTripLineBt" class="btn btn-warning" >
+                generate trim line
             </button>
-            <div id="myModal" class="ui-widget-content"></div>
             <script>
-                $("#myModal").load("../modals/offsetModal.html");
+                $("#generateTripLineBt").click(function () {
+                    htmlHelper.complete();
+                });
+
             </script>
+            
+            To generate a socket, double-click anywhere below the trim line to select the appropriate part of the model. 
+            Then, press 
+            
+            <button class="btn btn-warning" data-toggle="modal" data-target="#mySmallModal">
+                generate socket
+            </button>
+            <div class="row" id="myModal"></div>
+            <script>
+                $("#myModal").load("../modals/generateSocketModal.html");
+            </script>
+            
+            
+            to create the socket. You can set the space between the residual limb and the socket 
+            using the ‘inner dimension’ slider and the thickness of the socket wall using the ‘outer dimension’ slider.
+
+
 
         </p>
     </div>
