@@ -118,6 +118,16 @@ class htmlHelper(QtGui.QWidget,basePage):
 
 #---------------------------------------------------------------------------------------------------------------------
     @pyqtSlot()
+    def loadLatest(self):
+        if MeshWrapper.loadLatest() is not True:
+            self.warnEvent()
+
+    @pyqtSlot()
+    def saveLatest(self):
+        if MeshWrapper.saveLatest() is not True:
+            self.warnEvent()
+
+    @pyqtSlot()
     def seperate(self):
         if self.meshWrapper.trial() is not True:
             self.warnEvent()

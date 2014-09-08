@@ -72,6 +72,23 @@ class MeshWrapper(object):
           cmd  = mmapi.StoredCommands()
           cmd.AppendSelectCommand_All()
           return cmd
+    
+    @meshWrapper
+    def loadLatest(self):
+          cmd  = mmapi.StoredCommands()
+          currentDir = os.getcwd()
+          saveFile = currentDir+'//tmp.mix'
+          if os.path.isfile(saveFile):
+            cmd.AppendSceneCommand_OpenMixFile(saveFile)
+          return cmd
+
+    @meshWrapper
+    def saveLatest(self):
+          cmd  = mmapi.StoredCommands()
+          currentDir = os.getcwd()
+          saveFile = currentDir+'//tmp.mix'
+          cmd.AppendSceneCommand_ExportMixFile(saveFile)
+          return cmd
 
   
     
