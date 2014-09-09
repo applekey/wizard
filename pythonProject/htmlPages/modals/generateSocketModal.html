@@ -138,21 +138,47 @@
 
                             <div class="block" id="block6">
                                 <div class="wrap">
-                                    <h2>Smooth Complete</h2><br />
-                                    <a onclick="step_process(6, 7); htmlHelper.complete();" class="butt">Next</a>
+                                    <h2>offset</h2><br />
+                                    <h3 id="controlHeaderText"> Offset</h3>
+
+                                    <div class="row" style="margin-left:3px;">
+                                        <div class="col-xs-right">
+                                            <h5 id="controlName"> Distance</h5>
+                                        </div>
+                                        <div class="col-xs-left">
+                                            <input id="distanceFine2" value="0.5" type="number" min="0" max="5.0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <input class="mySlider" id="distanceSlider2" type="range" min="0" max="5.0" step="0.01" value="0.5">
+                                    <script>
+
+                                        $("#distanceFine2").val($("#distanceSlider2").val());
+
+                                        $("#distanceSlider2").change(function () {
+                                            $("#distanceFine2").val($("#distanceSlider2").val());
+                                        });
+
+                                        $("#distanceFine2").change(function () {
+                                            $("#distanceSlider2").val($("#distanceFine2").val());
+                                        });
+
+                                    </script>
+
+
+                                    <a onclick="step_process(6, 7); htmlHelper.offset($('#distanceFine2').val());" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block7">
                                 <div class="wrap">
-                                    <h2>Inspector</h2><br />
-                                    <a onclick="step_process(7, 8); htmlHelper.inspector();" class="butt">Next</a>
+                                    <h2>Offset Accept</h2><br />
+                                    <a onclick="step_process(7, 8); htmlHelper.complete();" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block8">
                                 <div class="wrap">
-                                    <h2>Inspector Auto Repair</h2><br />
+                                    <h2>Hide Other Models</h2><br />
                                     <a onclick="step_process(8, 9); htmlHelper.inspectorAutoRepair();"
                                        class="butt">Next</a>
                                 </div>
