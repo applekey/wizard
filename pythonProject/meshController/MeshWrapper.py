@@ -158,7 +158,7 @@ class MeshWrapper(object):
 
     @staticmethod
     def editoffset(value):
-        return MeshWrapper.SingleInstanceApiCommander("offset","distance",value)
+        return MeshWrapper.SingleInstanceApiCommander("offset","offsetWorld",value)
 
 
     @staticmethod

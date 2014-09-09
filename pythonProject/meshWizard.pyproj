@@ -24,7 +24,7 @@
     </Compile>
     <Compile Include="componentConfiguration\navigationConfiguration.py" />
     <Compile Include="componentConfirguration.py" />
-    <Compile Include="extensions\mixSaveLoad.py" />
+    <Compile Include="extensions\extraFunctions.py" />
     <Compile Include="htmlPages\controls\modal.html">
       <SubType>Code</SubType>
     </Compile>
