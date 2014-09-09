@@ -129,7 +129,7 @@ class htmlHelper(QtGui.QWidget,basePage):
 
     @pyqtSlot()
     def seperate(self):
-        if self.meshWrapper.trial() is not True:
+        if MeshWrapper.seperate() is not True:
             self.warnEvent()
 
 
@@ -142,7 +142,6 @@ class htmlHelper(QtGui.QWidget,basePage):
     def invert(self):
         if MeshWrapper.invertSelection() is not True:
             self.warnEvent()
-
 
     @pyqtSlot()
     def planecut(self):

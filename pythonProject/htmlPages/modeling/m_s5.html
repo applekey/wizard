@@ -15,6 +15,8 @@
     <script src="../commonFunctions.js"></script>
     <link href="../css/screen-7f397e5d8c.css" rel="stylesheet">
     <link href="../common.css" rel="stylesheet">
+    <script src="../modals/modal.js"></script>
+    <link rel="stylesheet" href="../modals/modal.css" media="screen" type="text/css" />
 
 </head>
 
@@ -59,15 +61,21 @@
             the top and bottom edges of the square so that it sits on a plane with the calf area of the residual limb.
             When ready press 
 
-            <button class="btn btn-warning" id="continuebeginBuildUpBT">
+            <button class="btn btn-warning" id="continuebeginBuildUpBT" data-toggle="modal" data-target="#mySmallModal">
                 continue build up
             </button>
+
+            <div id="myModal" class="ui-widget-content"></div>
             <script>
+                $("#myModal").load("../modals/beginBuildUpModal.html");
+            </script>
+
+            <!--<script>
                 $("#continuebeginBuildUpBT").click(function () {
                     htmlHelper.extensionFunction('complete()');
                 });
 
-            </script>
+            </script>-->
 
             Drag the brush over the now partially transparent square and press the left mouse button to fill in 
             material between the residual limb and the square. Continue until the space is entirely filled.

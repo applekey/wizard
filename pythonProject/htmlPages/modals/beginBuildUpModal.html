@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
+
+    <title></title>
+</head>
+
+<body>
+    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <style>
+            #headerFont {
+                color: #000;
+            }
+
+            #paragraphSection {
+                color: #000;
+            }
+        </style>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &#215;
+                    </button>
+
+                    <h4 class="modal-title" id="mySmallModalLabel">Clean Up</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="progress_bar">
+                            <hr class="all_steps" />
+                            <hr class="current_steps" />
+
+                            <div class="step current" id="step1" data-step="1">
+                                Step 1
+                            </div>
+
+                            <div class="step" id="step2" data-step="2">
+                                Step 2
+                            </div>
+
+                            <div class="step" id="step3" data-step="3">
+                                Step 3
+                            </div>
+
+                            <div class="step" id="step4" data-step="4">
+                                Step 4
+                            </div>
+
+                            <div class="step" id="step5" data-step="5">
+                                Step 5
+                            </div>
+
+                            <div class="step" id="step6" data-step="6">
+                                Step 6
+                            </div>
+
+                        </div>
+
+                        <div id="blocks">
+                            <div class="block" id="block1" style="left: 0%;">
+                                <div class="wrap">
+                                    <h2>Accept Fit Primitive </h2><br />
+                                    <a onclick="step_process(1, 2); htmlHelper.complete();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+                            <div class="block" id="block2">
+                                <div class="wrap">
+                                    <h2>Seperate</h2><br />
+                                    <a onclick="step_process(2, 3); htmlHelper.seperate();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+                            <div class="block" id="block3">
+                                <div class="wrap">
+                                    <h2>Set New Object Attract</h2><br />
+                                    <a onclick="step_process(3, 4); htmlHelper.discard();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+                            <div class="block" id="block4">
+                                <div class="wrap">
+                                    <h2>duplicate of original leg</h2><br />
+                                    <a onclick="step_process(4, 5); htmlHelper.selectAll();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+                            <div class="block" id="block5">
+                                <div class="wrap">
+                                    <h2>sculpt - attract brush </h2><br />
+                                    <a onclick="step_process(5, 6); htmlHelper.smoothDeform(0.9);" class="butt">Next</a>
+                                </div>
+                            </div>
+                            <div class="block" id="block6">
+                                <div class="wrap">
+                                    <h2>Finish</h2><br />
+                                    <a data-dismiss="modal" class="butt">Finish</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
