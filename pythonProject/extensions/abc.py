@@ -6,5 +6,14 @@ controller = MeshWrapper()
 def ok22(abc):
     print abc
     cmd  = mmapi.StoredCommands()
-    cmd.AppendSceneCommand_ClearTarget()
+    cmd.AppendBeginToolCommand('separate')
+  
     return cmd
+
+
+
+
+
+
+
+

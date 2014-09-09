@@ -115,14 +115,14 @@
                             <div class="block" id="block7">
                                 <div class="wrap">
                                     <h2>Inspector</h2><br />
-                                    <a onclick="step_process(7, 8); htmlHelper.inspector();" class="butt">Next</a>
+                                    <a onclick="step_process(7, 8); htmlHelper.cancel(); htmlHelper.inspector();" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block8">
                                 <div class="wrap">
                                     <h2>Inspector Auto Repair</h2><br />
-                                    <a onclick="step_process(8, 9); htmlHelper.inspectorAutoRepair();"
+                                    <a onclick="step_process(8, 9); htmlHelper.inspectorAutoRepair(); htmlHelper.complete(); htmlHelper.cancel(); "
                                        class="butt">Next</a>
                                 </div>
                             </div>

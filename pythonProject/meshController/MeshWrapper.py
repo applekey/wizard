@@ -95,7 +95,7 @@ class MeshWrapper(object):
 
     @staticmethod
     def seperate():
-        return MeshWrapper.SingleInstanceApiCommander("seperate",None,None) 
+        return MeshWrapper.SingleInstanceApiCommander("separate",None,None) 
     @staticmethod
     def expandToConnected():
         return MeshWrapper.SingleInstanceApiCommander("expandToConnected",None,None) 
@@ -131,7 +131,7 @@ class MeshWrapper(object):
     
     @staticmethod
     def smoothBoundary(value): 
-      return MeshWrapper.SingleInstanceApiCommander("smoothboundary",None,None)
+      return MeshWrapper.SingleInstanceApiCommander("SmoothBoundary",None,None)
     @staticmethod
     def selectAll(): 
       return MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)
