@@ -130,8 +130,8 @@ class MeshWrapper(object):
         return MeshWrapper.SingleInstanceApiCommander("open",fileLocation,None)
     
     @staticmethod
-    def smoothBoundary(value): 
-      return MeshWrapper.SingleInstanceApiCommander("SmoothBoundary",None,None)
+    def smoothBoundary(): 
+      return MeshWrapper.SingleInstanceApiCommander("smoothBoundary",None,None)
     @staticmethod
     def selectAll(): 
       return MeshWrapper.SingleInstanceApiCommander("selectAll",None,None)
@@ -160,9 +160,6 @@ class MeshWrapper(object):
     def editoffset(value):
         return MeshWrapper.SingleInstanceApiCommander("offset","distance",value)
 
-    @staticmethod
-    def ModifySmoothBoundary(value):
-        return MeshWrapper.SingleInstanceApiCommander("smoothboundary","smoothness",value)
 
     @staticmethod
     def editDiscard():

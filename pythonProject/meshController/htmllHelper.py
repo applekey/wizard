@@ -162,9 +162,9 @@ class htmlHelper(QtGui.QWidget,basePage):
         print value
         self.callDynamic(str(value))
      
-    @pyqtSlot(float)
-    def smoothBoundary(self,value):
-        if MeshWrapper.smoothBoundary(value) is not True:
+    @pyqtSlot()
+    def smoothBoundary(self):
+        if MeshWrapper.smoothBoundary() is not True:
             self.warnEvent()  
 
     @pyqtSlot()
