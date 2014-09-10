@@ -1,3 +1,8 @@
+.modal-backdrop {background-color: transparent;}
+.modal-dialog {
+  padding-top: 50%;
+}
+
 body {
   background: #f8f8f8;
   font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;

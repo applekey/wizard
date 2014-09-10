@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal fade" data-backdrop="static"  id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <style>
             #headerFont {
                 color: #000;
@@ -140,5 +140,14 @@
         </div>
     </div>
 </body>
+
+<script>
+    $("#mySmallModal").draggable({
+        handle: ".modal-header"
+    });
+
+
+</script>
+
 
 </html>
