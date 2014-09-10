@@ -131,6 +131,7 @@
     <Content Include="htmlPages\jquery-2.1.1.min.js" />
     <Content Include="htmlPages\modalControlDemo.html" />
     <Content Include="htmlPages\modals\beginBuildUpModal.html" />
+    <Content Include="htmlPages\modals\generateTrimModal.html" />
     <Content Include="htmlPages\modals\generateSocketModal.html" />
     <Content Include="htmlPages\modals\offsetModal.html" />
     <Content Include="htmlPages\modals\modal.css" />

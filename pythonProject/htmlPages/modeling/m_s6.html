@@ -47,14 +47,12 @@
             Start by using the selection tool to trace the trim line for the socket as marked during the sca
             nning process, Make sure to trace above the line rather than directly on the line and verify that t
             he line is continuous and that there are no gaps. When ready to proceed, press 
-            <button id ="generateTripLineBt" class="btn btn-warning" >
-                generate trim line
+            <button class="btn btn-warning" data-toggle="modal" data-target="#generateTrimModal">
+                generateTrimLine
             </button>
+            <div class="row" id="myModal2"></div>
             <script>
-                $("#generateTripLineBt").click(function () {
-                    htmlHelper.complete();
-                });
-
+                $("#myModal2").load("../modals/generateTrimModal.html");
             </script>
             
             To generate a socket, double-click anywhere below the trim line to select the appropriate part of the model. 
