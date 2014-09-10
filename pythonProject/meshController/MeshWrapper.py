@@ -41,6 +41,17 @@ class MeshWrapper(object):
                 cmd.AppendCompleteToolCommand("accept")
             elif operation is "cancel":
                 cmd.AppendCompleteToolCommand("cancel")
+            
+            elif operation is "selectNewPart":
+                objects =  implementation.list_objects(remote)
+                for object in objects:
+                    name = implementation.get_object_name(remote,object)
+                    if "(part)" in name:
+                        selectList = []
+                        selectList.append(object)
+                        implementation.select_objects(remote, selectList)
+                        return True
+                return False
             elif operation is "repairAll":
                 cmd.AppendToolUtilityCommand("repairAll")
          
@@ -90,9 +101,12 @@ class MeshWrapper(object):
           cmd.AppendSceneCommand_ExportMixFile(saveFile)
           return cmd
 
-  
-    
+    @staticmethod
+    def selectNewPart():
+        return MeshWrapper.SingleInstanceApiCommander("selectNewPart",None,None) 
 
+
+   
     @staticmethod
     def seperate():
         return MeshWrapper.SingleInstanceApiCommander("separate",None,None) 

@@ -1,15 +1,11 @@
 from MeshWrapper import *
 from mmapi import  *
+import MeshWrapper
 
-controller = MeshWrapper()
-@meshWrapper
+
+
 def ok22(abc):
-    print abc
-    cmd  = mmapi.StoredCommands()
-    cmd.AppendBeginToolCommand('smoothBoundary')
-  
-    return cmd
-
+     MeshWrapper.listObjects()
 
 
 

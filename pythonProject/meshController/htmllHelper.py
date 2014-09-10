@@ -114,9 +114,14 @@ class htmlHelper(QtGui.QWidget,basePage):
                    if eval('method.'+functionCall) is not True:
                        self.warnEvent()
         except:
-            warnEvent()
+            self.warnEvent()
 
 #---------------------------------------------------------------------------------------------------------------------
+
+    @pyqtSlot()
+    def selectNewPart(self):
+        objects = MeshWrapper.selectNewPart() 
+            
     @pyqtSlot()
     def loadLatest(self):
         if MeshWrapper.loadLatest() is not True:
