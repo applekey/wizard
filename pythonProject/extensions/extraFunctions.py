@@ -1,8 +1,7 @@
 from MeshWrapper import *
 from mmapi import  *
 
-
-#THESE STEPS ARE USED IN STEP 5
+## use extensionFunction()
 @meshWrapper
 def fitPrimitive():
     cmd  = mmapi.StoredCommands()
@@ -32,6 +31,14 @@ def offsetDistance(distance):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
     cmd.AppendToolParameterCommand('distance',distance)
+    return cmd
+
+
+@meshWrapper
+def attractBrush():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('volumeBrush')
+    cmd.AppendToolUtilityCommand('setPrimary','attract')
     return cmd
 
 
