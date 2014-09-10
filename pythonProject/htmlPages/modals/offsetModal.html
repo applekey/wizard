@@ -30,7 +30,6 @@
                             <div class="step current" id="step1" data-step="1">
                                 Step 1
                             </div>
-
                             <div class="step" id="step2" data-step="2">
                                 Step 2
                             </div>
@@ -47,25 +46,39 @@
                                 Step 5
                             </div>
 
+                            <div class="step" id="step6" data-step="6">
+                                Step 6
+                            </div>
+
 
                         </div>
 
                         <div id="blocks">
                             <div class="block" id="block1" style="left: 0%;">
                                 <div class="wrap">
-                                    <h2>Smooth Boundary</h2><br />
-                                    <a onclick="step_process(1, 2); htmlHelper.smoothBoundary();" class="butt">Next</a>
+                                    <h2 id ="abc">Select Tool</h2>
+                                    <img src="../resources/select.bmp" class="img-circle" onclick="htmlHelper.extensionFunction('selectTool()')"> 
+                                    <br /> 
+                                    <br /> 
+
+                                    <a onclick="step_process(1, 2); " class="butt">Next</a>
                                 </div>
                             </div>
-
                             <div class="block" id="block2">
                                 <div class="wrap">
-                                    <h2>Smooth Boundary Accept</h2><br />
-                                    <a onclick="step_process(2, 3); htmlHelper.complete();" class="butt">Next</a>
+                                    <h2>Smooth Boundary</h2><br />
+                                    <a onclick="step_process(2, 3); htmlHelper.smoothBoundary();" class="butt">Next</a>
                                 </div>
                             </div>
 
                             <div class="block" id="block3">
+                                <div class="wrap">
+                                    <h2>Smooth Boundary Accept</h2><br />
+                                    <a onclick="step_process(3, 4); htmlHelper.complete();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+                            <div class="block" id="block4">
                                 <div class="wrap">
                                     <h2>Offset</h2><br />
 
@@ -93,19 +106,19 @@
                                         });
 
                                     </script>
-                                    <a onclick="step_process(3, 4); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ')');" class="butt">Next</a>
+                                    <a onclick="step_process(4, 5); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ')');" class="butt">Next</a>
                                 </div>
                             </div>
-
-                            <div class="block" id="block4">
-                                <div class="wrap">
-                                    <h2>Offset Accept</h2><br />
-                                    <a onclick="step_process(4, 5); htmlHelper.complete();" class="butt">Next</a>
-                                </div>
-                            </div>
-
 
                             <div class="block" id="block5">
+                                <div class="wrap">
+                                    <h2>Offset Accept</h2><br />
+                                    <a onclick="step_process(5, 6); htmlHelper.complete();" class="butt">Next</a>
+                                </div>
+                            </div>
+
+
+                            <div class="block" id="block6">
                                 <div class="wrap">
                                     <h2>Finish</h2><br />
                                     <a data-dismiss="modal" class="butt">Finish</a>
@@ -124,6 +137,14 @@
         height: 600px;
     }
 </style>
+
+<script>
+    $("#mySmallModal").draggable({
+        handle: ".modal-header"
+    });
+
+
+</script>
 
 
 
