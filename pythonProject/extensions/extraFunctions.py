@@ -2,6 +2,20 @@ from MeshWrapper import *
 from mmapi import  *
 
 ## use extensionFunction()
+
+@meshWrapper
+def selectTool():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendSelectCommand_All()
+    cmd.AppendSelectUtilityCommand("invert") 
+    return cmd
+
+@meshWrapper
+def cancel():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendCompleteToolCommand("cancel") 
+    return cmd
+
 @meshWrapper
 def fitPrimitive():
     cmd  = mmapi.StoredCommands()
@@ -30,8 +44,11 @@ def separate():
 def offsetDistance(distance):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
-    cmd.AppendToolParameterCommand('distance',distance)
+    cmd.AppendToolParameterCommand('offsetWorld',distance)
+    cmd.AppendToolUtilityCommand('connected',True)
     return cmd
+
+
 
 
 @meshWrapper
