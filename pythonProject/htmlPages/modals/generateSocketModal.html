@@ -103,8 +103,37 @@
 
                                     </script>
 
+                                    <div class="row" style="margin-left:3px;">
+                                        <div class="col-xs-right">
+                                            <h5 id="controlName"> Soft Transition</h5>
+                                        </div>
+                                        <div class="col-xs-left">
+                                            <input id="smoothFine" value="0.5" type="number" min="0" max="50.0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <input class="mySlider" id="smoothSlider" type="range" min="0" max="50.0" step="0.01" value="0.5">
+                                    <script>
 
-                                    <a onclick="step_process(1, 2); htmlHelper.offset($('#distanceFine').val());" class="butt">Next</a>
+                                        $("#smoothFine").val($("#smoothSlider").val());
+
+                                        $("#smoothSlider").change(function () {
+                                            $("#smoothFine").val($("#smoothSlider").val());
+                                        });
+
+                                        $("#smoothFine").change(function () {
+                                            $("#smoothSlider").val($("#smoothFine").val());
+                                        });
+
+                                    </script>
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input disabled="disabled" type="checkbox"> connected
+                                        </label>
+                                    </div>
+
+
+                                    <a onclick="step_process(1, 2); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',False)');" class="butt">Next</a>
                                 </div>
                             </div>
 
@@ -164,8 +193,36 @@
 
                                     </script>
 
+                                    <div class="row" style="margin-left:3px;">
+                                        <div class="col-xs-right">
+                                            <h5 id="controlName"> Soft Transition</h5>
+                                        </div>
+                                        <div class="col-xs-left">
+                                            <input id="smoothFine2" value="0.5" type="number" min="0" max="50.0" step="0.01">
+                                        </div>
+                                    </div>
+                                    <input class="mySlider" id="smoothSlider2" type="range" min="0" max="50.0" step="0.01" value="0.5">
+                                    <script>
 
-                                    <a onclick="step_process(6, 7); htmlHelper.offset($('#distanceFine2').val());" class="butt">Next</a>
+                                        $("#smoothFine2").val($("#smoothSlider2").val());
+
+                                        $("#smoothSlider2").change(function () {
+                                            $("#smoothFine2").val($("#smoothSlider2").val());
+                                        });
+
+                                        $("#smoothFine2").change(function () {
+                                            $("#smoothSlider2").val($("#smoothFine2").val());
+                                        });
+
+                                    </script>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input disabled="disabled" type="checkbox" checked> connected
+                                        </label>
+                                    </div>
+
+
+                                    <a onclick="step_process(6, 7); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',True)');" class="butt">Next</a>
                                 </div>
                             </div>
 

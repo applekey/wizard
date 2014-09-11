@@ -43,27 +43,44 @@
         </div>
     </div>
     <div id="paragraphSection" class="row">
-        <p>
-            In step 3 you will remove any additional unnecessary aspects captured during scan, smooth,
-             and repair any problems in the model. Click anywhere on the residual limb model to select a
-             small section of it and press
+        <div id ="abcdf" class="span4">
+            <object id="videoPlayer" type="x-pyqt/widget" width="100" height="500" src="htmlPages/small.mp4"></object>
+           
+          
+        </div>
+        <div class="span8">
 
-            <button class="btn btn-warning" data-toggle="modal" data-target="#mySmallModal">
-                Clean Up
-            </button>
-            <div class="row" id="myModal"></div>
-            <script>
-                $("#myModal").load("../modals/cleanupModal.html");
-            </script>
-         
-             button when ready.
-            Following clean up, rotate socket and examine for any issues, if OK press ‘done’, if not,
-             press ‘undo’ one or more times to return to previous parts of this process
+            <p>
+                In step 3 you will remove any additional unnecessary aspects captured during scan, smooth,
+                and repair any problems in the model. Click anywhere on the residual limb model to select a
+                small section of it and press
+
+                <button id="abc" class="btn btn-warning" data-toggle="modal" data-target="#mySmallModal">
+                    Clean Up
+                </button>
+               
+
+                button when ready.
+                Following clean up, rotate socket and examine for any issues, if OK press ‘done’, if not,
+                press ‘undo’ one or more times to return to previous parts of this process
 
 
 
-        </p>
+            </p>
+        </div>
     </div>
+
+    <div id="myModal"></div>
+    <script>
+
+        $("#myModal").load("../modals/cleanupModal.html");
+
+        $("#abc").click(function () {
+            //$("#abcdf").hide();
+           
+        });
+
+    </script>
 
 
 

@@ -20,6 +20,7 @@ sys.path.append( 'meshController' )
 sys.path.append( 'meshController/implementation' )
 sys.path.append( 'meshController/pythonApi' )
 
+sys.dont_write_bytecode = True
 
 from PyQt4 import QtCore, QtGui
 from pageFactory import pageFactory

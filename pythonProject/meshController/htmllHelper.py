@@ -81,12 +81,14 @@ class htmlHelper(QtGui.QWidget,basePage):
         QWebSettings.globalSettings().setAttribute(QWebSettings.PluginsEnabled, True)
         factory = WebPluginFactory(self)
 
-        self.webView = QWebView()
+        self.webView = QWebView(self)
         self.frame = self.webView.page().mainFrame()
 
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         self.webView.page().setPluginFactory(factory)
         self.webView.setHtml(self.htmlText,self.baseUrl)
+        
+        
         self.frame.addToJavaScriptWindowObject('htmlHelper', self)
        
        
