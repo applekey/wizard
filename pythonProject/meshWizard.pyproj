@@ -55,7 +55,7 @@
     <Compile Include="meshController\pythonApi\test.py" />
     <Compile Include="pageFactory.py" />
     <Compile Include="resourceFile.py" />
-    <Compile Include="settingSaver\saverEngine.py" />
+    <Compile Include="stepSaver\SaveLoadEngine.py" />
     <Compile Include="uiLib\awsomeDialog.py" />
     <Compile Include="uiLib\awsomeDialogueButton.py" />
     <Compile Include="uiLib\awsomeNavigation.py" />
@@ -99,7 +99,7 @@
     <Folder Include="meshController\pythonApi\" />
     <Folder Include="extensionController\" />
     <Folder Include="extensions\" />
-    <Folder Include="settingSaver\" />
+    <Folder Include="stepSaver\" />
     <Folder Include="uiLib\" />
   </ItemGroup>
   <ItemGroup>

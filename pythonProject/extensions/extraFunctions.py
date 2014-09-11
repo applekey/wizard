@@ -107,6 +107,38 @@ def alignZCam():
     return cmd
 
 
+## fileIOFunction()
 
+def saveStep(stepArray):
+    step = 'wizTmp'
+    for s in stepArray:
+        step = step+ '_'+str(s)
+    step = step + '.mix'
+    saveLatest(step)
+
+   
+def loadStep(stepArray):
+    step = 'wizTmp'
+    for step in stepArray:
+        step = step+ '_'+str(step)
+    step = step + '.mix'
+    loadLatest(step)
+
+@meshWrapper
+def loadLatest(self,name):
+    cmd  = mmapi.StoredCommands()
+    currentDir = os.getcwd()
+    saveFile = currentDir+name
+    if os.path.isfile(saveFile):
+        cmd.AppendSceneCommand_OpenMixFile(saveFile)
+    return cmd
+
+@meshWrapper
+def saveLatest(self,name):
+    cmd  = mmapi.StoredCommands()
+    currentDir = os.getcwd()
+    saveFile = currentDir+name
+    cmd.AppendSceneCommand_ExportMixFile(saveFile)
+    return cmd
 
 
