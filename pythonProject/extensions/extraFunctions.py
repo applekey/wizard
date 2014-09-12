@@ -50,10 +50,17 @@ def offsetDistance(distance,checked=False):
     return cmd
 
 @meshWrapper
+def connected(state):
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('offset')
+    cmd.AppendToolParameterCommand('Connected',state)
+    return cmd
+
+@meshWrapper
 def offsetSmooth(value):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
-    cmd.AppendToolParameterCommand('smoothness',value)
+    cmd.AppendToolParameterCommand('softTransition',value)
     return cmd
 
 
