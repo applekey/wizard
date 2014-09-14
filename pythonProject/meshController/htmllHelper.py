@@ -85,6 +85,9 @@ class htmlHelper(QtGui.QWidget,basePage):
         self.frame = self.webView.page().mainFrame()
 
         self.webView.settings().setAttribute(QWebSettings.PluginsEnabled, True)
+        self.webView.setRenderHint(QtGui.QPainter.TextAntialiasing, True);
+        self.webView.setRenderHint(QtGui.QPainter.SmoothPixmapTransform, True);
+        
         self.webView.page().setPluginFactory(factory)
         self.webView.setHtml(self.htmlText,self.baseUrl)
         

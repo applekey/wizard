@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Wedding Album - WOWBook demo</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="jquery plugin, image, effects, book, page flip, slider" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="../../wow_book/wow_book.min.js"></script>
+	<link rel="stylesheet" href="../../wow_book/wow_book.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="./css/wedding_album.css"></head>
+<body >
+	<header>
+		<div style='position: relative; margin: 0 auto; display:inline'>
+		<nav>
+			<a href='#book/aboutus'>About Us</a>
+			<a href='#book/wedding'>Our Wedding</a>
+			<a href='#book/' class='brasao'>J&G</a>
+			<a href='#book/photos'>Wedding Photos</a>
+			<a href='#book/guestbook'>Guestbook</a>
+		</nav>
+		</div>
+	</header>
+	<div id="container">
+		<button id='back'>back</button>
+		<button id='next'>next</button>
+		<div id="book" class='album'>
+			<div class='cover'>
+				<div>
+					<img src='./imgs/cover.jpg' />
+				</div>
+				<div class='title'>Our Wedding Album</div>
+				<div class='title2'>Jack & Gill</div>
+			</div>
+			
+			<div class='cover' ></div>
+			<div id='aboutus'>
+				<h1>About Us</h1>
+				<p>
+					Jack and I met when we went up the hill to fetch a pail of water.
+					Jack fell down and broke his crown, and I came tumbling after.
+				</p>
+				<p>
+					Up Jack got, and home did trot, as fast as he could caper,
+					To old Dame Dob, who patched his nob with vinegar and brown paper.
+    			</p>
+				<p>
+					Enjoy surfing and be sure to sign our Guestbook.
+    			</p>
+				<p class='signature'>
+					Love, Jack & Gill
+    			</p>
+			</div>
+			
+			<div id='wedding'>
+				<h1>Our wedding</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+				<p>Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Fusce ac turpis quis ligula lacinia aliquet.</p>
+				<p>Quisque volutpat condimentum velit. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. </p>
+			</div>
+			<div>
+				<h1>Ceremony</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+				<h1>Party</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+			</div>
+
+			<div id='photos'>
+				<h1>Wedding Photos</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+			</div>
+			<div>
+				<img src='imgs/bride.jpg' class='photo' />
+				<div class='caption'>Before the ceremony.</div>
+			</div>
+			<div>
+				<img src='imgs/church.jpg' class='photo' />
+				<div class='caption'>Beautiful church.</div>
+			</div>
+			<div>
+				<img src='imgs/cake.jpg' class='photo' />
+				<div class='caption'>Southpark cake. :)</div>
+			</div>
+			<div>
+				<img src='imgs/couple.jpg' class='photo' />
+				<div class='caption'>Happy day</div>
+			</div>
+			<div>
+				<img src='imgs/couple2.jpg' class='photo' />
+				<div class='caption'>Happy day</div>
+			</div>
+
+
+			<div id='page2'>
+				<h1>Sign our Guestbook</h1>
+				<form id='guestbook' style="margin: 0pt; padding: 0pt;" action="comments.php?a=demo" method="POST">
+					<div align="center" class="error"></div>																	
+						<label>Your Name</label>
+						<input id='name' type="text" value="" size="20" name="name" />
+
+						<label>Your E-mail</label>
+						<input id='email' type="text" value="" size="20" name="email" />
+
+						<label>Message</label>
+						<textarea id='message' cols="25" name="message" rows="4"></textarea>
+						<button type="submit" value="Submit" id="save" name="button" class='button pink'>Send</button>
+				</form>
+			</div>
+			<div id='page4'>
+				<ul id='guestbook-list'>
+					<li>
+						<span>from </span><span class='guestbook-name'>Barack Obama :</span>
+						<div class='guestbook-message'>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat</div>
+					</li>
+					<li>
+						<span>from </span><span class='guestbook-name'>Homer Simpson :</span>
+						<div class='guestbook-message'>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat. Doh.</div>
+					</li>
+					<li>
+						<span>from </span><span class='guestbook-name'>Bono Vox :</span>
+						<div class='guestbook-message'>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#book').wowBook({
+				 width  : 800
+				,height : 540
+				,centeredWhenClosed : true
+				,hardcovers : true
+			    ,numberedPages   : [2,-1] // range of pages that will be numbered. 
+			    ,controls : {
+			         back : '#back'
+			        ,next : '#next'
+				}
+			    ,sections : '#aboutus, #wedding, #photos, #guestbook'
+				,gutterShadow : false
+				,flipSoundPath : '../../wow_book/sound/'
+			});
+			$("#guestbook").submit(function(){
+				var name=$("#name").val(), 
+				    message=$("#message").val(),
+				    messageList = $("#guestbook-list"),
+				    firstMessage = $("#guestbook-list li:first-child"),
+				    newmessage = firstMessage.clone().hide();
+				$('.guestbook-name',newmessage).text(name+" :");
+				$('.guestbook-message',newmessage).text(message);
+				newmessage.insertBefore(firstMessage).show('slow');
+				return false;
+			});
+		});
+	</script>
+</body>
+</html>
+
