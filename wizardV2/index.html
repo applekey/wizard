@@ -26,26 +26,28 @@
 
 </head>
 
+<style>
+section { 
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    background: white;
+  
+}
+#instructionSection
+{
+  
+    margin: 30px;
+}
+.page{
+      background-color: #F0F7FF;
+}
+</style>
+
   
 <body id="body">
 
-<div id="mybook">
-  <div> This is the cover  </div>
-  <div> This is the page 1 </div>
-  <div> This is the page 2 </div>
-  <div  id ="efg" data-src="./html/test.html"> This is the page 3 </div>
-  <div> the end </div>
-</div>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#mybook').wowBook({
-      height : 500,
-      width  : 600
-    });
-  });
 
- 
-</script>
 
 
 
@@ -69,52 +71,36 @@
     </div>
     <br />
     <br />
-    <div id="headerfwrap" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>
-                        ADJUSTING, THIS IS A DEMO TEMPLATE PAGE
-                    </h1>
-                   
-                </div><!-- /col-lg-6 -->
-            </div><!-- /row -->
-        </div><!-- /container -->
-    </div><!-- /headerwrap -->
+ 
+<div id="mybook" style=" margin-top: 40px; margin-left:30px;">
+    
+    <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
+    <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
+    <div class ="page" id= "page2" data-src="./html/modeling/page2.html"></div>
+    <div class ="page" id= "page3" data-src="./html/modeling/page2.html"></div>
+    <div class ="page" id= "page4" data-src="./html/modeling/page1.html"></div>
+    <div class ="page" id= "page3" data-src="./html/modeling/page2.html"></div>
+    <div class ="page" id= "page4" data-src="./html/modeling/page2.html"></div>
+    <div class ="page" id= "page3" data-src="./html/modeling/page1.html"></div>
+    <div class ="page" id= "page4" data-src="./html/modeling/page2.html"></div>
+    
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#mybook').wowBook({
+      height : $( window ).height()*0.80,
+      width  : $( window ).width()*0.95,
+      transparentPages:true
+    });
+  });
 
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ol>
 
+
+ 
+</script>
 
     
 
 </body>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    $("#myModal").draggable({
-        handle: ".modal-header"
-    });
 
-
-</script>
 </html>
