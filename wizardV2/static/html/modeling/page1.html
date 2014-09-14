@@ -6,9 +6,17 @@
 			In step one you will import the model created during the scanning process press  Import button use dialog box to select model
 		<p>
 		
-			<a class="btn btn-info " role="button">
+			<a id="importBT" class="btn btn-info " role="button">
 				 <span class="glyphicon glyphicon-folder-open"></span> Import
 			</a>
+			<script>
+				$("#importBT").click(function(){
+				  $.post("api/import");
+				});
+			</script>
+
+			
+</script>
 		
 	</div>
 	<br>
@@ -16,10 +24,10 @@
 	    <ol class="breadcrumb">
 		    <li class="active">1</li>
 		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">2</a></li>
-		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">2</a></li>
-		   <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">2</a></li>
-		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">2</a></li>
-		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">2</a></li>
+		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">3</a></li>
+		   <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">4</a></li>
+		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">5</a></li>
+		    <li><a href="#pg2" data-toggle="tooltip" data-placement="top" title="Tooltip on top">6</a></li>
 	    </ol>
 	 </span>
 

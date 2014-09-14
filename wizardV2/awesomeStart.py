@@ -1,6 +1,8 @@
-from bottle import route, run, template,static_file,get
+from bottle import route, run, template,static_file,get,post
 import os
 
+from Tkinter import *
+import tkFileDialog
 
 
 @route('/hello')
@@ -25,34 +27,17 @@ def hello():
 	print os.getcwd()
 	return  static_file('index.html',root='')
 
-
-# # Static Routes
-# @get('/<filename:re:.*\.js>')
-# def javascripts(filename):
-#     return static_file(filename, root='static/js')
-
-# @get('/<filename:re:.*\.css>')
-# def stylesheets(filename):
-#     return static_file(filename, root='static/css')
-
-# @get('/<filename:re:.*\.(mp4|avi)>')
-# def video(filename):
-	
-# 	return static_file(filename, root='static/img')
-
-# @get('/<filename:re:.*\.(jpg|png|gif|ico)>')
-# def images(filename):
-# 	print 'want filename' + filename
-# 	return static_file(filename, root='static/img')
-
-# @get('/<filename:re:.*\.(eot|ttf|woff|svg)>')
-# def fonts(filename):
-#     return static_file(filename, root='static/fonts')
-
 @route(':path#.+#', name='static')
 def static(path):
 	print 'path is' +path
 	return static_file(path, root='static')
+
+@post('/api/<function>') # or @route('/login', method='POST')
+def importMesh(function):
+	print 'function is' + function
+	root = Tk()
+	root.withdraw()
+	fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
 
 
 

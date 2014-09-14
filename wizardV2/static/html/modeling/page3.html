@@ -1,0 +1,163 @@
+<div id="instructionSection">
+	<div style ="margin:20px">
+		<p>
+			In step 3 
+			<br>
+			you will remove any additional unnecessary aspects captured during scan, smooth,
+            and repair any problems in the model. Click anywhere on the residual limb model to select a
+            small section of it and press  button when ready.
+            Following clean up, rotate socket and examine for any issues, if OK press ‘done’, if not,
+            press ‘undo’ one or more times to return to previous parts of this process
+			<br>
+			<br>
+		
+			<script>
+			$(document).ready(function() {
+			    $('.progress .progress-bar').progressbar({display_text: 'fill'});
+			});
+			$(".page3Well").hide()
+			$("#backFowardCancel").hide()
+		
+			</script>
+
+<!-- 			step 1 -->
+			<div  id="wellText" class="well page3Well">
+				<div  id="subText1" class="subText">
+					<h3>Select Tool </h3>
+					<p> choose the selected area <p>
+				</div>
+				<div id="subText2" class="subText" style="display: none;">
+					<h3>Selectfdas Tool </h3>
+					<p> choose the selected area <p>
+				</div>
+				<div id="subText3" class="subText" style="display: none;">
+					<h3>Select ddddfTool </h3>
+					<p> choose the selected area <p>
+				</div>
+				<div id="subText4" class="subText" style="display: none;">
+					<h3>Finished </h3>
+					
+				</div>
+				<div class="progress progress-striped">
+					<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
+				</div>
+			</div>
+
+
+			<a id = "cleanUpBT" class="btn btn-info " role="button">
+				 <span class="glyphicon glyphicon-wrench"></span> Clean Up
+			</a>
+			<script>
+				$("#cleanUpBT").click(function(){
+				   $("#wellText").show()
+				  // $.post("api/planeCut");
+				  $(this).hide()
+				  $("#backFowardCancel").show()
+				
+				});
+			</script>
+
+			<!-- controls for subinstructions -->
+			
+
+			<div id = "backFowardCancel" class="btn-group">
+				<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+				<button type="button" id="fowardButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+				<button type="button" id="cancelButton" class="btn btn-default">Cancel</button>
+			</div>
+			<script>
+			var page3InstructionIndex = 1
+			var numberOfInstructions = $('.subText').length
+
+			$('#backButton').attr("disabled", true);
+			
+			$("#cancelButton").click(function(){
+				
+				reset()
+				
+			});
+
+			$("#fowardButton").click(function(){
+				
+					
+				var txtToHide = 'subText' +page3InstructionIndex
+				page3InstructionIndex = page3InstructionIndex+1;
+				var txtToShow = 'subText' +page3InstructionIndex
+			
+				$("#"+txtToShow).show()
+				$("#"+txtToHide).hide()
+				checkControlValid()
+				changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
+					
+					
+
+			});
+			$("#backButton").click(function(){
+				
+				var txtToHide = 'subText' +page3InstructionIndex
+				page3InstructionIndex = page3InstructionIndex-1;
+				var txtToShow = 'subText' +page3InstructionIndex
+			
+				$("#"+txtToShow).show()
+				$("#"+txtToHide).hide()
+				checkControlValid()
+				changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
+				
+			
+				
+			});
+
+			function reset()
+			{
+				$("#wellText").hide('fast')
+				$("#cleanUpBT").show('fast')
+				$("#backFowardCancel").hide('fast')
+				$(".subText").hide('fast')
+				$("#subText1").show('fast')
+				page3InstructionIndex = 1
+				checkControlValid()
+				changeProgressBar(0)
+			}
+			function changeProgressBar(newPercentage)
+			{
+				
+				newPercentage = newPercentage*100
+				var $pb = $('.progress .progress-bar');
+				$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center'});
+			}
+
+			function checkControlValid() {
+			    var numberOfInstructions = $('.subText').length
+			    if(page3InstructionIndex==numberOfInstructions)
+			    {
+			    	$('#fowardButton').attr("disabled", true);
+			    	$("#cancelButton").hide()
+			    	$('#backButton').attr("disabled", true);
+			    	setTimeout(reset,2000)
+			    	return
+			    }
+			    else
+			    {
+			    	$('#fowardButton').attr("disabled", false);
+			    	$("#cancelButton").show();
+			    }
+
+			    if(page3InstructionIndex==1)
+			    {
+			    	$('#backButton').attr("disabled", true);
+			    }
+			    else
+			    {
+			    	$('#backButton').attr("disabled", false);
+			    }
+
+			   
+
+			}
+
+			</script>
+			
+		</p>
+	</div>
+
+</div>

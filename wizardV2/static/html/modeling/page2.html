@@ -3,13 +3,31 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 		<p>
-			fdsated during the scanning process press  Import button use dialog box to select model
-		<p>
+			In step 2, you will start to remove unnecessary aspects captured during scan (e.g. top of the thigh and waist, counter, etc) and also create a flat surface on your model that will assist with the alignment of the socket later in this process Rotate camera with mouse and ‘alt’ button until residual limb model is generally pointing down. Press Plane Cut button when ready to begin
+			<br>
+			<br>
 		
-			<a class="btn btn-info " role="button">
-				 <span class="glyphicon glyphicon-wrench"></span> Import
+			<a id = "planeCutBT" class="btn btn-info " role="button">
+				 <span class="glyphicon glyphicon-wrench"></span> Plane Cut
 			</a>
-		
+			<script>
+				$("#planeCutBT").click(function(){
+				  $.post("api/planeCut");
+				});
+			</script>
+			<br>
+			<br>
+			 Using plane cut arrows and camera rotation, align the plane until the edges 
+            overlap with the aligned cutlines marked on the residual limb during scanning process
+            Rotate camera to view all sides of the model and make sure the 
+            plane overlaps with all cutline marks on all sides
+            When ready press 
+            <br>
+            <br>
+            <a id = "planeCutAcceptBT" class="btn btn-info " role="button">
+				 <span class="glyphicon glyphicon-wrench"></span> Plane Cut Accept
+			</a>
+		</p>
 	</div>
 
 </div>
