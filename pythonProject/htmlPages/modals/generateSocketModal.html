@@ -1,12 +1,12 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org" />
+    <meta name='generator' content='HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org' />
 
     <title></title>
 </head>
 
 <body>
-    <div class="modal fade" id="mySmallModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class='modal fade' id='mySmallModal' tabindex='-1' role='dialog' aria-labelledby='mySmallModalLabel' aria-hidden='true'>
         <style>
             #headerFont {
                 color: #000;
@@ -19,232 +19,232 @@
                 height: 600px;
             }
         </style>
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <div class='modal-dialog modal-sm'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>
                         &#215;
                     </button>
 
-                    <h4 class="modal-title" id="mySmallModalLabel">Generate Socket</h4>
+                    <h4 class='modal-title' id='mySmallModalLabel'>Generate Socket</h4>
                 </div>
 
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="progress_bar">
-                            <hr class="all_steps" />
-                            <hr class="current_steps" />
+                <div class='modal-body'>
+                    <div class='container'>
+                        <div class='progress_bar'>
+                            <hr class='all_steps' />
+                            <hr class='current_steps' />
 
-                            <div class="step current" id="step1" data-step="1">
+                            <div class='step current' id='step1' data-step='1'>
                                 Step 1
                             </div>
 
-                            <div class="step" id="step2" data-step="2">
+                            <div class='step' id='step2' data-step='2'>
                                 Step 2
                             </div>
 
-                            <div class="step" id="step3" data-step="3">
+                            <div class='step' id='step3' data-step='3'>
                                 Step 3
                             </div>
 
-                            <div class="step" id="step4" data-step="4">
+                            <div class='step' id='step4' data-step='4'>
                                 Step 4
                             </div>
 
-                            <div class="step" id="step5" data-step="5">
+                            <div class='step' id='step5' data-step='5'>
                                 Step 5
                             </div>
 
-                            <div class="step" id="step6" data-step="6">
+                            <div class='step' id='step6' data-step='6'>
                                 Step 6
                             </div>
 
-                            <div class="step" id="step7" data-step="7">
+                            <div class='step' id='step7' data-step='7'>
                                 Step 7
                             </div>
 
-                            <div class="step" id="step8" data-step="8">
+                            <div class='step' id='step8' data-step='8'>
                                 Step 8
                             </div>
 
-                            <div class="step" id="step9" data-step="9">
+                            <div class='step' id='step9' data-step='9'>
                                 Step 9
                             </div>
                         </div>
 
-                        <div id="blocks">
-                            <div class="block" id="block1" style="left: 0%;">
-                                <div class="wrap">
+                        <div id='blocks'>
+                            <div class='block' id='block1' style='left: 0%;'>
+                                <div class='wrap'>
                                     <h2>Offset</h2><br />
                                    
 
-                                    <h3 id="controlHeaderText"> Offset</h3>
+                                    <h3 id='controlHeaderText'> Offset</h3>
 
-                                    <div class="row" style="margin-left:3px;">
-                                        <div class="col-xs-right">
-                                            <h5 id="controlName"> Distance</h5>
+                                    <div class='row' style='margin-left:3px;'>
+                                        <div class='col-xs-right'>
+                                            <h5 id='controlName'> Distance</h5>
                                         </div>
-                                        <div class="col-xs-left">
-                                            <input id="distanceFine" value="0.5" type="number" min="0" max="5.0" step="0.01">
+                                        <div class='col-xs-left'>
+                                            <input id='distanceFine' value='0.5' type='number' min='0' max='5.0' step='0.01'>
                                         </div>
                                     </div>
-                                    <input class="mySlider" id="distanceSlider" type="range" min="0" max="5.0" step="0.01" value="0.5">
+                                    <input class='mySlider' id='distanceSlider' type='range' min='0' max='5.0' step='0.01' value='0.5'>
                                     <script>
 
-                                        $("#distanceFine").val($("#distanceSlider").val());
+                                        $('#distanceFine').val($('#distanceSlider').val());
 
-                                        $("#distanceSlider").change(function () {
-                                            $("#distanceFine").val($("#distanceSlider").val());
+                                        $('#distanceSlider').change(function () {
+                                            $('#distanceFine').val($('#distanceSlider').val());
                                         });
 
-                                        $("#distanceFine").change(function () {
-                                            $("#distanceSlider").val($("#distanceFine").val());
+                                        $('#distanceFine').change(function () {
+                                            $('#distanceSlider').val($('#distanceFine').val());
                                         });
 
                                     </script>
 
-                                    <div class="row" style="margin-left:3px;">
-                                        <div class="col-xs-right">
-                                            <h5 id="controlName"> Soft Transition</h5>
+                                    <div class='row' style='margin-left:3px;'>
+                                        <div class='col-xs-right'>
+                                            <h5 id='controlName'> Soft Transition</h5>
                                         </div>
-                                        <div class="col-xs-left">
-                                            <input id="smoothFine" value="0.5" type="number" min="0" max="50.0" step="0.01">
+                                        <div class='col-xs-left'>
+                                            <input id='smoothFine' value='0.5' type='number' min='0' max='50.0' step='0.01'>
                                         </div>
                                     </div>
-                                    <input class="mySlider" id="smoothSlider" type="range" min="0" max="50.0" step="0.01" value="0.5">
+                                    <input class='mySlider' id='smoothSlider' type='range' min='0' max='50.0' step='0.01' value='0.5'>
                                     <script>
 
-                                        $("#smoothFine").val($("#smoothSlider").val());
+                                        $('#smoothFine').val($('#smoothSlider').val());
 
-                                        $("#smoothSlider").change(function () {
-                                            $("#smoothFine").val($("#smoothSlider").val());
+                                        $('#smoothSlider').change(function () {
+                                            $('#smoothFine').val($('#smoothSlider').val());
                                         });
 
-                                        $("#smoothFine").change(function () {
-                                            $("#smoothSlider").val($("#smoothFine").val());
+                                        $('#smoothFine').change(function () {
+                                            $('#smoothSlider').val($('#smoothFine').val());
                                         });
 
                                     </script>
 
-                                    <div class="checkbox">
+                                    <div class='checkbox'>
                                         <label>
-                                            <input disabled="disabled" type="checkbox"> connected
+                                            <input disabled='disabled' type='checkbox'> connected
                                         </label>
                                     </div>
 
 
-                                    <a onclick="step_process(1, 2); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',False)');" class="butt">Next</a>
+                                    <a onclick='step_process(1, 2); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',False)');' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block2">
-                                <div class="wrap">
+                            <div class='block' id='block2'>
+                                <div class='wrap'>
                                     <h2>Offset Accept</h2><br />
-                                    <a onclick="step_process(2, 3); htmlHelper.complete();" class="butt">Next</a>
+                                    <a onclick='step_process(2, 3); htmlHelper.complete();' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block3">
-                                <div class="wrap">
+                            <div class='block' id='block3'>
+                                <div class='wrap'>
                                     <h2>separate</h2><br />
-                                    <a onclick="step_process(3, 4); htmlHelper.seperate();" class="butt">Next</a>
+                                    <a onclick='step_process(3, 4); htmlHelper.seperate();' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block4">
-                                <div class="wrap">
+                            <div class='block' id='block4'>
+                                <div class='wrap'>
                                     <h2>Select All</h2><br />
-                                    <a onclick="step_process(4, 5); htmlHelper.selectAll();" class="butt">Next</a>
+                                    <a onclick='step_process(4, 5); htmlHelper.selectAll();' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block5">
-                                <div class="wrap">
+                            <div class='block' id='block5'>
+                                <div class='wrap'>
                                     <h2>select new part </h2><br />
-                                    <a onclick="step_process(5, 6); htmlHelper.selectNewPart();" class="butt">Next</a>
+                                    <a onclick='step_process(5, 6); htmlHelper.selectNewPart();' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block6">
-                                <div class="wrap">
+                            <div class='block' id='block6'>
+                                <div class='wrap'>
                                     <h2>offset</h2><br />
-                                    <h3 id="controlHeaderText"> Offset</h3>
+                                    <h3 id='controlHeaderText'> Offset</h3>
 
-                                    <div class="row" style="margin-left:3px;">
-                                        <div class="col-xs-right">
-                                            <h5 id="controlName"> Distance</h5>
+                                    <div class='row' style='margin-left:3px;'>
+                                        <div class='col-xs-right'>
+                                            <h5 id='controlName'> Distance</h5>
                                         </div>
-                                        <div class="col-xs-left">
-                                            <input id="distanceFine2" value="0.5" type="number" min="0" max="5.0" step="0.01">
+                                        <div class='col-xs-left'>
+                                            <input id='distanceFine2' value='0.5' type='number' min='0' max='5.0' step='0.01'>
                                         </div>
                                     </div>
-                                    <input class="mySlider" id="distanceSlider2" type="range" min="0" max="5.0" step="0.01" value="0.5">
+                                    <input class='mySlider' id='distanceSlider2' type='range' min='0' max='5.0' step='0.01' value='0.5'>
                                     <script>
 
-                                        $("#distanceFine2").val($("#distanceSlider2").val());
+                                        $('#distanceFine2').val($('#distanceSlider2').val());
 
-                                        $("#distanceSlider2").change(function () {
-                                            $("#distanceFine2").val($("#distanceSlider2").val());
+                                        $('#distanceSlider2').change(function () {
+                                            $('#distanceFine2').val($('#distanceSlider2').val());
                                         });
 
-                                        $("#distanceFine2").change(function () {
-                                            $("#distanceSlider2").val($("#distanceFine2").val());
+                                        $('#distanceFine2').change(function () {
+                                            $('#distanceSlider2').val($('#distanceFine2').val());
                                         });
 
                                     </script>
 
-                                    <div class="row" style="margin-left:3px;">
-                                        <div class="col-xs-right">
-                                            <h5 id="controlName"> Soft Transition</h5>
+                                    <div class='row' style='margin-left:3px;'>
+                                        <div class='col-xs-right'>
+                                            <h5 id='controlName'> Soft Transition</h5>
                                         </div>
-                                        <div class="col-xs-left">
-                                            <input id="smoothFine2" value="0.5" type="number" min="0" max="50.0" step="0.01">
+                                        <div class='col-xs-left'>
+                                            <input id='smoothFine2' value='0.5' type='number' min='0' max='50.0' step='0.01'>
                                         </div>
                                     </div>
-                                    <input class="mySlider" id="smoothSlider2" type="range" min="0" max="50.0" step="0.01" value="0.5">
+                                    <input class='mySlider' id='smoothSlider2' type='range' min='0' max='50.0' step='0.01' value='0.5'>
                                     <script>
 
-                                        $("#smoothFine2").val($("#smoothSlider2").val());
+                                        $('#smoothFine2').val($('#smoothSlider2').val());
 
-                                        $("#smoothSlider2").change(function () {
-                                            $("#smoothFine2").val($("#smoothSlider2").val());
+                                        $('#smoothSlider2').change(function () {
+                                            $('#smoothFine2').val($('#smoothSlider2').val());
                                         });
 
-                                        $("#smoothFine2").change(function () {
-                                            $("#smoothSlider2").val($("#smoothFine2").val());
+                                        $('#smoothFine2').change(function () {
+                                            $('#smoothSlider2').val($('#smoothFine2').val());
                                         });
 
                                     </script>
-                                    <div class="checkbox">
+                                    <div class='checkbox'>
                                         <label>
-                                            <input disabled="disabled" type="checkbox" checked> connected
+                                            <input disabled='disabled' type='checkbox' checked> connected
                                         </label>
                                     </div>
 
 
-                                    <a onclick="step_process(6, 7); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',True)');" class="butt">Next</a>
+                                    <a onclick='step_process(6, 7); htmlHelper.extensionFunction('offsetSmooth(' + $('#smoothFine').val() + ')'); htmlHelper.extensionFunction('offsetDistance(' + $('#distanceFine').val() + ',True)');' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block7">
-                                <div class="wrap">
+                            <div class='block' id='block7'>
+                                <div class='wrap'>
                                     <h2>Offset Accept</h2><br />
-                                    <a onclick="step_process(7, 8); htmlHelper.complete();" class="butt">Next</a>
+                                    <a onclick='step_process(7, 8); htmlHelper.complete();' class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block8">
-                                <div class="wrap">
+                            <div class='block' id='block8'>
+                                <div class='wrap'>
                                     <h2>Hide Other Models</h2><br />
-                                    <a onclick="step_process(8, 9); htmlHelper.inspectorAutoRepair();"
-                                       class="butt">Next</a>
+                                    <a onclick='step_process(8, 9); htmlHelper.inspectorAutoRepair();'
+                                       class='butt'>Next</a>
                                 </div>
                             </div>
 
-                            <div class="block" id="block9">
-                                <div class="wrap">
+                            <div class='block' id='block9'>
+                                <div class='wrap'>
                                     <h2>Finish</h2><br />
-                                    <a data-dismiss="modal" class="butt">Next</a>
+                                    <a data-dismiss='modal' class='butt'>Next</a>
                                 </div>
                             </div>
                         </div>
@@ -256,8 +256,8 @@
 </body>
 
 <script>
-    $("#mySmallModal").draggable({
-        handle: ".modal-header"
+    $('#mySmallModal').draggable({
+        handle: '.modal-header'
     });
 
 

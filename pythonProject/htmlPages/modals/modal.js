@@ -24,11 +24,11 @@ function step_process(from, to, dir) {
 
     if (Math.abs(from-to) === 1) {
         // Next Step
-        if (from < to) $("#step"+from).addClass('complete').removeClass('current');
-        else $("#step"+from).removeClass('complete').removeClass('current');
+        if (from < to) $('#step'+from).addClass('complete').removeClass('current');
+        else $('#step'+from).removeClass('complete').removeClass('current');
         var width = (parseInt(to) - 1) * 20;
-        $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, speed, function() {
-            $("#step"+to).removeClass('complete').addClass('current');
+        $('.progress_bar').find('.current_steps').animate({'width': width+'%'}, speed, function() {
+            $('#step'+to).removeClass('complete').addClass('current');
         });
     } else {
         // Move to Step
@@ -44,28 +44,28 @@ function step_process(from, to, dir) {
     
 function move_to_step(step, end, dir, step_speed) {
     if (dir == 'asc') {
-        $("#step"+step).addClass('complete').removeClass('current');
+        $('#step'+step).addClass('complete').removeClass('current');
         var width = (parseInt(step+1) - 1) * 20;
-        $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
-            $("#step"+(step+1)).removeClass('complete').addClass('current');
+        $('.progress_bar').find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
+            $('#step'+(step+1)).removeClass('complete').addClass('current');
             if (step+1 < end) move_to_step((step+1), end, dir, step_speed);
         });
     } else {
-        $("#step"+step).removeClass('complete').removeClass('current');
+        $('#step'+step).removeClass('complete').removeClass('current');
         var width = (parseInt(step-1) - 1) * 20;
-        $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
-            $("#step"+(step-1)).removeClass('complete').addClass('current');
+        $('.progress_bar').find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
+            $('#step'+(step-1)).removeClass('complete').addClass('current');
             if (step-1 > end) move_to_step((step-1), end, dir, step_speed);
         });
     }
 }
 
 $(document).ready(function() {
-    $("body").on("click", ".progress_bar .step.complete", function() {
+    $('body').on('click', '.progress_bar .step.complete', function() {
         var from = $(this).parent().find('.current').data('step');
         var to = $(this).data('step');
-        var dir = "desc";
-        if (from < to) dir = "asc";
+        var dir = 'desc';
+        if (from < to) dir = 'asc';
 
         step_process(from, to, dir);
     });
