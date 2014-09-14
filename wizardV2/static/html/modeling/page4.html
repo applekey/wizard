@@ -1,0 +1,179 @@
+<div id="instructionSection">
+	<div style ="margin:20px">
+		<p>
+			In step 4 
+			<br>
+			you will begin the process of rectifying the positive residual limb model, building up areas on it that correspond to areas marked during the scanning process. You can control the size of the select tool using the ‘tool slider’. Start by selecting the first region to add material and when ready, press ‘build up’ button. You can control the height and the shape of the material you add using the ‘height’ slider, and ‘falloff’ slider. To make it easier to see what you are adding, rotate the camera so that you are viewing the material you are adding in profile. When ready, press ‘accept’ and repeat the process for other areas to build up.
+
+						$(".page3Well").hide()
+			$("#backFowardCancel").hide()
+		
+			</script>
+
+<!-- 			step 1 -->
+			<div  id="wellText" class="well page3Well">
+				<div  id="subText1" class="subText">
+					<h3>Select Tool </h3>
+					<p> choose the selected area <p>
+				</div>
+				<div id="subText2" class="subText" style="display: none;">
+					<h3>Expand To connected </h3>
+					<p> choose the selected area <p>
+				</div>
+				<div id="subText3" class="subText" style="display: none;">
+					<h3>Invert Tool </h3>
+					<p> choose the selected area <p>
+				</div>
+				
+				<div id="subText4" class="subText" style="display: none;">
+					<h3>Discard </h3>
+					
+				</div>
+				<div id="subText5" class="subText" style="display: none;">
+					<h3>Select All </h3>
+					
+				</div>
+				<div id="subText6" class="subText" style="display: none;">
+					<h3>Smooth </h3>
+					
+				</div>
+				<div id="subText7" class="subText" style="display: none;">
+					<h3>Smooth Accept </h3>
+					
+				</div>
+				<div id="subText8" class="subText" style="display: none;">
+					<h3>Inspector </h3>
+					
+				</div>
+				<div id="subText9" class="subText" style="display: none;">
+					<h3>Inspector Auto Repair</h3>
+					
+				</div>
+				<div id="subText10" class="subText" style="display: none;">
+					<h3>Finished </h3>
+					
+				</div>
+				<div class="progress progress-striped">
+					<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
+				</div>
+			</div>
+
+
+			<a id = "cleanUpBT" class="btn btn-info " role="button">
+				 <span class="glyphicon glyphicon-wrench"></span> Clean Up
+			</a>
+			<script>
+				$("#cleanUpBT").click(function(){
+				   $("#wellText").show()
+				  // $.post("api/planeCut");
+				  $(this).hide()
+				  $("#backFowardCancel").show()
+				
+				});
+			</script>
+
+			<!-- controls for subinstructions -->
+			
+
+			<div id = "backFowardCancel" class="btn-group">
+				<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+				<button type="button" id="fowardButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+				<button type="button" id="cancelButton" class="btn btn-default">Cancel</button>
+			</div>
+			<script>
+			var page3InstructionIndex = 1
+			var numberOfInstructions = $('.subText').length
+
+			$('#backButton').attr("disabled", true);
+			
+			$("#cancelButton").click(function(){
+				
+				reset()
+				
+			});
+
+			$("#fowardButton").click(function(){
+				
+					
+				var txtToHide = 'subText' +page3InstructionIndex
+				page3InstructionIndex = page3InstructionIndex+1;
+				var txtToShow = 'subText' +page3InstructionIndex
+			
+				$("#"+txtToShow).show()
+				$("#"+txtToHide).hide()
+				checkControlValid()
+				changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
+					
+					
+
+			});
+			$("#backButton").click(function(){
+				
+				var txtToHide = 'subText' +page3InstructionIndex
+				page3InstructionIndex = page3InstructionIndex-1;
+				var txtToShow = 'subText' +page3InstructionIndex
+			
+				$("#"+txtToShow).show()
+				$("#"+txtToHide).hide()
+				checkControlValid()
+				changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
+				
+			
+				
+			});
+
+			function reset()
+			{
+				$("#wellText").hide('fast')
+				$("#cleanUpBT").show('fast')
+				$("#backFowardCancel").hide('fast')
+				$(".subText").hide('fast')
+				$("#subText1").show('fast')
+				page3InstructionIndex = 1
+				checkControlValid()
+				changeProgressBar(0)
+			}
+			function changeProgressBar(newPercentage)
+			{
+				
+				newPercentage = newPercentage*100
+				var $pb = $('.progress .progress-bar');
+				$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center',use_percentage: false,
+					amount_format: function(p, t) {return page3InstructionIndex + ' of ' + numberOfInstructions;}});
+			}
+
+			function checkControlValid() {
+			    var numberOfInstructions = $('.subText').length
+			    if(page3InstructionIndex==numberOfInstructions)
+			    {
+			    	$('#fowardButton').attr("disabled", true);
+			    	$("#cancelButton").hide('slow')
+			    	$('#backButton').attr("disabled", true);
+			    	setTimeout(reset,2000)
+			    	return
+			    }
+			    else
+			    {
+			    	$('#fowardButton').attr("disabled", false);
+			    	$("#cancelButton").show();
+			    }
+
+			    if(page3InstructionIndex==1)
+			    {
+			    	$('#backButton').attr("disabled", true);
+			    }
+			    else
+			    {
+			    	$('#backButton').attr("disabled", false);
+			    }
+
+			   
+
+			}
+
+			</script>
+			
+		</p>
+	</div>
+
+</div>
