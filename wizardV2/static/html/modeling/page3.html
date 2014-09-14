@@ -12,9 +12,7 @@
 			<br>
 		
 			<script>
-			$(document).ready(function() {
-			    $('.progress .progress-bar').progressbar({display_text: 'fill'});
-			});
+
 			$(".page3Well").hide()
 			$("#backFowardCancel").hide()
 		
@@ -27,11 +25,11 @@
 					<p> choose the selected area <p>
 				</div>
 				<div id="subText2" class="subText" style="display: none;">
-					<h3>Selectfdas Tool </h3>
+					<h3>Expand To connected </h3>
 					<p> choose the selected area <p>
 				</div>
 				<div id="subText3" class="subText" style="display: none;">
-					<h3>Select ddddfTool </h3>
+					<h3>Invert Tool </h3>
 					<p> choose the selected area <p>
 				</div>
 				<div id="subText4" class="subText" style="display: none;">
@@ -123,7 +121,8 @@
 				
 				newPercentage = newPercentage*100
 				var $pb = $('.progress .progress-bar');
-				$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center'});
+				$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center',use_percentage: false,
+					amount_format: function(p, t) {return page3InstructionIndex + ' of ' + numberOfInstructions;}});
 			}
 
 			function checkControlValid() {
@@ -131,7 +130,7 @@
 			    if(page3InstructionIndex==numberOfInstructions)
 			    {
 			    	$('#fowardButton').attr("disabled", true);
-			    	$("#cancelButton").hide()
+			    	$("#cancelButton").hide('slow')
 			    	$('#backButton').attr("disabled", true);
 			    	setTimeout(reset,2000)
 			    	return
