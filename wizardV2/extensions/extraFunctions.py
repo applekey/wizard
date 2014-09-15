@@ -8,6 +8,12 @@ def planeCut():
     return MeshWrapper.planecut()
 
 @meshWrapper
+def createFaceGroup():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('createFaceGroup') 
+    return cmd
+
+@meshWrapper
 def selectTool():
     cmd  = mmapi.StoredCommands()
     cmd.AppendSelectCommand_All()
