@@ -131,7 +131,8 @@ $.post("history/check", function (data) {
   $(document).ready(function() {
     $('#Modeling').wowBook({
       height : $( window ).height()*0.80,
-      width  : $( window ).width()*0.95,
+      width: $(window).width() * 0.95,
+      mouseWheel: 'zoom',
       controls : {
                         zoomIn    : '#zoomin',
                         zoomOut   : '#zoomout',
