@@ -17,7 +17,6 @@ $(document).on('click',"#cancelButton",function(){
 });
 
 $(document).on('click',"#fowardButton",function(){	
-
 	var parent = $( this ).parents( ".subControl" )
 
 	var currentIndex =parseInt(parent.attr("index")) 
@@ -27,8 +26,15 @@ $(document).on('click',"#fowardButton",function(){
 	parent.attr("index",currentIndex)
 	var txtToShow = 'subText' +currentIndex
 
+
 	$("#"+txtToShow,parent).show()
 	$("#"+txtToHide,parent).hide()
+
+	var attr = $("#"+txtToHide,parent).attr('apiFunc');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	eval($("#"+txtToHide,parent).attr("apiFunc"))
+	}
+	
 	checkControlValid(parent)
 	changeProgressBar((currentIndex-1)/(parent.attr("numberOfInstructions")-1),parent)
 });
