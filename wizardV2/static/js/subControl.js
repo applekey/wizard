@@ -1,5 +1,5 @@
 $(document).on('click','#activateButton',function(){
-	debugger;
+
 	var parent = $( this ).parent( ".subControl" )
 	var numberOfInstructions = $('.subText',parent).length
 	parent.attr("index",1)
@@ -17,7 +17,7 @@ $(document).on('click',"#cancelButton",function(){
 });
 
 $(document).on('click',"#fowardButton",function(){	
-	debugger;
+
 	var parent = $( this ).parents( ".subControl" )
 
 	var currentIndex =parseInt(parent.attr("index")) 
