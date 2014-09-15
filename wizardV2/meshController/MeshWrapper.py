@@ -86,6 +86,7 @@ class MeshWrapper(object):
     def importFile():
         root = Tk()
         root.withdraw()
+        print 'herererererer'
         fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
             state =  MeshWrapper.importFigure(fileName) 

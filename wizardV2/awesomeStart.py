@@ -15,7 +15,7 @@ def hello():
 
 @route(':path#.+#', name='static')
 def static(path):
-	return static_file(path, root='static')
+    return static_file(path, root='static')
 
 @post('/api/<function>') # or @route('/login', method='POST')
 def importMesh(function):
@@ -29,15 +29,21 @@ def callDynamic(functionCall):
        for method in extensions:
            if hasattr(method, functionName):
                if eval('method.'+functionCall) is not True:
-                   self.warnEvent()
-    except:
-        self.warnEvent()
+                   print 'error'
+                   return
+               else:
+                   return
+                   
+       print 'error couldnt find'         
+    except ex:
+        print ex
+        print 'error'
 
 
 def startUp():
     global extensions
     extensions = extensionController.getExtensions('extensions')
-    abc = 123
+    print extensions
 
 
 startUp()

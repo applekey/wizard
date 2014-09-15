@@ -5,7 +5,7 @@ from mmapi import  *
 def importFile():
     MeshWrapper.importFile()
 def planeCut():
-    MeshWrapper.planecut()
+    return MeshWrapper.planecut()
 
 @meshWrapper
 def selectTool():
