@@ -19,7 +19,7 @@ def static(path):
 
 @post('/api/<function>') # or @route('/login', method='POST')
 def importMesh(function):
-	callDynamic(function)
+	return callDynamic(function)
 	
 
 def callDynamic(functionCall):
@@ -29,15 +29,12 @@ def callDynamic(functionCall):
        for method in extensions:
            if hasattr(method, functionName):
                if eval('method.'+functionCall) is not True:
-                   print 'error'
-                   return
+                   return 'false'
                else:
-                   return
-                   
-       print 'error couldnt find'         
-    except ex:
-        print ex
-        print 'error'
+                   return 'true'
+                          
+    except :
+        return 'false'
 
 
 def startUp():

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   
   <head>
 
-
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
   <meta charset="utf-8">
   <title>
   </title>
@@ -28,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap-progressbar-3.2.0.min.css">
   <link rel="stylesheet" type="text/css" href="css/wowControlBar.css">
   <script type="text/javascript" src="js/subControl.js"></script>
+  <script type="text/javascript" src="js/alert.js"></script>
 
 
 </head>
@@ -94,22 +95,22 @@ section {
     <br />
  
  <div id="bookContainer">
-<div id="Modeling" style=" margin-top: 40px; margin-left:30px;">
+    <div id="Modeling" style=" margin-top: 40px; margin-left:30px;">
     
-    <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
-    <div class ="page" id= "cover" > </div>
-    <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
-    <div class ="page" id= "page2" data-src="./html/modeling/page2.html"></div>
-    <div class ="page" id= "page3" data-src="./html/modeling/page3.html"></div>
-    <div class ="page" id= "page4" data-src="./html/modeling/page4.html"></div>
-    <div class ="page" id= "page5" data-src="./html/modeling/page5.html"></div>
-    <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
+        <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
+        <div class ="page" id= "cover" > </div>
+        <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
+        <div class ="page" id= "page2" data-src="./html/modeling/page2.html"></div>
+        <div class ="page" id= "page3" data-src="./html/modeling/page3.html"></div>
+        <div class ="page" id= "page4" data-src="./html/modeling/page4.html"></div>
+        <div class ="page" id= "page5" data-src="./html/modeling/page5.html"></div>
+        <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
     
-</div>
+    </div>
 </div>
 
 <br>
-<nav>
+      <nav>
             <ul>
                 <li><a id="first" href="#" title="goto first page" class="">First page</a></li>
                 <li><a id="back" href="#" title="go back one page" class="">Back</a></li>
@@ -129,7 +130,6 @@ section {
     $('#Modeling').wowBook({
       height : $( window ).height()*0.80,
       width  : $( window ).width()*0.95,
-      scaleToFit: "#bookContainer",
       controls : {
                         zoomIn    : '#zoomin',
                         zoomOut   : '#zoomout',

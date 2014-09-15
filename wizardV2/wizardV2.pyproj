@@ -57,6 +57,7 @@
     <Content Include="static\img\shadow_fold_flip_h.png" />
     <Content Include="static\img\shadow_internal_fold.png" />
     <Content Include="static\img\loading.gif" />
+    <Content Include="static\js\alert.js" />
     <Content Include="static\js\bootstrap.min.js" />
     <Content Include="static\js\jquery-2.1.1.min.js" />
     <Content Include="static\js\jquery-ui.min.js" />
