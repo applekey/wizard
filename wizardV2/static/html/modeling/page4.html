@@ -13,16 +13,16 @@
 						<h3>Select Tool </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText2" apiFunc=" $.post('api/smoothBoundary()');" class="subText" style="display: none;">
+					<div id="subText2" apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary</h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary Accept </h3>
 						<p> choose the selected area <p>
 					</div>
 					
-					<div id="subText4" apiFunc= "getInputValue('page4Input')" class="subText" style="display: none;">
+					<div id="subText4" apiFunc= "getInputValue('page4Input',apiReturnParser)" class="subText" style="display: none;">
 						<h3>Offset </h3>
 
 						<p> Enter offset height based on height  in 
@@ -33,14 +33,14 @@
 						function getInputValue(itemId) {
 						
 							height = $( "#"+itemId ).val()
-							$.post('api/offsetDistance('+height+ ',True)'); 
+							$.post('api/offsetDistance('+height+ ',True)',apiReturnParser); 
 						}
 
 						</script>
 
 						<br>
 					</div>
-					<div id="subText5" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+					<div id="subText5" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Offset Accept</h3>
 						<p> here we will tell them how you can adjust it</p>
 					</div>

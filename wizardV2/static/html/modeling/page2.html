@@ -3,7 +3,10 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 		<p>
-			In step 2, you will start to remove unnecessary aspects captured during scan (e.g. top of the thigh and waist, counter, etc) and also create a flat surface on your model that will assist with the alignment of the socket later in this process Rotate camera with mouse and ‘alt’ button until residual limb model is generally pointing down. Press Plane Cut button when ready to begin
+			In step 2
+            <br /> 
+            
+            you will start to remove unnecessary aspects captured during scan (e.g. top of the thigh and waist, counter, etc) and also create a flat surface on your model that will assist with the alignment of the socket later in this process Rotate camera with mouse and ‘alt’ button until residual limb model is generally pointing down. Press Plane Cut button when ready to begin
 			<br>
 			<br>
 		
@@ -12,7 +15,7 @@
 			</a>
 			<script>
 				$("#planeCutBT").click(function(){
-				    $.post("api/planeCut()");
+				    $.post("api/planeCut()", apiReturnParser);
 				});
 			</script>
 			<br>
@@ -29,7 +32,7 @@
 			</a>
             <script>
                 $("#planeCutAcceptBT").click(function () {
-                    $.post("api/accept()");
+                    $.post("api/accept()", apiReturnParser);
                 });
             </script>
 		</p>

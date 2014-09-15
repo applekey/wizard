@@ -9,19 +9,19 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1"  apiFunc=" $.post('api/selectTool()');" class="subText">
+					<div  id="subText1"  apiFunc=" $.post('api/selectTool()',apiReturnParser);" class="subText">
 						<h3>Select Area </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div  id="subText2"  apiFunc=" $.post('api/smoothBoundary()');" class="subText" style="display: none;">
+					<div  id="subText2"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary Accept </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText4" apiFunc=" $.post('api/createFaceGroup()');" class="subText" style="display: none;">
+					<div id="subText4" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Create Face Group</h3>
 						<p> choose the selected area <p>
 					</div>

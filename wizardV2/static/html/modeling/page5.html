@@ -9,15 +9,15 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1"  apiFunc=" $.post('api/align()');" class="subText">
+					<div  id="subText1"  apiFunc=" $.post('api/align()',apiReturnParser);" class="subText">
 						<h3>Align </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText2" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+					<div id="subText2" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Align Accept </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/alignZCam()');" class="subText" style="display: none;">
+					<div id="subText3" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Reset Camera</h3>
 						<p> choose the selected area <p>
 					</div>

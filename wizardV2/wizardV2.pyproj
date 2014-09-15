@@ -44,6 +44,7 @@
     <Content Include="static\css\shadow_internal_fold.png" />
     <Content Include="static\css\loading.gif" />
     <Content Include="static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="static\html\modeling\end.html" />
     <Content Include="static\img\arrow_down.png" />
     <Content Include="static\img\arrow_left.png" />
     <Content Include="static\img\arrow_right.png" />

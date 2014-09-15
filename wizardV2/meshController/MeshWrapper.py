@@ -4,7 +4,7 @@ from mmapi import  *
 from mmRemote import *
 import implementation
 
-from Tkinter import *
+import Tkinter
 import tkFileDialog
 
 def meshWrapper(func):
@@ -86,13 +86,12 @@ class MeshWrapper(object):
 
     @staticmethod
     def importFile():
-        root = Tk()
-        root.withdraw()
-        fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
+        Tkinter.Tk().withdraw()
+        fileName= str(tkFileDialog.askopenfilename(filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
             return MeshWrapper.importFigure(fileName) 
             
-
+        return True
     
     @meshWrapper
     def trial(self):
