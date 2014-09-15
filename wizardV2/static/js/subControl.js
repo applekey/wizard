@@ -1,24 +1,26 @@
-$(".page3Well").hide()
+
 
 var page3InstructionIndex = 1
 var numberOfInstructions = $('.subText').length
-$('#backButton').attr("disabled", true);
 
-$('#wellText').append("<div class='progress progress-striped'>\
-<div id= 'step3ProgressBar' class='progress-bar' role='progressbar' data-transitiongoal='0'></div>\
-</div>")
 
-$('.subControl').append("\
-<!-- controls for subinstructions -->\
-<div id = 'backFowardCancel' class='btn-group'>\
-	<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
-	<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\
-	<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>\
-</div>\
-")
-$("#backFowardCancel").hide()
 
-$("#cleanUpBT").click(function(){
+// // add some extra controls
+// $('#wellText').append("<div class='progress progress-striped'>\
+// <div id= 'step3ProgressBar' class='progress-bar' role='progressbar' data-transitiongoal='0'></div>\
+// </div>")
+
+// $('.subControl').append("\
+// <!-- controls for subinstructions -->\
+// <div id = 'backFowardCancel' class='btn-group'>\
+// 	<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
+// 	<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\
+// 	<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>\
+// </div>\
+// ")
+
+$(document).on('click','#activateButton',function(){
+	debugger;
 	var parent = $( this ).parent( ".subControl" )
 
    $("#wellText",parent).show()
@@ -28,80 +30,78 @@ $("#cleanUpBT").click(function(){
 	
 });
 
-$("#cancelButton").click(function(){
-	reset()
+$(document).on('click',"#cancelButton",function(){
+	var parent = $( this ).parents( ".subControl" )
+	reset(parent)
 });
 
-$("#fowardButton").click(function(){	
+$(document).on('click',"#fowardButton",function(){	
+	var parent = $( this ).parents( ".subControl" )
+
 	var txtToHide = 'subText' +page3InstructionIndex
 	page3InstructionIndex = page3InstructionIndex+1;
 	var txtToShow = 'subText' +page3InstructionIndex
 
-	$("#"+txtToShow).first().show()
-	$("#"+txtToHide).first().hide()
-	checkControlValid()
-	changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
-		
-		
-
+	$("#"+txtToShow,parent).show()
+	$("#"+txtToHide,parent).hide()
+	checkControlValid(parent)
+	changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1),parent)
 });
-$("#backButton").click(function(){
-	
+$(document).on('click',"#backButton",function(){
+	var parent = $( this ).parents( ".subControl" )
 	var txtToHide = 'subText' +page3InstructionIndex
 	page3InstructionIndex = page3InstructionIndex-1;
 	var txtToShow = 'subText' +page3InstructionIndex
 
-	$("#"+txtToShow).first().show()
-	$("#"+txtToHide).first().hide()
-	checkControlValid()
-	changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1))
-	
-
-	
+	$("#"+txtToShow,parent).show()
+	$("#"+txtToHide,parent).hide()
+	checkControlValid(parent)
+	changeProgressBar((page3InstructionIndex-1)/(numberOfInstructions-1),parent)
+		
 });
 
-function reset()
+function reset(parent)
 {
-	$("#wellText").first().hide('fast')
-	$("#cleanUpBT").first().show('fast')
-	$("#backFowardCancel").first().hide('fast')
-	$(".subText").first().hide('fast')
-	$("#subText1").first().show('fast')
+	$("#wellText",parent).hide('fast')
+	$("#activateButton",parent).show('fast')
+	$("#backFowardCancel",parent).hide('fast')
+	$(".subText",parent).hide('fast')
+	$("#subText1",parent).show('fast')
 	page3InstructionIndex = 1
 	checkControlValid()
 	changeProgressBar(0)
 }
-function changeProgressBar(newPercentage)
+function changeProgressBar(newPercentage,parent)
 {
 	
 	newPercentage = newPercentage*100
-	var $pb = $('.progress .progress-bar');
+	var $pb = $('.progress .progress-bar',parent);
 	$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center',use_percentage: false,
 		amount_format: function(p, t) {return page3InstructionIndex + ' of ' + numberOfInstructions;}});
 }
 
-function checkControlValid() {
-    var numberOfInstructions = $('.subText').length
+function checkControlValid(parent) {
+    var numberOfInstructions = $('.subText',parent).length
     if(page3InstructionIndex==numberOfInstructions)
     {
-    	$('#fowardButton').first().attr("disabled", true);
-    	$("#cancelButton").first().hide('slow')
-    	$('#backButton').first().attr("disabled", true);
-    	setTimeout(reset,2000)
+    	$('#fowardButton',parent).attr("disabled", true);
+    	$("#cancelButton",parent).hide('slow')
+    	$('#backButton',parent).attr("disabled", true);
+    	//setTimeout(reset,2000,parent)
     	return
     }
     else
     {
-    	$('#fowardButton').first().attr("disabled", false);
-    	$("#cancelButton").first().show();
+    	$('#fowardButton',parent).attr("disabled", false);
+    	$("#cancelButton",parent).show();
     }
 
     if(page3InstructionIndex==1)
     {
-    	$('#backButton').first().attr("disabled", true);
+    	$('#backButton',parent).attr("disabled", true);
     }
     else
     {
-    	$('#backButton').first().attr("disabled", false);
+    	$('#backButton',parent).attr("disabled", false);
     }
 }

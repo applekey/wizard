@@ -10,11 +10,11 @@
             press ‘undo’ one or more times to return to previous parts of this process
 			<br>
 			<br>
-			<script type="text/javascript" src="js/subControl.js" defer></script>
+		
 
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well">
+				<div  id="wellText" class="well page3Well" style="display: none;" >
 					<div  id="subText1" class="subText">
 						<h3>Select Tool </h3>
 						<p> choose the selected area <p>
@@ -54,14 +54,25 @@
 					</div>
 					<div id="subText10" class="subText" style="display: none;">
 						<h3>Finished </h3>
+						
+					</div>
+					<div class="progress progress-striped">
+						<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
 					</div>
 				</div>
 
-				<a id = "cleanUpBT" class="btn btn-info " role="button">
+
+				<a id = "activateButton" class="btn btn-info " role="button" >
 					 <span class="glyphicon glyphicon-wrench"></span> Clean Up
 				</a>
 
-				
+				<!-- controls for subinstructions -->
+			
+				<div id = "backFowardCancel" class="btn-group" style="display: none;" >
+					<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
+					<button type="button" id="fowardButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
+					<button type="button" id="cancelButton" class="btn btn-default">Cancel</button>
+				</div>
 
 			</div> <!-- subcontrol div -->
 		</p>
