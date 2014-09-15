@@ -88,14 +88,9 @@ def accept():
 @meshWrapper
 def separate():
     cmd  = mmapi.StoredCommands()
-    cmd.AppendCompleteToolCommand('separate')
+    cmd.AppendBeginToolCommand('separate')
     return cmd
 
-@meshWrapper
-def separate():
-    cmd  = mmapi.StoredCommands()
-    cmd.AppendBeginToolCommand('duplicate')
-    return cmd
 
 @meshWrapper
 def offsetDistance(distance,checked=False):

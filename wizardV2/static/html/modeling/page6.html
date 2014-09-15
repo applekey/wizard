@@ -52,21 +52,52 @@
 			</p>
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1" class="subText">
-						<h3>Smooth Boundary </h3>
+				<div  id="wellText"  class="well page3Well" style="display: none;">
+					<div  id="subText1" apiFunc= "getInputValue('page6Input')" class="subText">
+						<h3>Offset </h3>
+
+						<p> Enter offset height based on height  in 
+							<font size="3" color="red"><b> MM</b></font>
+						</p>
+						<input  id = "page6Input" type="number"  min="0" max="10" step="0.1" value ="0.4" class="form-control bfh-number">
+						<script>
+						function getInputValue(itemId) {
+							
+							height = $( "#"+itemId ).val()
+							$.post('api/offsetDistance('+height+ ',True)'); 
+						}
+
+						</script>
+					</div>
+					<div id="subText2" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+						<h3>Offset Accept </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText2" class="subText" style="display: none;">
-						<h3>Smooth Boundary Accept </h3>
+					<div id="subText3"  apiFunc=" $.post('api/separate()');" class="subText" style="display: none;">
+						<h3>Seperate</h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" class="subText" style="display: none;">
-						<h3>Create Face Group</h3>
+					<div id="subText4"  apiFunc=" $.post('api/selectAll()');" class="subText" style="display: none;">
+						<h3>Select All</h3>
 						<p> choose the selected area <p>
 					</div>
+
+					<div id="subText5"  apiFunc="getInputValue('pageTInput');" class="subText" style="display: none;">
+						<h3>Second Offset </h3>
+
+						<p> Enter offset height based on height  in 
+							<font size="3" color="red"><b> MM</b></font>
+						</p>
+						<input  id = "pageTInput" type="number"  min="0" max="10" step="0.1" value ="0.4" class="form-control bfh-number">
+						
+					</div>
+					<div id="subText6"  apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
+						<h3>Offset Accept</h3>
+						<p> choose the selected area <p>
+					</div>
+
 					
-					<div id="subText4" class="subText" style="display: none;">
+					<div id="subText7" class="subText" style="display: none;">
 						<h3>Finished </h3>
 						
 					</div>
