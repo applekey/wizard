@@ -20,6 +20,19 @@ def static(path):
 @post('/api/<function>') # or @route('/login', method='POST')
 def importMesh(function):
 	return callDynamic(function)
+
+@post('/history/check') # or @route('/login', method='POST')
+def checkPast():
+    if os.path.isdir('/history'):
+        for root, dirs, files in os.walk("/history"):
+            for file in files:
+                if file.endswith(".mix"):
+                    return file
+
+@post('/history/loadLatest') # or @route('/login', method='POST')
+def getLatest():
+    print callDynamic('importFigure()')
+
 	
 
 def callDynamic(functionCall):
@@ -28,7 +41,8 @@ def callDynamic(functionCall):
        functionName = functionCall[0:index]
        for method in extensions:
            if hasattr(method, functionName):
-               if eval('method.'+functionCall) is not True:
+               call = 'method.'+functionCall
+               if eval(call) is not True:
                    return 'false'
                else:
                    return 'true'

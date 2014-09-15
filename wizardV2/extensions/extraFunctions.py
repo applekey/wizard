@@ -3,9 +3,29 @@ from mmapi import  *
 
 ## use extensionFunction()
 def importFile():
-    MeshWrapper.importFile()
+    return MeshWrapper.importFile()
 def planeCut():
     return MeshWrapper.planecut()
+
+@meshWrapper
+def importFigure():
+    cmd  = mmapi.StoredCommands()
+    found = False
+    if os.path.isdir('history'):
+        historyFolder = os.path.join(os.getcwd(),'history')
+        for root, dirs, files in os.walk(historyFolder):
+            for file in files:
+                if file.endswith(".mix"):
+                    fileFullPath = os.path.join(root, file)
+                    cmd.AppendSceneCommand_OpenMixFile(fileFullPath);
+                    found = True
+    if found == True:
+        return cmd
+    else:
+        return None                
+
+   
+
 
 @meshWrapper
 def createFaceGroup():
@@ -116,9 +136,6 @@ def offsetSmooth(value):
     return cmd
 
 
-
-
-
 @meshWrapper
 def attractBrush():
     cmd  = mmapi.StoredCommands()
@@ -184,7 +201,7 @@ def loadStep(stepArray):
     loadLatest(step)
 
 @meshWrapper
-def loadLatest(self,name):
+def loadLatest(name):
     cmd  = mmapi.StoredCommands()
     currentDir = os.getcwd()
     saveFile = currentDir+name
@@ -193,7 +210,7 @@ def loadLatest(self,name):
     return cmd
 
 @meshWrapper
-def saveLatest(self,name):
+def saveLatest(name):
     cmd  = mmapi.StoredCommands()
     currentDir = os.getcwd()
     saveFile = currentDir+name

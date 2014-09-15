@@ -54,20 +54,23 @@ section {
       background-color: #F0F7FF;
 }
 .well{
-  background-color: #E8E8E8     ;
+  background-color: #E8E8E8;
 }
 </style>
 
 <script>
-            
+
+$.post("history/check", function (data) {
+    $(".result").html(data);
+});
+
+
+
+
 </script>
 
   
 <body id="body">
-
-
-
-
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -82,8 +85,7 @@ section {
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-
-
+                    <li><a onclick="$.post('history/loadLatest');">Reload Latest Session</a></li>
                     <li><a href="#">Scanning</a></li>
                     <li><a href="#">Modeling</a></li>
                     <li><a href="#">Printing</a></li>

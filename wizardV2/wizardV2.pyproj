@@ -21,7 +21,6 @@
     <Compile Include="awesomeStart.py" />
     <Compile Include="extensionController\extensionController.py" />
     <Compile Include="meshController\MeshWrapper.py" />
-    <Compile Include="extensions\abc.py" />
     <Compile Include="extensions\extraFunctions.py" />
     <Content Include="static\css\bootstrap-theme.css" />
     <Content Include="static\css\bootstrap-theme.min.css" />

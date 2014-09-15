@@ -13,7 +13,9 @@ def meshWrapper(func):
                 
             remote = mmRemote()
             remote.connect()
-            cmd = func(*args, **kwargs) 
+            cmd = func(*args, **kwargs)
+            if cmd is None:
+                return True 
             remote.runCommand(cmd);
             return True
         except :
@@ -88,9 +90,8 @@ class MeshWrapper(object):
         root.withdraw()
         fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
-            state =  MeshWrapper.importFigure(fileName) 
-            if state is not True:
-                self.warnEvent()
+            return MeshWrapper.importFigure(fileName) 
+            
 
     
     @meshWrapper
