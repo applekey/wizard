@@ -66,6 +66,13 @@ def fitPrimitive():
     cmd.AppendBeginToolCommand('fitPrimitive') 
     return cmd
 
+
+@meshWrapper
+def smoothBoundary():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('smoothBoundary') 
+    return cmd
+
 @meshWrapper
 def accept():
     cmd  = mmapi.StoredCommands()
