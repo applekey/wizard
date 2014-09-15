@@ -1,44 +1,44 @@
 from bottle import route, run, template,static_file,get,post
-import os
+import os,sys
 
-from Tkinter import *
-import tkFileDialog
+sys.path.append( 'extensionController' )
+sys.path.append( 'meshController' )
+sys.path.append( 'meshController/implementation' )
+sys.path.append( 'meshController/pythonApi' )
 
+from extensionController import *
+from MeshWrapper import  *
 
 @route('/hello')
 def hello():
-
-
-	# initialize connection
-	# remote = mmRemote();
-	# remote.connect();
-
-	# # construct commands to run
-	# cmd = mmapi.StoredCommands()
-	# cmd.AppendBeginToolCommand("offset")
-	# #cmd.AppendCompleteToolCommand("accept")
-	# #cmd.AppendSceneCommand_OpenMixFlie("c:\\scratch\\test1.mix");
-
-	# # execute  commands
-	# remote.runCommand(cmd);
-
-	# #done!
-	# remote.shutdown()
-	print os.getcwd()
 	return  static_file('index.html',root='')
 
 @route(':path#.+#', name='static')
 def static(path):
-	print 'path is' +path
 	return static_file(path, root='static')
 
 @post('/api/<function>') # or @route('/login', method='POST')
 def importMesh(function):
-	print 'function is' + function
-	root = Tk()
-	root.withdraw()
-	fileName= str(tkFileDialog.askopenfilename(parent=root,filetypes=[("3d Files","*.ply;*.obj")]))
+	callDynamic(function)
+	
+
+def callDynamic(functionCall):
+    try:
+       index = functionCall.index('(')
+       functionName = functionCall[0:index]
+       for method in extensions:
+           if hasattr(method, functionName):
+               if eval('method.'+functionCall) is not True:
+                   self.warnEvent()
+    except:
+        self.warnEvent()
 
 
+def startUp():
+    global extensions
+    extensions = extensionController.getExtensions('extensions')
+    abc = 123
 
+
+startUp()
 run(host='localhost', port=1234,debug=True)

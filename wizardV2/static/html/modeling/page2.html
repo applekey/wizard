@@ -12,7 +12,7 @@
 			</a>
 			<script>
 				$("#planeCutBT").click(function(){
-				  $.post("api/planeCut");
+				    $.post("api/planeCut()");
 				});
 			</script>
 			<br>
@@ -27,6 +27,11 @@
             <a id = "planeCutAcceptBT" class="btn btn-info " role="button">
 				 <span class="glyphicon glyphicon-wrench"></span> Plane Cut Accept
 			</a>
+            <script>
+                $("#planeCutAcceptBT").click(function () {
+                    $.post("api/accept()");
+                });
+            </script>
 		</p>
 	</div>
 

@@ -5,8 +5,6 @@ import array
 import select
 
 
-
-
 class mmRemote:
 	
     def __init__(self):
