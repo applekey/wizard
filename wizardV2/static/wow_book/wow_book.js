@@ -715,7 +715,9 @@ wowBook.prototype = {
 			}
 			pn.html(pageNumber++);
 		}
-	}, // doPageNumbering
+	}
+
+    , // doPageNumbering
 
 	findPagesType : function(){
 		var opts=this.opts,
