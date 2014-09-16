@@ -56,6 +56,16 @@ section {
 .well{
   background-color: #E8E8E8;
 }
+
+    #bookControls {
+        position: fixed;
+        bottom: 10%;
+        right: 40%;
+        z-index: 9999;
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+    }
+
 </style>
 
 <script>
@@ -65,16 +75,10 @@ $.post("history/check", function (data) {
 });
 
 $(window).resize(function () {
-    $("#Modeling").wowBook({
-        width: $(window).width() * 0.95*2, height: $(window).height() * 0.80,
-    });
-    location.reload();
 
-
-
-     
+    var book = $.wowBook("#Modeling");
+    book.scaleToFit($(window).width() * 0.92 * 2, $(window).height() * 1.13)
 });
-
 
 </script>
 
@@ -128,7 +132,7 @@ $(window).resize(function () {
 </div>
 
 <br>
-      <nav>
+      <nav id ="bookControls">
             <ul>
                 <li><a id="first" href="#" title="goto first page" class="">First page</a></li>
                 <li><a id="back" href="#" title="go back one page" class="">Back</a></li>
@@ -140,8 +144,8 @@ $(window).resize(function () {
 <script type="text/javascript">
   $(document).ready(function() {
     $('#Modeling').wowBook({
-      height : $( window ).height()*0.80,
-      width: $(window).width() * 0.95*2,
+      height: $(window).height() * 1.13,
+      width: $(window).width() * 0.92* 2,
       controls : {
                        
                         next      : '#next',
