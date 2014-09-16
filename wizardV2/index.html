@@ -64,7 +64,16 @@ $.post("history/check", function (data) {
     $(".result").html(data);
 });
 
+$(window).resize(function () {
+    $("#Modeling").wowBook({
+        width: $(window).width() * 0.95*2, height: $(window).height() * 0.80,
+    });
+    location.reload();
 
+
+
+     
+});
 
 
 </script>
@@ -100,19 +109,19 @@ $.post("history/check", function (data) {
     <div id="Modeling" style=" margin-top: 40px; margin-left:-92%;">
     
         <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
-        <div class="page" id="cover" > </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page2" data-src="./html/modeling/page2.html"></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page3" data-src="./html/modeling/page3.html"></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page4" data-src="./html/modeling/page4.html"></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page5" data-src="./html/modeling/page5.html"></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
-        <div class="page" id="cover"> </div>  <!--empty-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class="page" id="page6" data-src="./html/modeling/end.html"></div>
     
     </div>
@@ -125,8 +134,6 @@ $.post("history/check", function (data) {
                 <li><a id="back" href="#" title="go back one page" class="">Back</a></li>
                 <li><a id="next" href="#" title="go foward one page">Next</a></li>
                 <li><a id="last" href="#" title="goto last page">last page</a></li>
-                <li><a id="zoomin" href="#" title="zoom in">Zoom In</a></li>
-                <li><a id="zoomout" href="#" title="zoom out" class="wowbook-disabled">Zoom Out</a></li>
             </ul>
         </nav>
 
@@ -135,10 +142,8 @@ $.post("history/check", function (data) {
     $('#Modeling').wowBook({
       height : $( window ).height()*0.80,
       width: $(window).width() * 0.95*2,
-      mouseWheel: 'zoom',
       controls : {
-                        zoomIn    : '#zoomin',
-                        zoomOut   : '#zoomout',
+                       
                         next      : '#next',
                         back      : '#back',
                         first     : '#first',

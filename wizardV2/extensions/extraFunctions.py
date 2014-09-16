@@ -153,6 +153,7 @@ def colorView():
 @meshWrapper
 def align():
     cmd  = mmapi.StoredCommands()
+    cmd.AppendCompleteToolCommand("cancel") 
     cmd.AppendBeginToolCommand('align')
     
     return cmd

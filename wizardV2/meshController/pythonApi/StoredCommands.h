@@ -97,7 +97,7 @@ public:
 	// nMode  0=VertexColors, 1=GroupColors
 	void ViewControl_SetTriangleColorMode(int nMode);
 
-	// [TODO] view controls (normals, colors, wireframe, etc)
+	// [TODO] wireframe
 
 
 
@@ -293,6 +293,10 @@ public:
 			"update"
 	 *   [inspector]
 			"repairAll"
+	 *   [hollow]
+			"update"
+			"generateHoles"
+			"removeHoles"
 	 *   [overhangs]
 			"generateSupport"
 			"removeSupport"
@@ -308,11 +312,6 @@ public:
 	void AppendToolUtilityCommand( std::string commandName, std::string sValue );
 
 
-
-	/*
-	 * CLEAN MM API
-	 * [RMS] this is essentially a procedural modeling API...
-	 */
 
 
 	/*
@@ -333,7 +332,7 @@ public:
 	Key AppendSceneCommand_AppendMeshFile( const char * pFilename );
 		bool GetSceneCommandResult_AppendMeshFile( Key k, std::vector<int> & vObjects );
 
-	// TODO export to mesh file
+	Key AppendSceneCommand_ExportMeshFile_CurrentSelection( const char * pFilename );
 
 	// remove all objects from current scene
 	void AppendSceneCommand_Clear();
@@ -366,7 +365,10 @@ public:
 		bool GetSceneCommandResult_FindObjectByName( Key k, int & nObjectID );
 		bool GetSceneCommandResult_FindObjectByName( Key k, any_result & nObjectID );
 
-	// TODO visibility
+	// visibility
+	Key AppendSceneCommand_SetVisible( int nObjectID );
+	Key AppendSceneCommand_SetHidden( int nObjectID );
+	Key AppendSceneCommand_ShowAll();
 
 
 	/*
@@ -433,9 +435,6 @@ public:
 
 
 	
-
-	// [RMS] TODO: selection-modify commands (invert, etc)
-
 
 	/*
 	 *  ACTION COMMANDS
@@ -589,7 +588,7 @@ private:
 		ToolParam_Utility_Float = 21,
 		ToolParam_Utility_Int = 22,
 		ToolParam_Utility_Bool = 23,
-		ToolParam_Utility_Vec3 = 23,
+		ToolParam_Utility_Vec3 = 24,
 		ToolParam_Utility_Mat3 = 25,
 		ToolParam_Utility_String = 26,
 	};
@@ -622,6 +621,7 @@ private:
 		AppendMeshFile,
 		OpenMixFile,
 		ExportMixFile,
+		ExportMeshFile_SelectedObjects,
 		ListObjects,
 		ListSelectedObjects,
 		SelectObjects,
@@ -631,7 +631,10 @@ private:
 		GetObjectName,
 		SetObjectName,
 		FindObjectByName,
-		SaveScreenShot
+		SaveScreenShot,
+		SetVisible,
+		SetHidden,
+		ShowAll,
 	};
 	struct SceneCmd {
 		SceneCmdType eType;
