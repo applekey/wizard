@@ -59,11 +59,11 @@ class BrowserOpen(Thread):
     def run(self):
         width = GetSystemMetrics (0)
         height = GetSystemMetrics (1)
-        driver = webdriver.Firefox()
+        driver = webdriver.Chrome()
         driver.set_window_size(width/2.5,height*0.95)
         driver.set_window_position(0, 0)
         time.sleep(0.3)
-        driver.get('http://localhost:1234/hello')
+        driver.get('http://localhost:1230/hello')
 
 
 
@@ -76,4 +76,4 @@ browser = BrowserOpen()
 browser.start()
 startUp()
 
-run(host='localhost', port=1234,debug=True)
+run(host='localhost', port=1230,debug=True)
