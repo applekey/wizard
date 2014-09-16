@@ -37,7 +37,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span> Clean Up
+					 <span class="glyphicon glyphicon-wrench"></span>Trim Line
 				</a>
 				<div id = "backFowardCancel" class="btn-group" style="display: none;" >
 					<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
@@ -53,22 +53,67 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText"  class="well page3Well" style="display: none;">
-					<div  id="subText1" apiFunc= "getInputValue('page6Input')" class="subText">
-						<h3>Offset </h3>
+                    <div id="subText1" apifunc="getInputValue('distanceFine')" class="subText">
+                        <h3 id='controlHeaderText'> Offset</h3>
 
-						<p> Enter offset height based on height  in 
-							<font size="3" color="red"><b> MM</b></font>
-						</p>
-						<input  id = "page6Input" type="number"  min="0" max="10" step="0.1" value ="0.4" class="form-control bfh-number">
-						<script>
-						function getInputValue(itemId) {
-							
-							height = $( "#"+itemId ).val()
-							$.post('api/offsetDistance('+height+ ',True)'); 
-						}
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Distance</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='distanceFine' value='0.5' type='number' min='0' max='5.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='distanceSlider' type='range' min='0' max='5.0' step='0.01' value='0.5'>
+                        <script>
 
-						</script>
-					</div>
+                            $('#distanceFine').val($('#distanceSlider').val());
+
+                            $('#distanceSlider').change(function () {
+                                $('#distanceFine').val($('#distanceSlider').val());
+                            });
+
+                            $('#distanceFine').change(function () {
+                                $('#distanceSlider').val($('#distanceFine').val());
+                            });
+
+                            function getInputValue(itemId) {
+
+                                height = $("#" + itemId).val()
+                                $.post('api/offsetDistance(' + height + ',True)', apiReturnParser);
+                            }
+                        </script>
+
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Soft Transition</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='smoothFine' value='0.5' type='number' min='0' max='50.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='smoothSlider' type='range' min='0' max='50.0' step='0.01' value='0.5'>
+                        <script>
+
+                            $('#smoothFine').val($('#smoothSlider').val());
+
+                            $('#smoothSlider').change(function () {
+                                $('#smoothFine').val($('#smoothSlider').val());
+                            });
+
+                            $('#smoothFine').change(function () {
+                                $('#smoothSlider').val($('#smoothFine').val());
+                            });
+
+                        </script>
+
+                        <div class='checkbox'>
+                            <label>
+                                <input disabled='disabled' type='checkbox'> connected
+                            </label>
+                        </div>
+
+                    </div>
 					<div id="subText2" apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
 						<h3>Offset Accept </h3>
 						<p> choose the selected area <p>
@@ -82,15 +127,61 @@
 						<p> choose the selected area <p>
 					</div>
 
-					<div id="subText5"  apiFunc="getInputValue('pageTInput');" class="subText" style="display: none;">
-						<h3>Second Offset </h3>
+                    <div id="subText5" apifunc="getInputValue('distanceFine2');" class="subText" style="display: none;">
+                        <h3 id='controlHeaderText'> Offset</h3>
 
-						<p> Enter offset height based on height  in 
-							<font size="3" color="red"><b> MM</b></font>
-						</p>
-						<input  id = "pageTInput" type="number"  min="0" max="10" step="0.1" value ="0.4" class="form-control bfh-number">
-						
-					</div>
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Distance</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='distanceFine2' value='0.5' type='number' min='0' max='5.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='distanceSlider2' type='range' min='0' max='5.0' step='0.01' value='0.5'>
+                        <script>
+
+                            $('#distanceFine2').val($('#distanceSlider2').val());
+
+                            $('#distanceSlider2').change(function () {
+                                $('#distanceFine2').val($('#distanceSlider2').val());
+                            });
+
+                            $('#distanceFine2').change(function () {
+                                $('#distanceSlider2').val($('#distanceFine2').val());
+                            });
+
+                        </script>
+
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Soft Transition</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='smoothFine2' value='0.5' type='number' min='0' max='50.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='smoothSlider2' type='range' min='0' max='50.0' step='0.01' value='0.5'>
+                        <script>
+
+                            $('#smoothFine2').val($('#smoothSlider2').val());
+
+                            $('#smoothSlider2').change(function () {
+                                $('#smoothFine2').val($('#smoothSlider2').val());
+                            });
+
+                            $('#smoothFine2').change(function () {
+                                $('#smoothSlider2').val($('#smoothFine2').val());
+                            });
+
+                        </script>
+                        <div class='checkbox'>
+                            <label>
+                                <input disabled='disabled' type='checkbox' checked> connected
+                            </label>
+                        </div>
+
+                    </div>
 					<div id="subText6"  apiFunc=" $.post('api/accept()');" class="subText" style="display: none;">
 						<h3>Offset Accept</h3>
 						<p> choose the selected area <p>
@@ -108,7 +199,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span> Clean Up
+					 <span class="glyphicon glyphicon-wrench"></span> Generate Socket
 				</a>
 				<div id = "backFowardCancel" class="btn-group" style="display: none;" >
 					<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>

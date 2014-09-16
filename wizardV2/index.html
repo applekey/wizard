@@ -59,8 +59,8 @@ section {
 
     #bookControls {
         position: fixed;
-        bottom: 10%;
-        right: 40%;
+        bottom: 4%;
+        left: 34%;
         z-index: 9999;
         opacity: 0.8;
         filter: alpha(opacity=80);
@@ -93,7 +93,7 @@ section {
     </div>
     <br />
     <br />
- 
+    <div id="abcd"></div>
  <div id="bookContainer" style="overflow: hidden;">
     <div id="Modeling" style=" margin-top: 40px;">
     
@@ -125,10 +125,20 @@ section {
                 <li><a id="last" href="#" title="goto last page">last page</a></li>
                 <li><a id="zoomin" href="#" title="zoom in">Zoom In</a></li>
                 <li><a id="zoomout" href="#" title="zoom out" class="wowbook-disabled">Zoom Out</a></li>
+                <li><button type="button" onclick='resetView()' class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-star"></span> Reset Zoom
+                    </button></li>
             </ul>
         </nav>
 
 <script type="text/javascript">
+    var ok1="blah"
+    function resetView()
+    {
+        $("#Modeling").wowBook("zoom", 1);
+    }
+
+
     $.post("history/check", function (data) {
         $(".result").html(data);
     });
@@ -161,7 +171,6 @@ section {
     $('#bookContainer').css({ position: 'fixed', left: (-width / 2) * 0.96 + 'px' })
 
   });
-
 </script>
 
     

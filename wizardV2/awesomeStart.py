@@ -4,6 +4,7 @@ from threading import Thread
 from win32api import GetSystemMetrics
 from selenium import webdriver
 import time
+from random import randint
 
 sys.path.append( 'extensionController' )
 sys.path.append( 'meshController' )
@@ -59,16 +60,18 @@ class BrowserOpen(Thread):
     def run(self):
         width = GetSystemMetrics (0)
         height = GetSystemMetrics (1)
-        driver = webdriver.Chrome()
+        driver = webdriver.Firefox()
         driver.set_window_size(width/2.5,height*0.95)
         driver.set_window_position(0, 0)
         time.sleep(0.3)
-        driver.get('http://localhost:1230/hello')
+        driver.get('http://localhost:' +str(myport)+'/hello')
 
 
 
 def startUp():
     global extensions
+    global myport 
+    myport = randint(1000,1300)
     extensions = extensionController.getExtensions('extensions')
 
 
@@ -76,4 +79,4 @@ browser = BrowserOpen()
 browser.start()
 startUp()
 
-run(host='localhost', port=1230,debug=True)
+run(host='localhost', port=myport,debug=True)

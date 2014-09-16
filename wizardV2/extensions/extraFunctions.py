@@ -25,7 +25,12 @@ def importFigure():
         return None                
 
    
-
+@meshWrapper
+def smooth(smoothValue):
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('smooth')
+    cmd.AppendToolParameterCommand('smooth',smoothValue) 
+    return cmd
 
 @meshWrapper
 def createFaceGroup():
