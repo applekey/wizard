@@ -1,5 +1,9 @@
 from bottle import route, run, template,static_file,get,post
 import os,sys
+from threading import Thread
+from win32api import GetSystemMetrics
+from selenium import webdriver
+import time
 
 sys.path.append( 'extensionController' )
 sys.path.append( 'meshController' )
@@ -50,12 +54,26 @@ def callDynamic(functionCall):
     except :
         return 'false'
 
+class BrowserOpen(Thread):
+
+    def run(self):
+        width = GetSystemMetrics (0)
+        height = GetSystemMetrics (1)
+        driver = webdriver.Firefox()
+        driver.set_window_size(width/2.5,height*0.95)
+        driver.set_window_position(0, 0)
+        time.sleep(0.3)
+        driver.get('http://localhost:1234/hello')
+
+
 
 def startUp():
     global extensions
     extensions = extensionController.getExtensions('extensions')
-    print extensions
 
 
+browser = BrowserOpen()
+browser.start()
 startUp()
+
 run(host='localhost', port=1234,debug=True)

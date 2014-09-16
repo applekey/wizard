@@ -33,6 +33,7 @@ a = Analysis(['awesomeStart.py'],
 
 a.datas += extra_datas('extensionController/')
 a.datas += extra_datas('meshController/')
+a.datas += extra_datas('selenium/')
 
 
 

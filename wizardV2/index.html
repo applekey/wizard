@@ -67,21 +67,6 @@ section {
     }
 
 </style>
-
-<script>
-
-$.post("history/check", function (data) {
-    $(".result").html(data);
-});
-
-$(window).resize(function () {
-
-    var book = $.wowBook("#Modeling");
-    book.scaleToFit($(window).width() * 0.92 * 2, $(window).height() * 1.13)
-});
-
-</script>
-
   
 <body id="body">
     <!-- Fixed navbar -->
@@ -110,7 +95,7 @@ $(window).resize(function () {
     <br />
  
  <div id="bookContainer" style="overflow: hidden;">
-    <div id="Modeling" style=" margin-top: 40px; margin-left:-92%;">
+    <div id="Modeling" style=" margin-top: 40px;">
     
         <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
         <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
@@ -142,10 +127,27 @@ $(window).resize(function () {
         </nav>
 
 <script type="text/javascript">
+
+   
+  
+   
+    $.post("history/check", function (data) {
+        $(".result").html(data);
+    });
+
+    $(window).resize(function () {
+       
+
+        var book = $.wowBook("#Modeling");
+        book.scaleToFit($(window).width() * 0.92 * 2, $(window).height() * 1.13)
+        var width = $('#Modeling').width()
+        $('#bookContainer').css({ position: 'fixed', left: (-width / 2)*0.96 + 'px' })
+    });
+
   $(document).ready(function() {
     $('#Modeling').wowBook({
       height: $(window).height() * 1.13,
-      width: $(window).width() * 0.92* 2,
+      width: $(window).width() * 0.92*2,
       controls : {
                        
                         next      : '#next',
@@ -155,6 +157,9 @@ $(window).resize(function () {
                        
                     }
     });
+    var width = $('#Modeling').width()
+    $('#bookContainer').css({ position: 'fixed', left: (-width / 2) * 0.96 + 'px' })
+
   });
 
 
