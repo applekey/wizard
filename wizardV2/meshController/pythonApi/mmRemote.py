@@ -36,7 +36,7 @@ class mmRemote:
         if self.debug_print:
             print "[mmRemote::runCommand] waiting for response..."
 
-        ready = select.select([self.receive_sock],[],[],2.0)
+        ready = select.select([self.receive_sock],[],[],7.0)
         if ready[0]:
             data, addr = self.receive_sock.recvfrom(1024*64)
         else:

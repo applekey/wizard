@@ -123,16 +123,15 @@ section {
                 <li><a id="back" href="#" title="go back one page" class="">Back</a></li>
                 <li><a id="next" href="#" title="go foward one page">Next</a></li>
                 <li><a id="last" href="#" title="goto last page">last page</a></li>
-                <li><a id="zoomin" href="#" title="zoom in">Zoom In</a></li>
+                <!--<li><a id="zoomin" href="#" title="zoom in">Zoom In</a></li>
                 <li><a id="zoomout" href="#" title="zoom out" class="wowbook-disabled">Zoom Out</a></li>
                 <li><button type="button" onclick='resetView()' class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-star"></span> Reset Zoom
-                    </button></li>
+                    </button></li>-->
             </ul>
         </nav>
 
 <script type="text/javascript">
-    var ok1="blah"
     function resetView()
     {
         $("#Modeling").wowBook("zoom", 1);
@@ -148,18 +147,17 @@ section {
         var book = $.wowBook("#Modeling");
         book.scaleToFit($(window).width() * 0.92 * 2, $(window).height() * 1.13)
         var width = $('#Modeling').width()
-        $('#bookContainer').css({ position: 'fixed', left: (-width / 2)*0.96 + 'px' })
+        $('#bookContainer').css({ position: 'absolute', left: (-width / 2)*0.96 + 'px' })
     });
 
   $(document).ready(function() {
     $('#Modeling').wowBook({
       height: $(window).height() * 1.13,
       width: $(window).width() * 0.92 * 2,
-      mouseWheel: "zoom",
+
       controls: {
                         
-                        zoomIn: '#zoomin',
-                        zoomOut: '#zoomout',
+                    
                         next      : '#next',
                         back      : '#back',
                         first     : '#first',
@@ -168,7 +166,7 @@ section {
                     }
     });
     var width = $('#Modeling').width()
-    $('#bookContainer').css({ position: 'fixed', left: (-width / 2) * 0.96 + 'px' })
+    $('#bookContainer').css({ position: 'absolute', left: (-width / 2) * 0.96 + 'px' })
 
   });
 </script>
