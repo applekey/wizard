@@ -205,10 +205,9 @@ def alignZCam():
     
   
     cmd.CameraControl_SetSpecificView(eye,target,up)
+    cmd.CameraControl_RecenterView()
     return cmd
 
-
-## fileIOFunction()
 
 def saveStep(stepArray):
     step = 'wizTmp'
