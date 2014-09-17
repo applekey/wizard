@@ -123,7 +123,7 @@ def offsetDistance(distance,checked=False):
     cmd.AppendBeginToolCommand('offset')
     cmd.AppendToolParameterCommand('offsetWorld',distance)
     if checked:
-        cmd.AppendToolUtilityCommand('connected',True)
+        cmd.AppendToolParameterCommand('connected',True)
     return cmd
 
 @meshWrapper
