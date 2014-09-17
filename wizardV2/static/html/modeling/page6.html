@@ -53,7 +53,7 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText"  class="well page3Well" style="display: none;">
-                    <div id="subText1" apifunc="getInputValue('distanceFine')" class="subText">
+                    <div id="subText1" apifunc="getInputValue('distanceFine','smoothFine')" class="subText">
                         <h3 id='controlHeaderText'> Offset</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -77,10 +77,12 @@
                                 $('#distanceSlider').val($('#distanceFine').val());
                             });
 
-                            function getInputValue(itemId) {
+                            function getInputValue(itemId, itemId2) {
 
                                 height = $("#" + itemId).val()
-                                $.post('api/offsetDistance(' + height + ',True)', apiReturnParser);
+                                soft = $("#" + itemId2).val()
+                                $.post('api/offsetDistance(' + height + ',False)', apiReturnParser);
+                                $.post('api/softTransition(' + soft + ')', apiReturnParser);
                             }
                         </script>
 
@@ -127,7 +129,7 @@
 						<p> choose the selected area <p>
 					</div>
 
-                    <div id="subText5" apifunc="getInputValue('distanceFine2');" class="subText" style="display: none;">
+                    <div id="subText5" apifunc="getInputValue2('distanceFine2','smoothFine2');" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Offset</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -150,7 +152,13 @@
                             $('#distanceFine2').change(function () {
                                 $('#distanceSlider2').val($('#distanceFine2').val());
                             });
+                            function getInputValue2(itemId, itemId2) {
 
+                                height = $("#" + itemId).val()
+                                soft = $("#" + itemId2).val()
+                                $.post('api/offsetDistance(' + height + ',True)', apiReturnParser);
+                                $.post('api/softTransition(' + soft + ')', apiReturnParser);
+                            }
                         </script>
 
                         <div class='row' style='margin-left:3px;'>

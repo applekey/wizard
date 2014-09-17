@@ -134,10 +134,10 @@ def connected(state):
     return cmd
 
 @meshWrapper
-def offsetSmooth(value):
+def softTransition(value):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
-    cmd.AppendToolParameterCommand('softTransition',value)
+    cmd.AppendToolParameterCommand('softenWorld',value)
     return cmd
 
 

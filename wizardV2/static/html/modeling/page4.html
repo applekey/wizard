@@ -22,7 +22,7 @@
 						<p> choose the selected area <p>
 					</div>
 					
-					<div id="subText4" apiFunc= "getInputValue('distanceFine3')" class="subText" style="display: none;">
+					<div id="subText4" apiFunc= "getInputValue3('distanceFine3','smoothFine3')" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Offset</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -46,10 +46,12 @@
                                 $('#distanceSlider3').val($('#distanceFine3').val());
                             });
 
-                            function getInputValue(itemId) {
+                            function getInputValue3(itemId,itemId2) {
 
                                 height = $("#" + itemId).val()
+                                soft = $("#" + itemId2).val()
                                 $.post('api/offsetDistance(' + height + ',True)', apiReturnParser);
+                                $.post('api/softTransition(' + soft + ')', apiReturnParser);
                             }
                         </script>
 
@@ -78,7 +80,7 @@
 
                         <div class='checkbox'>
                             <label>
-                                <input disabled='disabled' type='checkbox'> connected
+                                <input disabled='disabled' type='checkbox' checked> connected
                             </label>
                         </div>
 					</div>

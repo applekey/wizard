@@ -7,9 +7,9 @@ remote.connect();
 
 # construct commands to run
 cmd = mmapi.StoredCommands()
-#cmd.AppendBeginToolCommand("planecutSO")
-#cmd.AppendCompleteToolCommand("accept")
-cmd.AppendSceneCommand_OpenMixFlie("c:\\scratch\\test1.mix");
+cmd.AppendBeginToolCommand("planeCut")
+cmd.AppendCompleteToolCommand("accept")
+
 
 # execute  commands
 remote.runCommand(cmd);

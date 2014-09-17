@@ -112,46 +112,70 @@ public:
 
 	/*
 	 * BeginTool command for initializing a tool. Valid tool names are:
-	 *   "extrude" -			extrude selected faces
-	 *   "replace" -			replace selected faces  (including fill holes)
-	 *   "discard" -			discard selected faces
-	 *   "createFaceGroup" -	create face group
-	 *   "clearFaceGroup" -		clear face group
-	 *   "smooth" -				smooth selected faces
-	 *   "smoothboundary" -		smooth boundary loops of current selection
-	 *   "deform" -				deform
-	 *   "facetransform" -		transform selected faces
-	 *   "faceplanecut" -		apply planar cut to selected faces
-	 *   "reduce" -				reduce
-	 *   "remesh" -				remesh
-	 *   "extract" -			extract
-	 *	 "joinboundary" -		join boundary
-	 *   "stitchboundary" -		stitch boundary 
-	 *   "seperate" -			seperate
-	 *   "makepart" -			make part
-	 *   "makepolygon" -		make polygon
-	 *   "measuring" -			measuring
-	 *   "inspector" -			inspector
-	 *   "stability" -			stablity analysis
-	 *   "overhang" -			overhang analysis
-	 *   "generatefacegroup" -	generate face group
-	 *   "weldcracks" -			weld cracks
-	 *   "mirror" -				SO mirror
-	 *   "combine" -			combine
-	 *   "duplicate" -			duplicate	 
-	 *   "transform" -			SO transform
-	 *   "planeCut" -			SO plane cut
-	 *   "align" -				align SO
-	 *   "union" -				boolean union
-	 *   "difference" -			boolean difference
-	 *   "intersection" -		boolean intersection
-	 *   "smoothbrush" -		smooth brush
-	 *   "brush" -				brush
-	 *   "volbrush" -			vol brush
-	 *   "stamp" -				stamp
-	 *   "transform" -			transform
-	 *   "setuv" -				set UV
-	 *   "unifpatch" -			unify patches
+	 *
+		"select"			- start face selection tool
+
+		"volumeBrush"		- start volume brush tool
+		"surfaceBrush"		- start surface brush tool
+		"stamp"				- start stamp tool
+
+		"replace"			- Replace tool
+		"erase"				- Erase/Fill tool
+		"discard"			- Discard tool
+		"reduce"			- Reduce tool
+		"remesh"			- Remesh tool
+		"extrude"			- Extrude tool
+		"extract"			- Extract tool
+		"offset"			- Offset tool
+		"handle"			- Handle tool
+		"bridge"			- Bridge tool
+		"join"				- Join tool
+		"weldBoundaries"	- Weld Boundaries tool
+		"separate"			- Separate tool
+		"planeCut"			- Plane Cut tool (with or without selection)
+		"attractToTarget"	- Attract tool
+		"flipNormals"		- Flip Normals tool
+		"fitPrimitive"		- Fit Primitive tool
+
+		"makePart"			- Convert (selection) To Open Part
+		"makeSolidPart"		- Convert (selection) To Solid Part
+		"makePolygon"		- Convert (selection) to Stamp polygon
+
+		"smooth"			- Smooth tool
+		"faceTransform"		- Transform tool
+		"softTransform"		- Soft Transform tool
+		"warp"				- Warp tool
+
+		"createFaceGroup"	- Create new FaceGroup for selection
+		"clearFaceGroup"	- Clear FaceGroup for selection
+		"smoothBoundary"	- Smooth Boundary tool
+
+		"mirror"				- Mirror tool
+		"duplicate"				- Duplicate tool
+		"transform"				- Transform tool
+		"align"					- Align tool
+		"closeCracks"			- Close Cracks tool
+		"generateFaceGroups"	- Generate Face Groups tool
+		"makeSolid"				- Make Solid tool
+		"hollow"				- Hollow tool
+		"makePattern"			- Make pattern tool
+		"makeSlices"			- Make Slices tool
+		"separateShells"		- Separate Shells tool
+
+		"combine"				- Combine tool (multiple selected objects)
+		"union"					- Boolean Union 
+		"difference"			- Boolean Difference
+		"intersection"			- Boolean Intersection
+
+		"inspector"				- Inspector tool
+		"units"					- Units/Dimensions tool
+		"measure"				- Measure tool
+		"stability"				- Stability analysis tool
+		"strength"				- Strength analysis tool
+		"overhangs"				- Overhangs/Support-Generation tool
+		"slicing"				- Slicing analysis tool
+		"thickness"				- Thickness analysis tool
+	 *
 	 */
 	void AppendBeginToolCommand( std::string toolName );
 
@@ -163,110 +187,243 @@ public:
 	void AppendCompleteToolCommand( std::string command );
 
 	/*
-	 * ToolParameterCommand for modifying a tool parameter. Valid parameters:
-	 *   [extrude]
-	        "offset" : float range [-inf, inf]
-	        "harden" : float range [0,1]
-	        "density" : float range [0,1]
-	        "endType" values: 		Offset = 0,	Flat = 1
-	        "directionType" values:	Normal = 0, Constant = 1, XAxis = 2, YAxis = 3,	ZAxis = 4
-	 *   [replace]
-	 		 "replaceType" values:  MinimalFill = 0, FlatRefinedMesh = 1, MVCPlanarDeformation = 2
-	 		 "density" : float
-	 		 "smooth" : float
-	 		 "scale" : float
-	 		 "boundaryRotate" : float
-	 *   [discard]
-	 *   [createfacegroup]
-	 *   [clearfacegroup]
-	 *   [smooth]
-	 		 "smooth" : float
-	 		 "scale" : float
-	 		 "reduceType" : int
-	 *   [smoothboundary]
-	 		 "smoothness" : float
-	 		 "preserveShape" : float
-	 		 "iterations" : unsigned int
-	 		 "expandLoops" : unsigned int
-	 *   [deform]
-	 *   [facetransform]
-			"origin" :		3-float point
-			"translation" :	3-float vector
-			"scale" :		3-float vector
-			"rotation" :	9-float 3x3 row-major matrix
-	 *   [faceplanecut]
-			"cutType" values: 	PreciseGeometricCut = 0, PreciseGeometricSlice = 1,	NearestPointAttach = 2,	RefinedICPAttach = 3   (default=0)
-			"fillType" values: 	NoFill = 0,	CentroidRefinedFill = 1, DelaunayFill = 2,	DelaunayRefinedFill = 3  (default=3)
-			"hardEdge" : boolean
-			"origin" : 3-float point
-			"normal" : 3-float vector
-			"rotation" : 9-float 3x3 row-major matrix
-	 *   [reduce]
-	 		 "density" : float
-	 		 "smooth" : float
-	 		 "normalThreshold" : float
-	 		 "reduceType" values: Uniform = 0,	 Adaptive_Normal = 1
-	 *   [remesh]
-	 		 "density" : float
-	 		 "smooth" : float
-	 		 "normalThreshold" : float
-	 		 "remeshType" values: Uniform = 0,	 Adaptive_Normal = 1
-	 *   [extract]
-	 		 "offset" : float
-	 		 "endType" values: OffsetDistance = 0,	 PlanarFlat = 1
-	 		 "directionType" values: NormalDirection = 0,	 ConstantDirection = 1,	 UnitXDirection = 2,	 UnitYDirection = 3,	 UnitZDirection = 4
-	 *	 [joinboundary]
-	 *   [stitchboundary]
-	 		 "tolerance" in float
-	 *   [seperate]
-	 *   [makepart]
-	 *   [makepolygon]
-	 *   [measuring]
-	 *   [inspector]
-	 *   [stability]
-	 		 "contactTolerance"	: float
-	 *   [overhang]
-	 		 "overhangAngleTolerance" : float
-	 		 "contactTolerance": float
-	 *   [generatefacegroup]
-	 		 "angleThreshold" : float
-	 *   [weldcracks]
-	 *   [mirrorSO] 
-	 *   [combineSO]
-	 *   [duplicateSO]
-	 *   [transformSO]
-	 *   [planecutSO]
-			"cutType" values: 	PreciseGeometricCut = 0, PreciseGeometricSlice = 1,	NearestPointAttach = 2,	RefinedICPAttach = 3   (default=0)
-			"fillType" values: 	NoFill = 0,	CentroidRefinedFill = 1, DelaunayFill = 2,	DelaunayRefinedFill = 3  (default=3)
-			"hardEdge" : boolean
-			"origin" : 3-float point
-			"normal" : 3-float vector
-			"rotation" : 9-float 3x3 row-major matrix
-	 *   [alignSO]
-	 *   [boolean]
-	 *   [smoothbrush]
-	 *   [brush]
-	 *   [volumebrush]
-	 		"strength" : float range [0,1]
-	 		"size" : float range [ModelSize*0.00001f, ModelSize*0.2f]
-	 		"depth" : float range [-1,1]
-	 		"lazyness" : float range [0,1]
-	 		"volumetric" : bool
-	 		"symmetric" : bool
-	 		"surfSnap" : bool
-	 		"continuous" : bool
-	 		"restrictToGroup" : bool
-	 		"holdBoundary" : bool
-	 		"enableRefinement" : bool
-	 		"refine" : float range [0,1]
-	 		"reduce" : float range [0,1]
-	 		"refineSmooth" : float range [0,1]
-	 *   [stamp]
-	 		 "snapDimension" : bool
-	 *   [setuv]
-	 		 "mapType" values: DiscreteNaturalConformal, AsRigidAsPossible
-	 		 "inputSmoothingAlpha" : float
-	 *   [unifypatches]
+	 * ToolParameterCommand for modifying a tool parameter. 
+	   Notes:   vector3f is a 3-float list, matrix3f is a 9-float 3x3 row-major matrix
+
+		[select]			- start face selection tool
+			"size" : float 
+			"brushType" : integer 
+			"symmetry" : boolean 
+		[volumeBrush]		- start volume brush tool
+			"strength" : float  range [0,1]
+			"size" : float 
+			"depth" : float          range [-1,1]
+			"lazyness" : float       range [0,1]
+			"refine" : float         range [0,1]
+			"reduce" : float         range [0,1]
+			"refineSmooth" : float   range [0,1]
+			"attractStrength" : float 
+			"volumetric" : boolean 
+			"symmetric" : boolean 
+			"surfSnap" : boolean 
+			"continuous" : boolean 
+			"enableRefinement" : boolean 
+			"restrictToGroup" : boolean 
+			"holdBoundary" : boolean 
+			"preserveGroups" : boolean 
+			"brushOnTarget" : boolean 
+			"adaptiveRefinement" : boolean 
+		[surfaceBrush]		- start surface brush tool
+			"restrictToGroup" : boolean 
+			"holdBoundary" : boolean 
+			"preserveGroups" : boolean 
+		[stamp]				- start stamp tool
+			"snapDimension" : boolean 
+
+		[erase]				- Erase/Fill tool
+			"density" : float 
+			"smooth" : float 
+			"scale" : float 
+			"boundaryRotate" : float 
+			"replaceType" : integer   values:  MinimalFill = 0, FlatRefinedMesh = 1, MVCPlanarDeformation = 2
+		[discard]			- Discard tool
+		[reduce]			- Reduce tool
+			"density" : float 
+			"smooth" : float 
+			"normalThreshold" : float 
+			"reduceType" : integer  values: Uniform = 0,	 Adaptive_Normal = 1
+			"preserveGroups" : boolean 
+			"preserveBoundary" : boolean 
+			"adaptive" : boolean 
+		[remesh]			- Remesh tool
+			"density" : float 
+			"smooth" : float 
+			"normalThreshold" : float 
+			"boundaryMode" : integer 
+			"remeshType" : integer  values: Uniform = 0,	 Adaptive_Normal = 1
+			"preserveGroups" : boolean 
+			"adaptive" : boolean 
+		[extrude]			- Extrude tool
+			"offset" : float   range [-inf, inf]
+			"harden" : float   range [0,1]
+			"density" : float  range [0,1]
+			"endType" : integer   values: Offset = 0, Flat = 1
+			"directionType" : integer  values: Normal = 0, Constant = 1, XAxis = 2, YAxis = 3,	ZAxis = 4
+		[extract]			- Extract tool
+			"offset" : float 
+			"endType" : integer  values: OffsetDistance = 0,	 PlanarFlat = 1
+			"directionType" : integer  values: NormalDirection = 0,	 ConstantDirection = 1,	 UnitXDirection = 2,	 UnitYDirection = 3,	 UnitZDirection = 4
+		[offset]			- Offset tool
+			"offset" : float 
+			"offsetWorld" : float 
+			"soften" : float 
+			"softenWorld" : float 
+			"connected" : boolean 
+			"fixedBoundary" : boolean 
+		[handle]			- Handle tool
+			"smooth" : float 
+			"refine" : float 
+			"flip" : boolean 
+		[bridge]			- Bridge tool
+			"refine" : float 
+		[join]				- Join tool
+		[weldBoundaries]	- Weld Boundaries tool
+		[separate]			- Separate tool
+		[planeCut]			- Plane Cut tool (with or without selection)
+			"cutType" : integer  values: 	PreciseGeometricCut = 0, PreciseGeometricSlice = 1,	NearestPointAttach = 2,	RefinedICPAttach = 3   (default=0)
+			"fillType" : integer  values: 	NoFill = 0,	CentroidRefinedFill = 1, DelaunayFill = 2,	DelaunayRefinedFill = 3  (default=3)
+			"hardEdge" : boolean 
+			"origin" : vector3f 
+			"normal" : vector3f 
+			"rotation" : matrix3f 
+		[attractToTarget]	- Attract tool
+			"density" : float 
+			"smooth" : float 
+			"offset" : float 
+			"offsetWorld" : float 
+			"normalThreshold" : float 
+			"remeshType" : integer 
+			"preserveGroups" : boolean 
+			"preserveBoundary" : boolean 
+			"findSharpEdges" : boolean 
+			"adaptive" : boolean 
+		[flipNormals]		- Flip Normals tool
+		[fitPrimitive]		- Fit Primitive tool
+			"primitiveType" : integer 
+			"singlePrimitive" : boolean 
+			"createNewObjects" : boolean 
+
+		[makePart]			- Convert (selection) To Open Part
+		[makeSolidPart]		- Convert (selection) To Solid Part
+		[makePolygon]		- Convert (selection) to Stamp polygon
+
+		[smooth]			- Smooth tool
+			"smooth" : float 
+			"scale" : float 
+			"reduceType" : integer 
+		[faceTransform]		- Transform tool
+			"harden" : float 
+			"origin" : vector3f 
+			"translation" : vector3f 
+			"scale" : vector3f 
+			"rotation" : matrix3f 
+		[softTransform]		- Soft Transform tool
+			"density" : float 
+			"smooth" : float 
+			"normalThreshold" : float 
+			"reduceType" : integer 
+			"preserveGroups" : boolean 
+			"preserveBoundary" : boolean 
+			"adaptive" : boolean 
+		[warp]				- Warp tool
+
+		[createFaceGroup]	- Create new FaceGroup for selection
+		[clearFaceGroup]	- Clear FaceGroup for selection
+		[smoothBoundary]	- Smooth Boundary tool
+			"smoothness" : float 
+			"preserveShape" : float 
+			"iterations" : integer 
+			"expandLoops" : integer 
+
+		[mirror]				- Mirror tool
+			"origin" : vector3f 
+			"normal" : vector3f 
+			"rotation" : matrix3f 
+		[duplicate]				- Duplicate tool
+		[transform]				- Transform tool
+			"origin" : vector3f 
+			"translation" : vector3f 
+			"scale" : vector3f 
+			"rotation" : matrix3f 
+		[align]					- Align tool
+		[closeCracks]			- Close Cracks tool
+		[generateFaceGroups]	- Generate Face Groups tool
+			"angleThreshold" : float 
+		[makeSolid]				- Make Solid tool
+			"offsetDistance" : float 
+			"offsetDistanceWorld" : float 
+			"minThickness" : float 
+			"minThicknessWorld" : float 
+			"edgeCollapseThresh" : float 
+			"solidType" : integer 
+			"solidResolution" : integer 
+			"meshResolution" : integer 
+			"closeHoles" : boolean 
+			"transferFaceGroups" : boolean
+		[hollow]				- Hollow tool
+			"offsetDistance" : float 
+			"offsetDistanceWorld" : float 
+			"holeRadiusWorld" : float 
+			"holeTaperWorld" : float 
+			"hollowType" : integer 
+			"solidResolution" : integer 
+			"meshResolution" : integer 
+			"holesPerComponent" : integer 
+		[makePattern]			- Make pattern tool
+			"gridResolutionScale" : float 
+			"meshResolutionScale" : float 
+			"dimension1" : float 
+			"spacing1" : float 
+			"offsetDistance" : float 
+			"offsetDistanceWorld" : float 
+			"edgeCollapseThresh" : float 
+			"gradientValue0" : float 
+			"gradientValue1" : float 
+			"pattern" : integer 
+			"tiling" : integer 
+			"compositionMode" : integer 
+			"smoothingIters" : integer 
+			"dimensionGradient" : integer 
+			"clipToSurface" : boolean 
+			"gradientPosition0" : vector3f 
+			"gradientPosition1" : vector3f 
+			"origin" : vector3f 
+			"translation" : vector3f 
+			"rotation" : matrix3f
+		[makeSlices]			- Make Slices tool
+		[separateShells]		- Separate Shells tool
+
+		[combine]				- Combine tool (multiple selected objects)
+		[union]					- Boolean Union 
+		[difference]			- Boolean Difference
+		[intersection]			- Boolean Intersection
+
+		[inspector]				- Inspector tool
+			"smallComponentThreshold" : float 
+			"replaceType" : integer 
+		[units]					- Units/Dimensions tool
+			"worldX" : float 
+			"worldY" : float 
+			"worldZ" : float 
+		[measure]				- Measure tool
+		[stability]				- Stability analysis tool
+			"contactTolerance" : float 
+		[strength]				- Strength analysis tool
+			"showSections" : boolean 
+		[overhangs]				- Overhangs/Support-Generation tool
+			"overhangAngleTolerance" : float 
+			"contactTolerance" : float 
+			"verticalOffset" : float 
+			"maxDraftAngle" : float 
+			"density" : float 
+			"layerHeight" : float 
+			"postBaseSize" : float 
+			"postTopSize" : float 
+			"postTipSize" : float 
+			"postTipLayers" : float 
+			"postDiscSize" : float 
+			"postDiscLayers" : float 
+			"strutDensity" : float 
+			"solidMinOffset" : float 
+			"overhangPreset" : integer 
+			"postResolution" : integer 
+			"optimizeRounds" : integer
+		[slicing]				- Slicing analysis tool
+			"sliceHeight" : float 
+			"minFeatureSize" : float 
+		[thickness]				- Thickness analysis tool
+			"minThickness" : float 
+			"minThicknessWorld" : float 
 	 */
 	void AppendToolParameterCommand( std::string paramName, float fValue );
 	void AppendToolParameterCommand( std::string paramName, int nValue );
