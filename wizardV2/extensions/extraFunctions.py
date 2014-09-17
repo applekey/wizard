@@ -39,7 +39,10 @@ def createFaceGroup():
     return cmd
 
 @meshWrapper
-def selectTool():
+def selectTool(size=0.5):
+    #cmd  = mmapi.StoredCommands()
+    #cmd.AppendBeginToolCommand('select')
+    #cmd.AppendToolParameterCommand("size",size) 
     cmd  = mmapi.StoredCommands()
     cmd.AppendSelectCommand_All()
     cmd.AppendSelectUtilityCommand("invert") 
@@ -49,6 +52,7 @@ def selectTool():
 def repairAll():
     cmd  = mmapi.StoredCommands()
     cmd.AppendToolUtilityCommand("repairAll")
+    cmd.AppendCompleteToolCommand('accept')
     return cmd
 
 @meshWrapper
@@ -79,7 +83,6 @@ def invertTool():
 @meshWrapper
 def expandToConnected():
     cmd  = mmapi.StoredCommands()
-    cmd.AppendSelectCommand_All()
     cmd.AppendSelectUtilityCommand("expandToConnected") 
     return cmd
 
@@ -97,6 +100,13 @@ def fitPrimitive():
     cmd.AppendBeginToolCommand('fitPrimitive') 
     return cmd
 
+@meshWrapper
+def deformSmooth(smoothValue):
+     cmd  = mmapi.StoredCommands()
+     cmd.AppendBeginToolCommand('smooth') 
+     cmd.AppendToolParameterCommand('smooth',smoothValue)
+     return cmd
+
 
 @meshWrapper
 def smoothBoundary():
@@ -108,6 +118,15 @@ def smoothBoundary():
 def accept():
     cmd  = mmapi.StoredCommands()
     cmd.AppendCompleteToolCommand('accept')
+    return cmd
+
+#i am to tired to give a shit
+@meshWrapper
+def acceptSelect():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendCompleteToolCommand('accept')
+    cmd.AppendSelectCommand_All()
+    cmd.AppendSelectUtilityCommand("invert") 
     return cmd
 
 @meshWrapper

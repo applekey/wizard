@@ -60,10 +60,10 @@
                                 <h5 id='controlName'> Soft Transition</h5>
                             </div>
                             <div class='col-xs-left'>
-                                <input id='smoothFine3' value='0.5' type='number' min='0' max='50.0' step='0.01'>
+                                <input id='smoothFine3' value='31.0' type='number' min='0' max='50.0' step='0.01'>
                             </div>
                         </div>
-                        <input class='mySlider' id='smoothSlider3' type='range' min='0' max='50.0' step='0.01' value='0.5'>
+                        <input class='mySlider' id='smoothSlider3' type='range' min='0' max='50.0' step='0.01' value='31.0'>
                         <script>
 
                             $('#smoothFine3').val($('#smoothSlider3').val());
@@ -88,10 +88,47 @@
 						<h3>Offset Accept</h3>
 						<p> here we will tell them how you can adjust it</p>
 					</div>
+                    <div id="subText6" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
+                        <h3>Select All</h3>
+
+                    </div>
+                    <div id="subText7" apifunc=" getSmooth();" class="subText" style="display: none;">
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Smooth</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='distanceFine4' value='0.4' type='number' min='0' max='1.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='distanceSlider4' type='range' min='0' max='1.0' step='0.01' value='0.4'>
+                        <script>
+                            $('#distanceFine4').val($('#distanceSlider4').val());
+
+                            $('#distanceSlider4').change(function () {
+                                $('#distanceFine4').val($('#distanceSlider4').val());
+                            });
+
+                            $('#distanceFine4').change(function () {
+                                $('#distanceSlider4').val($('#distanceFine4').val());
+                            });
+
+                            function getSmooth() {
+
+                                smooth = $("#distanceFine4").val()
+                                $.post('api/deformSmooth(' + smooth + ')', apiReturnParser);
+                            }
+                        </script>
+
+                    </div>
+                    <div id="subText8" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                        <h3>Accept Smooth</h3>
+
+                    </div>
 					
-					<div id="subText6" class="subText" style="display: none;">
-						<h3>Finished </h3>
-					</div>
+                    <div id="subText9"  class="subText" style="display: none;">
+                        <h3>Finished </h3>
+                    </div>
 					<div class="progress progress-striped">
 						<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
 					</div>
