@@ -8,7 +8,7 @@ $(document).on('click','#activateButton',function(){
   // $.post("api/planeCut");
   $(this).hide()
   $("#backFowardCancel",parent).show()
-	
+  changeProgressBar(0, parent)
 });
 
 $(document).on('click',"#cancelButton",function(){
@@ -69,7 +69,6 @@ function reset(parent)
 }
 function changeProgressBar(newPercentage,parent)
 {
-	
 	newPercentage = newPercentage*100
 	var $pb = $('.progress .progress-bar',parent);
 	$pb.attr('data-transitiongoal', newPercentage).progressbar({display_text: 'center',use_percentage: false,
