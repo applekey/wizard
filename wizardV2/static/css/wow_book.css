@@ -150,8 +150,8 @@ img.wowbook-lazy {
 }
 
 .wowbook-page-number {
-	bottom   : 0;
-	padding-bottom: 0.3em;
+	top   : 0;
+	padding-top: 0.3em;
 	position : absolute;
 }
 

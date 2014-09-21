@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    </head>
+    <body>
+
+        <h1>Click me to open wizard</h1>
+
+        <p>Click Me</p>
+        <button id ="openme" type="button">Click Me!</button>
+
+    </body>
+
+    <script>
+
+
+    $(document).ready(function () {
+
+        $("#openme").on("click", function () {
+            openWin()
+        });
+
+        var myWindow;
+
+        function openWin() {
+            debugger;
+            var currentPath = document.URL
+            var width = screen.width
+            var height = screen.height
+            var args = "width="+width/2.5 +", height="+height*0.93
+            var newPath = currentPath.replace("boot","index")
+            myWindow = window.open(newPath, "", args);
+        }
+
+        function resizeWin() {
+            myWindow.resizeTo(250, 250);
+            myWindow.focus();
+        }
+
+
+        });
+    </script>
+</html>

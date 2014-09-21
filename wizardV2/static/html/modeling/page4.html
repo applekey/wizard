@@ -9,10 +9,39 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                    <div id="subText1" apifunc=" $.post('api/selectTool()',apiReturnParser);" class="subText">
-                        <h3>Select Tool </h3>
-                        <p> choose the selected area <p>
-					</div>
+                    <div id="subText1" apifunc=" getSelectValue2()" class="subText">
+                        <h3 id='controlHeaderText'> Select Size</h3>
+
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Select Size</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='selectFine2' value='4.0' type='number' min='0' max='10.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='selectSlider2' type='range' min='0' max='10.0' step='0.01' value='4.0'>
+                        <script>
+
+                            $('#selectFine2').val($('#selectSlider2').val());
+
+                            $('#selectSlider2').change(function () {
+                                $('#selectFine2').val($('#selectSlider2').val());
+                            });
+
+                            $('#selectFine2').change(function () {
+                                $('#selectSlider2').val($('#selectFine2').val());
+                            });
+
+                            function getSelectValue2() {
+
+                                var selectValue = $("#selectFine2").val()
+
+                                $.post('api/selectTool(' + selectValue + ')', apiReturnParser);
+                            }
+                        </script>
+
+                    </div>
 					<div id="subText2" apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary</h3>
 						<p> choose the selected area <p>

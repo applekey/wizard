@@ -9,10 +9,38 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1"  apiFunc=" $.post('api/selectTool()',apiReturnParser);" class="subText">
-						<h3>Select Area </h3>
-						<p> choose the selected area <p>
-					</div>
+                    <div id="subText1" apifunc=" getSelectValue3()" class="subText">
+                        <h3 id='controlHeaderText'> Select Size</h3>
+
+                        <div class='row' style='margin-left:3px;'>
+                            <div class='col-xs-right'>
+                                <h5 id='controlName'> Select Size</h5>
+                            </div>
+                            <div class='col-xs-left'>
+                                <input id='selectFine3' value='4.0' type='number' min='0' max='10.0' step='0.01'>
+                            </div>
+                        </div>
+                        <input class='mySlider' id='selectSlider3' type='range' min='0' max='10.0' step='0.01' value='4.0'>
+                        <script>
+
+                            $('#selectFine3').val($('#selectSlider3').val());
+
+                            $('#selectSlider3').change(function () {
+                                $('#selectFine3').val($('#selectSlider3').val());
+                            });
+
+                            $('#selectFine3').change(function () {
+                                $('#selectSlider3').val($('#selectFine3').val());
+                            });
+
+                            function getSelectValue3() {
+
+                                var selectValue = $("#selectFine3").val()
+
+                                $.post('api/selectTool(' + selectValue + ')', apiReturnParser);
+                            }
+                        </script>
+                    </div>
 					<div  id="subText2"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary </h3>
 						<p> choose the selected area <p>

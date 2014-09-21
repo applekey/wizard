@@ -39,13 +39,13 @@ def createFaceGroup():
     return cmd
 
 @meshWrapper
-def selectTool(size=0.5):
-    #cmd  = mmapi.StoredCommands()
-    #cmd.AppendBeginToolCommand('select')
-    #cmd.AppendToolParameterCommand("size",size) 
+def selectTool(size=1.3):
     cmd  = mmapi.StoredCommands()
-    cmd.AppendSelectCommand_All()
-    cmd.AppendSelectUtilityCommand("invert") 
+    cmd.AppendBeginToolCommand('select')
+    cmd.AppendToolParameterCommand("radiusWorld",size) 
+    #cmd  = mmapi.StoredCommands()
+    #cmd.AppendSelectCommand_All()
+    #cmd.AppendSelectUtilityCommand("invert") 
     return cmd
 
 @meshWrapper

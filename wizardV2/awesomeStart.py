@@ -2,9 +2,9 @@ from bottle import route, run, template,static_file,get,post
 import os,sys
 from threading import Thread
 from win32api import GetSystemMetrics
-from selenium import webdriver
 import time
 from random import randint
+import webbrowser
 
 sys.path.append( 'extensionController' )
 sys.path.append( 'meshController' )
@@ -14,9 +14,12 @@ sys.path.append( 'meshController/pythonApi' )
 from extensionController import *
 from MeshWrapper import  *
 
-@route('/hello')
+@route('/index')
 def hello():
 	return  static_file('index.html',root='')
+@route('/boot')
+def hello():
+	return  static_file('boot.html',root='')
 
 @route(':path#.+#', name='static')
 def static(path):
@@ -60,18 +63,13 @@ class BrowserOpen(Thread):
     def run(self):
         width = GetSystemMetrics (0)
         height = GetSystemMetrics (1)
-        driver = webdriver.Firefox()
-        driver.set_window_size(width/2.5,height*0.95)
-        driver.set_window_position(0, 0)
-        time.sleep(0.3)
-        driver.get('http://localhost:' +str(myport)+'/hello')
-
-
-
+        global myport 
+        myport = randint(1000,1300)
+        webbrowser.open('http://localhost:' +str(myport)+'/boot',new=1,autoraise=True)
+     
 def startUp():
     global extensions
-    global myport 
-    myport = randint(1000,1300)
+   
     extensions = extensionController.getExtensions('extensions')
 
 

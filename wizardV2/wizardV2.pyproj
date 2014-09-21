@@ -17,6 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="boot.html" />
     <Content Include="index.html" />
     <Compile Include="awesomeStart.py" />
     <Compile Include="extensionController\extensionController.py" />
