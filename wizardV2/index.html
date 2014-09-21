@@ -136,7 +136,8 @@ section {
     {
         $("#Modeling").wowBook("zoom", 1);
     }
-
+   
+    
 
     $.post("history/check", function (data) {
         $(".result").html(data);
@@ -151,9 +152,6 @@ section {
     });
 
     $(document).ready(function () {
-       
-
-
     $('#Modeling').wowBook({
       height: $(window).height() * 1.13,
       width: $(window).width() * 0.92 * 2,
@@ -166,10 +164,18 @@ section {
                         first     : '#first',
                         last      : '#last'
                        
-                    }
+      },
+      onShowPage: function (book, page, pageIndex) {
+          var height = $(".page.wowbook-page-content").first().height();
+          if (height == 0) {
+              location.reload();
+          }
+      }
     });
     var width = $('#Modeling').width()
     $('#bookContainer').css({ position: 'absolute', left: (-width / 2) * 0.96 + 'px' })
+
+   
 
   });
 </script>

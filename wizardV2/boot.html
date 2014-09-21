@@ -2,13 +2,51 @@
 <html>
 <head>
     <script src="js/jquery-2.1.1.min.js"></script>
-    </head>
+    <script src="js/bootstrap.min.js"> </script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-ui.min.js"></script>
+    <link href="css/jquery-ui.css" rel="stylesheet">
+</head>
     <body>
 
-        <h1>Click me to open wizard</h1>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><b>SEMAPHORE PROSTHETIC WIZARD</b></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Already a member?</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
 
-        <p>Click Me</p>
-        <button id ="openme" type="button">Click Me!</button>
+        <div id="headerwrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1>
+                            Wizard<br />
+                            Section
+                        </h1>
+                        <button id="openme" type="button">Click Me!</button>
+
+                    </div><!-- /col-lg-6 -->
+
+
+                </div><!-- /row -->
+            </div><!-- /container -->
+        </div><!-- /headerwrap -->
+
+       
 
     </body>
 
