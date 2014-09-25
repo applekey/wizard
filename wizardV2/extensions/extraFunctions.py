@@ -242,3 +242,18 @@ def saveLatest(name):
     return cmd
 
 
+
+def saveText(text):
+    f = open('notes.txt','w')
+    f.write(text)
+    f.close()
+
+
+def loadText():
+    if os.path.isfile('notes.txt'):
+        file = open('notes.txt', 'r')
+        return file.read()
+    else:
+        return ''
+
+

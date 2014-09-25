@@ -15,7 +15,11 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
-                    <div id="subText1" apifunc=" getSelectValue()" class="subText">
+                    <div id="subText1" apiFunc=" getSelectValue()" class="subText" >
+                        <h3>Start Process</h3>
+                        <p> choose the selected area <p>
+                    </div>
+                    <div id="subText2" apifunc=" getSelectValue()" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Select Size</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -23,7 +27,7 @@
                                 <h5 id='controlName'> Select Size</h5>
                             </div>
                             <div class='col-xs-left'>
-                                <input id='selectFine' value='4.0' type='number' min='0' max='10.0' step='0.01'>
+                                <input id='selectFine' onchange="getSelectValue()" value='4.0' type='number' min='0' max='10.0' step='0.01'>
                             </div>
                         </div>
                         <input class='mySlider' id='selectSlider' type='range' min='0' max='10.0' step='0.01' value='4.0'>
@@ -32,7 +36,7 @@
                             $('#selectFine').val($('#selectSlider').val());
 
                             $('#selectSlider').change(function () {
-                                $('#selectFine').val($('#selectSlider').val());
+                                $('#selectFine').val($('#selectSlider').val()).change();
                             });
 
                             $('#selectFine').change(function () {
@@ -48,24 +52,24 @@
                         </script>
                     </div>
 
-					<div id="subText2" apiFunc=" $.post('api/expandToConnected()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText3" apiFunc=" $.post('api/expandToConnected()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Expand To connected </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/invertTool()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText4" apiFunc=" $.post('api/invertTool()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Invert Tool </h3>
 						<p> choose the selected area <p>
 					</div>
 					
-					<div id="subText4" apiFunc=" $.post('api/discard()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText5" apiFunc=" $.post('api/discard()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Discard </h3>
 						
 					</div>
-					<div id="subText5" apiFunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText6" apiFunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Select All </h3>
 						
 					</div>
-					<div id="subText6" apiFunc=" getSmooth2()" class="subText" style="display: none;">
+					<div id="subText7" apiFunc=" getSmooth2()" class="subText" style="display: none;">
                         <div class='row' style='margin-left:3px;'>
                             <div class='col-xs-right'>
                                 <h5 id='controlName'> Smooth</h5>
@@ -94,20 +98,20 @@
                         </script>
 						
 					</div>
-					<div id="subText7" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText8" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Accept </h3>
 						
 					</div>
-					<div id="subText8" apiFunc=" $.post('api/inspector()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText9" apiFunc=" $.post('api/inspector()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Inspector </h3>
 						
 					</div>
-					<div id="subText9" apiFunc=" $.post('api/repairAll()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText10" apiFunc=" $.post('api/repairAll()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Inspector Auto Repair</h3>
 						
 					</div>
                     
-					<div id="subText10" class="subText" style="display: none;">
+					<div id="subText11" class="subText" style="display: none;">
 						<h3>Finished </h3>
 						
 					</div>

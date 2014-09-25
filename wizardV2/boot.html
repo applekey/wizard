@@ -72,9 +72,9 @@
 
                  <div class="container">
                     <div class="hero-unit" style="margin-top:40px">
-                        <textarea class="textarea" placeholder="Save your notes here" style="width: 810px; height: 500px;"></textarea>
+                        <textarea id="myTextArea"class="textarea" placeholder="Save your notes here" style="width: 810px; height: 500px;"></textarea>
                     </div>
-                    <button type="button"><span class="glyphicon glyphicon-floppy-save"></span> Save </button>
+                    <button id="notesSave" type="button"><span class="glyphicon glyphicon-floppy-save"></span> Save </button>
 
                   
                 </div>
@@ -96,7 +96,10 @@
         $('.textarea').wysihtml5();
         $(document).ready(function () {
             
-
+            $("#notesSave").on("click", function () {
+                var text = $('textarea#myTextArea').val();
+                $.post("api/saveText('"+text+"')");
+            });
             $("#openme").on("click", function () {
                 openWin()
             });
