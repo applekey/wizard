@@ -48,6 +48,13 @@ def createFaceGroup():
     cmd.AppendBeginToolCommand('createFaceGroup') 
     return cmd
 
+
+@meshWrapper
+def alignTransform():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('transform')
+    return cmd
+
 @meshWrapper
 def selectTool(size=1.3):
     cmd  = mmapi.StoredCommands()
@@ -166,7 +173,7 @@ def connected(state):
 def softTransition(value):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
-    cmd.AppendToolParameterCommand('softenWorld',value)
+    cmd.AppendToolParameterCommand('soften',value)
     return cmd
 
 
