@@ -64,7 +64,7 @@ class BrowserOpen(Thread):
         width = GetSystemMetrics (0)
         height = GetSystemMetrics (1)
         global myport 
-        myport = randint(1000,1300)
+        myport = 1343
         webbrowser.open('http://localhost:' +str(myport)+'/boot',new=1,autoraise=True)
      
 def startUp():

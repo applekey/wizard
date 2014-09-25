@@ -9,7 +9,11 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                    <div id="subText1" apifunc=" getSelectValue3()" class="subText">
+                     <div id="subText1" apiFunc="  getSelectValue3()" class="subText" >
+                        <h3>Start</h3>
+                        <p> choose the selected area <p>
+                    </div>
+                    <div id="subText2" apifunc=" getSelectValue3()" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Select Size</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -17,7 +21,7 @@
                                 <h5 id='controlName'> Select Size</h5>
                             </div>
                             <div class='col-xs-left'>
-                                <input id='selectFine3' value='4.0' type='number' min='0' max='10.0' step='0.01'>
+                                <input id='selectFine3' onchange="getSelectValue3()" value='4.0' type='number' min='0' max='10.0' step='0.01'>
                             </div>
                         </div>
                         <input class='mySlider' id='selectSlider3' type='range' min='0' max='10.0' step='0.01' value='4.0'>
@@ -26,7 +30,7 @@
                             $('#selectFine3').val($('#selectSlider3').val());
 
                             $('#selectSlider3').change(function () {
-                                $('#selectFine3').val($('#selectSlider3').val());
+                                $('#selectFine3').val($('#selectSlider3').val()).change();
                             });
 
                             $('#selectFine3').change(function () {
@@ -41,20 +45,20 @@
                             }
                         </script>
                     </div>
-					<div  id="subText2"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
+					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Smooth Boundary Accept </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText4" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText5" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Create Face Group</h3>
 						<p> choose the selected area <p>
 					</div>
 					
-					<div id="subText5" class="subText" style="display: none;">
+					<div id="subText6" class="subText" style="display: none;">
 						<h3>Finished </h3>
 					</div>
 					
@@ -80,7 +84,11 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText"  class="well page3Well" style="display: none;">
-                    <div id="subText1" apifunc="getInputValue('distanceFine','smoothFine')" class="subText">
+                    <div id="subText1"  class="subText" >
+                        <h3>Start</h3>
+                        <p> choose the selected area <p>
+                    </div>
+                    <div id="subText2" apifunc="getInputValue('distanceFine','smoothFine')" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Offset</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -142,20 +150,20 @@
                         </div>
 
                     </div>
-                    <div id="subText2" apifunc=" $.post('api/acceptSelect()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText3" apifunc=" $.post('api/acceptSelect()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Offset Accept </h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText3" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText4" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Seperate</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText4" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText5" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Select All</h3>
                         <p> choose the selected area <p>
                     </div>
 
-                    <div id="subText5" apifunc="getInputValue2('distanceFine2','smoothFine2');" class="subText" style="display: none;">
+                    <div id="subText6" apifunc="getInputValue2('distanceFine2','smoothFine2');" class="subText" style="display: none;">
                         <h3 id='controlHeaderText'> Offset</h3>
 
                         <div class='row' style='margin-left:3px;'>
@@ -216,13 +224,13 @@
                         </div>
 
                     </div>
-                    <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Offset Accept</h3>
                         <p> choose the selected area <p>
                     </div>
 
 					
-					<div id="subText7" class="subText" style="display: none;">
+					<div id="subText8" class="subText" style="display: none;">
 						<h3>Finished </h3>
 						
 					</div>
