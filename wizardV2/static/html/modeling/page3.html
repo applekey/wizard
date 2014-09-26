@@ -10,45 +10,22 @@
             press ‘undo’ one or more times to return to previous parts of this process
 			<br>
 			<br>
-		
-            <div id="page3Remodel"> </div>
+	
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
-                    <div id="subText1" apiFunc=" getSelectValue()" class="subText" >
+                    <div id="subText1" apiFunc="$.post('api/selectTool(7)',apiReturnParser);" class="subText" >
                         <h3>Start Process</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" apifunc=" getSelectValue()" class="subText" style="display: none;">
-                        <h3 id='controlHeaderText'> Select Size</h3>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Select Size</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='selectFine' onchange="getSelectValue()" value='4.0' type='number' min='0' max='10.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='selectSlider' type='range' min='0' max='10.0' step='0.01' value='4.0'>
+                    <div id="subText2"  class="subText" style="display: none;">
+                        <div id="page3SelectTool"> </div>
                         <script>
-
-                            $('#selectFine').val($('#selectSlider').val());
-
-                            $('#selectSlider').change(function () {
-                                $('#selectFine').val($('#selectSlider').val()).change();
-                            });
-
-                            $('#selectFine').change(function () {
-                                $('#selectSlider').val($('#selectFine').val());
-                            });
-
-                            function getSelectValue() {
-
-                                var selectValue = $("#selectFine" ).val()
-
-                                $.post('api/selectTool(' + selectValue + ')', apiReturnParser);
-                            }
+                        var html = Mustache.to_html(template, SelectValues);
+                        $( document ).ready(function() {
+                          $('#page3SelectTool').html(html);
+                        });
+                         
                         </script>
                     </div>
 
@@ -79,9 +56,9 @@
 					</div>
                     
 					<div id="subText9" apiFunc="" class="subText" style="display: none;">
-                       
+                        <div id="page3Remodel"> </div>
                         <script>
-                        var html = Mustache.to_html(template, tmpValues);
+                        var html = Mustache.to_html(template, RemeshValues);
                         $( document ).ready(function() {
                           $('#page3Remodel').html(html);
                         });

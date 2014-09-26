@@ -7,7 +7,8 @@ $(document).on("change",".rangeSlider",function() {
 });
 
 
-var template = " <div class='row' style='margin-left:3px;'> \
+var template = "<div class='row' style='margin-left:3px;'>\
+ <h3 id='controlHeaderText'> {{mainControlName}}</h3>\
   {{#sliders}}\
  <div class='col-xs-right'>\
          <h5> {{sectionName}}</h5>\
@@ -18,7 +19,54 @@ var template = " <div class='row' style='margin-left:3px;'> \
 	</div>\
 {{/sliders}} </div>";
 
- var tmpValues = {
+ var OffsetValues = {
+ 	mainControlName:"Offset",
+ 	sliders:[{
+ 		value:4.0,
+ 		sectionName:"Distance",
+ 		max: 10,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
+ 	},
+ 	{
+ 		value:1.24,
+ 		sectionName:"Soft Transition",
+ 		max: 1.9,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
+ 	}]
+	};
+
+
+ var SmoothValues = {
+ 	mainControlName:"Smooth",
+ 	sliders:[{
+ 		value:0.5,
+ 		sectionName:"Select Size",
+ 		max: 1.0,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/deformSmooth('+$(this).val()+')',apiReturnParser)"
+ 	}]
+	};
+
+ var SelectValues = {
+ 	mainControlName:"Select Size",
+ 	sliders:[{
+ 		value:7,
+ 		sectionName:"Select Size",
+ 		max: 13.1,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/selectTool('+$(this).val()+')',apiReturnParser)"
+ 	}]
+	};
+
+
+ var RemeshValues = {
+ 	mainControlName:"Remesh",
  	sliders:[{
  		value:0.5,
  		sectionName:"remesh",
