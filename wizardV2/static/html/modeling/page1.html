@@ -18,6 +18,7 @@
 			<script>
 				$("#importBT").click(function(){
 				    $.post("api/importFile()",apiReturnParser);
+				    $.post("api/freeOrbit(0.0,0.0)",apiReturnParser);
 				});
 			</script>
 

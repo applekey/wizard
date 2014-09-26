@@ -8,6 +8,12 @@ def planeCut():
     return MeshWrapper.planecut()
 
 @meshWrapper
+def freeOrbit(x,y):
+     cmd  = mmapi.StoredCommands()
+     cmd.CameraControl_TurntableOrbit(x,y)
+     return cmd
+
+@meshWrapper
 def importFigure():
     cmd  = mmapi.StoredCommands()
     found = False
