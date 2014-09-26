@@ -9,9 +9,10 @@ def planeCut():
 
 @meshWrapper
 def freeOrbit(x,y):
-     cmd  = mmapi.StoredCommands()
-     cmd.CameraControl_TurntableOrbit(x,y)
-     return cmd
+     #cmd  = mmapi.StoredCommands()
+     #cmd.CameraControl_TurntableOrbit(x,y)
+     return None
+     #return cmd
 
 @meshWrapper
 def importFigure():
