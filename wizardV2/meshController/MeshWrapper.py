@@ -86,7 +86,13 @@ class MeshWrapper(object):
 
     @staticmethod
     def importFile():
-        Tkinter.Tk().withdraw()
+        root = Tkinter.Tk()
+        root.withdraw()
+        root.overrideredirect(True)
+        root.geometry('0x0+0+0')
+        root.deiconify()
+        root.lift()
+        root.focus_force()
         fileName= str(tkFileDialog.askopenfilename(filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
             return MeshWrapper.importFigure(fileName) 
