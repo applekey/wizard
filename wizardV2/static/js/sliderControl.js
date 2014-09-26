@@ -7,19 +7,45 @@ $(document).on("change",".rangeSlider",function() {
 });
 
 
-
- var template = "<div class='inputContainer'>\
-<input class='fineNumber' step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
-<input class='rangeSlider' step = '{{step}}' min='{{min}}' max='{{max}}' type='range'></div>";
+var template = " <div class='row' style='margin-left:3px;'> \
+  {{#sliders}}\
+ <div class='col-xs-right'>\
+         <h5> {{sectionName}}</h5>\
+ </div>\
+	<div class='col-xs-left'>\
+		<input class='fineNumber' onchange={{onchange}}  value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
+		<input class='rangeSlider' value={{value}} step = '{{step}}' min='{{min}}' max='{{max}}' type='range'>\
+	</div>\
+{{/sliders}} </div>";
 
  var tmpValues = {
-	max: 10,
-	min: 0,
-	step:0.1
+ 	sliders:[{
+ 		value:0.5,
+ 		sectionName:"remesh",
+ 		max: 1,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/remesh(1,'+$(this).val()+')',apiReturnParser)"
+ 	},
+ 	{
+ 		value:0.5,
+ 		sectionName:"smooth",
+ 		max: 1,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/remesh(2,'+$(this).val()+')',apiReturnParser)"
+ 	},
+ 	{
+ 		value:0.5,
+ 		sectionName:"threshold",
+ 		max: 1,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/remesh(3,'+$(this).val()+')',apiReturnParser)"	
+ 	}
+ 	]
 	};
 
-	// var html = Mustache.to_html(template, person);
- //      $('#sampleArea').html(html);
 
 
 

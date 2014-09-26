@@ -26,12 +26,21 @@ def importFigure():
 
     #remesh values
 @meshWrapper
-def remesh(remesh,smooth,threshold):
+def remesh(param,paramValue):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('remesh')
-    cmd.AppendToolParameterCommand('density',remesh)
-    cmd.AppendToolParameterCommand('smooth',smooth) 
-    cmd.AppendToolParameterCommand('normalThreshold',threshold)  
+    #cmd.AppendToolParameterCommand('density',remesh)
+    #cmd.AppendToolParameterCommand('smooth',smooth) 
+    #cmd.AppendToolParameterCommand('normalThreshold',threshold) 
+    if param == 1:
+        param = 'density'
+    elif param ==2:
+        param= 'smooth'
+    elif param ==3:
+        param = 'normalThreshold'
+    else:
+        return None
+    cmd.AppendToolParameterCommand(param,paramValue) 
     return cmd
 
 
