@@ -30,9 +30,9 @@ var template = "<div class='row' style='margin-left:3px;'>\
 		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
  	},
  	{
- 		value:1.24,
+ 		value:31,
  		sectionName:"Soft Transition",
- 		max: 1.9,
+ 		max: 50,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
@@ -50,9 +50,9 @@ var template = "<div class='row' style='margin-left:3px;'>\
 	onchange: "$.post('api/offsetDistance('+$(this).val()+',False)',apiReturnParser)"
 	},
 	{
-		value:1.24,
+		value:31,
 		sectionName:"Soft Transition",
-		max: 1.9,
+		max: 50,
 	min: 0,
 	step:0.05,
 	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"

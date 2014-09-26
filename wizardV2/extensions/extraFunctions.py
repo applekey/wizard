@@ -189,7 +189,7 @@ def connected(state):
 def softTransition(value):
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('offset')
-    cmd.AppendToolParameterCommand('soften',value)
+    cmd.AppendToolParameterCommand('soften',value/25.87)
     return cmd
 
 
