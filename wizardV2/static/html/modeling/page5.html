@@ -1,7 +1,7 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 		<p>
-			In step 5 
+			In step 4 
 			<br>
 			you will align some stuff
 
@@ -9,28 +9,32 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1"  apiFunc=" $.post('api/align()',apiReturnParser);" class="subText">
+					<div  id="subText1"   class="subText">
+						<h3>Start </h3>
+						<p> fdsaf <p>
+					</div>
+					<div  id="subText2"  apiFuncStart= "$.post('api/cancel()',apiReturnParser); $.post('api/align()',apiReturnParser);" class="subText"  style="display: none;">
 						<h3>Align </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText2" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Align Accept </h3>
 						<p> choose the selected area <p>
 					</div>
-					<div id="subText3" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
+					<div id="subText4" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Reset Camera</h3>
 						<p> choose the selected area <p>
 					</div>
-                    <div id="subText4" apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText5" apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Align Transform</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText5" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                    <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Align Transform Accept</h3>
                         <p> choose the selected area <p>
                     </div>
 					
-					<div id="subText6" class="subText" style="display: none;">
+					<div id="subText7" class="subText" style="display: none;">
 						<h3>Finished </h3>
 						
 					</div>
@@ -41,7 +45,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span> Clean Up
+					 <span class="glyphicon glyphicon-wrench"></span> Align
 				</a>
 				<div id = "backFowardCancel" class="btn-group" style="display: none;" >
 					<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
