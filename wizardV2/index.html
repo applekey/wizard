@@ -29,6 +29,9 @@
   <link rel="stylesheet" type="text/css" href="css/wowControlBar.css">
   <script type="text/javascript" src="js/subControl.js"></script>
   <script type="text/javascript" src="js/alert.js"></script>
+  <script type="text/javascript" src="js/mustache.js"></script>
+  <script type="text/javascript" src="js/sliderControl.js"></script>
+
 
 
 </head>
@@ -69,6 +72,7 @@ section {
 </style>
   
 <body id="body">
+  <div id= "sampleArea"> </div>
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -152,6 +156,7 @@ section {
     });
 
     $(document).ready(function () {
+
     $('#Modeling').wowBook({
       height: $(window).height() * 1.13,
       width: $(window).width() * 0.92 * 2,

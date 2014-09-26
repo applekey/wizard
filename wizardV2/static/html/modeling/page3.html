@@ -11,7 +11,7 @@
 			<br>
 			<br>
 		
-
+            <div id="page3Remodel"> </div>
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
@@ -78,87 +78,19 @@
 						
 					</div>
                     
-					<div id="subText9" apiFunc=" getInputValue4('distanceFine33','smoothFine33','smoothFine333')" class="subText" style="display: none;">
-						<h3 id='controlHeaderText'> Remesh</h3>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Remesh</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='distanceFine33' onchange="getInputValue4('distanceFine33','smoothFine33','smoothFine333')" value='4.0' type='number' min='0' max='10.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='distanceSlider33' type='range' min='0' max='10.0' step='0.01' value='4.0'>
+					<div id="subText9" apiFunc="" class="subText" style="display: none;">
+                       
                         <script>
-
-                            $('#distanceFine33').val($('#distanceSlider33').val());
-
-                            $('#distanceSlider33').change(function () {
-                                $('#distanceFine33').val($('#distanceSlider33').val());
-                            });
-
-                            $('#distanceFine33').change(function () {
-                                $('#distanceSlider33').val($('#distanceFine33').val());
-                            });
-
-                            function getInputValue4(itemId,itemId2,itemId3) {
-
-                                remesh = $("#" + itemId).val()
-                                smooth = $("#" + itemId2).val()
-                                threshold = $("#" + itemId3).val()
-                                $.post('api/remesh(' + remesh + ','+smooth+','+threshold+')', apiReturnParser);
-
-                            }
+                        var html = Mustache.to_html(template, tmpValues);
+                        $( document ).ready(function() {
+                          $('#page3Remodel').html(html);
+                        });
+                         
                         </script>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Smooth</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='smoothFine33' onchange="getInputValue4('distanceFine33','smoothFine33','smoothFine333')" value='31.0' type='number' min='0' max='50.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='smoothSlider33' type='range' min='0' max='50.0' step='0.01' value='31.0'>
-                        <script>
-
-                            $('#smoothFine33').val($('#smoothSlider33').val());
-
-                            $('#smoothSlider33').change(function () {
-                                $('#smoothFine33').val($('#smoothSlider33').val());
-                            });
-
-                            $('#smoothFine33').change(function () {
-                                $('#smoothSlider3').val($('#smoothFine33').val());
-                            });
-
-                        </script>
-                         <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Threshold</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='smoothFine333' onchange="getInputValue4('distanceFine33','smoothFine33','smoothFine333')" value='31.0' type='number' min='0' max='50.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='smoothSlider333' type='range' min='0' max='50.0' step='0.01' value='31.0'>
-                        <script>
-
-                            $('#smoothFine333').val($('#smoothSlider333').val());
-
-                            $('#smoothSlider33').change(function () {
-                                $('#smoothFine333').val($('#smoothSlider333').val());
-                            });
-
-                            $('#smoothFine333').change(function () {
-                                $('#smoothSlider33').val($('#smoothFine333').val());
-                            });
-
-                        </script>
+ 
 						
 					</div>
-                    <div id="subText9"  class="subText" style="display: none;">
+                    <div id="subText10"  class="subText" style="display: none;">
                         <h3>Finished </h3>
                     </div>
 					<div class="progress progress-striped">
