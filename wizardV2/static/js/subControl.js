@@ -1,5 +1,4 @@
 $(document).on('click','#activateButton',function(){
-
 	var parent = $( this ).parent( ".subControl" )
 	var numberOfInstructions = $('.subText',parent).length
 	parent.attr("index",1)
@@ -26,13 +25,19 @@ $(document).on('click',"#fowardButton",function(){
 	parent.attr("index",currentIndex)
 	var txtToShow = 'subText' +currentIndex
 
+	var hiddenElement = $("#"+txtToHide,parent)
+	var shownElement = $("#"+txtToShow,parent)
+	shownElement.show()
+	hiddenElement.hide()
 
-	$("#"+txtToShow,parent).show()
-	$("#"+txtToHide,parent).hide()
 
-	var attr = $("#"+txtToHide,parent).attr('apiFunc');
+	var attr = hiddenElement.attr('apiFunc');
 	if (typeof attr !== typeof undefined && attr !== false) {
-    	eval($("#"+txtToHide,parent).attr("apiFunc"))
+    	eval(hiddenElement.attr("apiFunc"))
+	}
+	var attr = shownElement.attr('apiFuncStart');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	eval(shownElement.attr("apiFuncStart"))
 	}
 	
 	checkControlValid(parent)

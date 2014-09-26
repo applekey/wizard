@@ -14,16 +14,15 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
-                    <div id="subText1" apiFunc="$.post('api/selectTool(7)',apiReturnParser);" class="subText" >
+                    <div id="subText1" class="subText" >
                         <h3>Start Process</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2"  class="subText" style="display: none;">
+                    <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page3SelectTool"> </div>
                         <script>
-                        var html = Mustache.to_html(template, SelectValues);
                         $( document ).ready(function() {
-                          $('#page3SelectTool').html(html);
+                          $('#page3SelectTool').html(Mustache.to_html(template, SelectValues));
                         });
                          
                         </script>
@@ -44,7 +43,6 @@
 					</div>
 					<div id="subText6" apiFunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Select All </h3>
-						
 					</div>
 					<div id="subText7" apiFunc=" $.post('api/inspector()',apiReturnParser);" class="subText" style="display: none;">
 						<h3>Inspector </h3>
@@ -55,21 +53,18 @@
 						
 					</div>
                     
-					<div id="subText9" apiFunc="" class="subText" style="display: none;">
+					<div id="subText9" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page3Remodel"> </div>
-                        <script>
-                        var html = Mustache.to_html(template, RemeshValues);
-                        $( document ).ready(function() {
-                          $('#page3Remodel').html(html);
-                        });
-                         
-                        </script>
- 
-						
+	                        <script>
+	                        $( document ).ready(function() {
+	                          $('#page3Remodel').html(Mustache.to_html(template, RemeshValues));
+	                        });
+                        </script>						
 					</div>
                     <div id="subText10"  class="subText" style="display: none;">
                         <h3>Finished </h3>
                     </div>
+                   
 					<div class="progress progress-striped">
 						<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
 					</div>
