@@ -9,40 +9,18 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                     <div id="subText1" apiFunc="  getSelectValue3()" class="subText" >
+                     <div id="subText1" apiFunc="$.post('api/selectTool(7)',apiReturnParser);" class="subText" >
                         <h3>Start</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" apifunc=" getSelectValue3()" class="subText" style="display: none;">
-                        <h3 id='controlHeaderText'> Select Size</h3>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Select Size</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='selectFine3' onchange="getSelectValue3()" value='4.0' type='number' min='0' max='10.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='selectSlider3' type='range' min='0' max='10.0' step='0.01' value='4.0'>
+                    <div id="subText2" class="subText" style="display: none;">
+                        <div id="page6SelectTool"> </div>
                         <script>
-
-                            $('#selectFine3').val($('#selectSlider3').val());
-
-                            $('#selectSlider3').change(function () {
-                                $('#selectFine3').val($('#selectSlider3').val()).change();
-                            });
-
-                            $('#selectFine3').change(function () {
-                                $('#selectSlider3').val($('#selectFine3').val());
-                            });
-
-                            function getSelectValue3() {
-
-                                var selectValue = $("#selectFine3").val()
-
-                                $.post('api/selectTool(' + selectValue + ')', apiReturnParser);
-                            }
+                        var html = Mustache.to_html(template, SelectValues);
+                        $( document ).ready(function() {
+                          $('#page6SelectTool').html(html);
+                        });
+                         
                         </script>
                     </div>
 					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
@@ -88,59 +66,14 @@
                         <h3>Start</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" apifunc="getInputValue('distanceFine','smoothFine')" class="subText" style="display: none;">
-                        <h3 id='controlHeaderText'> Offset</h3>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Distance</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='distanceFine' value='3.0' type='number' min='0' max='10.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='distanceSlider' type='range' min='0' max='10.0' step='0.01' value='3.0'>
+                    <div id="subText2" apifunc="" class="subText" style="display: none;">
+                       <div id="page6_1Offset"> </div>
                         <script>
-                            $('#distanceFine').val($('#distanceSlider').val());
-
-                            $('#distanceSlider').change(function () {
-                                $('#distanceFine').val($('#distanceSlider').val());
-                            });
-
-                            $('#distanceFine').change(function () {
-                                $('#distanceSlider').val($('#distanceFine').val());
-                            });
-
-                            function getInputValue(itemId, itemId2) {
-
-                                height = $("#" + itemId).val()
-                                soft = $("#" + itemId2).val()
-                                $.post('api/offsetDistance(' + height + ',False)', apiReturnParser);
-                                $.post('api/softTransition(' + soft + ')', apiReturnParser);
-                            }
-                        </script>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Soft Transition</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='smoothFine' value='31.0' type='number' min='0' max='50.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='smoothSlider' type='range' min='0' max='50.0' step='0.01' value='31.0'>
-                        <script>
-
-                            $('#smoothFine').val($('#smoothSlider').val());
-
-                            $('#smoothSlider').change(function () {
-                                $('#smoothFine').val($('#smoothSlider').val());
-                            });
-
-                            $('#smoothFine').change(function () {
-                                $('#smoothSlider').val($('#smoothFine').val());
-                            });
-
+                        var html = Mustache.to_html(template, OffsetValues2);
+                        $( document ).ready(function() {
+                          $('#page6_1Offset').html(html);
+                        });
+                         
                         </script>
 
                         <div class='checkbox'>
@@ -164,58 +97,13 @@
                     </div>
 
                     <div id="subText6" apifunc="getInputValue2('distanceFine2','smoothFine2');" class="subText" style="display: none;">
-                        <h3 id='controlHeaderText'> Offset</h3>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Distance</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='distanceFine2' value='3.0' type='number' min='0' max='10.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='distanceSlider2' type='range' min='0' max='10.0' step='0.01' value='3.0'>
+                        <div id="page6_2Offset"> </div>
                         <script>
-
-                            $('#distanceFine2').val($('#distanceSlider2').val());
-
-                            $('#distanceSlider2').change(function () {
-                                $('#distanceFine2').val($('#distanceSlider2').val());
-                            });
-
-                            $('#distanceFine2').change(function () {
-                                $('#distanceSlider2').val($('#distanceFine2').val());
-                            });
-                            function getInputValue2(itemId, itemId2) {
-
-                                height = $("#" + itemId).val()
-                                soft = $("#" + itemId2).val()
-                                $.post('api/offsetDistance(' + height + ',True)', apiReturnParser);
-                                $.post('api/softTransition(' + soft + ')', apiReturnParser);
-                            }
-                        </script>
-
-                        <div class='row' style='margin-left:3px;'>
-                            <div class='col-xs-right'>
-                                <h5 id='controlName'> Soft Transition</h5>
-                            </div>
-                            <div class='col-xs-left'>
-                                <input id='smoothFine2' value='31.0' type='number' min='0' max='50.0' step='0.01'>
-                            </div>
-                        </div>
-                        <input class='mySlider' id='smoothSlider2' type='range' min='0' max='50.0' step='0.01' value='31.0'>
-                        <script>
-
-                            $('#smoothFine2').val($('#smoothSlider2').val());
-
-                            $('#smoothSlider2').change(function () {
-                                $('#smoothFine2').val($('#smoothSlider2').val());
-                            });
-
-                            $('#smoothFine2').change(function () {
-                                $('#smoothSlider2').val($('#smoothFine2').val());
-                            });
-
+                        var html = Mustache.to_html(template, OffsetValues);
+                        $( document ).ready(function() {
+                          $('#page6_2Offset').html(html);
+                        });
+                         
                         </script>
                         <div class='checkbox'>
                             <label>
