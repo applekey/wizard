@@ -9,16 +9,15 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                    <div id="subText1" apifunc="$.post('api/selectTool(7)" class="subText" >
+                    <div id="subText1" class="subText" >
                         <h3>Start</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2"  class="subText" style="display: none;">
+                    <div id="subText2"  apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page3SelectTool"> </div>
                         <script>
-                        var html = Mustache.to_html(template, SelectValues);
                         $( document ).ready(function() {
-                          $('#page3SelectTool').html(html);
+                          $('#page3SelectTool').html(Mustache.to_html(template, SelectValues));
                         });
                          
                         </script>
@@ -32,12 +31,11 @@
 						<p> choose the selected area <p>
 					</div>
 					
-					<div id="subText5" apiFunc= "getInputValue3('distanceFine3','smoothFine3')" class="subText" style="display: none;">
+					<div id="subText5" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page4Offset"> </div>
                         <script>
-                        var html = Mustache.to_html(template, OffsetValues);
                         $( document ).ready(function() {
-                          $('#page4Offset').html(html);
+                          $('#page4Offset').html(Mustache.to_html(template, OffsetValues));
                         });
                          
                         </script>
@@ -56,12 +54,11 @@
                         <h3>Select All</h3>
 
                     </div>
-                    <div id="subText8" apifunc="" class="subText" style="display: none;">
+                    <div id="subText8" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page4Smooth"> </div>
                         <script>
-                        var html = Mustache.to_html(template, SmoothValues);
                         $( document ).ready(function() {
-                          $('#page4Smooth').html(html);
+                          $('#page4Smooth').html(Mustache.to_html(template, SmoothValues));
                         });
                          
                         </script>

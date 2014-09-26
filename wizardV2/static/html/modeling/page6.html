@@ -9,16 +9,15 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                     <div id="subText1" apiFunc="$.post('api/selectTool(7)',apiReturnParser);" class="subText" >
+                     <div id="subText1"  class="subText" >
                         <h3>Start</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" class="subText" style="display: none;">
+                    <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page6SelectTool"> </div>
                         <script>
-                        var html = Mustache.to_html(template, SelectValues);
                         $( document ).ready(function() {
-                          $('#page6SelectTool').html(html);
+                          $('#page6SelectTool').html(Mustache.to_html(template, SelectValues));
                         });
                         </script>
                     </div>
@@ -65,12 +64,11 @@
                         <h3>Start</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" apifunc="" class="subText" style="display: none;">
+                    <div id="subText2" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                        <div id="page6_1Offset"> </div>
                         <script>
-                        var html = Mustache.to_html(template, OffsetValues2);
                         $( document ).ready(function() {
-                          $('#page6_1Offset').html(html);
+                          $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
                         });
                          
                         </script>
@@ -95,12 +93,11 @@
                         <p> choose the selected area <p>
                     </div>
 
-                    <div id="subText6" apifunc="getInputValue2('distanceFine2','smoothFine2');" class="subText" style="display: none;">
+                    <div id="subText6" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                         <div id="page6_2Offset"> </div>
                         <script>
-                        var html = Mustache.to_html(template, OffsetValues);
                         $( document ).ready(function() {
-                          $('#page6_2Offset').html(html);
+                          $('#page6_2Offset').html(Mustache.to_html(template, OffsetValues));
                         });
                          
                         </script>
