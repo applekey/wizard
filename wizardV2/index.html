@@ -87,11 +87,20 @@ section {
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a onclick="$.post('api/alignZCam()');">Reset View</a></li>
-                    <li><a onclick="$.post('history/loadLatest');">Reload</a></li>
-                    <li><a href="#">Scanning</a></li>
-                    <li><a href="#">Modeling</a></li>
-                    <li><a href="#">Printing</a></li>
+                    <li><a id ="scanningSec" href="#">Scanning</a></li>
+                    <li><a id ="modelingSec" href="#">Modeling</a></li>
+                    <li><a id ="printingSec" href="#">Printing</a></li>
+                    <li class="dropdown">
+                      <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" onclick="$.post('api/alignZCam()');">Reset View</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" onclick="$.post('history/loadLatest');">Load Latest Save action</a></li>
+
+<!--                         <li role="presentation" class="divider"></li> -->
+<!--                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
+                      </ul>
+                    </li>
+
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -101,7 +110,6 @@ section {
     <div id="abcd"></div>
  <div id="bookContainer" style="overflow: hidden;">
     <div id="Modeling" style=" margin-top: 40px;">
-    
         <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
         <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
@@ -117,7 +125,6 @@ section {
         <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
         <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class="page" id="page6" data-src="./html/modeling/end.html"></div>
-    
     </div>
 </div>
 
