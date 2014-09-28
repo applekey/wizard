@@ -86,9 +86,9 @@ section {
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id ="scanningSec" href="#">Scanning</a></li>
-                    <li><a id ="modelingSec" href="#">Modeling</a></li>
-                    <li><a id ="printingSec" href="#">Printing</a></li>
+                    <li><a id ="scanningSec" onclick= "gotoSection(1)">Scanning</a></li>
+                    <li><a id ="modelingSec" onclick= "gotoSection(2)">Modeling</a></li>
+                    <li><a id ="printingSec" onclick= "gotoSection(3)">Printing</a></li>
                     <li class="dropdown">
                       <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
@@ -109,6 +109,22 @@ section {
     <div id="abcd"></div>
  <div id="bookContainer" style="overflow: hidden;">
     <div id="Modeling" style=" margin-top: 20px;">
+        <!--Scanning-->
+        <div class="page" id="cover" data-src="./html/scanning/cover.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page1.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page2.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page3.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page4.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page5.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="cover" data-src="./html/scanning/page6.html"> </div>
+        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <!--Modeling-->
         <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
         <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
@@ -124,6 +140,11 @@ section {
         <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
         <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
         <div class="page" id="page6" data-src="./html/modeling/end.html"></div>
+        <!--Printings-->
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="page6" data-src="./html/printing/cover.html"></div>
+        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
+        <div class="page" id="page6" data-src="./html/printing/end.html"></div>
     </div>
 </div>
 
@@ -143,6 +164,24 @@ section {
         </nav>
 
 <script type="text/javascript">
+    function gotoSection(section)
+    {
+      var book = $.wowBook("#Modeling");
+      switch (section) {
+          case 1:
+              book.gotoPage(0)
+              break;
+          case 2:
+              book.gotoPage(14)
+              break;
+          case 3:
+              book.gotoPage(30)
+              break;
+      }
+
+      
+    }
+
     function resetView()
     {
         $("#Modeling").wowBook("zoom", 1);
@@ -186,8 +225,6 @@ section {
     });
     var width = $('#Modeling').width()
     $('#bookContainer').css({ position: 'absolute', left: (-width / 2) * 0.96 + 'px' })
-
-   
 
   });
 </script>
