@@ -1,7 +1,6 @@
 from bottle import route, run, template,static_file,get,post
 import os,sys
 from threading import Thread
-from win32api import GetSystemMetrics
 import time
 import webbrowser
 
@@ -60,8 +59,6 @@ def callDynamic(functionCall):
 class BrowserOpen(Thread):
 
     def run(self):
-        width = GetSystemMetrics (0)
-        height = GetSystemMetrics (1)
         global myport 
         myport = 1343
         global url
