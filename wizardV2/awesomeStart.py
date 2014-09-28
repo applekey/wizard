@@ -4,13 +4,17 @@ from threading import Thread
 import time
 import webbrowser
 
-sys.path.append( 'extensionController' )
-sys.path.append( 'meshController' )
-sys.path.append( 'meshController/implementation' )
-sys.path.append( os.path.join('meshController','pythonApi') )
+web = True
 
-from extensionController import *
-from MeshWrapper import  *
+if web == False:
+    sys.path.append( 'extensionController' )
+    sys.path.append( 'meshController' )
+    sys.path.append( 'meshController/implementation' )
+    sys.path.append( os.path.join('meshController','pythonApi') )
+    from extensionController import *
+    from MeshWrapper import  *
+
+
 
 @route('/index')
 def hello():
@@ -67,13 +71,14 @@ class BrowserOpen(Thread):
      
 def startUp():
     global extensions
-   
     extensions = extensionController.getExtensions('extensions')
 
 
 browser = BrowserOpen()
 browser.start()
-startUp()
+
+if web == False:
+    startUp()
 
 print 'Semaphore MeshMixer Controller is now working at' 
 print str(url)
