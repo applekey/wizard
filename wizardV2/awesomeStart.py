@@ -3,7 +3,6 @@ import os,sys
 from threading import Thread
 from win32api import GetSystemMetrics
 import time
-from random import randint
 import webbrowser
 
 sys.path.append( 'extensionController' )
@@ -65,7 +64,9 @@ class BrowserOpen(Thread):
         height = GetSystemMetrics (1)
         global myport 
         myport = 1343
-        webbrowser.open('http://localhost:' +str(myport)+'/boot',new=1,autoraise=True)
+        global url
+        url = 'http://localhost:' +str(myport)+'/boot'
+        webbrowser.open(url,new=1,autoraise=True)
      
 def startUp():
     global extensions
@@ -77,4 +78,7 @@ browser = BrowserOpen()
 browser.start()
 startUp()
 
-run(host='localhost', port=myport,debug=True)
+print 'Semaphore MeshMixer Controller is now working at' 
+print str(url)
+print "Please don't close this window"
+run(host='localhost', quiet=True,port=myport,debug=False)

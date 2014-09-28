@@ -33,7 +33,10 @@ a = Analysis(['awesomeStart.py'],
 
 a.datas += extra_datas('extensionController/')
 a.datas += extra_datas('meshController/')
-
+for d in a.datas:
+    if 'pyconfig' in d[0]: 
+        a.datas.remove(d)
+        break
 
 
 pyz = PYZ(a.pure)

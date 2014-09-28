@@ -93,6 +93,7 @@ class MeshWrapper(object):
         root.deiconify()
         root.lift()
         root.focus_force()
+        root.ge
         fileName= str(tkFileDialog.askopenfilename(filetypes=[("3d Files","*.ply;*.obj")]))
         if fileName is not '':
             return MeshWrapper.importFigure(fileName) 
