@@ -7,7 +7,7 @@ import webbrowser
 sys.path.append( 'extensionController' )
 sys.path.append( 'meshController' )
 sys.path.append( 'meshController/implementation' )
-sys.path.append( 'meshController/pythonApi' )
+sys.path.append( os.path.join('meshController','pythonApi') )
 
 from extensionController import *
 from MeshWrapper import  *

@@ -28,11 +28,6 @@ def meshWrapper(func):
     return inner
 
 
-
-
-
-
-
 class MeshWrapper(object):  
     @staticmethod
     def SingleInstanceApiCommander(operation, modifier, modifierValue):
