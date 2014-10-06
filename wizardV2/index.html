@@ -196,7 +196,7 @@ section {
     $(window).resize(function () {
         console.log($(window).width())
         var book = $.wowBook("#Modeling");
-        book.scaleToFit($(window).width() * 0.92 * 2, $(window).height() * 1.13)
+        book.setDimensions($(window).width() * 0.92 * 2, $(window).height() * 1.13)
         var width = $('#Modeling').width()
         $('#bookContainer').css({ position: 'absolute', left: (-width / 2)*0.96 + 'px' })
     });
