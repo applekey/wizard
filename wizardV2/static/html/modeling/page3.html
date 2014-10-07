@@ -67,10 +67,12 @@
                     <div id="subText11"  class="subText" style="display: none;">
                         <h3>Finished </h3>
                     </div>
-                   
-					<div class="progress progress-striped">
-						<div id= "step3ProgressBar" class="progress-bar" role="progressbar" data-transitiongoal="0"></div>
-					</div>
+                    <div id="page3TemplateControls"> </div>
+                    <script>
+                    $( document ).ready(function() {
+                      $('#page3TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage3));
+                    });
+                    </script>
 				</div>
 
 
@@ -80,11 +82,7 @@
 
 				<!-- controls for subinstructions -->
 			
-				<div id = "backFowardCancel" class="btn-group" style="display: none;" >
-					<button type="button" id="backButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
-					<button type="button" id="fowardButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span></button>
-					<button type="button" id="cancelButton" class="btn btn-default">Cancel</button>
-				</div>
+				
 
 			</div> <!-- subcontrol div -->
 		</p>

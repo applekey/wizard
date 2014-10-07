@@ -106,3 +106,27 @@ function checkControlValid(parent) {
     	$('#backButton',parent).attr("disabled", false);
     }
 }
+
+var subControlTemplate = "<br>\
+                    <br>\
+                    <br>\
+                    <hr>\
+                    <h5> {{mainStep}}</h5>\
+                   	<div class='row' >\
+                   		<div class='col-xs-9'>\
+							<div class='progress progress-striped'>\
+								<div id= 'step3ProgressBar' class='progress-bar' role='progressbar' data-transitiongoal='0'></div>\
+							</div>\
+						</div>\
+						<div class='col-xs-3'>\
+							<div id = 'backFowardCancel' class='btn-group' style='display: none;'' >\
+								<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
+								<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\
+								<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>\
+							</div>\
+						</div>\
+					</div>"
+var subControlValuesPage3 = {mainStep: "Step 3 Progress"};
+var subControlValuesPage4 = {mainStep: "Step 4 Progress"};
+var subControlValuesPage5 = {mainStep: "Step 5 Progress"};
+var subControlValuesPage6 = {mainStep: "Step 6 Progress"};

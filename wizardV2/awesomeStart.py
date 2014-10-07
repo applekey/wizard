@@ -4,7 +4,7 @@ from threading import Thread
 import time
 import webbrowser
 
-web = True
+web = False
 
 if web == False:
     sys.path.append( 'extensionController' )

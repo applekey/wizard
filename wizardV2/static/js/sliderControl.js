@@ -1,9 +1,9 @@
 $(document).on("change",".fineNumber",function() {
-  $(this).parent().children('.rangeSlider').val($(this).val())
+  $(this).closest(".row").find('.rangeSlider').val($(this).val())
 });
 
 $(document).on("change",".rangeSlider",function() {
-  $(this).parent().children('.fineNumber').val($(this).val()).change()
+  $(this).closest(".row").find('.fineNumber').val($(this).val()).change()
 });
 
 
