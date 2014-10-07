@@ -7,17 +7,31 @@ $(document).on("change",".rangeSlider",function() {
 });
 
 
-var template = "<div class='row' style='margin-left:3px;'>\
- <h3 id='controlHeaderText'> {{mainControlName}}</h3>\
-  {{#sliders}}\
- <div class='col-xs-right'>\
-         <h5> {{sectionName}}</h5>\
- </div>\
-	<div class='col-xs-left'>\
-		<input class='fineNumber' onchange={{onchange}}  value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
-		<input class='rangeSlider' value={{value}} step = '{{step}}' min='{{min}}' max='{{max}}' type='range'>\
-	</div>\
-{{/sliders}} </div>";
+var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
+					<div class='row' >\
+						<div class='col-xs-10'>\
+					  		<h3 id='controlHeaderText'> {{mainControlName}}</h3>\
+					  	</div>\
+					  	<div class='col-xs-2'>\
+					  		<span class='glyphicon glyphicon-question-sign' style='horizontal-align:right'></span>\
+					  	</div>\
+					</div>\
+					<hr>\
+					  	{{#sliders}}\
+						    <h5> {{sectionName}}</h5>\
+							<div class='row' style='margin-left:3px;margin-right:3px;'>\
+								<div class='col-xs-10'>\
+									<input class='rangeSlider' value={{value}} step = '{{step}}' min='{{min}}' max='{{max}}' type='range'>\
+								</div>\
+								<div class='col-xs-1'>\
+									<input class='fineNumber' onchange={{onchange}}  value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
+								</div>\
+								<div class='col-xs-1'>\
+									mm\
+								</div>\
+							</div>\
+						{{/sliders}} \
+					</div>";
 
  var OffsetValues = {
  	mainControlName:"Offset",
