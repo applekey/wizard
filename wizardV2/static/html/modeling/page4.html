@@ -1,87 +1,54 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 		<p>
-			In step 5 
+			In step 4 
 			<br>
-			you will begin the process of rectifying the positive residual limb model, building up areas on it that correspond to areas marked during the scanning process. You can control the size of the select tool using the ‘tool slider’. Start by selecting the first region to add material and when ready, press ‘build up’ button. You can control the height and the shape of the material you add using the ‘height’ slider, and ‘falloff’ slider. To make it easier to see what you are adding, rotate the camera so that you are viewing the material you are adding in profile. When ready, press ‘accept’ and repeat the process for other areas to build up.
+			you will align some stuff
 
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                    <div id="subText1" class="subText" >
-                        <h3>Start</h3>
+					<div  id="subText1"   class="subText">
+						<h3>Start </h3>
+						<p> fdsaf <p>
+					</div>
+					<div  id="subText2"  apiFuncStart= "$.post('api/cancel()',apiReturnParser); $.post('api/align()',apiReturnParser);" class="subText"  style="display: none;">
+						<h3>Align </h3>
+						<p> choose the selected area <p>
+					</div>
+					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+						<h3>Align Accept </h3>
+						<p> choose the selected area <p>
+					</div>
+					<div id="subText4" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
+						<h3>Reset Camera</h3>
+						<p> choose the selected area <p>
+					</div>
+                    <div id="subText5" apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
+                        <h3>Align Transform</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2"  apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page4SelectTool"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page4SelectTool').html(Mustache.to_html(template, SelectValues));
-                        });
-                         
-                        </script>
+                    <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                        <h3>Align Transform Accept</h3>
+                        <p> choose the selected area <p>
                     </div>
-					<div id="subText3" apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
-						<h3>Smooth Boundary</h3>
-						<p> choose the selected area <p>
-					</div>
-					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-						<h3>Smooth Boundary Accept </h3>
-						<p> choose the selected area <p>
+					
+					<div id="subText7" class="subText" style="display: none;">
+						<h3>Finished </h3>
+						
 					</div>
 					
-					<div id="subText5" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page4Offset"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page4Offset').html(Mustache.to_html(template, OffsetValues));
-                        });
-                         
-                        </script>
-
-                        <div class='checkbox'>
-                            <label>
-                                <input disabled='disabled' type='checkbox' checked> connected
-                            </label>
-                        </div>
-					</div>
-					<div id="subText6" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-						<h3>Offset Accept</h3>
-						<p> here we will tell them how you can adjust it</p>
-					</div>
-                    <div id="subText7" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
-                        <h3>Select All</h3>
-
-                    </div>
-<!--                     <div id="subText8" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page4Smooth"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page4Smooth').html(Mustache.to_html(template, SmoothValues));
-                        });
-                         
-                        </script>
-
-                    </div>
-                    <div id="subText9" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                        <h3>Accept Smooth</h3>
-
-                    </div> -->
-					
-                    <div id="subText8"  class="subText" style="display: none;">
-                        <h3>Finished </h3>
-                    </div>
-					<div id="page4TemplateControls"> </div>
+					<div id="page5TemplateControls"> </div>
                     <script>
                     $( document ).ready(function() {
-                      $('#page4TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage4));
+                      $('#page5TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage5));
                     });
                     </script>
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span> Rectify
+					 <span class="glyphicon glyphicon-wrench"></span> Align
 				</a>
 				
 			</div> <!-- subcontrol div -->
