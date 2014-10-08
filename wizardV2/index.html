@@ -197,6 +197,11 @@ section {
 
     function goToPage(page)
     {
+      if(currentPage == page)
+      {
+        return;
+      }
+
       $( ".myPage" ).each(function(  ) {
         $(this).hide('fast');
       });
