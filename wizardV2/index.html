@@ -32,8 +32,6 @@
   <script type="text/javascript" src="js/mustache.js"></script>
   <script type="text/javascript" src="js/sliderControl.js"></script>
 
-
-
 </head>
 
 <style>
@@ -139,10 +137,10 @@ section {
 <br>
       <nav id ="bookControls">
             <ul>
-                <li><a id="first" href="#" title="goto first page" class="">First page</a></li>
-                <li><a id="back"  onclick="prevPage()" class="">Back</a></li>
+                <li><a id="first" onclick="goToFirstPageOfSection()" title="go first page of section" class="">First page of section</a></li>
+                <li><a id="back"  onclick="prevPage()" title="go back one page" class="">Back</a></li>
                 <li><a id="next" onclick="nextPage()" title="go foward one page">Next</a></li>
-                <li><a id="last" href="#" title="goto last page">last page</a></li>
+                <li><a id="last" onclick="goToLastPageOfSection()" title="goto last page of section">last page of section</a></li>
             </ul>
         </nav>
 
@@ -162,6 +160,41 @@ section {
               goToPage(17)
               break;
       }
+    }
+
+    function goToLastPageOfSection()
+    {
+      var pageToGo = 1;
+      if(currentPage<=8 )
+      {
+        pageToGo= 8;
+      }
+      else if(currentPage <=16)
+      {
+        pageToGo = 16;
+      }
+      else
+      {
+        pageToGo = 18;
+      }
+      goToPage(pageToGo)
+    }
+    function goToFirstPageOfSection()
+    {
+      var pageToGo = 1;
+      if(currentPage<=8 )
+      {
+        pageToGo= 1;
+      }
+      else if(currentPage <=16)
+      {
+        pageToGo = 9;
+      }
+      else
+      {
+        pageToGo = 17;
+      }
+      goToPage(pageToGo)
     }
 
     function goToPage(page)
