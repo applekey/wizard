@@ -36,8 +36,6 @@
 
 <style>
 
-
-
 section { 
     -moz-box-shadow: 0 0 5px #888;
     -webkit-box-shadow: 0 0 5px#888;
@@ -135,14 +133,14 @@ section {
     </div>
 
 <br>
-      <nav id ="bookControls">
-            <ul>
-                <li><a id="first" onclick="goToFirstPageOfSection()" title="go first page of section" class="">First page of section</a></li>
-                <li><a id="back"  onclick="prevPage()" title="go back one page" class="">Back</a></li>
-                <li><a id="next" onclick="nextPage()" title="go foward one page">Next</a></li>
-                <li><a id="last" onclick="goToLastPageOfSection()" title="goto last page of section">last page of section</a></li>
-            </ul>
-        </nav>
+    <nav id ="bookControls">
+          <ul>
+              <li><a id="first" onclick="goToFirstPageOfSection()" title="go first page of section" class="">First page of section</a></li>
+              <li><a id="back"  onclick="prevPage()" title="go back one page" class="">Back</a></li>
+              <li><a id="next" onclick="nextPage()" title="go foward one page">Next</a></li>
+              <li><a id="last" onclick="goToLastPageOfSection()" title="goto last page of section">last page of section</a></li>
+          </ul>
+      </nav>
 
 <script type="text/javascript">
    
@@ -200,10 +198,10 @@ section {
     function goToPage(page)
     {
       $( ".myPage" ).each(function(  ) {
-        $(this).hide();
+        $(this).hide('fast');
       });
       findID = "#p"+String(page)
-      $(findID).show()
+      $(findID).show('fast')
       currentPage = page
     }
 
@@ -220,7 +218,7 @@ section {
         currentPage = currentPage+1;
         findID = "#p"+String(currentPage)
         hideId = "#p"+String(currentPage-1)
-        $(findID).show()
+        $(findID).show('slow')
         $(hideId).hide()
       }
     }
@@ -231,7 +229,7 @@ section {
         currentPage = currentPage-1;
         findID = "#p"+String(currentPage)
         hideId = "#p"+String(currentPage+1)
-        $(findID).show()
+        $(findID).show('slow')
         $(hideId).hide()
       }
     }
