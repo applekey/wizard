@@ -126,6 +126,7 @@ var subControlTemplate = "<br>\
 							</div>\
 						</div>\
 					</div>"
+var subControlValuesPage2 = {mainStep: "Step 2 Progress"};
 var subControlValuesPage3 = {mainStep: "Step 3 Progress"};
 var subControlValuesPage4 = {mainStep: "Step 4 Progress"};
 var subControlValuesPage5 = {mainStep: "Step 5 Progress"};
