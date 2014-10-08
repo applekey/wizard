@@ -109,127 +109,125 @@ section {
     </div>
     <br />
     <br />
-    <div id="abcd"></div>
- <div id="bookContainer" style="overflow: hidden;">
+
+
     <div id="Modeling" style=" margin-top: 20px;">
         <!--Scanning-->
-        <div class="page" id="cover" data-src="./html/scanning/cover.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page1.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page2.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page3.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page4.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page5.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="cover" data-src="./html/scanning/page6.html"> </div>
-        <div class="page" id="cover"<!--style="display: none;"-->> </div>  <!--empty-->
+        <div  class = "myPage" id="p1"> </div>
+        <div  class = "myPage" id="p2" style="display: none;"> </div>
+        <div  class = "myPage" id="p3" style="display: none;"> </div>
+        <div  class = "myPage" id="p4" style="display: none;"> </div>
+        <div  class = "myPage" id="p5" style="display: none;"> </div>
+        <div  class = "myPage" id="p6" style="display: none;"> </div>
+        <div  class = "myPage" id="p7" style="display: none;"> </div>
+        <div  class = "myPage" id="p8" style="display: none;"> </div>
         <!--Modeling-->
-        <div class ="page" id= "cover" data-src="./html/modeling/cover.html"> </div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page1"data-src="./html/modeling/page1.html" ></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page2" data-src="./html/modeling/page2.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page3" data-src="./html/modeling/page3.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page4" data-src="./html/modeling/page5.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page5" data-src="./html/modeling/page4.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class ="page" id= "page6" data-src="./html/modeling/page6.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="page6" data-src="./html/modeling/end.html"></div>
+        <div  class = "myPage" id="p9" style="display: none;"> </div>
+        <div  class = "myPage" id="p10" style="display: none;"> </div>
+        <div  class = "myPage" id="p11" style="display: none;"> </div>
+        <div  class = "myPage" id="p12" style="display: none;"> </div>
+        <div  class = "myPage" id="p13" style="display: none;"> </div>
+        <div  class = "myPage" id="p14" style="display: none;"> </div>
+        <div  class = "myPage" id="p15" style="display: none;"> </div>
+        <div  class = "myPage" id="p16"style="display: none;" > </div>
         <!--Printings-->
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="page6" data-src="./html/printing/cover.html"></div>
-        <div class="page" id="cover" <!--style="display: none;"-->> </div>  <!--empty-->
-        <div class="page" id="page6" data-src="./html/printing/end.html"></div>
+        <div  class = "myPage" id="p17" style="display: none;"> </div>
+        <div  class = "myPage" id="p18"style="display: none;" > </div>
+       
     </div>
-</div>
 
 <br>
       <nav id ="bookControls">
             <ul>
                 <li><a id="first" href="#" title="goto first page" class="">First page</a></li>
-                <li><a id="back" href="#" title="go back one page" class="">Back</a></li>
-                <li><a id="next" href="#" title="go foward one page">Next</a></li>
+                <li><a id="back"  onclick="prevPage()" class="">Back</a></li>
+                <li><a id="next" onclick="nextPage()" title="go foward one page">Next</a></li>
                 <li><a id="last" href="#" title="goto last page">last page</a></li>
-                <!--<li><a id="zoomin" href="#" title="zoom in">Zoom In</a></li>
-                <li><a id="zoomout" href="#" title="zoom out" class="wowbook-disabled">Zoom Out</a></li>
-                <li><button type="button" onclick='resetView()' class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-star"></span> Reset Zoom
-                    </button></li>-->
             </ul>
         </nav>
 
 <script type="text/javascript">
+   
     function gotoSection(section)
     {
       var book = $.wowBook("#Modeling");
       switch (section) {
           case 1:
-              book.gotoPage(0)
+              goToPage(1)
               break;
           case 2:
-              book.gotoPage(14)
+              goToPage(9)
               break;
           case 3:
-              book.gotoPage(30)
+              goToPage(17)
               break;
       }
-
-      
     }
 
-    function resetView()
+    function goToPage(page)
     {
-        $("#Modeling").wowBook("zoom", 1);
+      $( ".myPage" ).each(function(  ) {
+        $(this).hide();
+      });
+      findID = "#p"+String(page)
+      $(findID).show()
+      currentPage = page
     }
-   
-    
 
     $.post("history/check", function (data) {
         $(".result").html(data);
     });
 
-    $(window).resize(function () {
-        console.log($(window).width())
-        var book = $.wowBook("#Modeling");
-        book.setDimensions($(window).width() * 0.92 * 2, $(window).height() * 1.13)
-        var width = $('#Modeling').width()
-        $('#bookContainer').css({ position: 'absolute', left: (-width / 2)*0.96 + 'px' })
-    });
+    var currentPage = 1;
+    var numberOfPages = $('.myPage').length
+    function nextPage()
+    {
+      if(currentPage<numberOfPages)
+      {
+        currentPage = currentPage+1;
+        findID = "#p"+String(currentPage)
+        hideId = "#p"+String(currentPage-1)
+        $(findID).show()
+        $(hideId).hide()
+      }
+    }
+    function prevPage()
+    {
+      if(currentPage>1)
+      {
+        currentPage = currentPage-1;
+        findID = "#p"+String(currentPage)
+        hideId = "#p"+String(currentPage+1)
+        $(findID).show()
+        $(hideId).hide()
+      }
+    }
+
 
     $(document).ready(function () {
+      
 
-    $('#Modeling').wowBook({
-      height: $(window).height() * 1.13,
-      width: $(window).width() * 0.92 * 2,
+      $( "#p1" ).load( "html/scanning/cover.html" );
+      $( "#p2" ).load( "html/scanning/page1.html" );
+      $( "#p3" ).load( "html/scanning/page2.html" );
+      $( "#p4" ).load( "html/scanning/page3.html" );
+      $( "#p5" ).load( "html/scanning/page4.html" );
+      $( "#p6" ).load( "html/scanning/page5.html" );
+      $( "#p7" ).load( "html/scanning/page6.html" );
+      $( "#p8" ).load( "html/scanning/end.html" );
+      $( "#p9" ).load( "html/modeling/cover.html" );
+      $( "#p10" ).load( "html/modeling/page1.html" );
+      $( "#p11" ).load( "html/modeling/page2.html" );
+      $( "#p12" ).load( "html/modeling/page3.html" );
+      $( "#p13" ).load( "html/modeling/page4.html" );
+      $( "#p14" ).load( "html/modeling/page5.html" );
+      $( "#p15" ).load( "html/modeling/page6.html" );
+      $( "#p16" ).load( "html/modeling/end.html" );
+      $( "#p17" ).load( "html/printing/cover.html" );
+      $( "#p18" ).load( "html/printing/end.html" );
 
-      controls: {
-                        
-                    
-                        next      : '#next',
-                        back      : '#back',
-                        first     : '#first',
-                        last      : '#last'
-                       
-      },
-      onShowPage: function (book, page, pageIndex) {
-          var height = $(".page.wowbook-page-content").first().height();
-          if (height == 0) {
-              location.reload();
-          }
-      }
     });
-    var width = $('#Modeling').width()
-    $('#bookContainer').css({ position: 'absolute', left: (-width / 2) * 0.96 + 'px' })
 
-  });
 </script>
 
     

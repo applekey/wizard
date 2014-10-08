@@ -113,12 +113,12 @@ var subControlTemplate = "<br>\
                     <hr>\
                     <h5> {{mainStep}}</h5>\
                    	<div class='row' >\
-                   		<div class='col-xs-9'>\
+                   		<div class='col-xs-8'>\
 							<div class='progress progress-striped'>\
 								<div id= 'step3ProgressBar' class='progress-bar' role='progressbar' data-transitiongoal='0'></div>\
 							</div>\
 						</div>\
-						<div class='col-xs-3'>\
+						<div class='col-xs-4'>\
 							<div id = 'backFowardCancel' class='btn-group' style='display: none;'' >\
 								<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
 								<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\

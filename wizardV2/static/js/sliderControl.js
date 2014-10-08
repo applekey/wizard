@@ -20,14 +20,14 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 					  	{{#sliders}}\
 						    <h5> {{sectionName}}</h5>\
 							<div class='row' style='margin-left:3px;margin-right:3px;'>\
-								<div class='col-xs-10'>\
+								<div class='col-xs-9'>\
 									<input class='rangeSlider' value={{value}} step = '{{step}}' min='{{min}}' max='{{max}}' type='range'>\
 								</div>\
-								<div class='col-xs-1'>\
-									<input class='fineNumber' onchange={{onchange}}  value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
+								<div class='col-xs-2' >\
+									<input class='fineNumber' onchange={{onchange}} value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
 								</div>\
 								<div class='col-xs-1'>\
-									mm\
+									<p align='left'>mm </p>\
 								</div>\
 							</div>\
 						{{/sliders}} \
