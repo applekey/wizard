@@ -2,7 +2,7 @@ import os,sys
 
 from mmapi import  *
 from mmRemote import *
-import mm
+import implementation
 
 import Tkinter
 import tkFileDialog
@@ -49,13 +49,13 @@ class MeshWrapper(object):
                 cmd.AppendCompleteToolCommand("cancel")
             
             elif operation is "selectNewPart":
-                objects =  mm.list_objects(remote)
+                objects =  implementation.list_objects(remote)
                 for object in objects:
-                    name = mm.get_object_name(remote,object)
+                    name = implementation.get_object_name(remote,object)
                     if "(part)" in name:
                         selectList = []
                         selectList.append(object)
-                        mm.select_objects(remote, selectList)
+                        implementation.select_objects(remote, selectList)
                         return True
                 return False
             elif operation is "repairAll":
@@ -185,9 +185,5 @@ class MeshWrapper(object):
     @staticmethod
     def selectleghide():
         print 'here'
-
-
-
-
 
  

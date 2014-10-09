@@ -37,22 +37,6 @@ def select_objects(remote, objects_list):
     remote.runCommand(cmd2)
 
 
-def select_object_by_name(remote, name):
-    (found, objid) = find_object_by_name(remote, name)
-    if found:
-        select_objects(remote, [objid])
-    return found
-
-
-def select_objects_by_name(remote, name_list):
-    objects = []
-    for name in name_list:
-        (found, objid) = find_object_by_name(remote, name)
-        if found:
-            objects.append(objid)
-    select_objects(remote, objects)
-
-
 def delete_objects(remote, objects_list):
     cur_selection = list_selected_objects(remote)
     select_objects(objects_list, remote)

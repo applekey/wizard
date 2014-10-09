@@ -1,9 +1,5 @@
 from MeshWrapper import *
 from mmapi import  *
-from mm import *
-import connector
-import socket_util
-from socket_names import *
 
 ## use extensionFunction()
 def importFile():
@@ -293,32 +289,4 @@ def loadText():
     else:
         return ''
 
-
-
-# [RMS] start the selection tool
-def beginSelection():
-    remote = mmRemote()
-    remote.connect()
-    mm.select_object_by_name(remote, SocketName() )
-    mm.begin_tool(remote, "select")
-    mm.set_toolparam(remote, "radiusWorld", 25.0)
-    remote.shutdown()
-    return True
-
-
-# [RMS] the following three steps implement the three stages of attaching the Connector 
-#   to the Socket (first import and position Connector, then plane-cut outer shell of Socket, then Join & Smooth)
-#   You could call all three in a row, to fully automate it. With the three separate steps, the user has
-#   the option to reposition the connector and cutting plane
-def importConnectorAndPosition():
-    connector.import_connector(False)
-    return True
-
-def cutSocketForConnection():
-    connector.connector_plane_cut(False)
-    return True
-
-def joinConnectionToSocket():
-    connector.connector_join()
-    return True
 
