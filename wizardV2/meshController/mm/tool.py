@@ -21,7 +21,7 @@ def cancel_tool(remote):
 
 def set_toolparam(remote, param_name, f):
     cmd = mmapi.StoredCommands()
-    if len(f) == 1:
+    if type(f) in (int, float, bool):
         key = cmd.AppendToolParameterCommand(param_name, f)
     elif len(f) == 3:
         key = cmd.AppendToolParameterCommand(param_name, f[0],f[1],f[2])
@@ -55,3 +55,21 @@ def get_toolparam(remote, param_name):
     else:
         return ()
 
+
+
+def tool_utility_command(remote, command_name):
+    """run tool utility command"""
+    cmd = mmapi.StoredCommands()
+    cmd.AppendToolUtilityCommand( command_name )
+    remote.runCommand(cmd)
+
+
+
+def toolquery_new_groups(remote):
+    """get list of new groups created by last tool"""
+    cmd = mmapi.StoredCommands()
+    key = cmd.AppendToolQuery_NewGroups()
+    remote.runCommand(cmd)
+    new_groups = mmapi.vectori()
+    bOK = cmd.GetToolQueryResult_NewGroups(key, new_groups)
+    return vectori_to_list(new_groups)

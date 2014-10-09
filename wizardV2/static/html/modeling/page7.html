@@ -3,28 +3,33 @@
 			<p>
 				In step 7 
 				<br>
-				you will use ryan's  script
+				You will attach the Connector to the Socket, to provide a connection point for the standardized red-cross post and foot assembly.
+                Most of this step is automated. You will only need to indicate where the Connector should approximately be positioned, using a mesh selection.
 			</p>
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;">
-                     <div id="subText1"  class="subText" >
-                        <h3>Start</h3>
-                        <p> fsdfsd <p>
+
+                    <div id="subText1" apiFunc="$.post('api/beginSelection()',apiReturnParser);" class="subText">
+                        <h3>Begin Selection Tool</h3>
+                        <p>Click the arrow to begin the Selection Tool<p>
                     </div>
-                    <div id="subText2" apiFuncStart= "$.post('api/cancel()',apiReturnParser);',apiReturnParser);" apifunc = " $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
-                        <h3>Align z cam</h3>
-                        <p> fsdfsd <p>
-                        
+
+                     <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
+                        <h3>Select Area</h3>
+                        <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
+                        <p>When you are finished, click the arrow to position the gizmo.</p>    
                     </div>
-					<div  id="subText3"  apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
-						<h3> transform </h3>
-						<p> choose the selected area <p>
+
+					<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
+						<h3>Position Connector</h3>
+						<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
 					</div>
-					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-						<h3>transform accept</h3>
-						<p> choose the selected area <p>
+					<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
+						<h3>Position Cutting Plane</h3>
+						<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
+                        <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>
 					</div>
 					<div id="subText5" class="subText" style="display: none;">
 						<h3>Finished </h3>
@@ -39,7 +44,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span>Trim Line
+					 <span class="glyphicon glyphicon-wrench"></span>Attach (Gizmo)
 				</a>
 				
 			</div> <!-- subcontrol div -->
