@@ -7,6 +7,7 @@ from socket_names import *
 
 ## use extensionFunction()
 def importFile():
+    print 'here'
     return MeshWrapper.importFile()
 def planeCut():
     return MeshWrapper.planecut()

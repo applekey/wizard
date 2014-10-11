@@ -31,10 +31,6 @@ $(document).on('click',"#fowardButton",function(){
 	hiddenElement.hide()
 
 
-	var attr = hiddenElement.attr('apiFunc');
-	if (typeof attr !== typeof undefined && attr !== false) {
-    	eval(hiddenElement.attr("apiFunc"))
-	}
 	var attr = shownElement.attr('apiFuncStart');
 	if (typeof attr !== typeof undefined && attr !== false) {
     	eval(shownElement.attr("apiFuncStart"))
@@ -42,6 +38,21 @@ $(document).on('click',"#fowardButton",function(){
 	
 	checkControlValid(parent)
 	changeProgressBar((currentIndex-1)/(parent.attr("numberOfInstructions")-1),parent)
+});
+
+$(document).on('click',"#acceptButton",function(){	
+	var parent = $( this ).parents( ".subControl" )
+
+	var currentIndex =parseInt(parent.attr("index")) 
+	var txtToShow = 'subText' +currentIndex
+
+	var shownElement = $("#"+txtToShow,parent)
+
+	
+	var attr = shownElement.attr('apiFunc');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	eval(attr)
+	}
 });
 
 $(document).on('click',"#backButton",function(){
@@ -121,8 +132,9 @@ var subControlTemplate = "<br>\
 						<div class='col-xs-4'>\
 							<div id = 'backFowardCancel' class='btn-group' style='display: none;'' >\
 								<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
+								<button type='button' id='acceptButton' class='btn btn-default'><span class='glyphicon glyphicon-ok'> Accept</span></button>\
 								<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\
-								<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>\
+								<!--<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>-->\
 							</div>\
 						</div>\
 					</div>"
@@ -134,3 +146,5 @@ var subControlValuesPage61 = {mainStep: "Step 6 part 1 Progress"};
 var subControlValuesPage62 = {mainStep: "Step 6 part 2 Progress"};
 var subControlValuesPage63 = {mainStep: "Step 6 part 3 Progress"};
 var subControlValuesPage7 = {mainStep: "Step 7 Progress"};
+
+// 
