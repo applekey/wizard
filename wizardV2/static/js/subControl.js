@@ -35,6 +35,19 @@ $(document).on('click',"#fowardButton",function(){
 	if (typeof attr !== typeof undefined && attr !== false) {
     	eval(shownElement.attr("apiFuncStart"))
 	}
+	var attr = shownElement.attr('acceptDisabled');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	if(attr == 1)
+    	{
+    		debugger;
+    		var acceptButton = $( this ).parent().find('#acceptButton')
+    		// disable the button here
+    	}
+    	else
+    	{
+    		//enable the button here
+    	}
+	}
 	
 	checkControlValid(parent)
 	changeProgressBar((currentIndex-1)/(parent.attr("numberOfInstructions")-1),parent)
