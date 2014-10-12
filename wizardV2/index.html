@@ -205,23 +205,26 @@ section {
       findID = "#p"+String(page)
       $(findID).show('fast')
       currentPage = page
+      location.hash = "#"+currentPage;  
     }
 
-    $.post("history/check", function (data) {
-        $(".result").html(data);
-    });
+    // $.post("history/check", function (data) {
+    //     $(".result").html(data);
+    // });
 
     var currentPage = 1;
-    var numberOfPages = $('.myPage').length
     function nextPage()
     {
+      debugger;
+      var numberOfPages = $('.myPage').length
       if(currentPage<numberOfPages)
       {
-        currentPage = currentPage+1;
+        currentPage = parseInt(currentPage)+1;
         findID = "#p"+String(currentPage)
         hideId = "#p"+String(currentPage-1)
         $(findID).show('slow')
         $(hideId).hide()
+        location.hash = "#"+currentPage;  
       }
     }
     function prevPage()
@@ -233,13 +236,12 @@ section {
         hideId = "#p"+String(currentPage+1)
         $(findID).show('slow')
         $(hideId).hide()
+        location.hash = "#"+currentPage;  
       }
     }
 
 
     $(document).ready(function () {
-      
-
       $( "#p1" ).load( "html/scanning/cover.html" );
       $( "#p2" ).load( "html/scanning/page1.html" );
       $( "#p3" ).load( "html/scanning/page2.html" );
@@ -261,6 +263,13 @@ section {
       // printing
       $( "#p18" ).load( "html/printing/cover.html" );
       $( "#p19" ).load( "html/printing/end.html" );
+      var pageNumber = location.hash;
+      if(pageNumber)
+      {
+        length = pageNumber.length
+        pageWithoutHash = pageNumber.substr(1,length-1)
+        goToPage(pageWithoutHash)
+      }
 
     });
 
