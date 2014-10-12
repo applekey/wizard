@@ -17,16 +17,19 @@
                     </div>
 
                      <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
+                     	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                         <h3>Select Area</h3>
                         <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
                         <p>When you are finished, click the arrow to position the gizmo.</p>    
                     </div>
 
 					<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
+						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 						<h3>Position Connector</h3>
 						<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
 					</div>
 					<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
+						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 						<h3>Position Cutting Plane</h3>
 						<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
                         <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>

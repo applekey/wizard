@@ -1,30 +1,10 @@
-var questionTemplate = "	<div class='row' >\
-						<div class='col-xs-10'>\
-					  		<h3 id='controlHeaderText'> {{mainControlName}}</h3>\
-					  	</div>\
-					  	<div class='col-xs-2'>\
-					  		<span class='glyphicon glyphicon-question-sign' style='horizontal-align:right'></span>\
-					  	</div>\
-					</div>\
-					<hr>";
+$('.questionMarkPlaceHolder').each(function( ) {
+  $(this).append("<span  class='glyphicon glyphicon-question-sign' style='horizontal-align:right'></span>")
+});
 
-
- var OffsetValues = {
- 	mainControlName:"Offset",
- 	sliders:[{
- 		value:4.0,
- 		sectionName:"Distance",
- 		max: 10,
-		min: 0,
-		step:0.05,
-		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
- 	},
- 	{
- 		value:31,
- 		sectionName:"Soft Transition",
- 		max: 50,
-		min: 0,
-		step:0.05,
-		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
- 	}]
-	};
+$(document).on("click",".questionMarkPlaceHolder",function() {
+	var width = screen.width
+	var height = screen.height
+	var args = "width=" + width / 5 + ", height=" + height * 0.5 + "top=0,left=0"
+	window.open('www.reddit.com', "", args);
+});

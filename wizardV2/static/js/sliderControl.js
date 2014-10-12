@@ -8,14 +8,8 @@ $(document).on("change",".rangeSlider",function() {
 
 
 var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
-					<div class='row' >\
-						<div class='col-xs-10'>\
-					  		<h3 id='controlHeaderText'> {{mainControlName}}</h3>\
-					  	</div>\
-					  	<div class='col-xs-2'>\
-					  		<span class='glyphicon glyphicon-question-sign' style='horizontal-align:right'></span>\
-					  	</div>\
-					</div>\
+					<div class='questionMarkPlaceHolder' align = 'right'> </div>\
+					<h3 id='controlHeaderText'> {{mainControlName}}</h3>\
 					<hr>\
 					  	{{#sliders}}\
 						    <h5> {{sectionName}}</h5>\

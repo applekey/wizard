@@ -215,7 +215,6 @@ section {
     var currentPage = 1;
     function nextPage()
     {
-      debugger;
       var numberOfPages = $('.myPage').length
       if(currentPage<numberOfPages)
       {
@@ -270,6 +269,7 @@ section {
         pageWithoutHash = pageNumber.substr(1,length-1)
         goToPage(pageWithoutHash)
       }
+      $.getScript('js/questionControl.js');
 
     });
 
