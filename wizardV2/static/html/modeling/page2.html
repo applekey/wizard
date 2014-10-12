@@ -10,11 +10,11 @@
             <div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
-                    <div id="subText1" class="subText" >
+                    <div id="subText1" class="subText" acceptDisabled=1 >
                         <h3>Start Process</h3>
                         <p> choose the selected area <p>
                     </div>
-                    <div id="subText2" apiFunc="$.post('api/planeCut()',apiReturnParser);"  class="subText" acceptDisabled=1 style="display: none;">
+                    <div id="subText2" apiFunc="$.post('api/planeCut()',apiReturnParser);"  class="subText" style="display: none;">
                         <h3>Plane Cut </h3>
 						<p>  Using plane cut arrows and camera rotation, align the plane until the edges 
 				            overlap with the aligned cutlines marked on the residual limb during scanning process
@@ -27,7 +27,7 @@
 						<h3>Plane Cut Accept </h3>
 						<p> ... <p>
 					</div>
-                    <div id="subText4"  class="subText" style="display: none;">
+                    <div id="subText4"  class="subText" style="display: none;" acceptDisabled=1>
                         <h3>Finished </h3>
                     </div>
                     <div id="page2TemplateControls"> </div>

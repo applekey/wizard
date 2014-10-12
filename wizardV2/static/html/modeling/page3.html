@@ -14,7 +14,7 @@
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="well page3Well" style="display: none;" >
-                    <div id="subText1" class="subText" >
+                    <div id="subText1" class="subText"  acceptDisabled=1>
                         <h3>Start Process</h3>
                         <p> choose the selected area <p>
                     </div>
@@ -64,7 +64,7 @@
 					<div id="subText10" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                         <h3>Remesh Accept </h3>
                     </div>
-                    <div id="subText11"  class="subText" style="display: none;">
+                    <div id="subText11"  class="subText" style="display: none;" acceptDisabled=1>
                         <h3>Finished </h3>
                     </div>
                     <div id="page3TemplateControls"> </div>
@@ -80,9 +80,7 @@
 					 <span class="glyphicon glyphicon-wrench"></span> Clean Up
 				</a>
 
-				<!-- controls for subinstructions -->
-			
-				
+				<!-- controls for subinstructions -->				
 
 			</div> <!-- subcontrol div -->
 		</p>

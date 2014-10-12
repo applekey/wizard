@@ -1,12 +1,40 @@
+function disableAccept(topParent,shownElement)
+{
+	var attr = shownElement.attr('acceptDisabled');
+  	var acceptButton = $( topParent ).parent().find('#acceptButton')
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	if(attr == 1)
+    	{
+    		
+    		acceptButton.prop('disabled', true);
+    	}
+    	else
+    	{
+    		acceptButton.prop('disabled', false);
+    	}
+	}
+	else
+	{
+		acceptButton.prop('disabled', false);
+	}
+}
+
 $(document).on('click','#activateButton',function(){
 	var parent = $( this ).parent( ".subControl" )
 	var numberOfInstructions = $('.subText',parent).length
 	parent.attr("index",1)
 	parent.attr("numberOfInstructions",numberOfInstructions)
    $("#wellText",parent).show()
-  // $.post("api/planeCut");
+
   $(this).hide()
   $("#backFowardCancel",parent).show()
+
+  var currentIndex =parseInt(parent.attr("index"))
+  var txtToShow = 'subText' +currentIndex 
+  var shownElement = $("#"+txtToShow,parent)
+
+  disableAccept(this,shownElement)
+
   changeProgressBar(0, parent)
 });
 
@@ -31,23 +59,7 @@ $(document).on('click',"#fowardButton",function(){
 	hiddenElement.hide()
 
 
-	var attr = shownElement.attr('apiFuncStart');
-	if (typeof attr !== typeof undefined && attr !== false) {
-    	eval(shownElement.attr("apiFuncStart"))
-	}
-	var attr = shownElement.attr('acceptDisabled');
-	if (typeof attr !== typeof undefined && attr !== false) {
-    	if(attr == 1)
-    	{
-    		debugger;
-    		var acceptButton = $( this ).parent().find('#acceptButton')
-    		// disable the button here
-    	}
-    	else
-    	{
-    		//enable the button here
-    	}
-	}
+	disableAccept(this,shownElement)
 	
 	checkControlValid(parent)
 	changeProgressBar((currentIndex-1)/(parent.attr("numberOfInstructions")-1),parent)
@@ -78,8 +90,14 @@ $(document).on('click',"#backButton",function(){
 	parent.attr("index",currentIndex)
 	var txtToShow = 'subText' +currentIndex
 
-	$("#"+txtToShow,parent).show()
-	$("#"+txtToHide,parent).hide()
+	var hiddenElement = $("#"+txtToHide,parent)
+	var shownElement = $("#"+txtToShow,parent)
+	shownElement.show()
+	hiddenElement.hide()
+
+	disableAccept(this,shownElement)
+
+
 	checkControlValid(parent)
 	changeProgressBar((currentIndex-1)/(parent.attr("numberOfInstructions")-1),parent)
 		
