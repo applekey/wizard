@@ -20,9 +20,6 @@
   <link href="css/jquery-ui.css" rel="stylesheet">
  
 
-
-  <script type="text/javascript" src="js/wow_book.min.js"></script>
-  <link rel="stylesheet" href="css/wow_book.css" type="text/css" />
   <script type="text/javascript" src="js/bootstrap-progressbar.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap-progressbar-3.2.0.min.css">
@@ -195,6 +192,10 @@ section {
 
     function goToPage(page)
     {
+      if(subStepCheck() == true)
+      {
+        return
+      }
       if(currentPage == page)
       {
         return;
@@ -212,10 +213,37 @@ section {
     // $.post("history/check", function (data) {
     //     $(".result").html(data);
     // });
+    function subStepCheck()
+    {
+      if (typeof inSubStep === 'undefined') {
+        return false
+      }
+      else
+      {
+        if(inSubStep == false)
+        {
+          return false
+        }
+        else
+        {
+          var r = confirm("Do you really want to switch pages?");
+          if (r == true) {
+              inSubStep = false
+              return false
+          } else {
+              return true
+          }
+        }
+      }
+    }
 
     var currentPage = 1;
     function nextPage()
     {
+      if(subStepCheck() == true)
+      {
+        return
+      }
       var numberOfPages = $('.myPage').length
       if(currentPage<numberOfPages)
       {
@@ -229,6 +257,10 @@ section {
     }
     function prevPage()
     {
+      if(subStepCheck() == true)
+      {
+        return
+      }
       if(currentPage>1)
       {
         currentPage = currentPage-1;

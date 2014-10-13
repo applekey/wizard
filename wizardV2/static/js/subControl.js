@@ -18,8 +18,9 @@ function disableAccept(topParent,shownElement)
 		acceptButton.prop('disabled', false);
 	}
 }
-
+var inSubStep = false
 $(document).on('click','#activateButton',function(){
+	inSubStep = true
 	var parent = $( this ).parent( ".subControl" )
 	var numberOfInstructions = $('.subText',parent).length
 	parent.attr("index",1)
@@ -105,6 +106,7 @@ $(document).on('click',"#backButton",function(){
 
 function reset(parent)
 {
+	inSubStep = false
 	$("#wellText",parent).hide('fast')
 	$("#activateButton",parent).show('fast')
 	$("#backFowardCancel",parent).hide('fast')
