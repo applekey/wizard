@@ -8,40 +8,43 @@
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well" style="display: none;">
-                     <div id="subText1"  class="subText"  acceptDisabled=1>
-                        <h3>Start</h3>
-                        <p> fsdfsd <p>
+				<div  id="wellText" class="panel panel-default" style="display: none;">
+                    <div class="panel-body">
+                        <div id="subText1"  class="subText"  acceptDisabled=1>
+                            <h3>Start</h3>
+                            <p> fsdfsd <p>
+                        </div>
+                        <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                            <div id="page6SelectTool"> </div>
+                            <script>
+                            $( document ).ready(function() {
+                              $('#page6SelectTool').html(Mustache.to_html(template, SelectValues));
+                            });
+                            </script>
+                        </div>
+    					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+    						<h3>Smooth Boundary </h3>
+    						<p> choose the selected area <p>
+    					</div>
+    					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+    						<h3>Smooth Boundary Accept </h3>
+    						<p> choose the selected area <p>
+    					</div>
+    					<div id="subText5" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+    						<h3>Create Face Group</h3>
+    						<p> choose the selected area <p>
+    					</div>
+    					
+    					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
+    						<h3>Finished </h3>
+    					</div>
+					</div>
+                    <div class="panel-footer "> 
+					   <div id="page61TemplateControls"> </div>
                     </div>
-                    <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page6SelectTool"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page6SelectTool').html(Mustache.to_html(template, SelectValues));
-                        });
-                        </script>
-                    </div>
-					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Smooth Boundary </h3>
-						<p> choose the selected area <p>
-					</div>
-					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Smooth Boundary Accept </h3>
-						<p> choose the selected area <p>
-					</div>
-					<div id="subText5" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Create Face Group</h3>
-						<p> choose the selected area <p>
-					</div>
-					
-					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
-						<h3>Finished </h3>
-					</div>
-					
-					<div id="page61TemplateControls"> </div>
                     <script>
                     $( document ).ready(function() {
                       $('#page61TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage61));
@@ -61,71 +64,73 @@
 			</p>
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText"  class="well page3Well" style="display: none;">
-                    <div id="subText1"  class="subText" >
-                        <h3>Start</h3>
-                        <p> fdsafasd <p>
-                    </div>
-                    <div id="subText2" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                       <div id="page6_1Offset"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
-                        });
-                         
-                        </script>
+				<div  id="wellText"  class="panel panel-default" style="display: none;">
+                    <div class="panel-body">
+                        <div id="subText1"  class="subText" >
+                            <h3>Start</h3>
+                            <p> fdsafasd <p>
+                        </div>
+                        <div id="subText2" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                           <div id="page6_1Offset"> </div>
+                            <script>
+                            $( document ).ready(function() {
+                              $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
+                            });
+                             
+                            </script>
 
-                        <div class='checkbox'>
-                            <label>
-                                <input disabled='disabled' type='checkbox'> connected
-                            </label>
+                            <div class='checkbox'>
+                                <label>
+                                    <input disabled='disabled' type='checkbox'> connected
+                                </label>
+                            </div>
+
+                        </div>
+                        <div id="subText3" apifunc=" $.post('api/acceptSelect()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                            <h3>Offset Accept </h3>
+                            <p> choose the selected area <p>
+                        </div>
+                        <div id="subText4" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                            <h3>Seperate</h3>
+                            <p> choose the selected area <p>
+                        </div>
+                        <div id="subText5" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                            <h3>Select All</h3>
+                            <p> choose the selected area <p>
                         </div>
 
-                    </div>
-                    <div id="subText3" apifunc=" $.post('api/acceptSelect()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Offset Accept </h3>
-                        <p> choose the selected area <p>
-                    </div>
-                    <div id="subText4" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Seperate</h3>
-                        <p> choose the selected area <p>
-                    </div>
-                    <div id="subText5" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Select All</h3>
-                        <p> choose the selected area <p>
-                    </div>
+                        <div id="subText6" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                            <div id="page6_2Offset"> </div>
+                            <script>
+                            $( document ).ready(function() {
+                              $('#page6_2Offset').html(Mustache.to_html(template, OffsetValues));
+                            });
+                             
+                            </script>
+                            <div class='checkbox'>
+                                <label>
+                                    <input disabled='disabled' type='checkbox' checked> connected
+                                </label>
+                            </div>
 
-                    <div id="subText6" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page6_2Offset"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page6_2Offset').html(Mustache.to_html(template, OffsetValues));
-                        });
-                         
-                        </script>
-                        <div class='checkbox'>
-                            <label>
-                                <input disabled='disabled' type='checkbox' checked> connected
-                            </label>
+                        </div>
+                        <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                            <h3>Offset Accept</h3>
+                            <p> choose the selected area <p>
                         </div>
 
+    					
+    					<div id="subText8" class="subText" style="display: none;" acceptDisabled=1>
+    						<h3>Finished </h3>
+    					</div>
                     </div>
-                    <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Offset Accept</h3>
-                        <p> choose the selected area <p>
+					<div class="panel-footer "> 
+					   <div id="page62TemplateControls"> </div>
                     </div>
-
-					
-					<div id="subText8" class="subText" style="display: none;" acceptDisabled=1>
-						<h3>Finished </h3>
-						
-					</div>
-					
-					<div id="page62TemplateControls"> </div>
                     <script>
                     $( document ).ready(function() {
                       $('#page62TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage62));
@@ -142,43 +147,46 @@
 			<br>
 			Finally, we will do a cleanup
 			<div class ="subControl">
-	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well" style="display: none;">
-                     <div id="subText1"  class="subText" >
-                        <h3>Start</h3>
-                        <p> choose the selected area <p>
+    			<div  id="wellText" class="panel panel-default" style="display: none;">
+                    <div class="panel-body">
+                         <div id="subText1"  class="subText" >
+                            <h3>Start</h3>
+                            <p> choose the selected area <p>
+                        </div>
+                        <div id="subText2" apiFuncStart= "$.post('api/selectAll()',apiReturnParser);"  apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                            <div id="page6_3Remesh"> </div>
+                            <script>
+                            $( document ).ready(function() {
+                              $('#page6_3Remesh').html(Mustache.to_html(template, RemeshValues));
+                            });
+                            </script>
+                        </div>
+    					<div  id="subText3"  apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+    						<h3>Remesh Accept </h3>
+    						<p> cfdsafdsaa <p>
+    					</div>
+    					<div id="subText4" apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+    						<div id="page6_3Smooth"> </div>
+                            <script>
+                            $( document ).ready(function() {
+                              $('#page6_3Smooth').html(Mustache.to_html(template, SmoothValues));
+                            });
+                            </script>
+    					</div>
+    					<div id="subText5" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+    						<h3>Smooth Accept</h3>
+    						<p> choose the selected area <p>
+    					</div>
+    					
+    					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
+    						<h3>Finished </h3>
+    					</div>
                     </div>
-                    <div id="subText2" apiFuncStart= "$.post('api/selectAll()',apiReturnParser);"  apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                        <div id="page6_3Remesh"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page6_3Remesh').html(Mustache.to_html(template, RemeshValues));
-                        });
-                        </script>
+                    <div class="panel-footer "> 
+					   <div id="page63TemplateControls"> </div>
                     </div>
-					<div  id="subText3"  apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Remesh Accept </h3>
-						<p> cfdsafdsaa <p>
-					</div>
-					<div id="subText4" apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-						<div id="page6_3Smooth"> </div>
-                        <script>
-                        $( document ).ready(function() {
-                          $('#page6_3Smooth').html(Mustache.to_html(template, SmoothValues));
-                        });
-                        </script>
-					</div>
-					<div id="subText5" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                        <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Smooth Accept</h3>
-						<p> choose the selected area <p>
-					</div>
-					
-					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
-						<h3>Finished </h3>
-					</div>
-					<div id="page63TemplateControls"> </div>
                     <script>
                     $( document ).ready(function() {
                       $('#page63TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage63));

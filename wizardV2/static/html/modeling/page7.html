@@ -9,36 +9,39 @@
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well" style="display: none;">
+				<div  id="wellText" class="panel panel-default" style="display: none;">
+					<div class="panel-body">
 
-                    <div id="subText1" apiFunc="$.post('api/beginSelection()',apiReturnParser);" class="subText">
-                        <h3>Begin Selection Tool</h3>
-                        <p>Click the arrow to begin the Selection Tool<p>
-                    </div>
+	                    <div id="subText1" apiFunc="$.post('api/beginSelection()',apiReturnParser);" class="subText">
+	                        <h3>Begin Selection Tool</h3>
+	                        <p>Click the arrow to begin the Selection Tool<p>
+	                    </div>
 
-                     <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
-                     	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Select Area</h3>
-                        <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
-                        <p>When you are finished, click the arrow to position the gizmo.</p>    
-                    </div>
+	                     <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
+	                     	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+	                        <h3>Select Area</h3>
+	                        <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
+	                        <p>When you are finished, click the arrow to position the gizmo.</p>    
+	                    </div>
 
-					<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
-						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Position Connector</h3>
-						<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
+						<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Position Connector</h3>
+							<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
+						</div>
+						<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Position Cutting Plane</h3>
+							<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
+	                        <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>
+						</div>
+						<div id="subText5" class="subText" style="display: none;">
+							<h3>Finished </h3>
+						</div>
 					</div>
-					<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
-						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Position Cutting Plane</h3>
-						<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
-                        <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>
+					<div class="panel-footer "> 
+						<div id="page7TemplateControls"> </div>
 					</div>
-					<div id="subText5" class="subText" style="display: none;">
-						<h3>Finished </h3>
-					</div>
-					
-					<div id="page7TemplateControls"> </div>
                     <script>
                     $( document ).ready(function() {
                       $('#page7TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage7));

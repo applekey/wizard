@@ -8,43 +8,46 @@
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
-				<div  id="wellText" class="well page3Well" style="display: none;">
-					<div  id="subText1"   class="subText" acceptDisabled=1>
-						<h3>Start </h3>
-						<p> fdsaf <p>
-					</div>
-					<div  id="subText2"  apiFuncStart= "$.post('api/cancel()',apiReturnParser); $.post('api/align()',apiReturnParser);" class="subText"  style="display: none;">
-						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Align </h3>
-						<p> choose the selected area <p>
-					</div>
-					<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Align Accept </h3>
-						<p> choose the selected area <p>
-					</div>
-					<div id="subText4" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
-						<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-						<h3>Reset Camera</h3>
-						<p> choose the selected area <p>
-					</div>
-                    <div id="subText5" apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
-                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Align Transform</h3>
-                        <p> choose the selected area <p>
-                    </div>
-                    <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                        <h3>Align Transform Accept</h3>
-                        <p> choose the selected area <p>
-                    </div>
-					
-					<div id="subText7" class="subText" style="display: none;" acceptDisabled=1>
-						<h3>Finished </h3>
+				<div  id="wellText" class="panel panel-default" style="display: none;">
+					<div class="panel-body">
+						<div  id="subText1"   class="subText" acceptDisabled=1>
+							<h3>Start </h3>
+							<p> fdsaf <p>
+						</div>
+						<div  id="subText2"  apiFuncStart= "$.post('api/cancel()',apiReturnParser); $.post('api/align()',apiReturnParser);" class="subText"  style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Align </h3>
+							<p> choose the selected area <p>
+						</div>
+						<div id="subText3" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Align Accept </h3>
+							<p> choose the selected area <p>
+						</div>
+						<div id="subText4" apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Reset Camera</h3>
+							<p> choose the selected area <p>
+						</div>
+	                    <div id="subText5" apifunc=" $.post('api/alignTransform()',apiReturnParser);" class="subText" style="display: none;">
+	                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+	                        <h3>Align Transform</h3>
+	                        <p> choose the selected area <p>
+	                    </div>
+	                    <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+	                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+	                        <h3>Align Transform Accept</h3>
+	                        <p> choose the selected area <p>
+	                    </div>
 						
+						<div id="subText7" class="subText" style="display: none;" acceptDisabled=1>
+							<h3>Finished </h3>
+							
+						</div>
 					</div>
-					
-					<div id="page5TemplateControls"> </div>
+					<div class="panel-footer "> 
+						<div id="page5TemplateControls"> </div>
+					</div>
                     <script>
                     $( document ).ready(function() {
                       $('#page5TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage5));
