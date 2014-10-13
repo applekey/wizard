@@ -8,9 +8,6 @@ $(document).on("change",".rangeSlider",function() {
 
 
 var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
-					<div class='questionMarkPlaceHolder' align = 'right'> </div>\
-					<h3 id='controlHeaderText'> {{mainControlName}}</h3>\
-					<hr>\
 					  	{{#sliders}}\
 						    <h5> {{sectionName}}</h5>\
 							<div class='row' style='margin-left:3px;margin-right:3px;'>\
@@ -27,6 +24,25 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 						{{/sliders}} \
 					</div>";
 
+	var OffsetValuesAllowNegative = {
+ 	mainControlName:"Offset",
+ 	sliders:[{
+ 		value:4.0,
+ 		sectionName:"Distance",
+ 		max: 10,
+		min: -10,
+		step:0.05,
+		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
+ 	},
+ 	{
+ 		value:31,
+ 		sectionName:"Soft Transition",
+ 		max: 50,
+		min: 0,
+		step:0.05,
+		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
+ 	}]
+	};
  var OffsetValues = {
  	mainControlName:"Offset",
  	sliders:[{
