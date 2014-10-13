@@ -149,11 +149,7 @@ function checkControlValid(parent) {
     }
 }
 
-var subControlTemplate = "<br>\
-                    <br>\
-                    <br>\
-                    <hr>\
-                    <h5> {{mainStep}}</h5>\
+var subControlTemplate = "<h5> {{mainStep}}</h5>\
                    	<div class='row' >\
                    		<div class='col-xs-8'>\
 							<div class='progress progress-striped'>\
