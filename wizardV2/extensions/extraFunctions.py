@@ -148,7 +148,8 @@ def deformSmooth(smoothValue):
 @meshWrapper
 def smoothBoundary():
     cmd  = mmapi.StoredCommands()
-    cmd.AppendBeginToolCommand('smoothBoundary') 
+    cmd.AppendBeginToolCommand('smoothBoundary')
+    cmd.AppendCompleteToolCommand('accept') 
     return cmd
 
 @meshWrapper

@@ -39,7 +39,7 @@
                             <hr>
                             <p>In the following steps, you will select a portion of the residual limb, using the "Brush Select" tool. First, an appropriate brush size (you can check the brush size by hovering your cursor over your model).<p>
                         </div>
-                        <div id="subText2"  apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                        <div id="subText2"  apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptDisabled=1>
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= 'helpContainer.html'> </div>
                             <h3>Select Brush Size</h3>
                             <hr>
@@ -57,20 +57,15 @@
                             <hr>
                             <p>Now use the Brush tool to colour in the area you would like to rectify.<p>
                         </div>
-    					<div id="subText4" apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
+    					<div id="subText4" 
+                         apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);"
+                         class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
     						<h3>Smooth Boundary</h3>
                             <hr>
     						<p>In this step, the boundary of your selected area will be smoothed, removing sharp edges or inconsistencies.<p>
     					</div>
     					<div id="subText5" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Smooth Boundary Accept </h3>
-                            <hr>
-    						<p> choose the selected area <p>
-    					</div>
-    					
-    					<div id="subText6" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align = 'right'> </div>
                             <h3>Offset </h3>
                             <hr>
@@ -90,14 +85,8 @@
                                 </label>
                             </div>
     					</div>
-    					<div id="subText7" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Offset Accept</h3>
-                            <hr>
-    						<p> here we will tell them how you can adjust it</p>
-    					</div>
                  
-                        <div id="subText8" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
+                        <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align = 'right'> </div>
                             <h3>Smooth</h3>
                             <hr>
@@ -112,14 +101,8 @@
                             </script>
 
                         </div>
-                        <div id="subText9" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                            <h3>Accept Smooth</h3>
-                            <hr>
-
-                        </div>
     					
-                        <div id="subText10"  class="subText" style="display: none;" acceptDisabled=1>
+                        <div id="subText7"  class="subText" style="display: none;" acceptDisabled=1>
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Finished </h3>
                             <hr>
