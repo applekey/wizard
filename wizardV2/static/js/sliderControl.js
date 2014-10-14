@@ -112,24 +112,24 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  var RemeshValues = {
  	mainControlName:"Remesh",
  	sliders:[{
- 		value:0.5,
- 		sectionName:"remesh",
+ 		value:0,
+ 		sectionName:"Remesh, Suggested Value: 0.5",
  		max: 1,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/remesh(1,'+$(this).val()+')',apiReturnParser)"
  	},
  	{
- 		value:0.5,
- 		sectionName:"smooth",
+ 		value:0,
+ 		sectionName:"Smooth, Suggested Value: 0.5",
  		max: 1,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/remesh(2,'+$(this).val()+')',apiReturnParser)"
  	},
  	{
- 		value:0.5,
- 		sectionName:"threshold",
+ 		value:0,
+ 		sectionName:"Threshold, Suggested Value: 0.5",
  		max: 1,
 		min: 0,
 		step:0.05,
