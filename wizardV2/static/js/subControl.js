@@ -59,7 +59,10 @@ $(document).on('click',"#fowardButton",function(){
 	shownElement.show()
 	hiddenElement.hide()
 
-
+	var attr = shownElement.attr('apiFuncStart');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	eval(attr)
+	}
 	disableAccept(this,shownElement)
 	
 	checkControlValid(parent)
@@ -95,6 +98,10 @@ $(document).on('click',"#backButton",function(){
 	var shownElement = $("#"+txtToShow,parent)
 	shownElement.show()
 	hiddenElement.hide()
+	var attr = shownElement.attr('apiFuncStart');
+	if (typeof attr !== typeof undefined && attr !== false) {
+    	eval(attr)
+	}
 
 	disableAccept(this,shownElement)
 

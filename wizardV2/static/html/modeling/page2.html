@@ -3,21 +3,29 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 		<p>
-			In step 2
+			<h4> In step 2 </h4>
             <br /> 
             
             you will start to remove unnecessary aspects captured during scan (e.g. top of the thigh and waist, counter, etc) and also create a flat surface on your model that will assist with the alignment of the socket later in this process Rotate camera with mouse and ‘alt’ button until residual limb model is generally pointing down. Press Plane Cut button when ready to begin
+            <br>
+            <br>
+            <br>
             <div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="panel panel-default" style="display: none;" >
 					<div class="panel-body">
 	                    <div id="subText1" class="subText" acceptDisabled=1 >
 	                        <h3>Start Process</h3>
+	                        <hr>
 	                        <p> choose the selected area <p>
 	                    </div>
-	                    <div id="subText2" apiFunc="$.post('api/planeCut()',apiReturnParser);"  class="subText" style="display: none;">
+	                    <div id="subText2" 
+	                    apiFunc="$.post('api/accept()',apiReturnParser);"
+	                    apiFuncStart= "$.post('api/planeCut()',apiReturnParser);"
+	                    class="subText" style="display: none;">
 	                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 	                        <h3>Plane Cut </h3>
+	                        <hr>
 							<p>  Using plane cut arrows and camera rotation, align the plane until the edges 
 					            overlap with the aligned cutlines marked on the residual limb during scanning process
 					            Rotate camera to view all sides of the model and make sure the 
@@ -25,12 +33,7 @@
 					            When ready press  <p>
 	                    </div>
 
-						<div id="subText3" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Plane Cut Accept </h3>
-							<p> ... <p>
-						</div>
-	                    <div id="subText4"  class="subText" style="display: none;" acceptDisabled=1>
+	                    <div id="subText3"  apiFuncStart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptDisabled=1>
 	                        <h3>Finished </h3>
 	                    </div>
 	                </div>
