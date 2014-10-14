@@ -1,205 +1,70 @@
 <div id="instructionSection">
 	<div style ="margin:20px">
 			<p>
-				<h4> In step 6 </h4>
+				In step 6... 
 				<br>
-				you will generate the socket from the now rectified positive model. Start by using the selection tool to trace the trim line for the socket as marked during the sca nning process, Make sure to trace above the line rather than directly on the line and verify that t he line is continuous and that there are no gaps. When ready to proceed, press
+				...you will attach a mounting point to the distal end of the socket. The connection between the socket and the mounting point will not only make the socket compatible with ICRC alignment hardware, but will offer an opportunity to do some preliminary alignment.
 			</p>
+			<p>Checklist:</p>
+			<ul>
+				<li>Select bottom of socket, where mounting point should be attached</li>
+				<li>Import mounting point</li>
+				<li>Position mounting point relative to socket, as necessary</li>
+				<li>Align socket in relation to mounting point, as necessary</li>
+				<li>Cut away external layer of socket</li>
+				<li>Merge socket and mounting point together</li>
+			</ul>	
+			<br>
+			<br>	
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="panel panel-default" style="display: none;">
-                    <div class="panel-body">
-                        <div id="subText1"  class="subText"  acceptDisabled=1>
-                            <h3>Start</h3>
-                            <p> fsdfsd <p>
-                        </div>
-                        <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                            <div id="page6SelectTool"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6SelectTool').html(Mustache.to_html(template, SelectValues));
-                            });
-                            </script>
-                        </div>
-    					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Smooth Boundary </h3>
-    						<p> choose the selected area <p>
-    					</div>
-    					<div id="subText4" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Smooth Boundary Accept </h3>
-    						<p> choose the selected area <p>
-    					</div>
-    					<div id="subText5" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Create Face Group</h3>
-    						<p> choose the selected area <p>
-    					</div>
-    					
-    					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
-    						<h3>Finished </h3>
-    					</div>
+					<div class="panel-body">
+
+	                    <div id="subText1" apiFunc="$.post('api/beginSelection()',apiReturnParser);" class="subText">
+	                        <h3>Begin Selection Tool</h3>
+	                        <p>Click the arrow to begin the Selection Tool<p>
+	                    </div>
+
+	                     <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
+	                     	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+	                        <h3>Select Area</h3>
+	                        <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
+	                        <p>When you are finished, click the arrow to position the gizmo.</p>    
+	                    </div>
+
+						<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Position Connector</h3>
+							<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
+						</div>
+						<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
+							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+							<h3>Position Cutting Plane</h3>
+							<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
+	                        <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>
+						</div>
+						<div id="subText5" class="subText" style="display: none;">
+							<h3>Finished </h3>
+						</div>
 					</div>
-                    <div class="panel-footer "> 
-					   <div id="page61TemplateControls"> </div>
-                    </div>
-                    <script>
-                    $( document ).ready(function() {
-                      $('#page61TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage61));
-                    });
-                    </script>
-				</div>
-
-				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span>Trim Line
-				</a>
-				
-			</div> <!-- subcontrol div -->
-			<br>
-			<p>
-				To generate a socket, double-click anywhere below the trim line to select the appropriate part of the model. Then, press  generate socket
-				to create the socket. You can set the space between the residual limb and the socket using the ‘inner dimension’ slider and the thickness of the socket wall using the ‘outer dimension’ slider.
-			</p>
-			<div class ="subControl">
-	<!-- 			step 1 -->
-				<div  id="wellText"  class="panel panel-default" style="display: none;">
-                    <div class="panel-body">
-                        <div id="subText1"  class="subText" >
-                            <h3>Start</h3>
-                            <p> fdsafasd <p>
-                        </div>
-                        <div id="subText2" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                           <div id="page6_1Offset"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
-                            });
-                             
-                            </script>
-
-                            <div class='checkbox'>
-                                <label>
-                                    <input disabled='disabled' type='checkbox'> connected
-                                </label>
-                            </div>
-
-                        </div>
-                        <div id="subText3" apifunc=" $.post('api/acceptSelect()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                            <h3>Offset Accept </h3>
-                            <p> choose the selected area <p>
-                        </div>
-                        <div id="subText4" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                            <h3>Seperate</h3>
-                            <p> choose the selected area <p>
-                        </div>
-                        <div id="subText5" apifunc=" $.post('api/selectAll()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                            <h3>Select All</h3>
-                            <p> choose the selected area <p>
-                        </div>
-
-                        <div id="subText6" apiFunc="hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                            <div id="page6_2Offset"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_2Offset').html(Mustache.to_html(template, OffsetValues));
-                            });
-                             
-                            </script>
-                            <div class='checkbox'>
-                                <label>
-                                    <input disabled='disabled' type='checkbox' checked> connected
-                                </label>
-                            </div>
-
-                        </div>
-                        <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-                            <h3>Offset Accept</h3>
-                            <p> choose the selected area <p>
-                        </div>
-
-    					
-    					<div id="subText8" class="subText" style="display: none;" acceptDisabled=1>
-    						<h3>Finished </h3>
-    					</div>
-                    </div>
 					<div class="panel-footer "> 
-					   <div id="page62TemplateControls"> </div>
-                    </div>
+						<div id="page7TemplateControls"> </div>
+					</div>
                     <script>
                     $( document ).ready(function() {
-                      $('#page62TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage62));
+                      $('#page7TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage7));
                     });
                     </script>
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span> Generate Socket
+					 <span class="glyphicon glyphicon-wrench"></span>Attach (Gizmo)
 				</a>
 				
 			</div> <!-- subcontrol div -->
-			<br>
-			<br>
-			Finally, we will do a cleanup
-			<div class ="subControl">
-    			<div  id="wellText" class="panel panel-default" style="display: none;">
-                    <div class="panel-body">
-                         <div id="subText1"  class="subText" >
-                            <h3>Start</h3>
-                            <p> choose the selected area <p>
-                        </div>
-                        <div id="subText2" apiFuncStart= "$.post('api/selectAll()',apiReturnParser);"  apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-                            <div id="page6_3Remesh"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_3Remesh').html(Mustache.to_html(template, RemeshValues));
-                            });
-                            </script>
-                        </div>
-    					<div  id="subText3"  apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Remesh Accept </h3>
-    						<p> cfdsafdsaa <p>
-    					</div>
-    					<div id="subText4" apiFunc= "hiddenElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
-    						<div id="page6_3Smooth"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_3Smooth').html(Mustache.to_html(template, SmoothValues));
-                            });
-                            </script>
-    					</div>
-    					<div id="subText5" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-    						<h3>Smooth Accept</h3>
-    						<p> choose the selected area <p>
-    					</div>
-    					
-    					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
-    						<h3>Finished </h3>
-    					</div>
-                    </div>
-                    <div class="panel-footer "> 
-					   <div id="page63TemplateControls"> </div>
-                    </div>
-                    <script>
-                    $( document ).ready(function() {
-                      $('#page63TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage63));
-                    });
-                    </script>
-					
-				</div>
-
-				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span>Trim Line
-				</a>
-				
-			</div> <!-- subcontrol div -->
+			
 		
 	</div>
 

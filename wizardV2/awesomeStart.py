@@ -3,6 +3,8 @@ import os,sys
 from threading import Thread
 import time
 import webbrowser
+##some imports to make pyinstaller work
+
 
 web = False
 
@@ -13,6 +15,7 @@ if web == False:
     sys.path.append( os.path.join('meshController','pythonApi') )
     from extensionController import *
     from MeshWrapper import  *
+    from connector import *
 
 
 
@@ -67,7 +70,7 @@ class BrowserOpen(Thread):
         myport = 1343
         global url
         url = 'http://localhost:' +str(myport)+'/boot'
-        webbrowser.open(url,new=1,autoraise=True)
+        # webbrowser.open(url,new=1,autoraise=True)
      
 def startUp():
     global extensions
