@@ -4,6 +4,7 @@ from threading import Thread
 import time
 import webbrowser
 import json
+import win32ui
 ##some imports to make pyinstaller work
 
 
@@ -47,9 +48,17 @@ def checkPast():
 def getLatest():
     print callDynamic('importFigure()')
 
-	
-
+def checkifMeshMixerRunning():
+  try:
+    win32ui.FindWindow("QWidget", None)
+    return True
+  except:
+    print 'meshmixer isnt open'
+    return False
+  
 def callDynamic(functionCall):
+    if not checkifMeshMixerRunning():
+      return 'false'
     try:
        index = functionCall.index('(')
        functionName = functionCall[0:index]

@@ -172,6 +172,12 @@ section {
     {
        $.post("api/getAllObjects()" , function( data ) {
           try {
+                  if (data =="false")
+                  {
+                     alert("Not conencted to Meshmixer.")
+                      return
+                  }
+                   
                   json = $.parseJSON(data);
                   $("#activeObjects").empty();
                   console.log(json)

@@ -23,12 +23,12 @@ def getAllObjects():
         objectnames.append(name)
     remote.shutdown()
     # convert to json
+
     jsonreturn =  json.dumps(objectnames)
+    print jsonreturn
     return jsonreturn
 
 def selectObjectByName(objectName):
-    print 'here'
-    print objectName
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands()
