@@ -3,6 +3,7 @@ import os,sys
 from threading import Thread
 import time
 import webbrowser
+import json
 ##some imports to make pyinstaller work
 
 
@@ -55,10 +56,13 @@ def callDynamic(functionCall):
        for method in extensions:
            if hasattr(method, functionName):
                call = 'method.'+functionCall
-               if eval(call) is not True:
+               result = eval(call)
+               if result is True:
+                   return 'true'
+               elif result is False:
                    return 'false'
                else:
-                   return 'true'
+                  return result
                           
     except :
         return 'false'

@@ -49,7 +49,8 @@ exe = EXE(pyz,
           debug=False,
           strip=None,
           upx=True,
-          console=True )
+          console=True,
+          icon='logo.ico')
 
 coll = COLLECT(exe,
                Tree('static',prefix='static'),

@@ -95,6 +95,12 @@ section {
 <!--                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li> -->
                       </ul>
                     </li>
+                    <li class="dropdown">
+                      <a onclick= "getAllObjects()" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">All Objects <b class="caret"></b></a>
+                      <ul  id="activeObjects" class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                       
+                      </ul>
+                    </li>
 
                 </ul>
             </div><!--/.nav-collapse -->
@@ -139,6 +145,49 @@ section {
       </nav>
 
 <script type="text/javascript">
+      String.format = function() {
+        // The string containing the format items (e.g. "{0}")
+        // will and always has to be the first argument.
+        var theString = arguments[0];
+        
+        // start with the second argument (i = 1)
+        for (var i = 1; i < arguments.length; i++) {
+            // "gm" = RegEx options for Global search (more than one instance)
+            // and for Multiline search
+            var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+            theString = theString.replace(regEx, arguments[i]);
+        }
+        
+        return theString;
+    }
+
+    function selectObject(objectName)
+    {
+        console.log(objectName)
+        $.post("api/selectObjectByName('"+objectName+"')")
+    }
+
+
+    function getAllObjects()
+    {
+       $.post("api/getAllObjects()" , function( data ) {
+          try {
+                  json = $.parseJSON(data);
+                  $("#activeObjects").empty();
+                  console.log(json)
+                  $.each(json, function (index, data) {
+                      selectObjectString = String.format("<li><a onclick=selectObject('{0}')>{1}</a></li>",data,data)
+                      console.log(selectObjectString) 
+                     $("#activeObjects").append(selectObjectString)
+                      console.log('index', data)
+                  })
+              } catch (e) {
+                  // not json
+              }
+
+
+        });
+    }
    
     function gotoSection(section)
     {

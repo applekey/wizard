@@ -4,12 +4,40 @@ from mm import *
 import connector
 import socket_util
 from socket_names import *
+import json
 
 ## use extensionFunction()
 def importFile():
     return MeshWrapper.importFile()
 def planeCut():
     return MeshWrapper.planecut()
+
+
+def getAllObjects():
+    remote = mmRemote()
+    remote.connect()
+    objects= mm.list_objects(remote)
+    objectnames= []
+    for object in objects:
+        name = mm.get_object_name(remote, object)
+        objectnames.append(name)
+    remote.shutdown()
+    # convert to json
+    jsonreturn =  json.dumps(objectnames)
+    return jsonreturn
+
+def selectObjectByName(objectName):
+    print 'here'
+    print objectName
+    remote = mmRemote()
+    remote.connect()
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendCompleteToolCommand("cancel") 
+    remote.runcommand(cmd)
+    mm.select_object_by_name(remote,objectName)
+    remote.shutdown()
+
+
 
 @meshWrapper
 def freeOrbit(x,y):
