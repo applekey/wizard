@@ -89,7 +89,7 @@ section {
                     <li><a id ="modelingSec" onclick= "gotoSection(2)">Modeling</a></li>
                     <li><a id ="printingSec" onclick= "gotoSection(3)">Printing</a></li>
                     <li class="dropdown">
-                      <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
+                      <a href="#" id="dropTools" role="button" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
                         <li role="presentation"><a role="menuitem" tabindex="-1" onclick="$.post('api/alignZCam()');">Reset View</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" onclick="$.post('history/loadLatest');">Load Latest Save action</a></li>
@@ -99,7 +99,7 @@ section {
                       </ul>
                     </li>
                     <li class="dropdown">
-                      <a onclick= "getAllObjects()" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">All Objects <b class="caret"></b></a>
+                      <a onclick= "getAllObjects()" id="dropTools" role="button" class="dropdown-toggle" data-toggle="dropdown">All Objects <b class="caret"></b></a>
                       <ul  id="activeObjects" class="dropdown-menu" role="menu" aria-labelledby="drop3">
                        
                       </ul>
@@ -146,6 +146,8 @@ section {
               <li><a id="last" onclick="goToLastPageOfSection()" title="goto last page of section">last page of section</a></li>
           </ul>
       </nav>
+
+     <!-- <div class="navbar navbar-bottom">fdasfds</div> -->
 
 <script type="text/javascript">
       String.format = function() {
@@ -256,6 +258,7 @@ section {
       }
       if(currentPage == page)
       {
+        hideShowModelingTools(currentPage)
         return;
       }
 
@@ -266,6 +269,7 @@ section {
       $(findID).show('fast')
       currentPage = page
       location.hash = "#"+currentPage;  
+      hideShowModelingTools(currentPage)
     }
 
     // $.post("history/check", function (data) {
@@ -295,6 +299,21 @@ section {
       }
     }
 
+    function hideShowModelingTools(pageNumber)
+    {
+      if (pageNumber<14 && pageNumber>=7)
+      {
+         $('.dropdown').show()
+      }
+      else
+      {
+        $('.dropdown').hide()
+      }
+
+
+
+    }
+
     var currentPage = 1;
     function nextPage()
     {
@@ -312,6 +331,9 @@ section {
         $(hideId).hide()
         location.hash = "#"+currentPage;  
       }
+      hideShowModelingTools(currentPage)
+
+
     }
     function prevPage()
     {
@@ -328,6 +350,7 @@ section {
         $(hideId).hide()
         location.hash = "#"+currentPage;  
       }
+      hideShowModelingTools(currentPage)
     }
 
 
