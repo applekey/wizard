@@ -23,18 +23,17 @@ def getAllObjects():
         objectnames.append(name)
     remote.shutdown()
     # convert to json
-
+    print objectnames
     jsonreturn =  json.dumps(objectnames)
     print jsonreturn
     return jsonreturn
 
 def selectObjectByName(objectName):
+    print objectName
     remote = mmRemote()
     remote.connect()
-    cmd  = mmapi.StoredCommands()
-    cmd.AppendCompleteToolCommand("cancel") 
-    remote.runcommand(cmd)
     mm.select_object_by_name(remote,objectName)
+
     remote.shutdown()
 
 

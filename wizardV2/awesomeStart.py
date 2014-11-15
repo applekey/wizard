@@ -1,10 +1,11 @@
-from bottle import route, run, template,static_file,get,post
+from bottle import route, run, template,static_file,get,post,request,BaseResponse
 import os,sys
 from threading import Thread
 import time
 import webbrowser
 import json
 import win32ui
+import re
 ##some imports to make pyinstaller work
 
 
@@ -28,9 +29,45 @@ def hello():
 def hello():
 	return  static_file('boot.html',root='')
 
+
+
+def streamMediaFile(filePath):
+  realpath = os.getcwd()
+  realpath= os.path.join(realpath,'static')
+  filePath = filePath.replace('/','\\')
+  realpath =realpath+filePath
+  print realpath
+  range_header = request.headers.get('Range')
+  size = os.path.getsize(realpath)    
+  byte1, byte2 = 0, None
+  
+  m = re.search('(\d+)-(\d*)', range_header)
+  g = m.groups()
+  
+  if g[0]: byte1 = int(g[0])
+  if g[1]: byte2 = int(g[1])
+
+  length = size - byte1
+  if byte2 is not None:
+      length = byte2 - byte1
+  
+  data = None
+  with open(realpath, 'rb') as f:
+      f.seek(byte1)
+      data = f.read(length)
+  
+  rv = HTTPResponse(data, 206)
+  rv.add_header('Content-Range','bytes {0}-{1}/{2}'.format(byte1, byte1 + length - 1, size))
+  rv.add_header('Content-Type','video/mp4')
+  rv.add_header('Content-Length',length)
+  #rv.headers.set('Content-Range', 'bytes {0}-{1}/{2}'.format(byte1, byte1 + length - 1, size))
+  print rv
+  return rv
+
 @route(':path#.+#', name='static')
 def static(path):
-    return static_file(path, root='static')
+   
+      return static_file(path, root='static')
 
 @post('/api/<function>') # or @route('/login', method='POST')
 def importMesh(function):
@@ -99,4 +136,5 @@ if web == False:
 print 'Semaphore MeshMixer Controller is now working at' 
 print str(url)
 print "Please don't close this window"
-run(host='localhost', quiet=True,port=myport,debug=False)
+print 'blah'
+run(host='localhost', quiet=True,port=myport,debug=True)
