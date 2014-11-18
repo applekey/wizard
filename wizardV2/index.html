@@ -125,8 +125,8 @@
             </div>
             <!-- <img src="./icons/uot.jpg" alt="Smiley face" height="42" width="42"> -->
         </div>
-    </div><br>
-    <br>
+    </div><br><br><br>
+    
 
     <div id="Modeling" style=" margin-top: 20px;">
         <!--Scanning-->
@@ -167,28 +167,29 @@
 
         <div class="myPage" id="p17" style="display: none;"></div>
     </div><br>
+    <nav id ="bookControls">
+        <ul>
+            <li>
+                <a class="" id="first" onclick="goToFirstPageOfSection()" title=
+                "go first page of section">First page of section</a>
+            </li>
 
-    <ul>
-        <li>
-            <a class="" id="first" onclick="goToFirstPageOfSection()" title=
-            "go first page of section">First page of section</a>
-        </li>
+            <li>
+                <a class="" id="back" onclick="prevPage()" title=
+                "go back one page">Back</a>
+            </li>
 
-        <li>
-            <a class="" id="back" onclick="prevPage()" title=
-            "go back one page">Back</a>
-        </li>
+            <li>
+                <a id="next" onclick="nextPage()" title=
+                "go foward one page">Next</a>
+            </li>
 
-        <li>
-            <a id="next" onclick="nextPage()" title=
-            "go foward one page">Next</a>
-        </li>
-
-        <li>
-            <a id="last" onclick="goToLastPageOfSection()" title=
-            "goto last page of section">last page of section</a>
-        </li>
-    </ul><!-- <div class="navbar navbar-bottom">fdasfds</div> -->
+            <li>
+                <a id="last" onclick="goToLastPageOfSection()" title=
+                "goto last page of section">last page of section</a>
+            </li>
+        </ul><!-- <div class="navbar navbar-bottom">fdasfds</div> -->
+      </nav>
     <script type="text/javascript">
 //<![CDATA[
          String.format = function() {
