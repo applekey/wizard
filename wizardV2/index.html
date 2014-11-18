@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -207,6 +207,19 @@
            
            return theString;
          }
+
+         function pauseAllVideo()
+         {
+           $(".video-js").trigger("pause");
+
+         }
+
+         $(window).on('hashchange', function () {
+             var pageNumber = location.hash;
+             length = pageNumber.length
+             pageWithoutHash = pageNumber.substr(1, length - 1)
+             goToPage(pageWithoutHash)
+         });
          
          function selectObject(objectName)
          {
@@ -294,25 +307,26 @@
          
          function goToPage(page)
          {
-         if(subStepCheck() == true)
-         {
-           return
-         }
-         if(currentPage == page)
-         {
-           hideShowModelingTools(currentPage)
-           return;
-         }
+
+             if (currentPage == page) {
+                 hideShowModelingTools(currentPage)
+                 return;
+             }
+             if(subStepCheck() == true)
+             {
+               return
+             }
          
-         $( ".myPage" ).each(function(  ) {
-           $(this).hide('fast');
-         });
-         findID = "#p"+String(page)
-         $(findID).show('fast')
-         currentPage = page
-         location.hash = "#"+currentPage;  
-         hideShowModelingTools(currentPage)
-         }
+         
+             $( ".myPage" ).each(function(  ) {
+               $(this).hide('fast');
+             });
+             findID = "#p"+String(page)
+             $(findID).show('fast')
+             currentPage = page
+             location.hash = "#"+currentPage;  
+             hideShowModelingTools(currentPage)
+             }
          
          // $.post("history/check", function (data) {
          //     $(".result").html(data);
