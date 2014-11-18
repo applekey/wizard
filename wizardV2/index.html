@@ -421,6 +421,10 @@
            pageWithoutHash = pageNumber.substr(1,length-1)
            goToPage(pageWithoutHash)
          }
+         else
+        {
+          hideShowModelingTools(1)
+        }
          $.getScript('js/questionControl.js');
          
          });
