@@ -32,7 +32,7 @@ def hello():
 
 @route(':path#.+#', name='static')
 def static(path):
-   
+    
       return static_file(path, root='static')
 
 @post('/api/<function>') # or @route('/login', method='POST')
@@ -41,15 +41,16 @@ def importMesh(function):
 
 @post('/history/check') # or @route('/login', method='POST')
 def checkPast():
-    if os.path.isdir('/history'):
-        for root, dirs, files in os.walk("/history"):
+    mixFiles = []
+    if os.path.isdir(os.path.join(os.getcwd(),'history')):
+        for root, dirs, files in os.walk("history"):
             for file in files:
                 if file.endswith(".mix"):
-                    return file
-
-@post('/history/loadLatest') # or @route('/login', method='POST')
-def getLatest():
-    print callDynamic('importFigure()')
+                    mixFiles.append(file)
+    jsonreturn =  json.dumps(mixFiles)
+    print jsonreturn
+    return jsonreturn
+    
 
 def checkifMeshMixerRunning():
   try:
@@ -102,5 +103,4 @@ if web == False:
 print 'Semaphore MeshMixer Controller is now working at' 
 print str(url)
 print "Please don't close this window"
-print 'blah'
 run(server='cherrypy',host='localhost', quiet=True,port=myport,debug=False)

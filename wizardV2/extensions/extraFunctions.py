@@ -23,9 +23,7 @@ def getAllObjects():
         objectnames.append(name)
     remote.shutdown()
     # convert to json
-    print objectnames
     jsonreturn =  json.dumps(objectnames)
-    print jsonreturn
     return jsonreturn
 
 def selectObjectByName(objectName):
@@ -37,7 +35,6 @@ def selectObjectByName(objectName):
     remote.shutdown()
 
 
-
 @meshWrapper
 def freeOrbit(x,y):
      #cmd  = mmapi.StoredCommands()
@@ -46,14 +43,14 @@ def freeOrbit(x,y):
      #return cmd
 
 @meshWrapper
-def importFigure():
+def importFigure(fileName):
     cmd  = mmapi.StoredCommands()
     found = False
     if os.path.isdir('history'):
         historyFolder = os.path.join(os.getcwd(),'history')
         for root, dirs, files in os.walk(historyFolder):
             for file in files:
-                if file.endswith(".mix"):
+                if file == fileName:
                     fileFullPath = os.path.join(root, file)
                     cmd.AppendSceneCommand_OpenMixFile(fileFullPath);
                     found = True
