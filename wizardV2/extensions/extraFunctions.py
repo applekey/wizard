@@ -13,6 +13,25 @@ def planeCut():
     return MeshWrapper.planecut()
 
 
+def hideObjectByName(name):
+    remote = mmRemote()
+    remote.connect()
+    [state,id]= mm.find_object_by_name(remote,name)
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendSceneCommand_SetHidden(id)
+    remote.runCommand(cmd)
+    remote.shutdown()
+
+def showObjectByName(name):
+    remote = mmRemote()
+    remote.connect()
+    [state,id]= mm.find_object_by_name(remote,name)
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendSceneCommand_SetVisible(id)
+    remote.runCommand(cmd)
+    remote.shutdown()
+
+
 def getAllObjects():
     remote = mmRemote()
     remote.connect()

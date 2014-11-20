@@ -244,10 +244,32 @@
              goToPage(pageWithoutHash)
          });
          
-         function selectObject(objectName)
+         function hideModel()
          {
-           console.log(objectName)
-           $.post("api/selectObjectByName('"+objectName+"')")
+             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             if (objectName == '')
+             { debugger; }
+             console.log(objectName)
+             $.post("api/hideObjectByName('" + objectName + "')")
+
+         }
+
+         function showModel() {
+             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             if (objectName == '')
+             { debugger; }
+             console.log(objectName)
+             $.post("api/showObjectByName('" + objectName + "')")
+
+         }
+
+         function selectModel()
+         {
+             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             if (objectName == '')
+             { debugger;}
+             console.log(objectName)
+            $.post("api/selectObjectByName('"+objectName+"')")
          }
 
          function LoadMix()
@@ -286,7 +308,17 @@
                      $("#activeObjects").empty();
                      console.log(json)
                      $.each(json, function (index, data) {
-                         selectObjectString = String.format("<li><a onclick=selectObject('{0}')>{1}<\/a><\/li>",data,data)
+                         buttonSelect = "<button type='button' class='btn btn-default btn-sm' onclick='selectModel()'>\
+                                       Select\
+                                    </button>"
+                         buttonHide = "<button type='button' class='btn btn-default btn-sm' onclick='hideModel()'>\
+                                       Hide\
+                                    </button>"
+
+                         buttonShow = "<button type='button' class='btn btn-default btn-sm' onclick='showModel()'>\
+                                       Show\
+                                    </button>"
+                         selectObjectString = String.format("<li><a>{1} {2} {3} {4}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide)
                          console.log(selectObjectString) 
                         $("#activeObjects").append(selectObjectString)
                          console.log('index', data)
