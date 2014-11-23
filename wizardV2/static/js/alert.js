@@ -1,7 +1,8 @@
 function apiReturnParser(data) {
+    debugger;
     console.log(data)
     if (data == 'false')
     {
-        alert(data+':  cannot connected with meshMixer, please restart meshMixer')
+        $.notify(data + ':  cannot connected with meshMixer, please restart meshMixer', { autoHide: true, className: 'error' });
     }
 }
