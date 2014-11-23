@@ -93,6 +93,11 @@
 
                             <ul class="dropdown-menu">
                                 <li>
+                                    <a onclick="loadReference()"
+                                       tabindex="-1">Load Reference</a>
+                                </li>
+                                <li role="presentation" class="divider"></li>
+                                <li>
                                     <a onclick="$.post('api/alignZCam()');"
                                     tabindex="-1">Reset View</a>
                                 </li>
@@ -230,6 +235,12 @@
            }
            
            return theString;
+         }
+
+         function loadReference()
+         {
+             $.post("api/importFile('alignmentObject.STL','reference')", apiReturnParser);
+
          }
 
          function pauseAllVideo()

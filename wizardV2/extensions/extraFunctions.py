@@ -7,10 +7,19 @@ from socket_names import *
 import json
 
 ## use extensionFunction()
-def importFile():
-    return MeshWrapper.importFile()
+def importFile(fileLocation = None,folder=None):
+    if fileLocation != None and folder != None:
+        currentPath = os.getcwd() + '\\'+ folder+ '\\'+fileLocation
+        if os.path.isfile(currentPath):
+            return MeshWrapper.importFigure(currentPath)
+        else:
+            return false
+    else:
+        return MeshWrapper.importFile()
 def planeCut():
     return MeshWrapper.planecut()
+
+
 
 
 def hideObjectByName(name):
