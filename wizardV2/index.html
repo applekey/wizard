@@ -255,13 +255,15 @@
              pageWithoutHash = pageNumber.substr(1, length - 1)
              goToPage(pageWithoutHash)
          });
-         
+         function deleteModel()
+         {
+             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             $.post("api/deleteObjectByName('" + objectName + "')")
+         }
+
          function hideModel()
          {
              objectName = $(event.target).parent().text().split(/\s+/)[0]
-             if (objectName == '')
-             { debugger; }
-             console.log(objectName)
              $.post("api/hideObjectByName('" + objectName + "')")
 
          }
@@ -335,14 +337,18 @@
                                        Show\
                                     </button>"
 
+                         deleteShow = "<button type='button' class='btn btn-default btn-sm' onclick='deleteModel()'>\
+                                       delete\
+                                    </button>"
+
                          debugger;
                          if (data.indexOf("alignmentObject") >= 0)
                          {
-                             selectObjectString = String.format("<li><a><b>{1}</b> {2} {3} {4}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide)
+                             selectObjectString = String.format("<li><a><b>{1}</b> {2} {3} {4} {5}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, deleteShow)
                          }
                          else
                          {
-                             selectObjectString = String.format("<li><a>{1} {2} {3} {4}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide)
+                             selectObjectString = String.format("<li><a>{1} {2} {3} {4} {5}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, deleteShow)
                          }
                          console.log(selectObjectString) 
                         $("#activeObjects").append(selectObjectString)

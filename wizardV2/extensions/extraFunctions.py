@@ -19,7 +19,14 @@ def importFile(fileLocation = None,folder=None):
 def planeCut():
     return MeshWrapper.planecut()
 
-
+def deleteObjectByName(name):
+    remote = mmRemote()
+    remote.connect()
+    [state,id]= mm.find_object_by_name(remote,name)
+    objects = []
+    objects.append(id)
+    mm.delete_objects(remote,objects)
+    remote.shutdown()
 
 
 def hideObjectByName(name):

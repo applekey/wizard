@@ -55,7 +55,7 @@ def select_objects_by_name(remote, name_list):
 
 def delete_objects(remote, objects_list):
     cur_selection = list_selected_objects(remote)
-    select_objects(objects_list, remote)
+    select_objects( remote,objects_list)
     cmd = mmapi.StoredCommands()
     cmd.AppendSceneCommand_DeleteSelectedObjects();
     remote.runCommand(cmd)
