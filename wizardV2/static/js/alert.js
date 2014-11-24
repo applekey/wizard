@@ -1,5 +1,4 @@
 function apiReturnParser(data) {
-    debugger;
     console.log(data)
     if (data == 'false')
     {

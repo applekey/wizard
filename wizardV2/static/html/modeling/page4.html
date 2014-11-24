@@ -29,6 +29,41 @@
             </ul>
 
             <br>
+            <div class="subControl">
+                <div id="wellText" class="panel panel-default" style="display: none;">
+                    <div class="panel-body">
+                        <div id="subText1" class="subText" acceptdisabled=1>
+                            <h3>Start</h3>
+                            <p> text <p>
+                        </div>
+                        <div id="subText2" apifunc="createDuplicate4()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
+                            <h3>Remesh  </h3>
+                            <hr>
+                            <p> msg here <p>
+
+                        </div>
+                        <div id="subText3" class="subText" style="display: none;" acceptdisabled=1>
+                            <h3>Finished </h3>
+                        </div>
+                    </div>
+                    <div class="panel-footer ">
+                        <div id="page40TemplateControls"> </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('#page40TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage63));
+                        });
+                    </script>
+
+                </div>
+
+                <a id="activateButton" class="btn btn-info " role="button">
+                    <span class="glyphicon glyphicon-wrench"></span>Create checkpoind//reword
+                </a>
+
+            </div> <!-- subcontrol div -->
+            <br><br>
 		
 			<div class ="subControl">
 	<!-- 			step 1 -->
@@ -128,3 +163,30 @@
 	</div>
 
 </div>
+<script>
+    function hideOrig4(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/hideObjectByName('residualLimb')", apiReturnParser);
+        }
+    }
+    function renameDuplicate4(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/renameObjectByName('residualLimb (copy)','rectifiedLimb')", hideOrig4);
+        }
+    }
+    function createDuplicate4(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/duplicate('residualLimb')", renameDuplicate4);
+        }
+    }
+
+</script>

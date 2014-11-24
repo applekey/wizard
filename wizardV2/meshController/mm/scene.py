@@ -50,7 +50,8 @@ def select_objects_by_name(remote, name_list):
         (found, objid) = find_object_by_name(remote, name)
         if found:
             objects.append(objid)
-    select_objects(remote, objects)
+    select_objects
+    (remote, objects)
 
 
 def delete_objects(remote, objects_list):

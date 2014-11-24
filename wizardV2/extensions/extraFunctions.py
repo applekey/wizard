@@ -32,11 +32,14 @@ def deleteObjectByName(name):
 def hideObjectByName(name):
     remote = mmRemote()
     remote.connect()
-    [state,id]= mm.find_object_by_name(remote,name)
-    cmd  = mmapi.StoredCommands()
-    cmd.AppendSceneCommand_SetHidden(id)
-    remote.runCommand(cmd)
-    remote.shutdown()
+    try:
+        [state,id]= mm.find_object_by_name(remote,name)
+        cmd  = mmapi.StoredCommands()
+        cmd.AppendSceneCommand_SetHidden(id)
+        remote.runCommand(cmd)
+        remote.shutdown()
+    except:
+        remote.shutdown()
 
 def showObjectByName(name):
     remote = mmRemote()
@@ -51,15 +54,19 @@ def showObjectByName(name):
 def getAllObjects():
     remote = mmRemote()
     remote.connect()
-    objects= mm.list_objects(remote)
-    objectnames= []
-    for object in objects:
-        name = mm.get_object_name(remote, object)
-        objectnames.append(name)
-    remote.shutdown()
-    # convert to json
-    jsonreturn =  json.dumps(objectnames)
-    return jsonreturn
+    try:
+        objects= mm.list_objects(remote)
+        objectnames= []
+        for object in objects:
+            name = mm.get_object_name(remote, object)
+            objectnames.append(name)
+        remote.shutdown()
+        # convert to json
+        jsonreturn =  json.dumps(objectnames)
+        return jsonreturn
+    except:
+        remote.shutdown()
+        return False
 
 def selectObjectByName(objectName):
     print objectName
@@ -69,6 +76,43 @@ def selectObjectByName(objectName):
 
     remote.shutdown()
 
+def renameObjectByName(origName, newName):
+    remote = mmRemote()
+    remote.connect()
+    try:
+        cmd  = mmapi.StoredCommands()
+        if  origName == '*' : # this mean everthing
+            objects= mm.list_objects(remote)
+            for object in objects:
+                cmd.AppendSceneCommand_SetObjectName(object,newName)
+            remote.runCommand(cmd)
+        else:
+            [state,id]= mm.find_object_by_name(remote,origName)
+        
+            cmd.AppendSceneCommand_SetObjectName(id,newName)
+            remote.runCommand(cmd)
+        remote.shutdown()
+        return True
+    except:
+        remote.shutdown() 
+        return False
+
+def duplicate(partToDuplicate):
+    remote = mmRemote()
+    remote.connect()
+    try:
+         mm.select_object_by_name(remote,partToDuplicate)
+         cmd  = mmapi.StoredCommands()
+         cmd.AppendBeginToolCommand('duplicate')
+         #cmd.AppendSceneCommand_SetObjectName(objects[0],newNameforOrig)
+         remote.runCommand(cmd)
+         remote.shutdown()
+         #cmd.AppendBeginToolCommand('duplicate')
+     
+         return True
+    except:
+        remote.shutdown() 
+        return False
 
 @meshWrapper
 def freeOrbit(x,y):
