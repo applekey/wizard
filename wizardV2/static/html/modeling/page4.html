@@ -29,42 +29,6 @@
             </ul>
 
             <br>
-            <div class="subControl">
-                <div id="wellText" class="panel panel-default" style="display: none;">
-                    <div class="panel-body">
-                        <div id="subText1" class="subText" acceptdisabled=1>
-                            <h3>Start</h3>
-                            <p> text <p>
-                        </div>
-                        <div id="subText2" apifunc="createDuplicate4()" class="subText" style="display: none;">
-                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
-                            <h3>Remesh  </h3>
-                            <hr>
-                            <p> msg here <p>
-
-                        </div>
-                        <div id="subText3" class="subText" style="display: none;" acceptdisabled=1>
-                            <h3>Finished </h3>
-                        </div>
-                    </div>
-                    <div class="panel-footer ">
-                        <div id="page40TemplateControls"> </div>
-                    </div>
-                    <script>
-                        $(document).ready(function () {
-                            $('#page40TemplateControls').html(Mustache.to_html(subControlTemplate, subControlValuesPage63));
-                        });
-                    </script>
-
-                </div>
-
-                <a id="activateButton" class="btn btn-info " role="button">
-                    <span class="glyphicon glyphicon-wrench"></span>Create checkpoind//reword
-                </a>
-
-            </div> <!-- subcontrol div -->
-            <br><br>
-		
 			<div class ="subControl">
 	<!-- 			step 1 -->
 				<div  id="wellText" class="panel panel-default" style="display: none;">
@@ -74,25 +38,32 @@
                             <hr>
                             <p>In the following steps, you will select a portion of the residual limb, using the "Brush Select" tool. First, an appropriate brush size (you can check the brush size by hovering your cursor over your model).<p>
                         </div>
-                        <div id="subText2"  apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptDisabled=1>
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= 'helpContainer.html'> </div>
+                        <div id="subText2" apifunc="createDuplicate4()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
+                            <h3>Create Checkpoint  </h3>
+                            <hr>
+                            <p> This will create a copy of your residual limb <p>
+
+                        </div>
+                        <div id="subText3" apifuncstart="shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptdisabled=1>
+                            <div class='questionMarkPlaceHolder' align='right' helppage='helpContainer.html'> </div>
                             <h3>Select Brush Size</h3>
                             <hr>
                             <div id="page4SelectTool"> </div>
                             <script>
-                            $( document ).ready(function() {
-                              $('#page4SelectTool').html(Mustache.to_html(template, SelectValues));
-                            });
-                             
+                                $(document).ready(function () {
+                                    $('#page4SelectTool').html(Mustache.to_html(template, SelectValues));
+                                });
+
                             </script>
                         </div>
-                        <div id="subText3" class="subText" acceptDisabled=1 style="display: none;">
+                        <div id="subText4" class="subText" acceptDisabled=1 style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Select Area to Rectify</h3>
                             <hr>
                             <p>Now use the Brush tool to colour in the area you would like to rectify.<p>
                         </div>
-    					<div id="subText4" 
+    					<div id="subText5" 
                          apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);"
                          class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
@@ -100,7 +71,7 @@
                             <hr>
     						<p>In this step, the boundary of your selected area will be smoothed, removing sharp edges or inconsistencies.<p>
     					</div>
-    					<div id="subText5" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+    					<div id="subText6" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align = 'right'> </div>
                             <h3>Offset </h3>
                             <hr>
@@ -121,7 +92,7 @@
                             </div>
     					</div>
                  
-                        <div id="subText6" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                        <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align = 'right'> </div>
                             <h3>Smooth</h3>
                             <hr>
@@ -137,7 +108,7 @@
 
                         </div>
     					
-                        <div id="subText7" apifuncstart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
+                        <div id="subText8" apifuncstart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Finished </h3>
                             <hr>
