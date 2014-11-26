@@ -257,27 +257,25 @@
          });
          function deleteModel()
          {
-             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             objectName = $(event.target).parent().text().split(/\s+/)[5] 
              $.post("api/deleteObjectByName('" + objectName + "')")
          }
 
          function renameModel() {
-             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             objectName = $(event.target).parent().text().split(/\s+/)[5]
              $.post("api/renameObjectByName('" + objectName + "')")
 
          }
 
          function hideModel()
          {
-             objectName = $(event.target).parent().text().split(/\s+/)[0]
+             objectName = $(event.target).parent().text().split(/\s+/)[5]
              $.post("api/hideObjectByName('" + objectName + "')")
 
          }
 
          function showModel() {
-             objectName = $(event.target).parent().text().split(/\s+/)[0]
-             if (objectName == '')
-             { debugger; }
+             objectName = $(event.target).parent().text().split(/\s+/)[5]
              console.log(objectName)
              $.post("api/showObjectByName('" + objectName + "')")
 
@@ -285,9 +283,7 @@
 
          function selectModel()
          {
-             objectName = $(event.target).parent().text().split(/\s+/)[0]
-             if (objectName == '')
-             { debugger;}
+             objectName = $(event.target).parent().text().split(/\s+/)[5]
              console.log(objectName)
             $.post("api/selectObjectByName('"+objectName+"')")
          }
@@ -332,33 +328,29 @@
                      $("#activeObjects").empty();
                      console.log(json)
                      $.each(json, function (index, data) {
-                         buttonSelect = "<button type='button' class='btn btn-default btn-sm' onclick='selectModel()'>\
+                         buttonSelect = "<button type='button' class='btn btn-default btn-xs' onclick='selectModel()'>\
                                        Select\
                                     </button>"
-                         buttonHide = "<button type='button' class='btn btn-default btn-sm' onclick='hideModel()'>\
+                         buttonHide = "<button type='button' class='btn btn-default btn-xs' onclick='hideModel()'>\
                                        Hide\
                                     </button>"
 
-                         buttonShow = "<button type='button' class='btn btn-default btn-sm' onclick='showModel()'>\
+                         buttonShow = "<button type='button' class='btn btn-default btn-xs' onclick='showModel()'>\
                                        Show\
                                     </button>"
 
-                         deleteShow = "<button type='button' class='btn btn-default btn-sm' onclick='deleteModel()'>\
+                         deleteShow = "<button type='button' class='btn btn-default btn-xs' onclick='deleteModel()'>\
                                        delete\
                                     </button>"
 
-                         renameButton = "<button type='button' class='btn btn-default btn-sm' >\
-                                       rename -- not connected yet\
-                                    </button>"
-
-                         debugger;
+                         renameButton = ''
                          if (data.indexOf("alignmentObject") >= 0)
                          {
-                             selectObjectString = String.format("<li><a><b>{1}</b> {2} {3} {4} {5} {6}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide,renameButton, deleteShow)
+                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} <b>{1}</b><\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
                          }
                          else
                          {
-                             selectObjectString = String.format("<li><a>{1} {2} {3} {4} {5} {6}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton,deleteShow)
+                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} {1}<\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
                          }
                          console.log(selectObjectString) 
                         $("#activeObjects").append(selectObjectString)

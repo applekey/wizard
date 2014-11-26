@@ -96,7 +96,7 @@
                             </div>
 
                         </div>
-                        <div id="subText3" apifunc=" $.post('api/separate()',apiReturnParser);" class="subText" style="display: none;">
+                        <div id="subText3" apifunc=" $.post('api/separate()',seperateAndRename);" class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Seperate</h3>
                             <p> choose the selected area <p>
@@ -208,6 +208,16 @@
 </div>
 
 <script>
+    function seperateAndRename(data)
+    {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/renameObjectByName('socket (part)','SeperateSocket')", apiReturnParser);
+        }
+    }
+
     function hideOrig5(data) {
         if (data == false) {
             apiReturnParser(data)
