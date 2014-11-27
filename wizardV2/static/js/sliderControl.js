@@ -36,6 +36,71 @@ function RemeshAcceptButton(id) {
     $(id).parent().find('#Distance')
 }
 
+function SmoothAcceptButton(id) {
+    var Smooth = $(id).parent().find('#Smooth').val()
+    $.post('api/deformSmooth(' + Smooth + ')', function (data) {
+        if (apiReturnParser(data) == false) {
+            return;
+        }
+
+        $.post('api/accept()', apiReturnParser)
+    })
+    $(id).parent().find('#Distance')
+}
+
+function RemeshAcceptButton(id) {
+    var Remesh = $(id).parent().find('#Remesh').val()
+    var Smooth = $(id).parent().find('#Smooth').val()
+    var Threshold = $(id).parent().find('#Threshold').val()
+    $.post('api/remesh(1,' + Remesh + ')', function (data) {
+        if (apiReturnParser(data) == false) {
+            return;
+        }
+
+        $.post('api/remesh(2,' + Smooth + ')', function (data) {
+            if (apiReturnParser(data) == false) {
+                return;
+            }
+            $.post('api/remesh(3,' + Threshold + ')', function (data) {
+                if (apiReturnParser(data) == false) {
+                    return;
+                }
+                $.post('api/accept()', apiReturnParser)
+            })
+        })
+    })
+    $(id).parent().find('#Distance')
+}
+
+
+function offsetAcceptButton(id,connected) {
+    var distance = $(id).parent().find('#Distance').val()
+    var softTrans = $(id).parent().find('#SoftTransition').val()
+    var condition = ''
+    if (connected)
+    {
+        condition = 'True'
+    }
+    else
+    {
+        condition = 'False'
+    }
+    $.post('offsetDistance(' + distance + ','+condition+')', function (data) {
+        if (apiReturnParser(data) == false) {
+            return;
+        }
+        $.post('api/softTransition(' + softTrans + ')', function (data) {
+            if (apiReturnParser(data) == false) {
+                return;
+            }
+            $.post('api/accept()', apiReturnParser)
+        })
+        
+    })
+    $(id).parent().find('#Distance')
+}
+
+
 var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
                         <button style='display: none;' id='hiddenAcceptButton' type='button' onclick={{acceptFunction}}>You should not able to see me</button>\
 					  	{{#sliders}}\
@@ -59,7 +124,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	sliders:[{
  		value:4.0,
  		sectionName: "Distance",
-        idName:"Distance",
+ 		idName: "Distance",
  		max: 10,
 		min: -10,
 		step:0.05,
@@ -67,13 +132,14 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	},
  	{
  		value:31,
- 		sectionName:"Soft Transition",
+ 		sectionName: "Soft Transition",
+ 		idName: "SoftTransition",
  		max: 50,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
  	}],
- 	acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
+ 	acceptFunction: "offsetAcceptButton(this,true)"
 	};
 
 
@@ -81,7 +147,8 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	mainControlName:"Offset",
  	sliders:[{
  		value:4.0,
- 		sectionName:"Distance",
+ 		sectionName: "Distance",
+ 		idName: "Distance",
  		max: 10,
 		min: 0,
 		step:0.05,
@@ -89,33 +156,36 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	},
  	{
  		value:31,
- 		sectionName:"Soft Transition",
+ 		sectionName: "Soft Transition",
+ 		idName: "SoftTransition",
  		max: 50,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
  	}]
-     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
+     , acceptFunction: "offsetAcceptButton(this,true)"
 	};
 
  var OffsetValues2 = {
 	mainControlName:"Offset",
 	sliders:[{
 		value:4.0,
-		sectionName:"Distance",
+		sectionName: "Distance",
+		idName: "Distance",
 		max: 10,
-	min: 0,
-	step:0.05,
+	    min: 0,
+	    step:0.05,
 	onchange: "$.post('api/offsetDistance('+$(this).val()+',False)',apiReturnParser)"
 	},
 	{
 		value:31,
-		sectionName:"Soft Transition",
+		sectionName: "Soft Transition",
+		idName: "SoftTransition",
 		max: 50,
-	min: 0,
-	step:0.05,
+	    min: 0,
+	    step:0.05,
 	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
-	, acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
+	, acceptFunction: "offsetAcceptButton(this,false)"
 	}]
 };
 
@@ -124,26 +194,28 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	mainControlName:"Smooth",
  	sliders:[{
  		value:0.5,
- 		sectionName:"Select Size",
+ 		sectionName: "Select Size",
+ 		idName: "Smooth",
  		max: 1.0,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/deformSmooth('+$(this).val()+')',apiReturnParser)"
  	}]
-     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
+     , acceptFunction: "SmoothAcceptButton(this)"
 	};
 //----------------------------------------------------------------------------------------------------------------------
  var SelectValues = {
  	mainControlName:"Select Size",
  	sliders:[{
  		value:7,
- 		sectionName:"Select Size",
+ 		sectionName: "Select Size",
+ 		idName: "Select",
  		max: 13.1,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/selectTool('+$(this).val()+')',apiReturnParser)"
  	}]
-     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
+     , acceptFunction: "SelectAcceptButton(this)"
 	};
 
 //----------------------------------------------------------------------------------------------------------------------
