@@ -7,15 +7,39 @@ $(document).on("change",".rangeSlider",function() {
 });
 
 
+function callAccept() {
+    $(event.target).parent().closest('.subControl').find('.subText').filter(':visible').find('button').click()
+}
+
+function OffsetValuesAllowNegativeAcceptFunction(id) {
+    debugger;
+    var softTransitionValue = $(id).parent().find('#Smooth')
+    $.post('api/softTransition(' + $(this).val() + ')', function (data) {
+        if(apiReturnParser(data) ==false)
+        {
+            return;
+        }
+
+        $.post('api/offsetDistance(' + $(this).val() + ',True)', function (data) {
+            if (apiReturnParser(data) == false) {
+                return;
+            }
+            $.post('api/accept()')
+        })
+    })
+    $(id).parent().find('#Distance')
+}
+
 var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
+                        <button style='display: none;' id='hiddenAcceptButton' type='button' onclick={{acceptFunction}}>You should not able to see me</button>\
 					  	{{#sliders}}\
 						    <h5> {{sectionName}}</h5>\
-							<div class='row' style='margin-left:3px;margin-right:3px;'>\
+							<div  class='row' style='margin-left:3px;margin-right:3px;'>\
 								<div class='col-xs-9'>\
 									<input class='rangeSlider' value={{value}} step = '{{step}}' min='{{min}}' max='{{max}}' type='range'>\
 								</div>\
 								<div class='col-xs-2' >\
-									<input class='fineNumber' onchange={{onchange}} value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
+									<input id = {{sectionName}} class='fineNumber' onchange={{onchange}} value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
 								</div>\
 								<div class='col-xs-1'>\
 									<p align='left'>mm </p>\
@@ -41,8 +65,11 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
- 	}]
+ 	}],
+ 	acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	};
+
+
  var OffsetValues = {
  	mainControlName:"Offset",
  	sliders:[{
@@ -61,6 +88,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 		step:0.05,
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
  	}]
+     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	};
 
  var OffsetValues2 = {
@@ -80,6 +108,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 	min: 0,
 	step:0.05,
 	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
+	, acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	}]
 };
 
@@ -94,6 +123,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 		step:0.05,
 		onchange: "$.post('api/deformSmooth('+$(this).val()+')',apiReturnParser)"
  	}]
+     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	};
 
  var SelectValues = {
@@ -106,6 +136,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 		step:0.05,
 		onchange: "$.post('api/selectTool('+$(this).val()+')',apiReturnParser)"
  	}]
+     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	};
 
 
@@ -113,7 +144,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	mainControlName:"Remesh",
  	sliders:[{
  		value:0,
- 		sectionName:"Remesh, Suggested Value: 0.5",
+ 		sectionName:"Remesh",
  		max: 1,
 		min: 0,
 		step:0.05,
@@ -121,7 +152,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	},
  	{
  		value:0,
- 		sectionName:"Smooth, Suggested Value: 0.5",
+ 		sectionName:"Smooth",
  		max: 1,
 		min: 0,
 		step:0.05,
@@ -129,13 +160,14 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  	},
  	{
  		value:0,
- 		sectionName:"Threshold, Suggested Value: 0.5",
+ 		sectionName:"Threshold",
  		max: 1,
 		min: 0,
 		step:0.05,
 		onchange: "$.post('api/remesh(3,'+$(this).val()+')',apiReturnParser)"	
  	}
  	]
+     , acceptFunction: "OffsetValuesAllowNegativeAcceptFunction(this)"
 	};
 
 

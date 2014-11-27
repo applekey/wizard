@@ -157,30 +157,30 @@
                             <h3>Start</h3>
                             <p> choose the selected area <p>
                         </div>
-                        <div id="subText2" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                        <div id="subText2" apifunc="callAccept()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Remesh  </h3>
                             <hr>
                             <p> msg here <p>
-                            <div id="page6_3Remesh"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_3Remesh').html(Mustache.to_html(template, RemeshValues));
-                            });
-                            </script>
+                                <div id="page6_3Remesh"> </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#page6_3Remesh').html(Mustache.to_html(template, RemeshValues));
+                                    });
+                                </script>
                         </div>
-    					<div id="subText3" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                        <div id="subText3" apifunc="callAccept()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Smooth  </h3>
                             <hr>
                             <p> msg here <p>
-    						<div id="page6_3Smooth"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_3Smooth').html(Mustache.to_html(template, SmoothValues));
-                            });
-                            </script>
-    					</div>
+                                <div id="page6_3Smooth"> </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#page6_3Smooth').html(Mustache.to_html(template, SmoothValues));
+                                    });
+                                </script>
+                        </div>
     					
     					<div id="subText4" class="subText" style="display: none;" acceptDisabled=1>
     						<h3>Finished </h3>
@@ -208,6 +208,9 @@
 </div>
 
 <script>
+   
+
+
     function seperateAndRename(data)
     {
         if (data == false) {
