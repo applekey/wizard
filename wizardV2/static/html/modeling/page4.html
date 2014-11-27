@@ -71,42 +71,44 @@
                             <hr>
     						<p>In this step, the boundary of your selected area will be smoothed, removing sharp edges or inconsistencies.<p>
     					</div>
-    					<div id="subText6" apiFunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class='questionMarkPlaceHolder' align = 'right'> </div>
+                        <div id="subText6" apifunc=" callAccept()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right'> </div>
                             <h3>Offset </h3>
                             <hr>
                             <p>Offset allows you to choose the distance of your relief or indent. For relief, either use the slider or the number entry box to select an appropriate offset, in measured in millimetres. For an indent, use the same method, but ensure that the number is negative.<p>
 
-                            <div id="page4Offset"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page4Offset').html(Mustache.to_html(template, OffsetValuesAllowNegative));
-                            });
-                             
-                            </script>
+                                <div id="page4Offset"> </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#page4Offset').html(Mustache.to_html(template, OffsetValuesAllowNegative));
+                                    });
 
-                            <div class='checkbox'>
-                                <label>
-                                    <input disabled='disabled' type='checkbox' checked> connected
-                                </label>
-                            </div>
-    					</div>
+                                </script>
+
+                                <div class='checkbox'>
+                                    <label>
+                                        <input disabled='disabled' type='checkbox' checked> connected
+                                    </label>
+                                </div>
+                        </div>
+
                  
-                        <div id="subText7" apifunc=" $.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class='questionMarkPlaceHolder' align = 'right'> </div>
+                        <div id="subText7" apifunc=" callAccept()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right'> </div>
                             <h3>Smooth</h3>
                             <hr>
                             <p>This tool will refine your offset, giving it a smoother transition. Adjust the slider or number entry box to change the level of smoothness. Changes you make in these fields will appear on your model, but will not be saved until you click the "Accept" button.<p>
 
-                            <div id="page5Smooth"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page5Smooth').html(Mustache.to_html(template, SmoothValues));
-                            });
-                             
-                            </script>
+                                <div id="page5Smooth"> </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#page5Smooth').html(Mustache.to_html(template, SmoothValues));
+                                    });
+
+                                </script>
 
                         </div>
+
     					
                         <div id="subText8" apifuncstart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>

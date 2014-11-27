@@ -76,26 +76,27 @@
                             <hr>
                             <p> fdsafasd <p>
                         </div>
-                        <div id="subText2" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
-                            <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
+                        <div id="subText2" apifunc="callAccept()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Offset  </h3>
                             <hr>
                             <p> msg here <p>
-                           <div id="page6_1Offset"> </div>
-                            <script>
-                            $( document ).ready(function() {
-                              $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
-                            });
-                             
-                            </script>
+                                <div id="page6_1Offset"> </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#page6_1Offset').html(Mustache.to_html(template, OffsetValues2));
+                                    });
 
-                            <div class='checkbox'>
-                                <label>
-                                    <input disabled='disabled' type='checkbox'> connected
-                                </label>
-                            </div>
+                                </script>
+
+                                <div class='checkbox'>
+                                    <label>
+                                        <input disabled='disabled' type='checkbox'> connected
+                                    </label>
+                                </div>
 
                         </div>
+
                         <div id="subText3" apifunc=" $.post('api/separate()',seperateAndRename);" class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Seperate</h3>
@@ -108,7 +109,7 @@
                             <p> choose the selected area <p>
                         </div>
 
-                        <div id="subText5" apiFunc="$.post('api/accept()',apiReturnParser);" class="subText" style="display: none;">
+                        <div id="subText5" apiFunc="callAccept()" class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Offset 2  </h3>
                             <hr>

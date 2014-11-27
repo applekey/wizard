@@ -85,7 +85,7 @@ function offsetAcceptButton(id,connected) {
     {
         condition = 'False'
     }
-    $.post('offsetDistance(' + distance + ','+condition+')', function (data) {
+    $.post('api/offsetDistance(' + distance + ',' + condition + ')', function (data) {
         if (apiReturnParser(data) == false) {
             return;
         }
@@ -185,8 +185,9 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 	    min: 0,
 	    step:0.05,
 	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
-	, acceptFunction: "offsetAcceptButton(this,false)"
+	
 	}]
+     , acceptFunction: "offsetAcceptButton(this,false)"
 };
 
 //----------------------------------------------------------------------------------------------------------------------
