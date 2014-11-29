@@ -14,14 +14,7 @@
                             <h3>Start</h3>
                             <p> fsdfsd <p>
                         </div>
-                        <div id="subText2" apifunc="createDuplicate5()" class="subText" style="display: none;">
-                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
-                            <h3>Create Check Point  </h3>
-                            <hr>
-                            <p>  This will create a copy of your rectified limb <p>
-
-                        </div>
-                        <div id="subText3" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptDisabled=1>
+                        <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptDisabled=1>
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Select Brush Size</h3>
                             <p> need message <p>
@@ -32,18 +25,18 @@
                             });
                             </script>
                         </div>
-    					<div  id="subText4"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
+    					<div  id="subText3"  apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);" class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
     						<h3>Smooth Boundary </h3>
     						<p> choose the selected area <p>
     					</div>
-    					<div id="subText5" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
+    					<div id="subText4" apiFunc=" $.post('api/createFaceGroup()',apiReturnParser);" class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
     						<h3>Create Face Group</h3>
     						<p> choose the selected area <p>
     					</div>
     					
-    					<div id="subText6" class="subText" style="display: none;" acceptDisabled=1>
+    					<div id="subText5" class="subText" style="display: none;" acceptDisabled=1>
     						<h3>Finished </h3>
     					</div>
 					</div>
@@ -199,7 +192,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span>Trim Line
+					 <span class="glyphicon glyphicon-wrench"></span> Cleanup
 				</a>
 				
 			</div> <!-- subcontrol div -->
@@ -218,7 +211,7 @@
             apiReturnParser(data)
         }
         else {
-            $.post("api/renameObjectByName('socket (part)','SeperateSocket')", apiReturnParser);
+            $.post("api/renameObjectByName('rectifiedLimb (part)','socket')", apiReturnParser);
         }
     }
 

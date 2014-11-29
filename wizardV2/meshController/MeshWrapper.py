@@ -5,7 +5,7 @@ from mmRemote import *
 import mm
 
 
-import win32ui
+import Tkinter, tkFileDialog
 
 def meshWrapper(func):
     def inner(*args, **kwargs): #1
@@ -81,9 +81,10 @@ class MeshWrapper(object):
 
     @staticmethod
     def importFile():
-        o = win32ui.CreateFileDialog( 1, ".obj", "", 0, "")
-        o.DoModal()
-        fileName= o.GetPathName()
+
+        root = Tkinter.Tk()
+        root.withdraw()
+        fileName= os.path.normpath(tkFileDialog.askopenfilename(filetypes=[("Obj Files","*.obj")])).encode('ascii','ignore')
         if fileName is not '':
             return MeshWrapper.importFigure(fileName) 
             

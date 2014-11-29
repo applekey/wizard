@@ -167,10 +167,10 @@ var subControlTemplate = "<h5> {{mainStep}}</h5>\
 						</div>\
 						<div class='col-xs-4'>\
 							<div id = 'backFowardCancel' class='btn-group' style='display: none;'' >\
-								<button type='button' id='backButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>\
-								<button type='button' id='acceptButton' class='btn btn-default'><span class='glyphicon glyphicon-ok'> Accept</span></button>\
-								<button type='button' id='fowardButton' class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>\
-								<!--<button type='button' id='cancelButton' class='btn btn-default'>Cancel</button>-->\
+								<button type='button' id='backButton' class='btn btn-default btn-sm'><span class='glyphicon glyphicon-chevron-left'></span></button>\
+								<button type='button' id='acceptButton' class='btn btn-default btn-sm'><span class='glyphicon glyphicon-ok'> Accept</span></button>\
+								<button type='button' id='fowardButton' class='btn btn-default btn-sm'><span class='glyphicon glyphicon-chevron-right'></span></button>\
+								<!--<button type='button' id='cancelButton' class='btn btn-default btn-sm'>Cancel</button>-->\
 							</div>\
 						</div>\
 					</div>"
