@@ -41,14 +41,14 @@ def calculateEigenVectors(filePath,downSampleCount):
 
     print '\n'
     print  V
-    #V = normalize(V,axis=0,norm='l2')
+    V = normalize(V,axis=0,norm='l2')
     V = linalg.inv(V)
     print '\n'
     print  V
     return V
     
 
-vector = calculateEigenVectors("C:\\Users\\applekey\\Desktop\\daleg.obj",0)
+vector = calculateEigenVectors("test.obj",0)
 
 [r,phi,delta] =calculateRotationAngles(vector)
 print r,phi,delta

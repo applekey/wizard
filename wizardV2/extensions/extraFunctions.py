@@ -7,6 +7,7 @@ from socket_names import *
 import json
 from orientedBoundingBox import *
 import numpy as np
+import math
 
 
 
@@ -19,9 +20,9 @@ def reOrientModel():
     print rotationVector
 
     ## make another 270 degree rotation about y axis
-    angle = 270.0
-    yRotation = np.matrix([[math.cos(angle), 0,-sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
-    rotationVector = yRotation*rotationVector
+    angle = 180.0
+    yRotation = np.matrix([[math.cos(angle), 0,-math.sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
+    
     rotation =[]
     a=rotationVector.item((0,0))
     b=rotationVector.item((0,1))
