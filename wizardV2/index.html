@@ -263,7 +263,11 @@
          function deleteModel(event)
          {
              objectName = $(event.target).parent().find('#name').text()
-             $.post("api/deleteObjectByName('" + objectName + "')")
+             if (confirm("Delete "+objectName+"?") == true) {
+                 $.post("api/deleteObjectByName('" + objectName + "')")
+             }
+             
+            
          }
 
          function renameModel(event) {
@@ -352,11 +356,11 @@
                          renameButton = ''
                          if (data.indexOf("alignmentObject") >= 0)
                          {
-                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} <div id='name'><b>{1}</b></div><\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
+                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} <span id='name'><b>{1}</b></span><\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
                          }
                          else
                          {
-                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} <div id= 'name'>{1}</div><\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
+                             selectObjectString = String.format("<li><a> {2} {3} {4} {5} {6} <span id= 'name'>{1}</span><\/a><\/li>", data, data, buttonSelect, buttonShow, buttonHide, renameButton, deleteShow)
                          }
                          console.log(selectObjectString) 
                         $("#activeObjects").append(selectObjectString)
