@@ -121,7 +121,7 @@
                             "getAllObjects()" type="button"><span class=
                             "caret"></span>Objects</button>
 
-                            <ul class="dropdown-menu" id="activeObjects">
+                            <ul class="dropdown-menu pull-right" id="activeObjects">
                                 <li>
                                     <a tabindex="-1">No Objects</a>
                                 </li>
@@ -260,33 +260,33 @@
              pageWithoutHash = pageNumber.substr(1, length - 1)
              goToPage(pageWithoutHash)
          });
-         function deleteModel()
+         function deleteModel(event)
          {
              objectName = $(event.target).parent().text().split(/\s+/)[5] 
              $.post("api/deleteObjectByName('" + objectName + "')")
          }
 
-         function renameModel() {
+         function renameModel(event) {
              objectName = $(event.target).parent().text().split(/\s+/)[5]
              $.post("api/renameObjectByName('" + objectName + "')")
 
          }
 
-         function hideModel()
+         function hideModel(event)
          {
              objectName = $(event.target).parent().text().split(/\s+/)[5]
              $.post("api/hideObjectByName('" + objectName + "')")
 
          }
 
-         function showModel() {
+         function showModel(event) {
              objectName = $(event.target).parent().text().split(/\s+/)[5]
              console.log(objectName)
              $.post("api/showObjectByName('" + objectName + "')")
 
          }
 
-         function selectModel()
+         function selectModel(event)
          {
              objectName = $(event.target).parent().text().split(/\s+/)[5]
              console.log(objectName)
@@ -333,18 +333,18 @@
                      $("#activeObjects").empty();
                      console.log(json)
                      $.each(json, function (index, data) {
-                         buttonSelect = "<button type='button' class='btn btn-default btn-xs' onclick='selectModel()'>\
+                         buttonSelect = "<button type='button' class='btn btn-default btn-xs' onclick='selectModel(event)'>\
                                        Select\
                                     </button>"
-                         buttonHide = "<button type='button' class='btn btn-default btn-xs' onclick='hideModel()'>\
+                         buttonHide = "<button type='button' class='btn btn-default btn-xs' onclick='hideModel(event)'>\
                                        Hide\
                                     </button>"
 
-                         buttonShow = "<button type='button' class='btn btn-default btn-xs' onclick='showModel()'>\
+                         buttonShow = "<button type='button' class='btn btn-default btn-xs' onclick='showModel(event)'>\
                                        Show\
                                     </button>"
 
-                         deleteShow = "<button type='button' class='btn btn-default btn-xs' onclick='deleteModel()'>\
+                         deleteShow = "<button type='button' class='btn btn-default btn-xs' onclick='deleteModel(event)'>\
                                        delete\
                                     </button>"
 

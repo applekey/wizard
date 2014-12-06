@@ -18,6 +18,9 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="meshController\orientedBoundingBox.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="meshController\socket_names.py">
       <SubType>Code</SubType>
     </Compile>

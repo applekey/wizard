@@ -28,13 +28,13 @@
 							<hr>
 							<p>Select a small area on the distal end of the limb. A semi-transparent version of the model will appear, showing a preview of the new alignment. If the alignment does not look appropriate, simply draw select a new area.<p>
 						</div>
-						<div id="subText3" apiFuncStart= "$.post('api/cancel()',apiReturnParser); " 
-						apiFunc=" $.post('api/alignZCam()',apiReturnParser);" class="subText" style="display: none;">
-							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Reset Camera</h3>
-							<hr>
-							<p>This step will recentre the camera, so that the socket is centred.<p>
-						</div>
+                        <div id="subText3" apifuncstart="$.post('api/cancel()',apiReturnParser); "
+                             apifunc="orientModel()" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
+                            <h3>Reset Camera</h3>
+                            <hr>
+                            <p>This step will recentre the camera, so that the socket is centred.<p>
+                        </div>
 	                    <div id="subText4" apifunc=" $.post('api/accept()',apiReturnParser);"
 	                     apiFuncStart= "$.post('api/alignTransform()',apiReturnParser); "
 	                     class="subText" style="display: none;">
@@ -69,3 +69,18 @@
 	</div>
 
 </div>
+
+<script>
+
+    function reOrientModel(data)
+    {
+        $.post('api/reOrientModel()', apiReturnParser);
+        
+    }
+
+    function orientModel()
+    {
+        $.post('api/exportTempModel()', reOrientModel);
+    }
+
+</script>

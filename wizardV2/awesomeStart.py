@@ -10,6 +10,7 @@ import cherrypy
 ##some imports to make pyinstaller work
 
 
+
 web = False
 
 if web == False:
@@ -100,7 +101,13 @@ browser.start()
 if web == False:
     startUp()
 
+
 print 'Semaphore MeshMixer Controller is now working at' 
 print str(url)
 print "Please don't close this window"
 run(server='cherrypy',host='localhost', quiet=True,port=myport,debug=False)
+
+
+
+
+

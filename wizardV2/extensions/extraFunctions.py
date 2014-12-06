@@ -5,6 +5,64 @@ import connector
 import socket_util
 from socket_names import *
 import json
+from orientedBoundingBox import *
+import numpy as np
+
+
+
+def reOrientModel():
+    cwd =os.getcwd()
+    tmpDirectory = os.path.join(cwd,'tmp')
+    fileName = os.path.join(tmpDirectory,'tmp.obj')
+    xRow,yRow,zRow,rotationVector = calculateEigenVectors(fileName,0)
+    print 'here'
+    print rotationVector
+
+    ## make another 270 degree rotation about y axis
+    angle = 270.0
+    yRotation = np.matrix([[math.cos(angle), 0,-sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
+    rotationVector = yRotation*rotationVector
+    rotation =[]
+    a=rotationVector.item((0,0))
+    b=rotationVector.item((0,1))
+    c=rotationVector.item((0,2)) 
+    d= rotationVector.item((1,0))
+    e =rotationVector.item((1,1))
+    f=rotationVector.item((1,2))  
+    g=rotationVector.item((2,0))
+    h=rotationVector.item((2,1))
+    i=rotationVector.item((2,2)) 
+    
+    remote = mmRemote()
+    remote.connect()
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('transform')
+    cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
+    remote.runCommand(cmd)
+    remote.shutdown()
+
+    os.remove (fileName)
+    # delete tmp model
+
+    return True
+    #[r,phi,delta] =calculateRotationAngles(rotationVector)
+
+    #calculateMax(xRow,yRow,zRow,rotationVector)
+    ## be sure to delete tmp directory
+
+@meshWrapper
+def exportTempModel():
+    cmd  = mmapi.StoredCommands()
+    cwd =os.getcwd()
+    tmpDirectory = os.path.join(cwd,'tmp')
+    if not os.path.exists(tmpDirectory):
+        os.makedirs(tmpDirectory)
+    fileName = os.path.join(tmpDirectory,'tmp.obj')
+    cmd.AppendSceneCommand_ExportMeshFile_CurrentSelection(fileName)
+    return cmd
+    
+    
+
 
 ## use extensionFunction()
 def importFile(fileLocation = None,folder=None):
