@@ -8,7 +8,7 @@ import json
 from orientedBoundingBox import *
 import numpy as np
 import math
-
+import os
 
 
 def reOrientModel():
@@ -68,7 +68,7 @@ def exportTempModel():
 ## use extensionFunction()
 def importFile(fileLocation = None,folder=None):
     if fileLocation != None and folder != None:
-        currentPath = os.getcwd() + '\\'+ folder+ '\\'+fileLocation
+        currentPath = os.path.join(os.getcwd(), folder,fileLocation)
         if os.path.isfile(currentPath):
             return MeshWrapper.importFigure(currentPath)
         else:

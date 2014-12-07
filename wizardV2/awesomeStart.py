@@ -24,11 +24,14 @@ if web == False:
 
 @route('/upload', method='POST')
 def do_upload():
-    upload     = request.files.get('upload')
+    upload = request.files.get('upload')
     wkdir = os.getcwd()
-    path = os.path.join(wkdir,upload.filename.encode('ascii','ignore'))
-    upload.save(wkdir) # appends upload.filename automatically
-    return 'OK'
+    uploadDir = os.path.join(wkdir,'upload')
+    if not os.path.exists(uploadDir):
+        os.makedirs(uploadDir)
+    
+    upload.save(uploadDir,overwrite=True) # appends upload.filename automatically
+    return upload.filename
 
 @route('/index')
 def hello():

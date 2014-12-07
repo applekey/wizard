@@ -42,7 +42,7 @@
                         cache: false,
                         processData: false,
                         success: function (data, textStatus, jqXHR) {
-
+                            $.post("api/importFile('" + data + "','upload')", secondStage);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                         }
@@ -52,7 +52,6 @@
                 });
 
                 $("#importBT").click(function () {
-                    debugger;
                     $("#ajaxform").submit();
 				    //$.post("api/importFile()", secondStage);
 				});
