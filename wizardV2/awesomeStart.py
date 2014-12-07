@@ -22,7 +22,13 @@ if web == False:
     from MeshWrapper import  *
     from connector import *
 
-
+@route('/upload', method='POST')
+def do_upload():
+    upload     = request.files.get('upload')
+    wkdir = os.getcwd()
+    path = os.path.join(wkdir,upload.filename.encode('ascii','ignore'))
+    upload.save(wkdir) # appends upload.filename automatically
+    return 'OK'
 
 @route('/index')
 def hello():

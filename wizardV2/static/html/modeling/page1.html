@@ -16,13 +16,45 @@
 		</ul>
 		<br>
 		<br>
+        <form id="ajaxform"  action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" name="upload" />
+            </div>
+        </form>
 		
 			<a id="importBT" class="btn btn-info " role="button">
 				 <span class="glyphicon glyphicon-folder-open"></span> Import
 			</a>
 			<script>
-				$("#importBT").click(function(){
-				    $.post("api/importFile()", secondStage);
+
+                $("#ajaxform").submit(function (e) {
+
+                    var formObj = $(this);
+                    var formURL = formObj.attr("action");
+                    var formData = new FormData(this);
+                    $.ajax({
+                        url: formURL,
+                        type: 'POST',
+                        data: formData,
+                        mimeType: "multipart/form-data",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data, textStatus, jqXHR) {
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                        }
+                    });
+                    e.preventDefault(); //Prevent Default action. 
+                    e.unbind();
+                });
+
+                $("#importBT").click(function () {
+                    debugger;
+                    $("#ajaxform").submit();
+				    //$.post("api/importFile()", secondStage);
 				});
 			</script>
 
