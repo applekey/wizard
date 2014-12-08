@@ -19,7 +19,7 @@
         <form id="ajaxform"  action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputFile">File input</label>
-                <input type="file" name="upload" />
+                <input type="file" name="upload" accept=".obj" />
             </div>
         </form>
 		
@@ -53,6 +53,7 @@
 
                 $("#importBT").click(function () {
                     $("#ajaxform").submit();
+                    alert('processing please wait')
 				    //$.post("api/importFile()", secondStage);
 				});
 			</script>
