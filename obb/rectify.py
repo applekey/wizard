@@ -30,29 +30,29 @@ def calculateEigenVectors(filePath,downSampleCount):
 
     a = np.matrix([xRow,yRow,zRow])
 
-    print a
-
     a= np.cov(a)
-
-
+    print a
     print '\n'
+
     L, V = linalg.eig(a)
-    print L
-
-    print '\n'
-    print  V
-    V = normalize(V,axis=0,norm='l2')
+    #V = normalize(V,axis=0,norm='l2')
+    V = np.fliplr(V)
     V = linalg.inv(V)
-    print '\n'
-    print  V
+    print linalg.det(V)
+    angle = m.pi/2
+    yRotation = np.matrix([[m.cos(angle), 0,-m.sin(angle)], [0, 1.0,0],[m.sin(angle), 0.0,m.cos(angle)]])
+    xRotation =np.matrix([[1.0, 0,0], [0, m.cos(angle),-m.sin(angle)],[0, m.sin(angle),m.cos(angle)]])
+    zRotation =np.matrix([[m.cos(angle), -m.sin(angle),0], [m.sin(angle), m.cos(angle),0],[0, 0,1]]) 
+    V = np.dot(zRotation,V)
+    print 'ofk'
+
+    print L 
+    print V
     return V
     
 
-vector = calculateEigenVectors("test.obj",0)
+vector = calculateEigenVectors("daleg.obj",0)
 
-[r,phi,delta] =calculateRotationAngles(vector)
-print r,phi,delta
-print m.degrees(r),m.degrees(phi),m.degrees(delta)
 
 f = open("output.obj",'w')
 

@@ -9,6 +9,10 @@ from orientedBoundingBox import *
 import numpy as np
 import math
 import os
+import numpy.linalg as linalg
+
+
+
 
 
 def reOrientModel():
@@ -16,12 +20,16 @@ def reOrientModel():
     tmpDirectory = os.path.join(cwd,'tmp')
     fileName = os.path.join(tmpDirectory,'tmp.obj')
     xRow,yRow,zRow,rotationVector = calculateEigenVectors(fileName,0)
-    print 'here'
-    print rotationVector
 
     ## make another 270 degree rotation about y axis
-    angle = 180.0
+    angle = math.pi
     yRotation = np.matrix([[math.cos(angle), 0,-math.sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
+    xRotation =np.matrix([[1.0, 0,0], [0, m.cos(angle),-m.sin(angle)],[0, m.sin(angle),m.cos(angle)]])
+    zRotation =np.matrix([[math.cos(angle), -math.sin(angle),0], [math.sin(angle), math.cos(angle),0],[0, 0,1]]) 
+
+    ## calculate the det to see if transformation is affine
+    #rotationVector = np.dot(yRotation,rotationVector)
+   
     
     rotation =[]
     a=rotationVector.item((0,0))

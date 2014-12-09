@@ -8,6 +8,9 @@ import win32ui
 import re
 import cherrypy
 ##some imports to make pyinstaller work
+import numpy as np
+import numpy.linalg as linalg
+
 
 
 
@@ -21,6 +24,7 @@ if web == False:
     from extensionController import *
     from MeshWrapper import  *
     from connector import *
+    from orientedBoundingBox import *
 
 @route('/upload', method='POST')
 def do_upload():

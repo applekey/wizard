@@ -32,6 +32,18 @@ def calculateRotationAngles(eigenVectors):
     zaxisrotateion = m.atan2(eigenVectors.item((1,0))/m.cos(zaxisrotation),eigenVectors.item((0,0))/m.cos(zaxisrotation))       
     return   zaxisrotation,  xaxisrotatfdsaion,   zaxisrotateion   
 
+
+def numpyRollColumn(matrix):
+    newMatrix = np.array(matrix, copy=True)  
+    numberOfColumns = len(newMatrix[0,:])
+    
+    tmp = np.copy(newMatrix[:,0])
+    for column in range(numberOfColumns-1):
+        newMatrix[:,column] = newMatrix[:, column+1]
+    newMatrix[:,numberOfColumns-1] = tmp
+    return newMatrix
+
+
 def calculateEigenVectors(filePath,downSampleCount): 
 
     xRow =[]
@@ -66,6 +78,36 @@ def calculateEigenVectors(filePath,downSampleCount):
     print '\n'
     print  V
     #V = normalize(V,axis=0,norm='l2')
+    orig = np.copy(V)
+    solved =False
+    if linalg.det(V) > 0:
+        solved =True
+    else:
+        for ordering in range(2):
+             V = numpyRollColumn(V)
+             if linalg.det(V) > 0:
+                 solved =True
+                 break
+        # reverse and do the same
+        V = orig
+        if solved == False:
+            V = np.fliplr(V)
+            if linalg.det(V) > 0:
+                solved =True
+            else:
+                for ordering in range(3):
+                        V = numpyRollColumn(V)
+                        print V
+                        print '\n'
+                        if linalg.det(V) > 0:
+                            solved =True
+                            break
+    if solved == False:
+        raise Exception('i am bad')
+
+    print linalg.det(V)
+
+
     V = linalg.inv(V)
     print '\n'
     print  V
