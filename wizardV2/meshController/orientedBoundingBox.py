@@ -44,6 +44,12 @@ def numpyRollColumn(matrix):
     return newMatrix
 
 
+def rollMaxIndex(currentIndex):
+    if currentIndex==2:
+        return 0
+    else:
+        return currentIndex +1
+
 def calculateEigenVectors(filePath,downSampleCount): 
 
     xRow =[]
@@ -66,17 +72,24 @@ def calculateEigenVectors(filePath,downSampleCount):
 
     a = np.matrix([xRow,yRow,zRow])
 
+    xAvg = np.average(a[0,:])
+    yAvg = np.average(a[1,:])
+    zAvg = np.average(a[2,:])
+
+    print xAvg
+    print yAvg
+    print zAvg
+
     print a
 
     a= np.cov(a)
 
 
-    print '\n'
     L, V = linalg.eig(a)
-    print L
+    maxIndex = np.argmax(L)
 
-    print '\n'
-    print  V
+
+
     #V = normalize(V,axis=0,norm='l2')
     orig = np.copy(V)
     solved =False
@@ -84,6 +97,7 @@ def calculateEigenVectors(filePath,downSampleCount):
         solved =True
     else:
         for ordering in range(2):
+             maxIndex = rollMaxIndex(maxIndex)
              V = numpyRollColumn(V)
              if linalg.det(V) > 0:
                  solved =True
@@ -91,27 +105,40 @@ def calculateEigenVectors(filePath,downSampleCount):
         # reverse and do the same
         V = orig
         if solved == False:
+            maxIndex = np.argmax(L)
             V = np.fliplr(V)
+            if maxIndex ==0:
+                maxIndex = 2
+            elif maxIndex ==2:
+                maxIndex = 0
+
             if linalg.det(V) > 0:
                 solved =True
             else:
-                for ordering in range(3):
-                        V = numpyRollColumn(V)
-                        print V
-                        print '\n'
-                        if linalg.det(V) > 0:
-                            solved =True
-                            break
+                for ordering in range(2):
+                    maxIndex = rollMaxIndex(maxIndex)
+                    V = numpyRollColumn(V)
+                    if linalg.det(V) > 0:
+                        solved =True
+                        break
     if solved == False:
         raise Exception('i am bad')
 
     print linalg.det(V)
 
+    print maxIndex
+
+    xRot = False
+    zRot = False
+    if maxIndex == 0:  ## rotation around Z
+        zRot = True
+    elif maxIndex == 2:
+        xRot = True
+
+
 
     V = linalg.inv(V)
-    print '\n'
-    print  V
-    return xRow,yRow,zRow,V
+    return xRot,zRot,V
     
 
 #xRow,yRow,zRow,rotationVector = calculateEigenVectors("C:\\Users\\applekey\\Desktop\\daleg.obj",0)

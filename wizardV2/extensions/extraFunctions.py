@@ -19,16 +19,20 @@ def reOrientModel():
     cwd =os.getcwd()
     tmpDirectory = os.path.join(cwd,'tmp')
     fileName = os.path.join(tmpDirectory,'tmp.obj')
-    xRow,yRow,zRow,rotationVector = calculateEigenVectors(fileName,0)
+    xRot,yRot,rotationVector = calculateEigenVectors(fileName,0)
 
     ## make another 270 degree rotation about y axis
-    angle = math.pi
-    yRotation = np.matrix([[math.cos(angle), 0,-math.sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
+    angle = math.pi/2
+    #yRotation = np.matrix([[math.cos(angle), 0,-math.sin(angle)], [0, 1.0,0],[math.sin(angle), 0,math.cos(angle)]])
     xRotation =np.matrix([[1.0, 0,0], [0, m.cos(angle),-m.sin(angle)],[0, m.sin(angle),m.cos(angle)]])
     zRotation =np.matrix([[math.cos(angle), -math.sin(angle),0], [math.sin(angle), math.cos(angle),0],[0, 0,1]]) 
 
     ## calculate the det to see if transformation is affine
-    #rotationVector = np.dot(yRotation,rotationVector)
+
+    if xRot:
+        rotationVector = np.dot(xRotation,rotationVector)
+    elif zRot:
+        rotationVector = np.dot(zRotation,rotationVector)
    
     
     rotation =[]
