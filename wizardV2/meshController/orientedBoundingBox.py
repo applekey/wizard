@@ -138,7 +138,7 @@ def calculateEigenVectors(filePath,downSampleCount):
 
 
     V = linalg.inv(V)
-    return xRot,zRot,V
+    return xAvg,yAvg,zAvg,xRot,zRot,V
     
 
 #xRow,yRow,zRow,rotationVector = calculateEigenVectors("C:\\Users\\applekey\\Desktop\\daleg.obj",0)

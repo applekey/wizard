@@ -19,7 +19,7 @@ def reOrientModel():
     cwd =os.getcwd()
     tmpDirectory = os.path.join(cwd,'tmp')
     fileName = os.path.join(tmpDirectory,'tmp.obj')
-    xRot,yRot,rotationVector = calculateEigenVectors(fileName,0)
+    xAvg,yAvg,zAvg,xRot,yRot,rotationVector = calculateEigenVectors(fileName,0)
 
     ## make another 270 degree rotation about y axis
     angle = math.pi/2
@@ -46,11 +46,13 @@ def reOrientModel():
     h=rotationVector.item((2,1))
     i=rotationVector.item((2,2)) 
     
+    divisor= 100.0
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('transform')
     cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
+    #cmd.AppendToolParameterCommand('translation',-xAvg/divisor,-yAvg/divisor,-zAvg/divisor)
     remote.runCommand(cmd)
     remote.shutdown()
 
