@@ -13,7 +13,6 @@ import numpy.linalg as linalg
 
 
 
-
 web = False
 
 if web == False:
@@ -101,7 +100,7 @@ class BrowserOpen(Thread):
         myport = 1343
         global url
         url = 'http://localhost:' +str(myport)+'/boot'
-        #webbrowser.open(url,new=1,autoraise=True)
+        webbrowser.open(url,new=1,autoraise=True)
      
 def startUp():
     global extensions

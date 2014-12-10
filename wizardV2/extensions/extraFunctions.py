@@ -19,7 +19,7 @@ def reOrientModel():
     cwd =os.getcwd()
     tmpDirectory = os.path.join(cwd,'tmp')
     fileName = os.path.join(tmpDirectory,'tmp.obj')
-    xAvg,yAvg,zAvg,xRot,yRot,rotationVector = calculateEigenVectors(fileName,0)
+    xAvg,yAvg,zAvg,xRot,zRot,rotationVector = calculateEigenVectors(fileName,0)
 
     ## make another 270 degree rotation about y axis
     angle = math.pi/2
@@ -49,10 +49,10 @@ def reOrientModel():
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands( )
-    result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
-    xAvg = result[0]
-    yAvg = result[1]
-    zAvg = result[2]
+    #result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
+    #xAvg = result[0]
+    #yAvg = result[1]
+    #zAvg = result[2]
     
     print xAvg 
     print yAvg
@@ -61,7 +61,7 @@ def reOrientModel():
     cmd.AppendBeginToolCommand('transform')
     cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
 
-    cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
+    #cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
     cmd.AppendCompleteToolCommand('accept')
     remote.runCommand(cmd)
     remote.shutdown()
@@ -93,6 +93,7 @@ def exportTempModel():
 def importFile(fileLocation = None,folder=None):
     if fileLocation != None and folder != None:
         currentPath = os.path.join(os.getcwd(), folder,fileLocation)
+        print currentPath
         if os.path.isfile(currentPath):
             return MeshWrapper.importFigure(currentPath)
         else:
