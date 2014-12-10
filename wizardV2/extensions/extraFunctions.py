@@ -50,9 +50,16 @@ def reOrientModel():
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands()
+    result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
+    xAvg = result[0]
+    yAvg = result[1]
+    zAvg = result[2]
+    
+    
     cmd.AppendBeginToolCommand('transform')
     cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
-    #cmd.AppendToolParameterCommand('translation',-xAvg/divisor,-yAvg/divisor,-zAvg/divisor)
+
+    cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
     remote.runCommand(cmd)
     remote.shutdown()
 

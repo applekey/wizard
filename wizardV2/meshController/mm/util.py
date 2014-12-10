@@ -70,3 +70,9 @@ def find_ray_hit(remote, ray_origin, ray_direction):
     hitFrame = mmFrame()
     hitFrame.setFromMM(frame)
     return (bOK, hitFrame)
+
+
+def select_inside_sphere(remote, sphere_center, sphere_radius):
+    cmd = mmapi.StoredCommands()
+    cmd.AppendSelectCommand_InsideSphere( sphere_center[0],sphere_center[1],sphere_center[2], sphere_radius )
+    remote.runCommand(cmd)

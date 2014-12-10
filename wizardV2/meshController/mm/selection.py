@@ -23,16 +23,6 @@ def selection_utility_command(remote, command_name):
     remote.runCommand(cmd)
 
 
-
-def list_selected_facegroups(remote):
-    cmd = mmapi.StoredCommands()
-    k = cmd.AppendSelectCommand_ListSelectedFaceGroups()
-    remote.runCommand(cmd)
-    vgroups = mmapi.vectori();
-    cmd.GetSelectCommandResult_ListSelectedFaceGroups(k, vgroups)
-    return vectori_to_list(vgroups)
-
-
 def select_facegroups(remote, groups_list):
     """select facegroups"""
     cmd = mmapi.StoredCommands()
@@ -42,13 +32,5 @@ def select_facegroups(remote, groups_list):
     cmd2 = mmapi.StoredCommands()
     cmd2.AppendSelectCommand_ByFaceGroups(vgroups)
     remote.runCommand(cmd2)
-
-
-
-def select_hit_triangle(remote, ray_origin, ray_direction):
-    cmd = mmapi.StoredCommands()
-    key = cmd.AppendSelectCommand_FirstTriangleIntersectingRay(ray_origin[0], ray_origin[1], ray_origin[2], ray_direction[0], ray_direction[1], ray_direction[2])
-    remote.runCommand(cmd)
-
 
     

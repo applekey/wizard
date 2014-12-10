@@ -10,7 +10,6 @@ cmd = mmapi.StoredCommands()
 cmd.AppendBeginToolCommand("planeCut")
 cmd.AppendCompleteToolCommand("accept")
 
-
 # execute  commands
 remote.runCommand(cmd);
 

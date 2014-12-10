@@ -57,12 +57,14 @@ def get_toolparam(remote, param_name):
 
 
 
-def tool_utility_command(remote, command_name):
-    """run tool utility command"""
+def tool_utility_command(remote, command_name, arg = -99):
+    """run tool utility command, with optional argument"""
     cmd = mmapi.StoredCommands()
-    cmd.AppendToolUtilityCommand( command_name )
+    if ( isinstance(arg, int) and arg == -99 ):
+        cmd.AppendToolUtilityCommand( command_name )
+    else:
+        cmd.AppendToolUtilityCommand( command_name, arg )
     remote.runCommand(cmd)
-
 
 
 def toolquery_new_groups(remote):

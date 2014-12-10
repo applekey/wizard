@@ -1,3 +1,18 @@
+/********************************************************************
+ * (C) Copyright 2014 by Autodesk, Inc. All Rights Reserved. By using
+ * this code,  you  are  agreeing  to the terms and conditions of the
+ * License  Agreement  included  in  the documentation for this code.
+ * AUTODESK  MAKES  NO  WARRANTIES,  EXPRESS  OR  IMPLIED,  AS TO THE
+ * CORRECTNESS OF THIS CODE OR ANY DERIVATIVE WORKS WHICH INCORPORATE
+ * IT.  AUTODESK PROVIDES THE CODE ON AN 'AS-IS' BASIS AND EXPLICITLY
+ * DISCLAIMS  ANY  LIABILITY,  INCLUDING CONSEQUENTIAL AND INCIDENTAL
+ * DAMAGES  FOR ERRORS, OMISSIONS, AND  OTHER  PROBLEMS IN THE  CODE.
+ *
+ * Use, duplication,  or disclosure by the U.S. Government is subject
+ * to  restrictions  set forth  in FAR 52.227-19 (Commercial Computer
+ * Software Restricted Rights) as well as DFAR 252.227-7013(c)(1)(ii)
+ * (Rights  in Technical Data and Computer Software),  as applicable.
+ *******************************************************************/
 #ifndef _MM_STORED_COMMANDS_H__
 #define _MM_STORED_COMMANDS_H__
 
@@ -161,6 +176,7 @@ public:
 		"makePattern"			- Make pattern tool
 		"makeSlices"			- Make Slices tool
 		"separateShells"		- Separate Shells tool
+		"addTube"				- Add Tube tool
 
 		"combine"				- Combine tool (multiple selected objects)
 		"union"					- Boolean Union 
@@ -175,6 +191,10 @@ public:
 		"overhangs"				- Overhangs/Support-Generation tool
 		"slicing"				- Slicing analysis tool
 		"thickness"				- Thickness analysis tool
+		"orientation"			- Orientation optimization tool
+		"layout"				- Print Bed layout/packing tool
+		"deviation"				- Deviation measurement between two selected meshes
+		"clearance"				- Clearance measurement between two selected meshes
 	 *
 	 */
 	void AppendBeginToolCommand( std::string toolName );
@@ -228,10 +248,14 @@ public:
 			"replaceType" : integer   values:  MinimalFill = 0, FlatRefinedMesh = 1, MVCPlanarDeformation = 2
 		[discard]			- Discard tool
 		[reduce]			- Reduce tool
-			"density" : float 
+			"percentage" : float 
+			"maxDeviation" : float 
+			"maxDeviationWorld" : float 
 			"smooth" : float 
 			"normalThreshold" : float 
-			"reduceType" : integer  values: Uniform = 0,	 Adaptive_Normal = 1
+			"goalType" : integer			Percentage = 0, TriangleBudget = 1,	MaxDeviation = 2
+			"triangleCount" : integer 
+			"reduceMetric" : integer		Uniform = 0, QuadricError = 1
 			"preserveGroups" : boolean 
 			"preserveBoundary" : boolean 
 			"adaptive" : boolean 
@@ -303,18 +327,26 @@ public:
 			"reduceType" : integer 
 		[faceTransform]		- Transform tool
 			"harden" : float 
+			"pivotFrameMode" : integer 
+			"sharedFrame" : boolean 
 			"origin" : vector3f 
 			"translation" : vector3f 
 			"scale" : vector3f 
 			"rotation" : matrix3f 
 		[softTransform]		- Soft Transform tool
-			"density" : float 
-			"smooth" : float 
-			"normalThreshold" : float 
-			"reduceType" : integer 
-			"preserveGroups" : boolean 
-			"preserveBoundary" : boolean 
-			"adaptive" : boolean 
+			"falloffDistance" : float 
+			"falloffDistanceWorld" : float 
+			"pivotFrameMode" : integer 
+			"boundaryContinuity" : integer 
+			"transitionType" : integer 
+			"sharedFrame" : boolean 
+			"refineMesh" : boolean 
+			"holdBoundary" : boolean 
+			"falloffFixed" : boolean 
+			"origin" : vector3f 
+			"translation" : vector3f 
+			"scale" : vector3f 
+			"rotation" : matrix3f  
 		[warp]				- Warp tool
 
 		[createFaceGroup]	- Create new FaceGroup for selection
@@ -324,13 +356,14 @@ public:
 			"preserveShape" : float 
 			"iterations" : integer 
 			"expandLoops" : integer 
-
+			"preserveBoundary" : boolean 
 		[mirror]				- Mirror tool
 			"origin" : vector3f 
 			"normal" : vector3f 
 			"rotation" : matrix3f 
 		[duplicate]				- Duplicate tool
 		[transform]				- Transform tool
+			"pivotFrameMode" : integer 
 			"origin" : vector3f 
 			"translation" : vector3f 
 			"scale" : vector3f 
@@ -382,7 +415,19 @@ public:
 			"rotation" : matrix3f
 		[makeSlices]			- Make Slices tool
 		[separateShells]		- Separate Shells tool
-
+		[addTube]				- Add Tube tool
+			"startRadius" : float 
+			"startRadiusWorld" : float 
+			"endRadius" : float 
+			"endRadiusWorld" : float 
+			"startTanLenFactor" : float 
+			"lengthScale" : float 
+			"collisionRadius" : float 
+			"collisionRadiusWorld" : float 
+			"curveType" : integer 
+			"operationType" : integer 
+			"directionConstraint" : integer 
+			"solveIterations" : integer 
 		[combine]				- Combine tool (multiple selected objects)
 		[union]					- Boolean Union 
 		[difference]			- Boolean Difference
@@ -401,6 +446,7 @@ public:
 		[strength]				- Strength analysis tool
 			"showSections" : boolean 
 		[overhangs]				- Overhangs/Support-Generation tool
+			"overhangPreset" : integer 
 			"overhangAngleTolerance" : float 
 			"contactTolerance" : float 
 			"verticalOffset" : float 
@@ -415,15 +461,33 @@ public:
 			"postDiscLayers" : float 
 			"strutDensity" : float 
 			"solidMinOffset" : float 
-			"overhangPreset" : integer 
 			"postResolution" : integer 
 			"optimizeRounds" : integer
+			"allowTopSupport" : boolean 
 		[slicing]				- Slicing analysis tool
 			"sliceHeight" : float 
 			"minFeatureSize" : float 
 		[thickness]				- Thickness analysis tool
 			"minThickness" : float 
 			"minThicknessWorld" : float 
+		[orientation]			- Orientation optimization tool
+			"overhangAngleDeg" : float 
+			"strengthWeight" : float 
+			"supportVolumeWeight" : float 
+			"supportSurfaceAreaWeight" : float 
+			"selectedOrientation" : integer 
+			"origin" : vector3f 
+			"translation" : vector3f 
+			"rotation" : matrix3f 
+		[layout]				- Print Bed layout/packing tool
+			"borderWidth" : float 
+			"transformationType" : integer  Translate2D=0, Translate2D_Rotate2D=1
+			"packingQuality" : integer		Fastest = 0, Medium_Quality = 1, Max_Quality = 2
+			"bedOrigin" : integer			RearLeftCorner = 0, Centered = 1
+			"packMetric" : integer		    Circular=0, Square=2, Left-to-Right=3
+		[deviation]				- Deviation measurement between two selected meshes
+			"maxDeviationWorld" : float 
+		[clearance]				- Clearance measurement between two selected meshes
 	 */
 	void AppendToolParameterCommand( std::string paramName, float fValue );
 	void AppendToolParameterCommand( std::string paramName, int nValue );
@@ -440,7 +504,9 @@ public:
 	bool GetToolParameterCommandResult( Key k, float & x, float & y, float & z );
 	bool GetToolParameterCommandResult( Key k, float & m00, float & m01, float & m02, float & m10, float & m11, float & m12, float & m20, float & m21, float & m22 );
 
-
+	// [RMS] not yet implemented for most Tools...
+	Key AppendToolQuery_NewGroups();
+	bool GetToolQueryResult_NewGroups(Key k, std::vector<int> & vObjects);
 
 	/*
 	 * [RMS] handle cases where tool has explicit operation, like makeSolid update
@@ -454,6 +520,10 @@ public:
 			"update"
 			"generateHoles"
 			"removeHoles"
+	 *   [orientation]
+			"update"
+	 *   [layout]
+			"update"
 	 *   [overhangs]
 			"generateSupport"
 			"removeSupport"
@@ -532,6 +602,15 @@ public:
 	 * SPATIAL QUERY COMMANDS
 	 */
 
+	Key AppendQueryCommand_ConvertScalarToWorld(float f);
+		bool GetQueryResult_ConvertScalarToWorld(Key k, float * pResult);
+	Key AppendQueryCommand_ConvertScalarToScene(float f);
+		bool GetQueryResult_ConvertScalarToScene(Key k, float * pResult);
+	Key AppendQueryCommand_ConvertPointToWorld(float fPoint[3]);
+		bool GetQueryResult_ConvertPointToWorld(Key k, float * pResult);
+	Key AppendQueryCommand_ConvertPointToScene(float fPoint[3]);
+		bool GetQueryResult_ConvertPointToScene(Key k, float * pResult);
+
 	// get bounding box
 	Key AppendQueryCommand_GetBoundingBox();
 		bool GetQueryResult_GetBoundingBox( Key k, float fMin[3], float fMax[3] );
@@ -579,6 +658,13 @@ public:
 	// parameters are ray origin & direction
 	Key AppendSelectCommand_FirstComponentIntersectingRay( float ox, float oy, float oz, float dx, float dy, float dz );
 	Key AppendSelectCommand_AllComponentsIntersectingRay( float ox, float oy, float oz, float dx, float dy, float dz );
+
+	// parameter is 3D point
+	Key AppendSelectCommand_NearestTriangle( float cx, float cy, float cz );
+
+	// parameters are ray origin & direction
+	Key AppendSelectCommand_FirstTriangleIntersectingRay( float ox, float oy, float oz, float dx, float dy, float dz );
+	Key AppendSelectCommand_AllTrianglesIntersectingRay( float ox, float oy, float oz, float dx, float dy, float dz );
 
 	// parameter is sphere center/radius
 	Key AppendSelectCommand_InsideSphere( float cx, float cy, float cz, float r );
@@ -682,7 +768,8 @@ private:
 		PartCommand,
 		StampCommand,
 
-		SpatialQueryCommand
+		SpatialQueryCommand,
+		GenericQueryCommand
 	};
 
 
@@ -813,6 +900,9 @@ private:
 		SelectContainingComponent,
 		SelectFirstComponentIntersectingRay,
 		SelectAllComponentsIntersectingRay,
+		SelectNearestTriangle,
+		SelectFirstTriangleIntersectingRay,
+		SelectAllTrianglesIntersectingRay,
 
 		SelectInsideSphere,
 		SelectFaceGroups,
@@ -894,6 +984,28 @@ private:
 	};
 
 
+
+	enum GenericQueryCmdType {
+		ToolManager_NewGroups,
+		ToolManager_ScalarToWorld,
+		ToolManager_ScalarToScene,
+		ToolManager_PointToWorld,
+		ToolManager_PointToScene
+	};
+	struct GenericQueryCmd {
+		GenericQueryCmdType eType;
+		int n;
+		vec3f p;
+		fstring str;
+	};
+	struct GenericQueryCmdResult {
+		int OK;
+		vec3f p;
+		vector_int vList;
+	};
+
+
+
 private:
 	struct Command {
 		CommandType eType;
@@ -912,6 +1024,7 @@ private:
 			StampCmd stamp;
 
 			SpatialQueryCmd spatial;
+			GenericQueryCmd generic_query;
 		} c;
 		union {
 			CameraCmdResult camera;
@@ -925,6 +1038,7 @@ private:
 			StampCmdResult stamp;
 
 			SpatialQueryResult spatial;
+			GenericQueryCmdResult generic_query;
 		} r;
 
 		void init();			// clear all data files

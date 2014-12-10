@@ -1,6 +1,19 @@
 import mmapi;
 from convert import *;
 
+def open_mix(remote, path):
+    """open mix file"""
+    cmd = mmapi.StoredCommands()
+    cmd.AppendSceneCommand_OpenMixFile(path)
+    remote.runCommand(cmd)
+
+def save_mix(remote, path):
+    """save mix file"""
+    cmd = mmapi.StoredCommands()
+    cmd.AppendSceneCommand_ExportMixFile(path)
+    remote.runCommand(cmd)
+
+
 def append_objects_from_file(remote, filename):
     """returns list of new objects"""
     cmd = mmapi.StoredCommands()
@@ -20,13 +33,22 @@ def list_objects(remote):
     return vectori_to_list(objects)
 
 def list_selected_objects(remote):
-    """returns list of selected objects"""
+    """returns list of selected object IDs"""
     cmd1 = mmapi.StoredCommands()
     key1 = cmd1.AppendSceneCommand_ListSelectedObjects()
     remote.runCommand(cmd1)
     objects = mmapi.vectori()
     cmd1.GetSceneCommandResult_ListObjects(key1, objects)
     return vectori_to_list(objects)
+
+def list_selected_groups(remote):
+    """returns list of selected facegroup IDs"""
+    cmd1 = mmapi.StoredCommands()
+    key1 = cmd1.AppendSelectCommand_ListSelectedFaceGroups()
+    remote.runCommand(cmd1)
+    groups1 = mmapi.vectori()
+    cmd1.GetSelectCommandResult_ListSelectedFaceGroups(key1, groups1);
+    return vectori_to_list(groups1);
 
 def select_objects(remote, objects_list):
     select_objects = mmapi.vectori();
@@ -37,26 +59,9 @@ def select_objects(remote, objects_list):
     remote.runCommand(cmd2)
 
 
-def select_object_by_name(remote, name):
-    (found, objid) = find_object_by_name(remote, name)
-    if found:
-        select_objects(remote, [objid])
-    return found
-
-
-def select_objects_by_name(remote, name_list):
-    objects = []
-    for name in name_list:
-        (found, objid) = find_object_by_name(remote, name)
-        if found:
-            objects.append(objid)
-    select_objects
-    (remote, objects)
-
-
 def delete_objects(remote, objects_list):
     cur_selection = list_selected_objects(remote)
-    select_objects( remote,objects_list)
+    select_objects(objects_list, remote)
     cmd = mmapi.StoredCommands()
     cmd.AppendSceneCommand_DeleteSelectedObjects();
     remote.runCommand(cmd)
@@ -95,3 +100,11 @@ def clear_target(remote):
     cmd = mmapi.StoredCommands()
     cmd.AppendSceneCommand_ClearTarget();
     remote.runCommand(cmd)
+
+
+def set_object_name(remote, object_id, new_name):
+    cmd = mmapi.StoredCommands()
+    cmd.AppendSceneCommand_SetObjectName(object_id, new_name)
+    remote.runCommand(cmd)
+
+
