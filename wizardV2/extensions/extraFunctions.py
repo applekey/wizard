@@ -46,7 +46,6 @@ def reOrientModel():
     h=rotationVector.item((2,1))
     i=rotationVector.item((2,2)) 
     
-    divisor= 100.0
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands( )
