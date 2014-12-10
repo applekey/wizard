@@ -49,17 +49,21 @@ def reOrientModel():
     divisor= 100.0
     remote = mmRemote()
     remote.connect()
-    cmd  = mmapi.StoredCommands()
+    cmd  = mmapi.StoredCommands( )
     result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
     xAvg = result[0]
     yAvg = result[1]
     zAvg = result[2]
     
+    print xAvg 
+    print yAvg
+    print zAvg
     
     cmd.AppendBeginToolCommand('transform')
     cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
 
     cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
+    cmd.AppendCompleteToolCommand('accept')
     remote.runCommand(cmd)
     remote.shutdown()
 
@@ -184,10 +188,8 @@ def duplicate(partToDuplicate):
          mm.select_object_by_name(remote,partToDuplicate)
          cmd  = mmapi.StoredCommands()
          cmd.AppendBeginToolCommand('duplicate')
-         #cmd.AppendSceneCommand_SetObjectName(objects[0],newNameforOrig)
          remote.runCommand(cmd)
          remote.shutdown()
-         #cmd.AppendBeginToolCommand('duplicate')
      
          return True
     except:

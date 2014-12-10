@@ -108,3 +108,9 @@ def set_object_name(remote, object_id, new_name):
     remote.runCommand(cmd)
 
 
+def select_object_by_name(remote, name):
+    (found, objid) = find_object_by_name(remote, name)
+    if found:
+        select_objects(remote, [objid])
+    return found
+

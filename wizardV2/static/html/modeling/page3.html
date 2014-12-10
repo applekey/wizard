@@ -20,16 +20,16 @@
 							<hr>
 							<p>Press the ">" button to begin.<p>
 						</div>
-						<div  id="subText2"  apiFuncStart= "$.post('api/cancel()',apiReturnParser); $.post('api/align()',apiReturnParser);" 
-						apiFunc=" $.post('api/accept()',apiReturnParser);"
+						<div  id="subText2"  
+						apiFunc=" orientModel()"
 						class="subText"  style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Align </h3>
+							<h3>Auto Orient </h3>
 							<hr>
-							<p>Select a small area on the distal end of the limb. A semi-transparent version of the model will appear, showing a preview of the new alignment. If the alignment does not look appropriate, simply draw select a new area.<p>
+							<p>Auto Orient Model<p>
 						</div>
                         <div id="subText3" apifuncstart="$.post('api/cancel()',apiReturnParser); "
-                             apifunc="orientModel()" class="subText" style="display: none;">
+                             apifunc=" $.post('api/alignZCam()',apiReturnParser);"  class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Reset Camera</h3>
                             <hr>
