@@ -14,7 +14,6 @@ function callAccept() {
 function RemeshAcceptButton(id) {
     var Remesh = $(id).parent().find('#Remesh').val()
     var Smooth = $(id).parent().find('#Smooth').val()
-    var Threshold = $(id).parent().find('#Threshold').val()
     $.post('api/remesh(1,' + Remesh + ')', function (data) {
         if(apiReturnParser(data) ==false)
         {
@@ -25,15 +24,9 @@ function RemeshAcceptButton(id) {
             if (apiReturnParser(data) == false) {
                 return;
             }
-            $.post('api/remesh(3,' + Threshold + ')', function (data) {
-                if (apiReturnParser(data) == false) {
-                    return;
-                }
-                $.post('api/accept()', apiReturnParser)
-            })
+            $.post('api/accept()', apiReturnParser)
         })
     })
-    $(id).parent().find('#Distance')
 }
 
 function SmoothAcceptButton(id) {
@@ -44,30 +37,6 @@ function SmoothAcceptButton(id) {
         }
 
         $.post('api/accept()', apiReturnParser)
-    })
-    $(id).parent().find('#Distance')
-}
-
-function RemeshAcceptButton(id) {
-    var Remesh = $(id).parent().find('#Remesh').val()
-    var Smooth = $(id).parent().find('#Smooth').val()
-    var Threshold = $(id).parent().find('#Threshold').val()
-    $.post('api/remesh(1,' + Remesh + ')', function (data) {
-        if (apiReturnParser(data) == false) {
-            return;
-        }
-
-        $.post('api/remesh(2,' + Smooth + ')', function (data) {
-            if (apiReturnParser(data) == false) {
-                return;
-            }
-            $.post('api/remesh(3,' + Threshold + ')', function (data) {
-                if (apiReturnParser(data) == false) {
-                    return;
-                }
-                $.post('api/accept()', apiReturnParser)
-            })
-        })
     })
     $(id).parent().find('#Distance')
 }
@@ -113,7 +82,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 									<input id = {{idName}} class='fineNumber' onchange={{onchange}} value={{value}} step = '{{step}}' name='quantity' min='{{min}}' max='{{max}}' type='number'>\
 								</div>\
 								<div class='col-xs-1'>\
-									<p align='left'>mm </p>\
+									<p align='left'>{{units}} </p>\
 								</div>\
 							</div>\
 						{{/sliders}} \
@@ -128,6 +97,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 10,
 		min: -10,
 		step:0.05,
+        units:'mm',
 		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
  	},
  	{
@@ -137,6 +107,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 50,
 		min: 0,
 		step:0.05,
+        units:'mm',
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
  	}],
  	acceptFunction: "offsetAcceptButton(this,true)"
@@ -152,6 +123,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 10,
 		min: 0,
 		step:0.05,
+        units:'mm',
 		onchange: "$.post('api/offsetDistance('+$(this).val()+',True)',apiReturnParser)"
  	},
  	{
@@ -161,6 +133,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 50,
 		min: 0,
 		step:0.05,
+        units:'mm',
 		onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
  	}]
      , acceptFunction: "offsetAcceptButton(this,true)"
@@ -175,15 +148,17 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 		max: 10,
 	    min: 0,
 	    step:0.05,
+        units:'mm',
 	onchange: "$.post('api/offsetDistance('+$(this).val()+',False)',apiReturnParser)"
 	},
 	{
-		value:31,
+		value:0,
 		sectionName: "Soft Transition",
 		idName: "SoftTransition",
 		max: 50,
 	    min: 0,
 	    step:0.05,
+        units:'mm',
 	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
 	
 	}]
@@ -200,6 +175,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 1.0,
 		min: 0,
 		step:0.05,
+        units:'',
 		onchange: "$.post('api/deformSmooth('+$(this).val()+')',apiReturnParser)"
  	}]
      , acceptFunction: "SmoothAcceptButton(this)"
@@ -214,6 +190,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 13.1,
 		min: 0,
 		step:0.05,
+        units:'mm',
 		onchange: "$.post('api/selectTool('+$(this).val()+')',apiReturnParser)"
  	}]
      , acceptFunction: "SelectAcceptButton(this)"
@@ -229,6 +206,7 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 1,
 		min: 0,
 		step:0.05,
+        units:'',
 		onchange: "$.post('api/remesh(1,'+$(this).val()+')',apiReturnParser)"
  	},
  	{
@@ -238,16 +216,8 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		max: 1,
 		min: 0,
 		step:0.05,
+        units:'',
 		onchange: "$.post('api/remesh(2,'+$(this).val()+')',apiReturnParser)"
- 	},
- 	{
- 		value:0.6,
- 		sectionName: "Threshold",
- 		idName: "Threshold",
- 		max: 1,
-		min: 0,
-		step:0.05,
-		onchange: "$.post('api/remesh(3,'+$(this).val()+')',apiReturnParser)"	
  	}
  	]
      , acceptFunction: "RemeshAcceptButton(this)"
