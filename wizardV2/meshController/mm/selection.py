@@ -33,4 +33,11 @@ def select_facegroups(remote, groups_list):
     cmd2.AppendSelectCommand_ByFaceGroups(vgroups)
     remote.runCommand(cmd2)
 
+def select_hit_triangle(remote, origin,direction):
+     cmd = mmapi.StoredCommands()
+     cmd.AppendSelectCommand_FirstTriangleIntersectingRay(origin[0],origin[1],origin[2],direction[0],direction[1],direction[2])
+
+     remote.runCommand(cmd)
+     
+
     

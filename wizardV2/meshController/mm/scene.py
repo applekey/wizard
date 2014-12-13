@@ -41,6 +41,7 @@ def list_selected_objects(remote):
     cmd1.GetSceneCommandResult_ListObjects(key1, objects)
     return vectori_to_list(objects)
 
+
 def list_selected_groups(remote):
     """returns list of selected facegroup IDs"""
     cmd1 = mmapi.StoredCommands()

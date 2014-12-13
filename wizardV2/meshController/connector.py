@@ -30,6 +30,7 @@ def import_connector(do_accept):
     mm.clear_face_selection(remote)
 
     # import part we want to position at selection
+    part_filename = "D:\\github\\wizard\\wizardV2\\socket.obj"
     new_objs = mm.append_objects_from_file(remote, part_filename);
 
     # rename part
@@ -91,7 +92,7 @@ def connector_plane_cut(do_accept):
     bounds_ctr = mm.mulvs(mm.addv3(bounds_min, bounds_max), 0.5)
     mm.begin_tool(remote, "select")
     mm.select_hit_triangle(remote, mm.addv3(bounds_ctr, (0,-10,0)), (0,1,0) )
-    groups = mm.list_selected_facegroups(remote)
+    groups = mm.list_selected_groups(remote)
 
     # select outer shell facegroup and start plane cut
     mm.select_facegroups(remote, groups)
