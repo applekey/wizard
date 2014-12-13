@@ -5,7 +5,7 @@ def ConnectorName():
 
 def ConnectorPath():
     # [RMS] can we get a relative path for this?
-    return "C:/GitHub/wizard/wizardV2/socket.obj"
+    return "socket.obj"
 
 def SocketName():
     return "socket"
