@@ -58,6 +58,10 @@ function offsetAcceptButton(id,connected) {
         if (apiReturnParser(data) == false) {
             return;
         }
+        if (softTrans == undefined)
+        {
+            softTrans = 0
+        }
         $.post('api/softTransition(' + softTrans + ')', function (data) {
             if (apiReturnParser(data) == false) {
                 return;
@@ -150,17 +154,6 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
 	    step:0.05,
         units:'mm',
 	onchange: "$.post('api/offsetDistance('+$(this).val()+',False)',apiReturnParser)"
-	},
-	{
-		value:0,
-		sectionName: "Soft Transition",
-		idName: "SoftTransition",
-		max: 50,
-	    min: 0,
-	    step:0.05,
-        units:'mm',
-	onchange: "$.post('api/softTransition('+$(this).val()+')',apiReturnParser)"
-	
 	}]
      , acceptFunction: "offsetAcceptButton(this,false)"
 };
