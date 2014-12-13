@@ -95,8 +95,30 @@
                                 </li>
                                 <li role="presentation" class="divider"></li>
                                 <li>
-                                    <a onclick="$.post('api/alignZCam()');"
-                                    tabindex="-1">Reset View</a>
+                                    <a 
+                                    tabindex="-1">Reset View 
+                                        <span>
+                                        
+                                        <button class="btn  btn-xs" onclick="$.post('api/alignZCam(1)');"
+                                                type="button">
+                                            Front
+                                        </button>
+                                        <button class="btn  btn-xs" onclick="$.post('api/alignZCam(2)');"
+                                                type="button">
+                                            Back
+                                        </button>
+                                        <button class="btn  btn-xs" onclick="$.post('api/alignZCam(0)');"
+                                                type="button">
+                                            Left
+                                        </button>
+                                        <button class="btn  btn-xs" onclick="$.post('api/alignZCam(3)');"
+                                                type="button">
+                                            Right
+                                        </button>
+                                        
+                                        
+                                        
+                                        </span></a>
                                 </li>
 
                                 <li>
