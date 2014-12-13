@@ -3,6 +3,7 @@ from mmRemote import *;
 import mm;
 import socket_util;
 from socket_names import *;
+import os;
 
 
 # [RMS] in the following code, we use a few global names/strings:
@@ -14,8 +15,6 @@ from socket_names import *;
 # [RMS] this function imports the socket connector and positions it such that it is offset half its height
 #   from the centroid of the current selection. 
 def import_connector(do_accept):
-    part_filename = ConnectorPath()
-
     # initialize connection
     remote = mmRemote();
     remote.connect();
@@ -30,8 +29,9 @@ def import_connector(do_accept):
     mm.clear_face_selection(remote)
 
     # import part we want to position at selection
-    part_filename = "D:\\github\\wizard\\wizardV2\\socket.obj"
-    new_objs = mm.append_objects_from_file(remote, part_filename);
+    cwd = os.getcwd()
+    socketPath = os.path.join(cwd,'socket','socket.obj')
+    new_objs = mm.append_objects_from_file(remote, socketPath);
 
     # rename part
     mm.set_object_name(remote, new_objs[0], ConnectorName() )
@@ -85,7 +85,7 @@ def connector_plane_cut(do_accept):
     partCenter =  ( (min[0]+max[0])/2, (min[1]+max[1])/2, (min[2]+max[2])/2 )
     partH = max[1]-min[1]
 
-    mm.select_object_by_name(remote, SocketName() )
+    mm.select_object_by_name(remote, ConnectorName() )
 
     # shoot ray upwards to hit exterior of socket, and then get facegroup of outer shell
     (bounds_min, bounds_max) = mm.get_selected_bounding_box(remote)

@@ -22,19 +22,19 @@
 				<div  id="wellText" class="panel panel-default" style="display: none;">
 					<div class="panel-body">
 
-	                    <div id="subText1" apiFunc="$.post('api/beginSelection()',apiReturnParser);" class="subText" acceptDisabled=1>
+	                    <div id="subText1"  class="subText" acceptDisabled=1>
 	                        <h3>Begin Selection Tool</h3>
 	                        <hr>
 	                        <p>Click the arrow to begin the Selection Tool<p>
 	                    </div>
 
-	                     <div id="subText2" apiFunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;" >
-	                     	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-	                        <h3>Select Area</h3>
-	                        <hr>
-	                        <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
-	                        <p>When you are finished, click the arrow to position the gizmo.</p>    
-	                    </div>
+                        <div id="subText2" apifuncstart="$.post('api/beginSelection()',apiReturnParser);" apifunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
+                            <h3>Select Area</h3>
+                            <hr>
+                            <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
+                            <p>When you are finished, click the arrow to position the gizmo.</p>
+                        </div>
 
 						<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
