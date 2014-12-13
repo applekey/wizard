@@ -85,7 +85,7 @@ def connector_plane_cut(do_accept):
     partCenter =  ( (min[0]+max[0])/2, (min[1]+max[1])/2, (min[2]+max[2])/2 )
     partH = max[1]-min[1]
 
-    mm.select_object_by_name(remote, ConnectorName() )
+    mm.select_object_by_name(remote, SocketName() )
 
     # shoot ray upwards to hit exterior of socket, and then get facegroup of outer shell
     (bounds_min, bounds_max) = mm.get_selected_bounding_box(remote)
@@ -100,8 +100,8 @@ def connector_plane_cut(do_accept):
 
     # position cutting plane at offset from part
     mm.set_toolparam(remote, "fillType", 0)
-    planeNormal = (0,1,0)
-    mm.set_toolparam(remote, "normal", planeNormal )
+    #planeNormal = (0,1,0)
+    #mm.set_toolparam(remote, "normal", planeNormal )
     planeOrigin = max
     planeOrigin = mm.addv3( planeOrigin, mm.mulv3s(planeNormal, 0.5*partH) )
     mm.set_toolparam(remote, "origin", planeOrigin)
@@ -120,7 +120,11 @@ def connector_join():
     # accept outstanding tools, if there are any
     mm.accept_tool(remote)
 
-    mm.select_objects_by_name(remote, [SocketName(), ConnectorName()])
+    [found,id1] = mm.find_object_by_name(remote,SocketName())
+    [found,id2] = mm.find_object_by_name(remote,ConnectorName())
+    mm.select_objects(remote,[id1,id2])
+
+
 
     # combine part with socket
     mm.begin_tool(remote, "combine")

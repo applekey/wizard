@@ -410,42 +410,58 @@ def align():
 @meshWrapper
 def alignZCam(view):
     cmd  = mmapi.StoredCommands()
-
+    divisor = 1.0
+    height = 0.7
     eye = vec3f()
     if view == 0:
-        eye = vec3f()
-        eye.x = -10.0
-        eye.y= 0
+        eye.x = -10.0/divisor
+        eye.y= height
         eye.z = 0
     elif view ==1:
-        eye = vec3f()
         eye.x = 0.0
-        eye.y=  0.0
-        eye.z = 10.0
+        eye.y=  height
+        eye.z = 10.0/divisor
     elif view ==2:
-        eye = vec3f()
         eye.x =0
-        eye.y= 0
-        eye.z =  -10.0
+        eye.y= height
+        eye.z =  -10.0/divisor
     elif view ==3:
-        eye = vec3f()
         eye.x = 10.0
-        eye.y= 0
+        eye.y= height
         eye.z = 0
+    elif view ==4:
+        eye.x = 0.0
+        eye.y= 1.0
+        eye.z = 0
+    else:
+        eye.x = 0.0
+        eye.y=  10.0
+        eye.z = 0.0
+
 
     target = vec3f()
     target.x = 0.0
-    target.y= 0
+
+    if view == 4:
+        target.y= 0.0
+    else:
+        target.y= height
     target.z = 0
 
-    up = vec3f()
-    up.x = 0.0
-    up.y= 1.0
-    up.z = 0.0
-    
-  
+    if view == 4:
+        up = vec3f()
+        up.x = 1.0
+        up.y= 0.0
+        up.z = 0.0
+    else:
+        up = vec3f()
+        up.x = 0.0
+        up.y= 1.0
+        up.z = 0.0
+   
+ 
     cmd.CameraControl_SetSpecificView(eye,target,up)
-    cmd.CameraControl_RecenterView()
+    #cmd.CameraControl_RecenterView()
     return cmd
 
 
