@@ -19,7 +19,7 @@
         <form id="ajaxform"  action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputFile">File input</label>
-                <input type="file" name="upload" accept=".obj" />
+                <input type="file" class="filestyle"  name="upload" accept=".obj" />
             </div>
         </form>
 		
@@ -66,6 +66,7 @@
 </div>
 
 <script>
+    $(":file").filestyle({ buttonBefore: true });
     function saveMix(data)
     {
         if (data == 'false') {
