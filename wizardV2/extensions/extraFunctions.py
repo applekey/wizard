@@ -384,10 +384,17 @@ def softTransition(value):
 
 
 @meshWrapper
-def attractBrush():
+def flattenSmooth():
     cmd  = mmapi.StoredCommands()
     cmd.AppendBeginToolCommand('volumeBrush')
-    cmd.AppendToolUtilityCommand('setPrimary','attract')
+    cmd.AppendToolUtilityCommand('setPrimary','flatten')
+    return cmd
+
+@meshWrapper
+def bubbleSmooth():
+    cmd  = mmapi.StoredCommands()
+    cmd.AppendBeginToolCommand('volumeBrush')
+    cmd.AppendToolUtilityCommand('setPrimary','bubbleSmooth')
     return cmd
 
 @meshWrapper

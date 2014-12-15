@@ -174,8 +174,25 @@
                                     });
                                 </script>
                         </div>
+                        <div id="subText4" class="subText" style="display: none;">
+                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
+                            <h3>Trim Line Smoothing  </h3>
+                            <hr>
+                            <p>Use the "Flatten Smooth" sculpting brush to smooth out your trim line. Simply Draw on the trimline, smoothing, until the its smoothness is satisfactory.
+                                <div class="btn-group">
+                                    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Brushes <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a onclick="$.post('api/flattenSmooth()', apiReturnParser);">Flatten Smooth</a></li>
+                                        <li><a onclick="$.post('api/bubbleSmooth()', apiReturnParser);">Bubble Smooth</a></li>
+                                    </ul>
+                                </div>
+                            
+                            
+                            <p>
+
+                        </div>
     					
-    					<div id="subText4" class="subText" style="display: none;" acceptDisabled=1>
+    					<div id="subText5" class="subText" style="display: none;" acceptDisabled=1>
     						<h3>Finished </h3>
     					</div>
                     </div>
