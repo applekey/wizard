@@ -38,10 +38,10 @@ def do_upload():
 
 @route('/index')
 def hello():
-	return  static_file('index.html',root='')
+	return  static_file('index.html',root='static')
 @route('/boot')
 def hello():
-	return  static_file('boot.html',root='')
+	return  static_file('boot.html',root='static')
 
 @route(':path#.+#', name='static')
 def static(path):
