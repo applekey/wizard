@@ -19,21 +19,16 @@
 				<div  id="wellText" class="panel panel-default" style="display: none;" >
 					<div class="panel-body">
                         <div id="subText1"  class="subText" acceptdisabled=1>
-                            <h3>Start Process</h3>
+                            <h3>Start Plane Cut Process</h3>
                             <hr>
-                            <p>  <p>
+                            <p> In this step, you will use the "Plane Cut" tool to remove excess data. <p>
                         </div>
-                        <div id="subText2" apifunc="createDuplicate()" class="subText" acceptdisabled=0 style="display: none;">
-                            <h3>Create Check Point</h3>
-                            <hr>
-                            <p> This will take the scan and create a duplicate. <p>
-                        </div>
-                        <div id="subText3"
+                        <div id="subText2"
                              apifunc="$.post('api/accept()',apiReturnParser);"
                              apifuncstart="$.post('api/planeCut()',apiReturnParser);"
                              class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
-                            <h3>Start Plane Cut Process </h3>
+                            <h3>Plane Cut</h3>
                             <hr>
                             <p>
                                 Using the blue arrow to move the plane up and down, and the green and red curves to rotate the angle, position the 
@@ -42,7 +37,7 @@
                             <p>
                         </div>
 
-	                    <div id="subText4"  apiFuncStart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptDisabled=1>
+	                    <div id="subText3"  apiFuncStart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptDisabled=1>
 	                        <h3>Finished </h3>
 	                    </div>
 	                </div>
@@ -159,35 +154,3 @@
 	</div>
 
 </div>
-<script>
-    function hideOrig(data)
-    {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/hideObjectByName('scan')", apiReturnParser);
-        }
-    }
-    function renameDuplicate(data)
-    {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/renameObjectByName('scan (copy)','residualLimb')", hideOrig);
-        }
-    }
-    function createDuplicate(data)
-    {
-        if(data ==false)
-        {
-            apiReturnParser(data)
-        }
-        else
-        {
-            $.post("api/duplicate('scan')", renameDuplicate);
-        }
-    }
-
-</script>

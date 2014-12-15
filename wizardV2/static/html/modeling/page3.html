@@ -78,7 +78,7 @@
                         <p>In this step, the model will be automatically aligned to be perpendicular to the ground plane.<p>
                     </div>
                     <div id="subText2"
-                         apifunc="createDuplicate4()"
+                         apifunc="createDuplicate()"
                          class="subText" style="display: none;">
                         <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                         <h3>Duplicate Model </h3>
@@ -113,6 +113,34 @@
 
 <script>
 
+
+    function hideOrig(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/hideObjectByName('scan')", apiReturnParser);
+        }
+    }
+    function renameDuplicate(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/renameObjectByName('scan (copy)','residualLimb')", hideOrig);
+        }
+    }
+    function createDuplicate(data) {
+        if (data == false) {
+            apiReturnParser(data)
+        }
+        else {
+            $.post("api/duplicate('scan')", renameDuplicate);
+        }
+    }
+
+
+
     function reOrientModel(data)
     {
         $.post('api/reOrientModel()', apiReturnParser);
@@ -123,29 +151,7 @@
     {
         $.post('api/exportTempModel()', reOrientModel);
     }
-    function hideOrig4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/hideObjectByName('residualLimb')", apiReturnParser);
-        }
-    }
-    function renameDuplicate4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/renameObjectByName('residualLimb (copy)','rectifiedLimb')", hideOrig4);
-        }
-    }
-    function createDuplicate4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/duplicate('residualLimb')", renameDuplicate4);
-        }
-    }
 
+
+  
 </script>

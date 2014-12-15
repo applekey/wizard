@@ -210,7 +210,7 @@
             apiReturnParser(data)
         }
         else {
-            $.post("api/renameObjectByName('rectifiedLimb (part)','socket')", apiReturnParser);
+            $.post("api/renameObjectByName('rectifiedLimb (part)','socket')", hideOrig5);
         }
     }
 
@@ -222,21 +222,21 @@
             $.post("api/hideObjectByName('rectifiedLimb')", apiReturnParser);
         }
     }
-    function renameDuplicate5(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/renameObjectByName('rectifiedLimb (copy)','socket')", hideOrig5);
-        }
-    }
-    function createDuplicate5(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/duplicate('rectifiedLimb')", renameDuplicate5);
-        }
-    }
+    //function renameDuplicate5(data) {
+    //    if (data == false) {
+    //        apiReturnParser(data)
+    //    }
+    //    else {
+    //        $.post("api/renameObjectByName('rectifiedLimb (part)','socket')", hideOrig5);
+    //    }
+    //}
+    //function createDuplicate5(data) {
+    //    if (data == false) {
+    //        apiReturnParser(data)
+    //    }
+    //    else {
+    //        $.post("api/duplicate('rectifiedLimb')", renameDuplicate5);
+    //    }
+    //}
 
 </script>
