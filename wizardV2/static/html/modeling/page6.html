@@ -23,31 +23,33 @@
 					<div class="panel-body">
 
 	                    <div id="subText1"  class="subText" acceptDisabled=1>
-	                        <h3>Begin Selection Tool</h3>
+	                        <h3>Start Mounting Point Attachment Process</h3>
 	                        <hr>
-	                        <p>Click the arrow to begin the Selection Tool<p>
+                            <p>In the following steps, you will attach a mounting point to the distal end of the socket.<p>
 	                    </div>
 
                         <div id="subText2" apifuncstart="$.post('api/beginSelection()',apiReturnParser);" apifunc="$.post('api/importConnectorAndPosition()',apiReturnParser);" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Select Area</h3>
                             <hr>
-                            <p>Using the selection tool that is now active, mark the region on the bottom of the socket where the Connector should be attached<p>
-                            <p>When you are finished, click the arrow to position the gizmo.</p>
+                            <p>Using the selection tool that is now active, mark the region on the bottom of the socket 
+                                where the mounting point should be attached. Press "Accept" to import the mounting point.<p>
                         </div>
 
 						<div  id="subText3"  apiFunc="$.post('api/cutSocketForConnection()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Position Connector</h3>
+							<h3>Position Mounting Point</h3>
 							<hr>
-							<p>If the Connector is positioned correctly relative to the Socket, continue to the next step. Otherwise, use the arrows to translate it to the right spot.<p>
+                            <p>If the mounting point is positioned correctly relative to the socket, continue to the next step. Otherwise, use the arrows 
+                                to move the mounting point to an appropriate position. Make sure the distal end of the socket does not overlap through the mounting point.<p>
 						</div>
 						<div id="subText4" apiFunc=" $.post('api/joinConnectionToSocket()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 							<h3>Position Cutting Plane</h3>
 							<hr>
-							<p>We will now cut away part of the outer shell of the Socket, which will allow us to automatically connect the Socket and Connector.<p>
-	                        <p>If the plane position is suitable, continue to the next step. Otherwise, use the arrows to position it, and then continue.</p>
+                            <p>
+                                In this step, you will cut away part of the outer shell of the socket, which will allow the socket and mounting point to be automatically connected to each other.
+                                If the plane position is appropriate, continue to the next step. Otherwise, use the arrows to position it before continuing.<p>
 						</div>
 						<div id="subText5" class="subText" style="display: none;">
 							<h3>Finished </h3>
@@ -64,7 +66,7 @@
 				</div>
 
 				<a id = "activateButton" class="btn btn-info " role="button">
-					 <span class="glyphicon glyphicon-wrench"></span>Attach (Gizmo)
+					 <span class="glyphicon glyphicon-wrench"></span>Attach Mounting Point
 				</a>
 				
 			</div> <!-- subcontrol div -->
