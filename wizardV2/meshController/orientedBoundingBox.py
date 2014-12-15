@@ -22,11 +22,11 @@ def calculateMax(origionalXValues,origionalYValues,origionalZValues,rotationMatr
     xMax = max(rX)
     yMax = max(rY)
     zMax = max(rZ)
-    print xMax,yMax,zMax
+
 
 
 def calculateRotationAngles(eigenVectors):
-    print eigenVectors.item((2,0))
+
     zaxisrotation  = -m.asin(eigenVectors.item((2,0)))
     xaxisrotatfdsaion  = m.atan2(eigenVectors.item((2,1))/m.cos(zaxisrotation),eigenVectors.item((2,2))/m.cos(zaxisrotation))  
     zaxisrotateion = m.atan2(eigenVectors.item((1,0))/m.cos(zaxisrotation),eigenVectors.item((0,0))/m.cos(zaxisrotation))       
@@ -76,11 +76,7 @@ def calculateEigenVectors(filePath,downSampleCount):
     yAvg = np.average(a[1,:])
     zAvg = np.average(a[2,:])
 
-    print xAvg
-    print yAvg
-    print zAvg
 
-    print a
 
     a= np.cov(a)
 
@@ -124,9 +120,7 @@ def calculateEigenVectors(filePath,downSampleCount):
     if solved == False:
         raise Exception('i am bad')
 
-    print linalg.det(V)
 
-    print maxIndex
 
     xRot = False
     zRot = False

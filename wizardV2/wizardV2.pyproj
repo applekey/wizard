@@ -19,7 +19,6 @@
   <ItemGroup>
     <Compile Include="meshController\connector.py" />
     <Compile Include="meshController\__init__.py" />
-    <Content Include="boot.html" />
     <Content Include="build\awesomeStart\awesomeStart.exe.manifest" />
     <Content Include="build\awesomeStart\logdict2.7.0.final.0-1.log" />
     <Content Include="build\awesomeStart\out00-Analysis.toc" />
@@ -228,7 +227,6 @@
     <Content Include="history\abc - Copy %285%29.mix" />
     <Content Include="history\abc - Copy.mix" />
     <Content Include="history\abc.mix" />
-    <Content Include="index.html" />
     <Compile Include="awesomeStart.py" />
     <Compile Include="dist\awsomeStart\extensions\extraFunctions.py" />
     <Compile Include="extensionController\extensionController.py" />

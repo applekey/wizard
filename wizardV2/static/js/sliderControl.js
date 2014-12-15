@@ -180,9 +180,9 @@ var template = "<div class='row' style='margin-left:3px;margin-right:3px;'>\
  		value:7,
  		sectionName: "Select Size",
  		idName: "Select",
- 		max: 13.1,
+ 		max: 100,
 		min: 0,
-		step:0.05,
+		step:1.0,
         units:'mm',
 		onchange: "$.post('api/selectTool('+$(this).val()+')',apiReturnParser)"
  	}]

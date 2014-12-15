@@ -49,19 +49,15 @@ def reOrientModel():
     remote = mmRemote()
     remote.connect()
     cmd  = mmapi.StoredCommands( )
-    #result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
-    #xAvg = result[0]
-    #yAvg = result[1]
-    #zAvg = result[2]
-    
-    print xAvg 
-    print yAvg
-    print zAvg
+    result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
+    xAvg = result[0]
+    yAvg = result[1]
+    zAvg = result[2]
     
     cmd.AppendBeginToolCommand('transform')
     cmd.AppendToolParameterCommand('rotation',a,b,c,d,e,f,g,h,i)
 
-    #cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
+    cmd.AppendToolParameterCommand('translation',-xAvg,-yAvg,-zAvg)
     cmd.AppendCompleteToolCommand('accept')
     remote.runCommand(cmd)
     remote.shutdown()
@@ -497,10 +493,14 @@ def loadLatest(name):
     return cmd
 
 @meshWrapper
-def saveLatest(name):
+def saveLatest():
+    name ='save.mix'
     cmd  = mmapi.StoredCommands()
     currentDir = os.getcwd()
-    saveFile = currentDir+name
+    historyDirectory = 'history'
+    if not os.path.exists(historyDirectory):
+        os.makedirs(historyDirectory)
+    saveFile = os.path.join(currentDir,'history',name)
     cmd.AppendSceneCommand_ExportMixFile(saveFile)
     return cmd
 
