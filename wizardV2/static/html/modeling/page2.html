@@ -70,7 +70,8 @@
 				<div  id="wellText" class="panel panel-default" style="display: none;" >
 					<div class="panel-body">
 	                    <div id="subText1" class="subText"  acceptDisabled=1>
-	                        <h3>Start Process</h3>
+	                        <h3>Start Clean Up Process</h3>
+                            <p>In this step, you will remove any remaining excess data.</p>
 	                    </div>
 <!-- 	                    <div id="subText2" apiFuncStart= "shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;">
 	                        <div id="page3SelectTool"> </div>
@@ -81,46 +82,45 @@
 	                         
 	                        </script>
 	                    </div> -->
-	                    <div id="subText2"  apiFuncStart="$.post('api/selectTool(3.2)',apiReturnParser);" class="subText" style="display: none;" acceptDisabled=1>
-	                        <h3> Select Tool </h3>
+	                    <div id="subText2"  apiFuncStart="$.post('api/selectTool(3.2)',apiReturnParser);"  apiFunc="$.post('api/expandToConnected()',apiReturnParser);" 
+                             class="subText" style="display: none;" acceptDisabled=0>
+	                        <h3> Select Limb</h3>
 	                        <hr>
-	                        <p>?????? smth like click the seelction  </p>
+	                        <p>Click anywhere on the leg. When you press the "Accept" button, the entire leg will be selected.</p>
 	                        
 	                    </div>
-						<div id="subText3" apiFunc="$.post('api/expandToConnected()',apiReturnParser);" class="subText" style="display: none;">
+						<div id="subText3" apiFunc=" $.post('api/invertTool()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Expand To connected </h3>
+							<h3>Invert Selection </h3>
 							<hr>
-							<p> choose the selected area <p>
-						</div>
-						<div id="subText4" apiFunc=" $.post('api/invertTool()',apiReturnParser);" class="subText" style="display: none;">
-							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Invert Tool </h3>
-							<hr>
-							<p> choose the selected area <p>
+                            <p> By clicking the "Accept" button, your selection will be inverted, leaving everything but the leg selected.<p>
 						</div>
 						
-						<div id="subText5" apiFunc=" $.post('api/discard()',apiReturnParser);" class="subText" style="display: none;">
+						<div id="subText4" apiFunc=" $.post('api/discard()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 							<h3>Discard </h3>
+                            <p>By clicking the "Accept" button, you will discard all of the selected areas.</p>
 							
 						</div>
-						<div id="subText6" apiFuncStart=" $.post('api/inspector()',apiReturnParser);"
+						<div id="subText5" apiFuncStart=" $.post('api/inspector()',apiReturnParser);"
 						apiFunc=" $.post('api/repairAll()',apiReturnParser);" class="subText" style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
 							<h3>Inspector </h3>
+                            <p>Clicking the "Accept" button will run the Inspector tool, repairing any holes in the object mesh.</p>
 							
 						</div>
 	                    
 <!-- 	                    apiFunc="$(this).closest('.subControl').find('.subText').filter(':visible').find('input[type=range]').each(function() { $(this).change()})" -->
-                        <div id="subText7" apifuncstart="$.post('api/selectAll()',apiReturnParser);"
+                        <div id="subText6" apifuncstart="$.post('api/selectAll()',apiReturnParser);"
                              apifunc="callAccept()"
                              class="subText" style="display: none;">
 
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Remesh</h3>
                             <hr>
-                            <p> GINGER! press accept apply changes when you are happy, or else when you click next the changes will reverty </p>
+                            <p> Remeshing the model will change its quality. A larger number on the "Remesh" slider results in a more detailed model, 
+                            but will slightly slow down the operation of the software. The "Smooth" slider will smooth out bumps in the model. 
+                            A larger number will result in a smoother mesh. As always, press the "Accept" button when you're happy with your modifications. </p>
                             <div id="page3Remodel"> </div>
                             <script>
                                 $(document).ready(function () {
@@ -128,7 +128,7 @@
                                 });
                             </script>
                         </div>
-                        <div id="subText8" apifuncstart=" $.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
+                        <div id="subText7" apifuncstart=" $.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
                             <h3>Finished </h3>
                         </div>
 	                </div>
