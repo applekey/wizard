@@ -34,20 +34,14 @@
 				<div  id="wellText" class="panel panel-default" style="display: none;">
                     <div class="panel-body">
                         <div id="subText1" class="subText" acceptDisabled=1>
-                            <h3>Start</h3>
+                            <h3>Start Rectification Process</h3>
                             <hr>
-                            <p>In the following steps, you will select a portion of the residual limb, using the "Brush Select" tool. First, an appropriate brush size (you can check the brush size by hovering your cursor over your model).<p>
+                            <p>In the following steps, you will select an area on the model and perform a rectification on it.<p>
                         </div>
-                        <div id="subText2" apifunc="createDuplicate4()" class="subText" style="display: none;">
-                            <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
-                            <h3>Create Checkpoint  </h3>
-                            <hr>
-                            <p> This will create a copy of your residual limb <p>
-
-                        </div>
-                        <div id="subText3" apifuncstart="shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptdisabled=1>
+                        <div id="subText2" apifuncstart="shownElement.find('input[type=range]').each(function() { $(this).change()})" class="subText" style="display: none;" acceptdisabled=1>
                             <div class='questionMarkPlaceHolder' align='right' helppage='helpContainer.html'> </div>
                             <h3>Select Brush Size</h3>
+                            <p>Use the slider to modify the size of your brush. An appropriate brush size should allow you to select a particular area of the model conveniently, without also selecting other areas by mistake.</p>
                             <hr>
                             <div id="page4SelectTool"> </div>
                             <script>
@@ -57,25 +51,28 @@
 
                             </script>
                         </div>
-                        <div id="subText4" class="subText" acceptDisabled=1 style="display: none;">
+                        <div id="subText3" class="subText" acceptDisabled=1 style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
                             <h3>Select Area to Rectify</h3>
                             <hr>
                             <p>Now use the Brush tool to colour in the area you would like to rectify.<p>
                         </div>
-    					<div id="subText5" 
+    					<div id="subText4" 
                          apiFunc=" $.post('api/smoothBoundary()',apiReturnParser);"
                          class="subText" style="display: none;">
                             <div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
     						<h3>Smooth Boundary</h3>
                             <hr>
-    						<p>In this step, the boundary of your selected area will be smoothed, removing sharp edges or inconsistencies.<p>
+                            <p>In this step, the boundary of your selected area will be smoothed, removing sharp edges or inconsistencies. Press the "Accept" button to view the change.<p>
     					</div>
-                        <div id="subText6" apifunc=" callAccept()" class="subText" style="display: none;">
+                        <div id="subText5" apifunc=" callAccept()" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right'> </div>
                             <h3>Offset </h3>
                             <hr>
-                            <p>Offset allows you to choose the distance of your relief or indent. For relief, either use the slider or the number entry box to select an appropriate offset, in measured in millimetres. For an indent, use the same method, but ensure that the number is negative.<p>
+                            <p>Offset allows you to choose the distance of your relief or indent. For relief, either use the slider or the number entry box to select an appropriate offset, 
+                                measured in millimetres. For an indent, use the same method, but ensure that the number is negative. 
+                                The "Soft Transition" slider allows you to ajust the sharpness of the indent or relief. 
+                                As always, press the "Accept" button to apply your changes.<p>
 
                                 <div id="page4Offset"> </div>
                                 <script>
@@ -93,7 +90,7 @@
                         </div>
 
                  
-                        <div id="subText7" apifunc=" callAccept()" class="subText" style="display: none;">
+                        <div id="subText6" apifunc=" callAccept()" class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right'> </div>
                             <h3>Smooth</h3>
                             <hr>
@@ -110,7 +107,7 @@
                         </div>
 
     					
-                        <div id="subText8" apifuncstart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
+                        <div id="subText7" apifuncstart="$.post('api/cancel()',apiReturnParser);" class="subText" style="display: none;" acceptdisabled=1>
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
                             <h3>Finished </h3>
                             <hr>
@@ -136,30 +133,3 @@
 	</div>
 
 </div>
-<script>
-    function hideOrig4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/hideObjectByName('residualLimb')", apiReturnParser);
-        }
-    }
-    function renameDuplicate4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/renameObjectByName('residualLimb (copy)','rectifiedLimb')", hideOrig4);
-        }
-    }
-    function createDuplicate4(data) {
-        if (data == false) {
-            apiReturnParser(data)
-        }
-        else {
-            $.post("api/duplicate('residualLimb')", renameDuplicate4);
-        }
-    }
-
-</script>
