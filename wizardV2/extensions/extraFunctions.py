@@ -13,6 +13,50 @@ import numpy.linalg as linalg
 
 
 
+def centerModel():
+    cwd =os.getcwd()
+    tmpDirectory = os.path.join(cwd,'tmp')
+    fileName = os.path.join(tmpDirectory,'tmp.obj')
+    xAvg,yAvg,zAvg,xRot,zRot,rotationVector = calculateEigenVectors(fileName,0)
+    remote = mmRemote()
+    remote.connect()
+    cmd  = mmapi.StoredCommands( )
+    result =  mm.to_scene_xyz(remote,xAvg,yAvg,zAvg)
+    xAvg = result[0]
+    yAvg = result[1]
+    zAvg = result[2]
+    cmd.AppendBeginToolCommand('transform')
+    cmd.AppendToolParameterCommand('translation',-xAvg,0,-zAvg)
+    cmd.AppendCompleteToolCommand('accept')
+    remote.runCommand(cmd)
+    remote.shutdown()
+    os.remove (fileName)
+    return True
+
+
+###HACK## want to sleep, fix later
+selectedObjects = None 
+def getSelectedObject():
+    remote = mmRemote()
+    remote.connect()
+    selectedObjects = mm.list_selected_objects(remote)
+    print selectedObjects
+    remote.shutdown()
+    jsonreturn =  json.dumps(selectedObjects)
+    return jsonreturn
+
+def selectObjects(data):
+    if data != None:
+        remote = mmRemote()
+        remote.connect()
+        mm.select_objects(remote,data)
+        remote.shutdown()
+        return True
+    else:
+        return False
+
+
+ 
 
 
 def reOrientModel():
