@@ -6,8 +6,8 @@
 			...you will align the distal end of the residual limb, making the residual limb roughly perpendicular to the plane.</p>
 			<p>Checklist:</p>
 			<ul>
-				<li>Select a small area on the distal end of the model</li>
-				<li>Check that the alignment is appropriate</li>
+				<li>Use the automatic alignment tool to do a rough alignment of the model</li>
+				<li>Use the manual alignment tool to make fine changes to the model alignment</li>
 			</ul>
 
 		
@@ -16,32 +16,32 @@
 				<div  id="wellText" class="panel panel-default" style="display: none;">
 					<div class="panel-body">
 						<div  id="subText1"   class="subText" acceptDisabled=1>
-							<h3>Start </h3>
+							<h3>Start Alignment Process </h3>
 							<hr>
-							<p>Press the ">" button to begin.<p>
+                            <p>In this step, the model will be automatically aligned to be perpendicular to the ground plane.<p>
 						</div>
 						<div  id="subText2"  
 						apiFunc=" orientModel()"
 						class="subText"  style="display: none;">
 							<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-							<h3>Auto Orient </h3>
+							<h3>Auto Align </h3>
 							<hr>
-							<p>Auto Orient Model<p>
+                            <p>Click the "Accept" button to automatically align the model.<p>
 						</div>
                         <div id="subText3" apifuncstart="$.post('api/cancel()',apiReturnParser); "
                              apifunc=" $.post('api/alignZCam(1)',apiReturnParser);"  class="subText" style="display: none;">
                             <div class='questionMarkPlaceHolder' align='right' helppage=''> </div>
-                            <h3>Reset Camera</h3>
+                            <h3>Reset Camera View</h3>
                             <hr>
-                            <p>This step will recentre the camera, so that the socket is centred.<p>
+                            <p>Click the "Accept" button to centre the camera view on the model.<p>
                         </div>
 	                    <div id="subText4" apifunc=" $.post('api/accept()',apiReturnParser);"
 	                     apiFuncStart= "$.post('api/alignTransform()',apiReturnParser); "
 	                     class="subText" style="display: none;">
 	                    	<div class = 'questionMarkPlaceHolder' align = 'right' helpPage= ''> </div>
-	                        <h3>Align Transform</h3>
+	                        <h3>Manual Align</h3>
 	                        <hr>
-	                        <p> NEED TEXT HERE <p>
+                            <p> Use the alignment arrows to make any desired modifications to the position of the model.<p>
 	                    </div>
 	                   
 						<div id="subText5" apiFuncStart= "$.post('api/cancel()',apiReturnParser); "
