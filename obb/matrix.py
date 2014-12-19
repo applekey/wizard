@@ -1,54 +1,36 @@
-class matrix():
-    stride = 3
-    def __init__(self,values):
-        self.values = values
-    def v(self,row,column):
-        index = row*self.stride+column
-        return self.values[index]
-    def setv(self,row,column,value):
-        index = row*self.stride+column
-        self.values[index] = value
-
-    def __str__(self):
-        values = []
-        index = 0
-        for i in range(self.stride):
-            values.append(self.values[index:index+self.stride])
-            index = index + self.stride
-        return str(values)
-    def __getitem__(self, index):
-        row = index[0]
-        column = index[1]
-        return self.v(row,column)
-    def __setitem__(self,index,value):
-        row = index[0]
-        column = index[1]
-        self.setv(row,column,value)
-
-def gaussElimination(a):
-    for i in range(a.stride-1):
-        for j in range(a.stride):
-            ratio = a[i,j]/a[i,i]
-            for k in range(i,a.stride):
-                a[j,k] -= (ratio*a[i,k]) 
-                #b[j] -= (ratio*b[i])
-    return a
-
-
-
-    #for (int i = 0; i < N-1; i++) { 
-    #    for (int j = i; j < N; j++) { 
-    #        double ratio = A[j][i]/A[i][i]; 
-    #        for (int k = i; k < N; k++) { 
-    #            A[j][k] -= (ratio*A[i][k]); 
-    #            b[j] -= (ratio*b[i]); 
-    #        } 
-    #    } 
-    #}
+def tr(a):
+    sum = 0
+    for i in range(a.stride):
+        sum = sum+ a[i,i]
+    return sum
 
 #def eigenVal(matrix):
 #    pass
+def dotp(a,b):
+    result = [[sum(a*b for a,b in zip(X_row,Y_col)) for Y_col in zip(*b)] for X_row in a]
+    print result
+def addp(a,b):
+    return map(lambda x,y:map(lambda w,z:w+z,x,y), a,b)
+
+abc = [[12,7,3],
+    [4 ,5,6],
+    [7 ,8,9]]
 
 
-abc = matrix([1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0])
-print gaussElimination(abc)
+def bocher3x3(matrix):
+    A2 = dotp(matrix,matrix)
+    A3 = dotp(A2,matrix)
+    trA = tr(matrix)
+    trA2= tr(A2)
+    trA2= tr(A3)
+    a1 = -tr(matrix)
+    a2 = -0.5*(dotp(a1,trA) + trA2)
+
+
+#print gaussElimination(abc)
+
+#print dotp(abc,abc)
+
+print abc
+print '\n'
+print addp(abc,abc)
