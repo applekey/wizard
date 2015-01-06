@@ -10,7 +10,6 @@
     <link href="css/jquery-ui.css" rel="stylesheet">
 
     <script src="js/advanced.js"></script>
-    <script src="js/wysihtml5-0.3.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-wysihtml5.css">
 
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -55,40 +54,13 @@
                 </div><!-- /row -->
             </div><!-- /container -->
         </div><!-- /headerwrap -->
-        <div class="container">
-            <div class="row mt ">
-                <div class="col-lg-6 ">
-
-                 <div class="container">
-                    <div class="hero-unit" style="margin-top:40px">
-                        <textarea id="myTextArea"class="textarea" placeholder="Save your notes here" style="width: 810px; height: 500px;"></textarea>
-                    </div>
-                    <button id="notesSave" type="button"><span class="glyphicon glyphicon-floppy-save"></span> Save </button>
-
-                  
-                </div>
-            </div><!-- /row -->
-        </div>
 
 
     </body>
-<style>
-    .wysihtml5-toolbar {
-        display: inline-block;
-    }
-
-</style>
-
-    <script src="js/bootstrap-wysihtml5.js"></script>
     <script>
 
-        $('.textarea').wysihtml5();
         $(document).ready(function () {
             
-            $("#notesSave").on("click", function () {
-                var text = $('textarea#myTextArea').val();
-                $.post("api/saveText('"+text+"')");
-            });
             $("#openme").on("click", function () {
                 openWin()
             });

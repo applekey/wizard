@@ -1,3 +1,5 @@
+import math
+
 def tr(a):
     sum = 0
     for i in range(len(a)):
@@ -27,6 +29,20 @@ def bocher3x3(matrix):
     a3 = -1/3*(a2*trA+a1*trA2+trA3)
     return a1,a2,a3
 
+def poly3Solver(a,b,c,d):
+    q = (3.0*c- math.pow(b,2.0))/9.0 
+    r = -27*d + b*(9*c-2*math.pow(b,2)) 
+    discriminant = math.pow(q,3)+math.pow(r,2)
+    s = r + math.sqrt(discriminant) 
+    t = r - math.sqrt(discriminant) 
+    term1 = math.sqrt(3.0)*((-t + s)/2) 
+    r13= 2 * math.sqrt(q) 
+    x1=(- term1 + r13*math.cos(math.pow(q,3)/3) ) 
+    x2=(- term1 + r13*math.cos(math.pow(q,3)+(2*math.pi)/3) ) 
+    x3=(- term1 + r13*math.cos(math.pow(q,3)+(4*math.pi)/3) )
+    return x1,x2,x3
+
+
 #print gaussElimination(abc)
 
 #print dotp(abc,abc)
@@ -34,4 +50,11 @@ def bocher3x3(matrix):
 #print abc
 #print '\n'
 #print addp(abc,abc)
-print bocher3x3(abc)
+b,c,d= bocher3x3(abc)
+
+
+import numpy as np
+coeff = [1, b, c,d][::-1]
+print np.roots(coeff)
+
+print poly3Solver(1,b,c,d)
